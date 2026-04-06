@@ -16,7 +16,6 @@
     --blue-500: #16598c;
     --blue-700: #021829;
     --blue-900: #00080e;
-    --green-100: #dcf8dc;
     --green-300: #7ef67d;
     --green-500: #33fb31;
     --green-700: #576e20;
@@ -25,7 +24,7 @@
     --gray-500: #6b7485;
     --gray-700: #2e3441;
     --font-display: 'Space Mono', monospace;
-    --font-body:    'Nunito', sans-serif;
+    --font-body: 'Nunito', sans-serif;
   }
 
   html { scroll-behavior: smooth; }
@@ -39,357 +38,125 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
   }
   a { color: inherit; text-decoration: none; }
 
   /* NAV */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 48px;
-    height: 68px;
-    background: rgba(223,233,240,0.97);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(46,52,65,0.6);
-  }
-
-  .nav-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-    color: var(--blue-700);
-  }
-
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 68px; background: rgba(223,233,240,0.97); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(46,52,65,0.6); }
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--blue-700); }
   .nav-logo-mark { width: 28px; height: 28px; flex-shrink: 0; color: var(--blue-700); }
-
   .nav-logo-text { display: flex; flex-direction: column; gap: 0; line-height: 1; }
-
-  .nav-logo-top {
-    font-family: var(--font-display);
-    font-size: 11px; font-weight: 700;
-    letter-spacing: 0.16em;
-    color: var(--blue-700);
-  }
-
-  .nav-logo-btm {
-    font-family: var(--font-display);
-    font-size: 8px; font-weight: 400;
-    letter-spacing: 0.14em;
-    color: var(--blue-500);
-  }
-
+  .nav-logo-top { font-family: var(--font-display); font-size: 11px; font-weight: 700; letter-spacing: 0.16em; color: var(--blue-700); }
+  .nav-logo-btm { font-family: var(--font-display); font-size: 8px; font-weight: 400; letter-spacing: 0.14em; color: var(--blue-500); }
   .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
   .nav-links a { font-size: 13px; letter-spacing: 0.04em; color: rgba(15,25,45,0.78); transition: color 0.2s; }
   .nav-links a:hover { color: var(--blue-700); }
-  .nav-links a.active { color: var(--green-500); }
+  nav .nav-cta { font-size: 13px; font-weight: 500; letter-spacing: 0.06em; padding: 9px 22px; background: var(--green-500); color: var(--blue-700); border-radius: 3px; transition: background 0.2s; display: inline-flex; align-items: center; min-height: 44px; }
+  nav .nav-cta:hover { background: var(--green-300); }
 
-  .nav-cta {
-    font-family: var(--font-body);
-    font-size: 13px; font-weight: 500;
-    letter-spacing: 0.06em;
-    padding: 9px 22px;
-    background: var(--green-500);
-    color: var(--blue-700);
-    border-radius: 50px;
-    min-height: 44px;
-    display: inline-flex;
-    align-items: center;
-    transition: background 0.2s, transform 0.15s;
-  }
-  .nav-cta:hover { background: var(--green-300); transform: translateY(-1px); }
-
-  /* MAIN */
-  main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 120px 48px 80px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  /* Radial glow */
-  main::before {
-    content: '';
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 700px; height: 700px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(51,251,49,0.04) 0%, transparent 65%);
-    pointer-events: none;
-  }
-
-  .page-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(51,251,49,0.08);
-    border: 1px solid rgba(51,251,49,0.2);
-    border-radius: 100px;
-    padding: 7px 18px;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--green-500);
-    margin-bottom: 36px;
-    position: relative;
-  }
-
-  .pulse-dot {
-    display: block;
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--green-500);
-    animation: pulse 2.2s ease-in-out infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50%       { opacity: 0.3; transform: scale(0.75); }
-  }
-
-  .page-heading {
-    font-family: var(--font-display);
-    font-size: clamp(2.4rem, 5vw, 4.4rem);
-    font-weight: 700;
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    margin-bottom: 24px;
-    max-width: 640px;
-    position: relative;
-  }
-
-  .page-heading em { font-style: italic; color: var(--green-500); }
-
-  .page-sub {
-    font-size: 16px;
-    font-weight: 300;
-    color: var(--gray-300);
-    max-width: 480px;
-    line-height: 1.75;
-    margin-bottom: 52px;
-    position: relative;
-  }
-
-  /* Preview cards — hint at what the tool will do */
-  .preview-cards {
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 52px;
-    position: relative;
-  }
-
-  .preview-card {
-    background: var(--blue-900);
-    border: 1px solid rgba(46,52,65,0.8);
-    border-radius: 4px;
-    padding: 14px 20px;
-    font-size: 13px;
-    font-weight: 300;
-    color: var(--gray-300);
-    letter-spacing: 0.02em;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .preview-card::before {
-    content: '';
-    display: block;
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--green-500);
-    opacity: 0.5;
-    flex-shrink: 0;
-  }
-
-  .cta-group {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-    position: relative;
-  }
-
-  .btn-primary {
-    font-family: var(--font-body);
-    font-size: 14px; font-weight: 600;
-    letter-spacing: 0.06em;
-    padding: 14px 32px;
-    background: var(--green-500);
-    color: var(--blue-700);
-    border-radius: 50px;
-    min-height: 44px;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    transition: background 0.2s, transform 0.15s;
-  }
-  .btn-primary:hover { background: var(--green-300); transform: translateY(-2px); }
-
-  .btn-ghost {
-    font-family: var(--font-body);
-    font-size: 14px; font-weight: 400;
-    letter-spacing: 0.04em;
-    color: var(--gray-300);
-    min-height: 44px;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    transition: color 0.2s;
-  }
-  .btn-ghost:hover { color: var(--gray-100); }
-
-  /* Dev note — visible only in dev, hidden in prod */
-  .dev-note {
-    margin-top: 64px;
-    padding: 24px 32px;
-    background: var(--blue-900);
-    border: 1px dashed rgba(130,178,215,0.2);
-    border-radius: 4px;
-    max-width: 560px;
-    text-align: left;
-    position: relative;
-  }
-
-  .dev-note-label {
-    font-family: var(--font-display);
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--blue-300);
-    margin-bottom: 12px;
-  }
-
-  .dev-note h3 {
-    font-family: var(--font-display);
-    font-size: 0.95rem;
-    font-weight: 700;
-    margin-bottom: 10px;
-    color: var(--gray-100);
-  }
-
-  .dev-note p {
-    font-size: 13px;
-    font-weight: 300;
-    color: var(--gray-300);
-    line-height: 1.7;
-    margin-bottom: 10px;
-  }
-
-  .dev-note p:last-child { margin-bottom: 0; }
-
-  .dev-note strong { font-weight: 600; color: var(--gray-100); }
-
-  /* FOOTER */
-  footer {
-    background: var(--blue-700);
-    padding: 36px 48px;
-    border-top: 1px solid rgba(46,52,65,0.8);
-  }
-  .footer-inner {
-    display: flex; align-items: center; justify-content: space-between;
-    max-width: 1200px; margin: 0 auto; gap: 24px;
-  }
-  .footer-logo { font-family: var(--font-display); font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray-500); }
-  .footer-copy { font-size: 12px; color: var(--gray-500); }
-
-  /* MOBILE NAV */
-  .nav-hamburger {
-    display: none; flex-direction: column; gap: 5px;
-    cursor: pointer; padding: 11px 8px;
-    min-width: 44px; min-height: 44px;
-    align-items: center; justify-content: center;
-    z-index: 200; background: none; border: none; outline: none;
-  }
-  .nav-hamburger span {
-    display: block; width: 22px; height: 1.5px;
-    background: var(--blue-700); transition: transform 0.3s, opacity 0.3s;
-  }
+  /* MOBILE MENU */
+  .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; z-index: 200; background: none; border: none; }
+  .nav-hamburger span { display: block; width: 22px; height: 1.5px; background: var(--blue-700); transition: transform 0.3s, opacity 0.3s; }
   .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
   .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
   .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-  .mobile-menu {
-    display: none; position: fixed;
-    top: 68px; left: 0; right: 0;
-    background: rgba(223,233,240,0.99); backdrop-filter: blur(20px);
-    z-index: 99; padding: 32px 24px 40px;
-    border-bottom: 1px solid rgba(46,52,65,0.9);
-    transform: translateY(-8px); opacity: 0;
-    transition: opacity 0.25s ease, transform 0.25s ease;
-    pointer-events: none;
-  }
+  .mobile-menu { display: none; position: fixed; top: 68px; left: 0; right: 0; background: rgba(223,233,240,0.99); backdrop-filter: blur(20px); z-index: 99; padding: 32px 24px 40px; border-bottom: 1px solid rgba(46,52,65,0.9); transform: translateY(-8px); opacity: 0; transition: opacity 0.25s ease, transform 0.25s ease; pointer-events: none; }
   .mobile-menu.open { opacity: 1; transform: translateY(0); pointer-events: all; }
   .mobile-menu ul { list-style: none; display: flex; flex-direction: column; }
-  .mobile-menu ul a {
-    display: block; font-family: var(--font-display);
-    font-size: 1.5rem; font-weight: 700; letter-spacing: -0.01em;
-    color: rgba(15,25,45,0.78); padding: 14px 0;
-    border-bottom: 1px solid rgba(46,52,65,0.6); transition: color 0.2s;
-  }
+  .mobile-menu ul a { display: block; font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; letter-spacing: -0.01em; color: rgba(15,25,45,0.78); padding: 14px 0; border-bottom: 1px solid rgba(46,52,65,0.6); transition: color 0.2s; }
   .mobile-menu ul a:hover { color: var(--blue-700); }
-  .mobile-menu .mobile-cta {
-    display: inline-block; margin-top: 28px; padding: 14px 32px;
-    background: var(--green-500); color: var(--blue-700);
-    font-family: var(--font-body); font-size: 14px; font-weight: 600;
-    letter-spacing: 0.06em; border-radius: 3px;
-  }
-
-  .skip-link {
-    position: absolute; top: -100px; left: 0;
-    background: var(--green-500); color: var(--blue-700);
-    padding: 12px 20px; font-family: var(--font-body);
-    font-size: 14px; font-weight: 700; z-index: 9999;
-    border-radius: 0 0 4px 0; transition: top 0.2s; text-decoration: none;
-  }
-  .skip-link:focus { top: 0; }
-
-  :focus-visible { outline: 2px solid var(--green-500); outline-offset: 3px; border-radius: 2px; }
-
+  .mobile-menu .mobile-cta { display: inline-block; margin-top: 28px; padding: 14px 32px; background: var(--green-500); color: var(--blue-700); font-family: var(--font-body); font-size: 14px; font-weight: 600; letter-spacing: 0.06em; border-radius: 3px; }
   @media (max-width: 900px) {
     nav { padding: 0 24px; }
     nav .nav-links, nav .nav-cta { display: none !important; }
     .nav-hamburger { display: flex !important; }
     .mobile-menu { display: block; }
-    main { padding: 100px 24px 60px; }
-    .page-heading { font-size: clamp(1.8rem, 7vw, 2.6rem); }
+  }
+
+  /* UTILITIES */
+  .skip-link { position: absolute; top: -100px; left: 0; background: var(--green-500); color: var(--blue-700); padding: 12px 20px; font-size: 14px; font-weight: 700; z-index: 9999; border-radius: 0 0 4px 0; transition: top 0.2s; text-decoration: none; }
+  .skip-link:focus { top: 0; }
+  :focus-visible { outline: 2px solid var(--green-500); outline-offset: 3px; border-radius: 2px; }
+  h1 { overflow-wrap: break-word; word-break: break-word; }
+
+  /* QUIZ SHELL */
+  main { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 108px 24px 80px; }
+  .quiz-wrap { width: 100%; max-width: 700px; }
+
+  /* PROGRESS BAR */
+  .progress-bar { display: flex; gap: 6px; margin-bottom: 56px; }
+  .progress-segment { height: 2px; flex: 1; background: rgba(130,178,215,0.15); border-radius: 2px; transition: background 0.45s ease; }
+  .progress-segment.done { background: var(--green-500); }
+  .progress-segment.active { background: rgba(51,251,49,0.4); }
+
+  /* QUESTION SCREEN */
+  .q-screen { display: none; }
+  .q-screen.active { display: block; animation: fadeUp 0.38s cubic-bezier(0.16,1,0.3,1) both; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+
+  .q-label { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green-500); margin-bottom: 16px; }
+  .q-text { font-family: var(--font-display); font-size: clamp(1.45rem, 3.5vw, 2.1rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.01em; margin-bottom: 12px; }
+  .q-sub { font-size: 15px; font-weight: 300; color: var(--gray-300); line-height: 1.7; margin-bottom: 36px; max-width: 520px; }
+
+  /* OPTIONS */
+  .options { display: flex; flex-direction: column; gap: 10px; }
+  .option-btn {
+    display: flex; align-items: flex-start; gap: 18px; width: 100%;
+    background: var(--blue-900); border: 1px solid rgba(130,178,215,0.1);
+    border-radius: 3px; padding: 20px 22px; cursor: pointer; text-align: left;
+    transition: border-color 0.18s, background 0.18s, transform 0.15s;
+    color: var(--gray-100); font-family: var(--font-body);
+  }
+  .option-btn:hover { border-color: rgba(51,251,49,0.3); background: rgba(51,251,49,0.04); transform: translateX(3px); }
+  .option-btn.selected { border-color: var(--green-500); background: rgba(51,251,49,0.07); }
+  .option-letter { font-family: var(--font-display); font-size: 10px; font-weight: 700; letter-spacing: 0.12em; color: var(--green-500); flex-shrink: 0; margin-top: 3px; width: 16px; }
+  .option-content { flex: 1; }
+  .option-title { font-size: 15px; font-weight: 600; line-height: 1.3; margin-bottom: 4px; }
+  .option-desc { font-size: 13px; font-weight: 300; color: var(--gray-300); line-height: 1.6; }
+
+  /* NAV BUTTONS */
+  .q-actions { display: flex; align-items: center; justify-content: space-between; margin-top: 28px; gap: 16px; }
+  .btn-back { font-family: var(--font-display); font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-500); background: none; border: none; cursor: pointer; padding: 8px 0; transition: color 0.2s; display: flex; align-items: center; gap: 8px; }
+  .btn-back:hover { color: var(--gray-100); }
+  .btn-back:disabled { opacity: 0; pointer-events: none; }
+  .btn-next { font-family: var(--font-body); font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue-700); background: var(--green-500); border: none; border-radius: 3px; padding: 13px 26px; cursor: pointer; transition: background 0.2s, opacity 0.2s; min-height: 44px; display: inline-flex; align-items: center; gap: 10px; }
+  .btn-next:hover { background: var(--green-300); }
+  .btn-next:disabled { opacity: 0.3; cursor: not-allowed; pointer-events: none; }
+
+  /* RESULT SCREEN */
+  #result-screen { display: none; }
+  #result-screen.active { display: block; animation: fadeUp 0.45s cubic-bezier(0.16,1,0.3,1) both; }
+
+  .result-badge { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-display); font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green-500); border: 1px solid rgba(51,251,49,0.25); padding: 6px 14px; border-radius: 2px; margin-bottom: 28px; }
+  .result-service { font-family: var(--font-display); font-size: clamp(2rem, 5.5vw, 3.6rem); font-weight: 700; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 10px; }
+  .result-service em { font-style: italic; color: var(--green-500); }
+  .result-mode { font-family: var(--font-display); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue-300); margin-bottom: 0; }
+  .result-divider { width: 40px; height: 1px; background: rgba(51,251,49,0.35); margin: 36px 0; }
+  .result-why { font-size: 16px; font-weight: 300; color: var(--gray-300); line-height: 1.8; max-width: 580px; margin-bottom: 24px; }
+  .result-mode-desc { font-size: 14px; font-weight: 300; color: var(--gray-500); line-height: 1.75; max-width: 560px; border-left: 2px solid rgba(51,251,49,0.3); padding-left: 20px; margin-bottom: 48px; }
+  .result-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 32px; }
+  .result-primary { font-family: var(--font-body); font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue-700); background: var(--green-500); border-radius: 3px; padding: 14px 26px; transition: background 0.2s; display: inline-flex; align-items: center; gap: 10px; min-height: 44px; }
+  .result-primary:hover { background: var(--green-300); }
+  .result-secondary { font-family: var(--font-display); font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-300); border: 1px solid rgba(130,178,215,0.2); border-radius: 3px; padding: 13px 20px; transition: border-color 0.2s, color 0.2s; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; }
+  .result-secondary:hover { border-color: var(--green-500); color: var(--green-500); }
+  .result-restart { font-family: var(--font-display); font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray-500); background: none; border: none; cursor: pointer; padding: 8px 0; transition: color 0.2s; display: block; }
+  .result-restart:hover { color: var(--gray-300); }
+
+  /* FOOTER */
+  footer { background: var(--blue-700); padding: 36px 48px; border-top: 1px solid rgba(46,52,65,0.8); }
+  .footer-inner { display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: 0 auto; gap: 24px; }
+  .footer-logo { font-family: var(--font-display); font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray-500); }
+  .footer-copy { font-size: 12px; color: var(--gray-500); }
+
+  @media (max-width: 600px) {
+    .q-actions { flex-direction: column-reverse; align-items: stretch; }
+    .btn-next { justify-content: center; }
+    .result-actions { flex-direction: column; align-items: stretch; }
+    .result-primary, .result-secondary { justify-content: center; }
     footer { padding: 28px 24px; }
     .footer-inner { flex-direction: column; text-align: center; }
-    .dev-note { padding: 20px 24px; }
-  }
-
-  /* ── HEADING OVERFLOW GUARD ─────────────────────────────────
-     Prevents long words (especially italic em elements) from
-     escaping their container on narrow screens.              */
-  h1, h2, h3,
-  .error-code, .store-heading, .page-heading,
-  .academy-left h1, .about-hero h1, .services-hero h1,
-  .contact-left h1 {
-    overflow-wrap: break-word;
-    word-break: break-word;
-  }
-
-  @media (max-width: 480px) {
-    /* Force all large display headings to a safe max on very small screens */
-    h1 { font-size: clamp(1.8rem, 8vw, 2.6rem) !important; }
-    h2 { font-size: clamp(1.4rem, 6vw, 2rem) !important; }
-    .error-code { font-size: clamp(5rem, 22vw, 7rem) !important; }
-    .store-heading { font-size: clamp(2rem, 9vw, 3rem) !important; }
-    .page-heading { font-size: clamp(1.8rem, 8vw, 2.6rem) !important; }
   }
 </style>
 </head>
@@ -409,7 +176,7 @@
       <span class="nav-logo-btm">AND PIXEL</span>
     </span>
   </a>
-      <ul class="nav-links">
+  <ul class="nav-links">
     <li><a href="services.html">Services</a></li>
     <li><a href="resources.html">Resources</a></li>
     <li><a href="about.html">About</a></li>
@@ -421,7 +188,7 @@
 </nav>
 
 <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation menu" aria-modal="true">
-      <ul>
+  <ul>
     <li><a href="services.html">Services</a></li>
     <li><a href="resources.html">Resources</a></li>
     <li><a href="about.html">About</a></li>
@@ -430,89 +197,257 @@
 </div>
 
 <main id="main-content">
+  <div class="quiz-wrap">
 
-  <div class="page-badge">
-    <span class="pulse-dot"></span>
-    Coming soon
+    <div class="progress-bar" role="progressbar" aria-label="Quiz progress" aria-valuenow="1" aria-valuemin="1" aria-valuemax="4" id="progress-bar">
+      <div class="progress-segment active" id="seg-0"></div>
+      <div class="progress-segment" id="seg-1"></div>
+      <div class="progress-segment" id="seg-2"></div>
+      <div class="progress-segment" id="seg-3"></div>
+    </div>
+
+    <!-- Q1 — Gap -->
+    <div class="q-screen active" id="q0">
+      <p class="q-label">Question 1 of 4</p>
+      <h1 class="q-text">What's the biggest gap in your show right now?</h1>
+      <p class="q-sub">Think about what's keeping the project from moving forward with confidence.</p>
+      <div class="options" role="group" aria-label="Select one option">
+        <button class="option-btn"
+          data-scores='{"SD":4,"SC":1,"SA":1,"TD":1}'
+          data-engage='{"earlyStage":1,"wantsLead":1}'>
+          <span class="option-letter">A</span>
+          <span class="option-content">
+            <span class="option-title">The concept exists but nobody can see it yet</span>
+            <span class="option-desc">We have a creative direction but no visual proof — clients haven't signed off and the team doesn't share the same picture.</span>
+          </span>
+        </button>
+        <button class="option-btn"
+          data-scores='{"SD":1,"SC":4,"SA":1,"TD":1}'
+          data-engage='{"earlyStage":0,"wantsLead":1}'>
+          <span class="option-letter">B</span>
+          <span class="option-content">
+            <span class="option-title">The systems don't talk to each other</span>
+            <span class="option-desc">Lighting, video, and audio are running separately — there's no show control layer tying them to a common timeline.</span>
+          </span>
+        </button>
+        <button class="option-btn"
+          data-scores='{"SD":1,"SC":1,"SA":4,"TD":1}'
+          data-engage='{"earlyStage":1,"wantsLead":0}'>
+          <span class="option-letter">C</span>
+          <span class="option-content">
+            <span class="option-title">Nobody has defined the technical infrastructure</span>
+            <span class="option-desc">Signal paths, equipment spec, and integration logic haven't been designed — we're building on assumptions instead of a documented system.</span>
+          </span>
+        </button>
+        <button class="option-btn"
+          data-scores='{"SD":1,"SC":1,"SA":1,"TD":4}'
+          data-engage='{"earlyStage":0,"wantsLead":1}'>
+          <span class="option-letter">D</span>
+          <span class="option-content">
+            <span class="option-title">There's no single technical authority on-site</span>
+            <span class="option-desc">Creative, crew, and venue are operating independently — things are falling through the gaps and nobody owns the technical outcome.</span>
+          </span>
+        </button>
+      </div>
+      <div class="q-actions">
+        <button class="btn-back" disabled aria-label="Go back">
+          <svg width="12" height="10" viewBox="0 0 12 10" fill="none" aria-hidden="true"><path d="M12 5H0M4 1L0 5l4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Back
+        </button>
+        <button class="btn-next" disabled id="next-0">
+          Next
+          <svg width="12" height="10" viewBox="0 0 12 10" fill="none" aria-hidden="true"><path d="M0 5h12M8 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Q2 — Timeline -->
+    <div class="q-screen" id="q1">
+      <p class="q-label">Question 2 of 4</p>
+      <h1 class="q-text">Where are you in the production timeline?</h1>
+      <p class="q-sub">This determines which version of the service fits your situation best.</p>
+      <div class="options" role="group" aria-label="Select one option">
+        <button class="option-btn"
+          data-scores='{"SD":2,"SC":2,"SA":2,"TD":1}'
+          data-engage='{"earlyStage":2,"wantsLead":1}'>
+          <span class="option-letter">A</span>
+          <span class="option-content">
+            <span class="option-title">Early planning — concept stage</span>
+            <span class="option-desc">The show is being shaped. Decisions made now determine everything that follows.</span>
+          </span>
+        </button>
+        <button class="option-btn"
+          data-scores='{"SD":2,"SC":2,"SA":2,"TD":1}'
+          data-engage='{"earlyStage":1,"wantsLead":1}'>
+          <span class="option-letter">B</span>
+          <span class="option-content">
+            <span class="option-title">Pre-production — 6 to 12 weeks out</span>
+            <span class="option-desc">Direction is set, suppliers are being briefed, production is building momentum.</span>
+          </span>
+        </button>
+        <button class="option-btn"
+          data-scores='{"SD":1,"SC":2,"SA":1,"TD":2}'
+          data-engage='{"earlyStage":0,"wantsLead":1}'>
+          <span class="option-letter">C</span>
+          <span class="option-content">
+            <span class="option-title">Close in — under 4 weeks to show</span>
+            <span class="option-desc">The show is locked. What's needed now is execution and risk containment.</span>
+          </span>
+        </button>
+        <button class="option-btn"
+          data-scores='{"SD":0,"SC":1,"SA":0,"TD":3}'
+          data-engage='{"earlyStage":0,"wantsLead":2}'>
+          <span class="option-letter">D</span>
+          <span class="option-content">
+            <span class="option-title">Already in production or on-site</span>
+            <span class="option-desc">Things are moving now. We need a decision-maker in the room, not a planner.</span>
+          </span>
+        </button>
+      </div>
+      <div class="q-actions">
+        <button class="btn-back" aria-label="Go back">
+          <svg width="12" height="10" viewBox="0 0 12 10" fill="none" aria-hidden="true"><path d="M12 5H0M4 1L0 5l4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Back
+        </button>
+        <button class="btn-next" disabled id="next-1">
+          Next
+          <svg width="12" height="10" viewBox="0 0 12 10" fill="none" aria-hidden="true"><path d="M0 5h12M8 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Q3 — Team -->
+    <div class="q-screen" id="q2">
+      <p class="q-label">Question 3 of 4</p>
+      <h1 class="q-text">Who else is handling the technical decisions?</h1>
+      <p class="q-sub">This tells us whether you need a partner to lead or a specialist to support what's already in motion.</p>
+      <div class="options" role="group" aria-label="Select one option">
+        <button class="option-btn"
+          data-scores='{"SD":2,"SC":1,"SA":2,"TD":1}'
+          data-engage='{"earlyStage":1,"wantsLead":2}'>
+          <span class="option-letter">A</span>
+          <span class="option-content">
+            <span class="option-title">Nobody — that gap is why we're here</span>
+            <span class="option-desc">There's no technical lead on this project. We need someone to own that role from the start.</span>
+          </span>
+        </button>
+        <button class="option-btn"
+          data-scores='{"SD":1,"SC":2,"SA":1,"TD":2}'
+          data-engage='{"earlyStage":0,"wantsLead":2}'>
+          <span class="option-letter">B</span>
+          <span class="option-content">
+            <span class="option-title">A production or event manager, but not a technical specialist</span>
+            <span class="option-desc">Someone is managing logistics, but nobody has deep AV or show systems expertise in the room.</span>
+          </span>
+        </button>
+        <button class="option-btn"
+          data-scores='{"SD":1,"SC":2,"SA":2,"TD":1}'
+          data-engage='{"earlyStage":1,"wantsLead":0}'>
+          <span class="option-letter">C</span>
+          <span class="option-content">
+            <span class="option-title">We have a team but need a specialist for one area</span>
+            <span class="option-desc">The production is staffed — we need an expert to own a specific piece, not the whole technical picture.</span>
+          </span>
+        </button>
+        <button class="option-btn"
+          data-scores='{"SD":1,"SC":1,"SA":1,"TD":3}'
+          data-engage='{"earlyStage":0,"wantsLead":1}'>
+          <span class="option-letter">D</span>
+          <span class="option-content">
+            <span class="option-title">A full production team — we need senior technical oversight</span>
+            <span class="option-desc">Crew and suppliers are in place. What's missing is a technical director who can align them and make the final calls.</span>
+          </span>
+        </button>
+      </div>
+      <div class="q-actions">
+        <button class="btn-back" aria-label="Go back">
+          <svg width="12" height="10" viewBox="0 0 12 10" fill="none" aria-hidden="true"><path d="M12 5H0M4 1L0 5l4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Back
+        </button>
+        <button class="btn-next" disabled id="next-2">
+          Next
+          <svg width="12" height="10" viewBox="0 0 12 10" fill="none" aria-hidden="true"><path d="M0 5h12M8 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Q4 — Outcome -->
+    <div class="q-screen" id="q3">
+      <p class="q-label">Question 4 of 4</p>
+      <h1 class="q-text">What does success look like for this project?</h1>
+      <p class="q-sub">The outcome you're aiming for helps us confirm which service creates the most value for you.</p>
+      <div class="options" role="group" aria-label="Select one option">
+        <button class="option-btn"
+          data-scores='{"SD":3,"SC":1,"SA":1,"TD":1}'
+          data-engage='{"earlyStage":1,"wantsLead":0}'>
+          <span class="option-letter">A</span>
+          <span class="option-content">
+            <span class="option-title">Everyone shares the same vision of what the show will be</span>
+            <span class="option-desc">Client sign-off is fast, the crew has a shared reference, and the design is executable from day one of load-in.</span>
+          </span>
+        </button>
+        <button class="option-btn"
+          data-scores='{"SD":1,"SC":3,"SA":1,"TD":1}'
+          data-engage='{"earlyStage":0,"wantsLead":0}'>
+          <span class="option-letter">B</span>
+          <span class="option-content">
+            <span class="option-title">Every cue lands exactly where it should, every time</span>
+            <span class="option-desc">The show runs with precision — lighting, video, and effects in perfect sync, regardless of how many times it plays.</span>
+          </span>
+        </button>
+        <button class="option-btn"
+          data-scores='{"SD":1,"SC":1,"SA":3,"TD":1}'
+          data-engage='{"earlyStage":1,"wantsLead":0}'>
+          <span class="option-letter">C</span>
+          <span class="option-content">
+            <span class="option-title">The technical system is documented and nothing is a mystery</span>
+            <span class="option-desc">Any technician can pick up the system, understand it, and troubleshoot it — because it was designed, not improvised.</span>
+          </span>
+        </button>
+        <button class="option-btn"
+          data-scores='{"SD":1,"SC":1,"SA":1,"TD":3}'
+          data-engage='{"earlyStage":0,"wantsLead":2}'>
+          <span class="option-letter">D</span>
+          <span class="option-content">
+            <span class="option-title">The show delivers exactly as designed and nothing breaks visibly</span>
+            <span class="option-desc">A senior technical person was in the room, made every system decision, and could fix anything that moved.</span>
+          </span>
+        </button>
+      </div>
+      <div class="q-actions">
+        <button class="btn-back" aria-label="Go back">
+          <svg width="12" height="10" viewBox="0 0 12 10" fill="none" aria-hidden="true"><path d="M12 5H0M4 1L0 5l4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Back
+        </button>
+        <button class="btn-next" disabled id="next-3">
+          See my result
+          <svg width="12" height="10" viewBox="0 0 12 10" fill="none" aria-hidden="true"><path d="M0 5h12M8 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- RESULT -->
+    <div id="result-screen">
+      <div class="result-badge">Your match</div>
+      <h1 class="result-service" id="result-service-name"></h1>
+      <p class="result-mode" id="result-mode-name"></p>
+      <div class="result-divider"></div>
+      <p class="result-why" id="result-why"></p>
+      <p class="result-mode-desc" id="result-mode-desc"></p>
+      <div class="result-actions">
+        <a class="result-primary" id="result-link-service" href="services.html">
+          See full service detail
+          <svg width="12" height="10" viewBox="0 0 12 10" fill="none" aria-hidden="true"><path d="M0 5h12M8 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="result-secondary" id="result-link-contact" href="about.html#contact-form">
+          Start a conversation
+          <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true"><path d="M1.5 9.5l8-8M9.5 1.5H3M9.5 1.5v6.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+        </a>
+      </div>
+      <button class="result-restart" id="restart-btn">Start over</button>
+    </div>
+
   </div>
-
-  <h1 class="page-heading">Find the <em>right service</em><br>for your event.</h1>
-
-  <p class="page-sub">Answer a few quick questions about your project — scale, timeline, what you need — and we'll point you to exactly the right place to start.</p>
-
-  <div class="preview-cards">
-    <div class="preview-card">What kind of event?</div>
-    <div class="preview-card">What's your timeline?</div>
-    <div class="preview-card">What's your biggest challenge?</div>
-    <div class="preview-card">What does success look like?</div>
-  </div>
-
-  <div class="cta-group">
-    <a href="about.html#contact-form" class="btn-primary">
-      Talk to us in the meantime
-      <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
-        <path d="M0 5h12M8 1l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </a>
-    <a href="services.html" class="btn-ghost">
-      Browse all services
-      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-        <path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </a>
-  </div>
-
-  <!-- ═══════════════════════════════════════════════════════════════
-       NEXT PROJECT — SERVICE FINDER TOOL
-       ═══════════════════════════════════════════════════════════════
-       This page is a placeholder. The interactive quiz to build here:
-
-       CONCEPT
-       A short branching questionnaire (4–6 steps) that takes the user
-       through their event context and surfaces the most relevant
-       Lumen and Pixel service — with a direct link to that service's
-       section and a pre-filled contact form.
-
-       SUGGESTED QUESTION FLOW
-       Step 1 — Event type
-         Corporate / Conference, Music / Festival, Brand Activation,
-         Private / Social, Other
-
-       Step 2 — Scale
-         Intimate (<100 pax), Mid-size (100–500), Large (500–2000),
-         Stadium / Festival (2000+)
-
-       Step 3 — Where are you in the process?
-         Early planning (concept stage), Pre-production (6–12 weeks out),
-         Close in (under 4 weeks), Already on-site
-
-       Step 4 — What's the main gap?
-         We need to visualise the space before sign-off (→ Pre-Viz)
-         Our visual brand needs to work on screens and print (→ Branding)
-         We don't have templates and keep starting from scratch (→ Design Kits)
-         We need cues and show control programmed (→ Automation)
-         We need someone technical on-site to own the AV (→ Coordination)
-         We need a bit of everything (→ Contact)
-
-       RESULT PAGE
-       Show the matched service with a 2-sentence summary, link to the
-       services.html#[anchor] deep-link, and a CTA to contact.html
-       with the service pre-selected in the dropdown.
-
-       IMPLEMENTATION NOTE
-       This can be built as a multi-step JS state machine within this
-       single HTML file — no backend required. Claude can build the
-       full interactive version autonomously in a single session.
-  ═══════════════════════════════════════════════════════════════ -->
-
-  <div class="dev-note" aria-label="Developer note — not visible in production">
-    <p class="dev-note-label">Next project — Service Finder Tool</p>
-    <h3>Interactive quiz — ready to build</h3>
-    <p>This placeholder is ready to be replaced with a <strong>4-step branching questionnaire</strong> that matches users to the right service based on event type, scale, timeline, and their biggest gap.</p>
-    <p>The full tool can be built autonomously in a single session — no backend needed, pure JS state machine. See the comment in the HTML source for the complete question flow and result logic.</p>
-    <p><strong>Trigger phrase:</strong> "Let's build the service finder tool."</p>
-  </div>
-
 </main>
 
 <footer>
@@ -523,27 +458,246 @@
 </footer>
 
 <script>
-  (function() {
-    var hamburger = document.getElementById('hamburger');
-    var mobileMenu = document.getElementById('mobileMenu');
-    if (!hamburger || !mobileMenu) return;
-    hamburger.addEventListener('click', function() {
-      var isOpen = mobileMenu.classList.toggle('open');
-      hamburger.classList.toggle('open');
-      hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      hamburger.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
-      document.body.style.overflow = isOpen ? 'hidden' : '';
+// ─── SERVICE DATA ─────────────────────────────────────────────────────────────
+const SERVICES = {
+  SD: {
+    name: ['Show', '<em>Design</em>'],
+    anchor: '#show-design',
+    why: 'Your answers point to a gap between where the creative vision lives and where the technical reality begins. Show Design bridges that gap — we build the visual system that connects what you imagine to what can actually be built, programmed, and delivered on stage.',
+    modes: {
+      lead: {
+        name: 'Design Lead',
+        desc: 'Based on your timeline and team setup, you need someone to own the design process from concept through to handoff — not just contribute to it. We take the brief and drive it to a production-ready outcome.'
+      },
+      support: {
+        name: 'Design Support',
+        desc: 'You have a team in place and need a specialist to own a specific piece — pre-visualization, the visual system, or the technical documentation. We slot in where you need us, scoped to what the project actually requires.'
+      }
+    }
+  },
+  SC: {
+    name: ['Show Control', '<em>&amp; Automation</em>'],
+    anchor: '#show-control',
+    why: 'Your answers point to a synchronization problem — multiple systems that need to fire together but currently don\'t. Show Control & Automation gives the show a single clock that everything runs from, eliminating the manual decisions and timing risks that compound on show day.',
+    modes: {
+      lead: {
+        name: 'On-Site Programming & Operation',
+        desc: 'Given where you are in production, you need someone who can programme in the venue, adapt to last-minute changes, and operate through the show. Real-time flexibility is what your situation demands.'
+      },
+      support: {
+        name: 'Pre-Production Programming',
+        desc: 'Your timeline allows us to programme the full show file before you enter the venue. The show is ready on day one of load-in — cues, timecode maps, contingency states, and an operator briefing all handed over in advance.'
+      }
+    }
+  },
+  SA: {
+    name: ['System', '<em>Architecture</em>'],
+    anchor: '#system-architecture',
+    why: 'Your answers point to an infrastructure problem — the technical backbone of the show hasn\'t been properly designed. System Architecture defines every signal path, control network, and equipment interface before a cable is run, so the show is built on documented fact rather than assumption.',
+    modes: {
+      lead: {
+        name: 'Full Architecture',
+        desc: 'You\'re at a stage where the system can still be designed correctly from scratch. We map the complete infrastructure — signal flow, control networks, equipment specification, and documentation — delivered as a production-ready brief for your suppliers and crew.'
+      },
+      support: {
+        name: 'Audit & Review',
+        desc: 'A system exists or is being specified. We review it against your show\'s real requirements, identify the risks hiding in the gaps, and produce a clear recommendations document. The fastest way to find problems before they become show-day emergencies.'
+      }
+    }
+  },
+  TD: {
+    name: ['Technical', '<em>Direction</em>'],
+    anchor: '#technical-direction',
+    why: 'Your answers point to an accountability gap — there\'s no single person who understands both the creative intent and the technical infrastructure and has the authority to align them. Technical Direction fills that role, bridging crew, creative team, and venue so every element of the show lands as designed.',
+    modes: {
+      lead: {
+        name: 'Full Production Cycle',
+        desc: 'Your project needs technical leadership from the planning stage through to post-show wrap. We come in early — owning the technical rider, site visits, supplier briefs, and rehearsal schedule — so the show arrives at load-in already aligned.'
+      },
+      support: {
+        name: 'Show-Day Direction',
+        desc: 'Pre-production is handled. What you need is experienced technical authority in the room for load-in, rehearsal, and the live show — someone who can make decisions fast and keep everything running to the design.'
+      }
+    }
+  }
+};
+
+// ─── STATE ────────────────────────────────────────────────────────────────────
+const TOTAL_Q = 4;
+const SCORE_KEYS = ['SD', 'SC', 'SA', 'TD'];
+let currentQ = 0;
+const answers = new Array(TOTAL_Q).fill(null);
+
+// ─── PROGRESS ─────────────────────────────────────────────────────────────────
+function updateProgress(qIndex) {
+  for (let i = 0; i < TOTAL_Q; i++) {
+    const seg = document.getElementById('seg-' + i);
+    if (i < qIndex)      seg.className = 'progress-segment done';
+    else if (i === qIndex) seg.className = 'progress-segment active';
+    else                  seg.className = 'progress-segment';
+  }
+  const bar = document.getElementById('progress-bar');
+  bar.setAttribute('aria-valuenow', qIndex + 1);
+}
+
+// ─── SHOW SCREEN ──────────────────────────────────────────────────────────────
+function showScreen(index) {
+  document.querySelectorAll('.q-screen').forEach(function(s) { s.classList.remove('active'); });
+  document.getElementById('result-screen').classList.remove('active');
+
+  const screen = document.getElementById('q' + index);
+  if (!screen) return;
+  screen.classList.add('active');
+
+  // Restore previously selected option
+  screen.querySelectorAll('.option-btn').forEach(function(btn) { btn.classList.remove('selected'); });
+  if (answers[index] && answers[index].el) {
+    answers[index].el.classList.add('selected');
+    document.getElementById('next-' + index).disabled = false;
+  }
+
+  updateProgress(index);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function showResult() {
+  document.querySelectorAll('.q-screen').forEach(function(s) { s.classList.remove('active'); });
+  const result = document.getElementById('result-screen');
+  result.classList.add('active');
+  for (let i = 0; i < TOTAL_Q; i++) {
+    document.getElementById('seg-' + i).className = 'progress-segment done';
+  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  renderResult();
+}
+
+// ─── OPTION SELECTION ─────────────────────────────────────────────────────────
+document.querySelectorAll('.q-screen').forEach(function(screen, qIndex) {
+  screen.querySelectorAll('.option-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      screen.querySelectorAll('.option-btn').forEach(function(b) { b.classList.remove('selected'); });
+      btn.classList.add('selected');
+      answers[qIndex] = {
+        scores: JSON.parse(btn.dataset.scores),
+        engage: JSON.parse(btn.dataset.engage),
+        el: btn
+      };
+      document.getElementById('next-' + qIndex).disabled = false;
     });
-    mobileMenu.querySelectorAll('a').forEach(function(link) {
-      link.addEventListener('click', function() {
-        hamburger.classList.remove('open');
-        mobileMenu.classList.remove('open');
-        hamburger.setAttribute('aria-expanded', 'false');
-        hamburger.setAttribute('aria-label', 'Open navigation menu');
-        document.body.style.overflow = '';
+  });
+});
+
+// ─── NEXT / BACK ──────────────────────────────────────────────────────────────
+for (let i = 0; i < TOTAL_Q; i++) {
+  (function(idx) {
+    var nextBtn = document.getElementById('next-' + idx);
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function() {
+        if (idx < TOTAL_Q - 1) { currentQ = idx + 1; showScreen(currentQ); }
+        else { showResult(); }
       });
+    }
+  })(i);
+}
+
+document.querySelectorAll('.btn-back').forEach(function(btn, i) {
+  btn.addEventListener('click', function() {
+    if (currentQ > 0) { currentQ--; showScreen(currentQ); }
+  });
+});
+
+// ─── SCORING ──────────────────────────────────────────────────────────────────
+function computeResult() {
+  var totals = { SD: 0, SC: 0, SA: 0, TD: 0 };
+  var engage = { earlyStage: 0, wantsLead: 0 };
+
+  answers.forEach(function(a) {
+    if (!a) return;
+    SCORE_KEYS.forEach(function(k) { totals[k] += (a.scores[k] || 0); });
+    Object.keys(engage).forEach(function(k) { engage[k] += (a.engage[k] || 0); });
+  });
+
+  // Winning service = highest score; ties broken by SCORE_KEYS order
+  var winService = SCORE_KEYS.reduce(function(a, b) { return totals[a] >= totals[b] ? a : b; });
+
+  // Engagement signals
+  // earlyStage >= 3 = early-stage project
+  // wantsLead >= 4  = wants a partner to lead, not just support
+  var isEarly = engage.earlyStage >= 3;
+  var isLead  = engage.wantsLead  >= 4;
+
+  // Mode resolution per service:
+  // SD:   lead -> Design Lead          | support -> Design Support
+  // SC:   early -> Pre-Prod Prog (sup) | late -> On-Site (lead)
+  // SA:   early -> Full Arch (lead)    | late -> Audit (support)
+  // TD:   early OR lead -> Full Cycle  | else -> Show-Day
+  var modeKey;
+  if (winService === 'SD') {
+    modeKey = isLead ? 'lead' : 'support';
+  } else if (winService === 'SC') {
+    modeKey = isEarly ? 'support' : 'lead';
+  } else if (winService === 'SA') {
+    modeKey = isEarly ? 'lead' : 'support';
+  } else {
+    modeKey = (isEarly || isLead) ? 'lead' : 'support';
+  }
+
+  return { winService: winService, modeKey: modeKey };
+}
+
+// ─── RENDER RESULT ────────────────────────────────────────────────────────────
+function renderResult() {
+  var r = computeResult();
+  var svc = SERVICES[r.winService];
+  var mode = svc.modes[r.modeKey];
+
+  // Service name with italic second line
+  document.getElementById('result-service-name').innerHTML =
+    svc.name[0] + '<br>' + svc.name[1];
+
+  document.getElementById('result-mode-name').textContent = '\u2192 ' + mode.name;
+  document.getElementById('result-why').textContent = svc.why;
+  document.getElementById('result-mode-desc').textContent = mode.desc;
+
+  document.getElementById('result-link-service').href = 'services.html' + svc.anchor;
+  document.getElementById('result-link-contact').href =
+    'about.html#contact-form';
+}
+
+// ─── RESTART ──────────────────────────────────────────────────────────────────
+document.getElementById('restart-btn').addEventListener('click', function() {
+  answers.fill(null);
+  currentQ = 0;
+  document.querySelectorAll('.option-btn').forEach(function(btn) { btn.classList.remove('selected'); });
+  for (var i = 0; i < TOTAL_Q; i++) {
+    var nb = document.getElementById('next-' + i);
+    if (nb) nb.disabled = true;
+  }
+  showScreen(0);
+});
+
+// ─── MOBILE MENU ──────────────────────────────────────────────────────────────
+(function() {
+  var hamburger = document.getElementById('hamburger');
+  var mobileMenu = document.getElementById('mobileMenu');
+  if (!hamburger || !mobileMenu) return;
+  hamburger.addEventListener('click', function() {
+    var isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    hamburger.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  mobileMenu.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.setAttribute('aria-label', 'Open navigation menu');
+      document.body.style.overflow = '';
     });
-  })();
+  });
+})();
 </script>
 </body>
 </html>
