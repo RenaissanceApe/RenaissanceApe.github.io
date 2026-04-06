@@ -661,7 +661,7 @@ function renderResult() {
 
   document.getElementById('result-link-service').href = 'services.html' + svc.anchor;
   document.getElementById('result-link-contact').href =
-    'about.html#contact-form';
+    'about.html?service=' + encodeURIComponent(svc.plainName || svc.name.join(' ')).replace(/%20/g, '+') + '#contact-form';
 }
 
 // ─── RESTART ──────────────────────────────────────────────────────────────────

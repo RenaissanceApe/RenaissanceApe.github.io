@@ -817,6 +817,31 @@
     });
   });
 
+  // Pre-fill service from query string and auto-open contact section when arriving from the quiz
+  (function() {
+    var params = new URLSearchParams(window.location.search);
+    var requestedService = params.get('service');
+    if (!requestedService) return;
+
+    var serviceSelect = document.getElementById('service');
+    var contactSection = document.getElementById('contact-form');
+    if (serviceSelect) {
+      var normalizedRequested = requestedService.replace(/\+/g, ' ').trim().toLowerCase();
+      Array.prototype.slice.call(serviceSelect.options).forEach(function(option) {
+        if ((option.textContent || '').trim().toLowerCase() === normalizedRequested) {
+          serviceSelect.value = option.value || option.textContent;
+        }
+      });
+    }
+
+    if (contactSection) {
+      contactSection.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('visible'); });
+      window.requestAnimationFrame(function() {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+      });
+    }
+  })();
+
   // Form submission
   const form = document.getElementById('contactForm');
   const success = document.getElementById('formSuccess');
