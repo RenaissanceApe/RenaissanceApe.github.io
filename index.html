@@ -463,64 +463,95 @@
     font-size: 15px;
   }
 
-  .newsletter-form {
-    display: flex;
-    justify-content: center;
-    gap: 0;
-    max-width: 440px;
+  .newsletter-embed {
+    max-width: 520px;
     margin: 0 auto;
   }
 
-  .newsletter-form input {
-    flex: 1;
-    padding: 13px 18px;
-    background: rgba(46,52,65,0.8);
-    border: 1px solid rgba(130,178,215,0.25);
-    border-right: none;
-    border-radius: 3px 0 0 3px;
-    color: var(--gray-100);
-    font-family: var(--font-body);
-    font-size: 14px;
-    outline: none;
-    transition: border-color 0.2s;
+  .newsletter-embed .formkit-form,
+  .newsletter-embed form {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
   }
 
-  .newsletter-form input::placeholder { color: var(--gray-300); }
-  .newsletter-form input:focus { border-color: var(--green-500); }
+  .newsletter-embed .formkit-fields {
+    display: flex !important;
+    align-items: stretch !important;
+    gap: 0 !important;
+    max-width: 440px;
+    margin: 0 auto !important;
+  }
 
-  .newsletter-form button {
-    padding: 13px 26px;
-    background: var(--green-500);
-    color: var(--blue-700);
-    border: none;
-    border-radius: 0 3px 3px 0;
-    font-family: var(--font-body);
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.06em;
+  .newsletter-embed .formkit-field,
+  .newsletter-embed .formkit-input {
+    flex: 1 1 auto;
+  }
+
+  .newsletter-embed input[type="email"],
+  .newsletter-embed .formkit-input {
+    width: 100% !important;
+    min-height: 52px;
+    padding: 13px 18px !important;
+    background: rgba(46,52,65,0.8) !important;
+    border: 1px solid rgba(130,178,215,0.25) !important;
+    border-right: none !important;
+    border-radius: 3px 0 0 3px !important;
+    color: var(--gray-100) !important;
+    font-family: var(--font-body) !important;
+    font-size: 14px !important;
+    line-height: 1.2;
+    box-shadow: none !important;
+  }
+
+  .newsletter-embed input[type="email"]::placeholder,
+  .newsletter-embed .formkit-input::placeholder { color: var(--gray-300) !important; }
+
+  .newsletter-embed input[type="email"]:focus,
+  .newsletter-embed .formkit-input:focus {
+    border-color: var(--green-500) !important;
+    outline: none !important;
+  }
+
+  .newsletter-embed button,
+  .newsletter-embed .formkit-submit {
+    min-height: 52px;
+    padding: 13px 26px !important;
+    background: var(--green-500) !important;
+    color: var(--blue-700) !important;
+    border: none !important;
+    border-radius: 0 3px 3px 0 !important;
+    font-family: var(--font-body) !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase;
     cursor: pointer;
     transition: background 0.2s;
+    box-shadow: none !important;
   }
 
-  .newsletter-form button:hover { background: var(--green-300); }
+  .newsletter-embed button:hover,
+  .newsletter-embed .formkit-submit:hover { background: var(--green-300) !important; }
 
-  .newsletter-success,
-  .newsletter-error {
-    display: none;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    font-size: 14px;
-    font-weight: 500;
-    margin-top: 16px;
+  .newsletter-embed [data-style="clean"],
+  .newsletter-embed [data-style="full"],
+  .newsletter-embed .formkit-powered-by-convertkit-container,
+  .newsletter-embed .formkit-powered-by-convertkit,
+  .newsletter-embed .formkit-guarantee,
+  .newsletter-embed .formkit-subheader {
+    display: none !important;
   }
 
-  .newsletter-success {
-    color: var(--green-500);
-  }
-
-  .newsletter-error {
-    color: #f87171; /* warm red — readable on blue-900, distinguishable from green */
+  .newsletter-embed .formkit-alert,
+  .newsletter-embed .formkit-message {
+    margin-top: 16px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    color: var(--gray-200) !important;
   }
 
   /* ─── FOOTER ─── */
@@ -683,9 +714,15 @@
     .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
     .cta-banner { padding: 72px 24px; }
     .newsletter { padding: 72px 24px; }
-    .newsletter-form { flex-direction: column; }
-    .newsletter-form input { border-right: 1px solid rgba(130,178,215,0.25); border-bottom: none; border-radius: 3px 3px 0 0; }
-    .newsletter-form button { border-radius: 0 0 3px 3px; }
+    .newsletter-embed .formkit-fields { flex-direction: column !important; max-width: 100%; }
+    .newsletter-embed input[type="email"],
+    .newsletter-embed .formkit-input {
+      border-right: 1px solid rgba(130,178,215,0.25) !important;
+      border-bottom: none !important;
+      border-radius: 3px 3px 0 0 !important;
+    }
+    .newsletter-embed button,
+    .newsletter-embed .formkit-submit { border-radius: 0 0 3px 3px !important; width: 100% !important; }
   }
 
   /* Screen reader only utility */
@@ -1017,24 +1054,8 @@
   <p class="section-label">Stay in the loop</p>
   <h2>Keep up with the latest news.</h2>
   <p>Sign up today.</p>
-  <div class="newsletter-form" id="newsletterForm">
-    <label for="newsletter-email" class="sr-only">Email address</label>
-    <input type="email" id="newsletter-email" placeholder="Your email address" aria-label="Email address for newsletter" />
-    <button type="button" id="newsletterBtn">Subscribe</button>
-  </div>
-  <p class="newsletter-error" id="newsletterError" role="alert" aria-live="polite">
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-      <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.3"/>
-      <path d="M7 4v3.5M7 9.5v.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
-    </svg>
-    Something went wrong — please try again or email us directly.
-  </p>
-  <div class="newsletter-success" id="newsletterSuccess" role="status" aria-live="polite">
-    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-      <circle cx="9" cy="9" r="8" stroke="var(--green-500)" stroke-width="1.3"/>
-      <path d="M5 9l3 3 5-5" stroke="var(--green-500)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-    You're on the list. We'll be in touch.
+  <div class="newsletter-embed">
+    <script async data-uid="2bad9d5bd9" src="https://lumenandpixel.kit.com/2bad9d5bd9/index.js"></script>
   </div>
 </div>
 
@@ -1086,53 +1107,6 @@
       document.body.style.overflow = '';
     });
   });
-
-  // Newsletter subscription
-  const newsletterBtn = document.getElementById('newsletterBtn');
-  const newsletterInput = document.getElementById('newsletter-email');
-  const newsletterForm = document.getElementById('newsletterForm');
-  const newsletterSuccess = document.getElementById('newsletterSuccess');
-  const newsletterError = document.getElementById('newsletterError');
-
-  if (newsletterBtn) {
-    newsletterBtn.addEventListener('click', async () => {
-      const email = newsletterInput.value.trim();
-      // Basic email validation
-      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        newsletterInput.focus();
-        newsletterInput.style.borderColor = '#f87171';
-        return;
-      }
-      newsletterInput.style.borderColor = '';
-      newsletterBtn.textContent = '…';
-      newsletterBtn.disabled = true;
-
-      try {
-        // Kit (ConvertKit) API call — replace YOUR_FORM_ID with your actual Kit form ID
-        // e.g. https://app.kit.com/forms/1234567/subscriptions
-        const KIT_FORM_ID = 'YOUR_FORM_ID';
-        const res = await fetch(`https://app.kit.com/forms/${KIT_FORM_ID}/subscriptions`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email_address: email })
-        });
-        if (!res.ok) throw new Error('Non-200 response');
-        newsletterForm.style.display = 'none';
-        newsletterError.style.display = 'none';
-        newsletterSuccess.style.display = 'flex';
-      } catch (err) {
-        newsletterBtn.textContent = 'Subscribe';
-        newsletterBtn.disabled = false;
-        newsletterError.style.display = 'flex';
-      }
-    });
-
-    // Clear error state on new input
-    newsletterInput.addEventListener('input', () => {
-      newsletterError.style.display = 'none';
-      newsletterInput.style.borderColor = '';
-    });
-  }
 </script>
 </body>
 </html>
