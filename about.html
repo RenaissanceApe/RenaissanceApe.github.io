@@ -297,7 +297,7 @@
   .contact-social a:hover { color: var(--green-500); border-color: var(--green-500); }
   .contact-right { background: var(--blue-700); padding: 96px 64px; display: flex; flex-direction: column; justify-content: center; }
   .form-title { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; margin-bottom: 40px; }
-  .contact-form { display: flex; flex-direction: column; gap: 20px; }
+  .contact-form { display: flex; flex-direction: column; gap: 20px; scroll-margin-top: 96px; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .form-group { display: flex; flex-direction: column; gap: 8px; }
   .form-group label { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray-300); }
@@ -725,7 +725,7 @@
   <div class="contact-right reveal" style="transition-delay:0.1s">
     <h2 class="form-title">Send a message</h2>
 
-    <form class="contact-form" id="contactForm"
+    <form class="contact-form" id="contactForm" tabindex="-1"
       name="contact"
       method="POST"
       data-netlify="true">
@@ -817,27 +817,32 @@
     });
   });
 
-  // Pre-fill service from query string and auto-open contact section when arriving from the quiz
+  // Handle deep links to the form and pre-fill the service field from quiz results
   (function() {
-    var params = new URLSearchParams(window.location.search);
-    var requestedService = params.get('service');
-    if (!requestedService) return;
+    const params = new URLSearchParams(window.location.search);
+    const serviceKey = params.get('service');
+    const serviceSelect = document.getElementById('service');
+    const formTarget = document.getElementById('contactForm');
+    const serviceMap = {
+      SD: 'Show Design',
+      SC: 'Show Control & Automation',
+      SA: 'System Architecture',
+      TD: 'Technical Direction'
+    };
 
-    var serviceSelect = document.getElementById('service');
-    var contactSection = document.getElementById('contact-form');
-    if (serviceSelect) {
-      var normalizedRequested = requestedService.replace(/\+/g, ' ').trim().toLowerCase();
-      Array.prototype.slice.call(serviceSelect.options).forEach(function(option) {
-        if ((option.textContent || '').trim().toLowerCase() === normalizedRequested) {
-          serviceSelect.value = option.value || option.textContent;
-        }
-      });
+    if (serviceSelect && serviceKey && serviceMap[serviceKey]) {
+      serviceSelect.value = serviceMap[serviceKey];
     }
 
-    if (contactSection) {
-      contactSection.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('visible'); });
-      window.requestAnimationFrame(function() {
-        contactSection.scrollIntoView({ behavior: 'smooth' });
+    if (window.location.hash === '#contactForm' && formTarget) {
+      requestAnimationFrame(() => {
+        formTarget.closest('.contact-section')?.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+        formTarget.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (serviceSelect && serviceSelect.value) {
+          serviceSelect.focus({ preventScroll: true });
+        } else {
+          formTarget.querySelector('input, select, textarea')?.focus({ preventScroll: true });
+        }
       });
     }
   })();
