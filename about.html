@@ -51,7 +51,7 @@
   a { color: inherit; text-decoration: none; }
 
   /* NAV */
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 68px; background: rgba(223,233,240,0.97); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(46,52,65,0.6); }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 max(24px, calc((100vw - 1200px) / 2 + 48px)); height: 68px; background: rgba(223,233,240,0.97); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(46,52,65,0.6); }
   .nav-logo { font-family: var(--font-display); font-size: 15px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
   .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
   .nav-links a { font-size: 13px; letter-spacing: 0.04em; color: rgba(15,25,45,0.78); transition: color 0.2s; }
@@ -282,7 +282,7 @@
   }
 
   /* ── CONTACT SECTION ──────────────────────── */
-  .contact-section { display: grid; grid-template-columns: 1fr 1fr; }
+  .contact-section { max-width: 1200px; margin: 0 auto 100px; padding: 0 48px; display: grid; grid-template-columns: 1fr 1fr; }
   .contact-left { background: var(--blue-900); padding: 96px 64px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid rgba(46,52,65,0.8); }
   .contact-left h2 { font-family: var(--font-display); font-size: clamp(2.5rem, 4vw, 4rem); font-weight: 700; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 24px; }
   .contact-left h2 em { font-style: italic; color: var(--green-500); }
@@ -342,7 +342,7 @@
     .values-grid { grid-template-columns: 1fr; }
     .founder { padding: 72px 24px; }
     .founder-inner { grid-template-columns: 1fr; gap: 48px; }
-    .contact-section { grid-template-columns: 1fr; }
+    .contact-section { grid-template-columns: 1fr; padding: 0 24px 80px; margin-bottom: 0; }
     .contact-left { padding: 80px 24px 56px; border-right: none; border-bottom: 1px solid rgba(46,52,65,0.8); }
     .contact-right { padding: 56px 24px 80px; }
     .form-row { grid-template-columns: 1fr; }
@@ -668,7 +668,7 @@
   NETLIFY FORMS: data-netlify="true" and name="contact" are set.
   Netlify auto-detects on first deploy. View submissions: Netlify dashboard → Forms.
 -->
-<div class="contact-section" id="contact-form">
+<div class="contact-section" id="contact-section">
 
   <!-- Left info panel -->
   <div class="contact-left reveal">
@@ -729,12 +729,13 @@
     <h2 class="form-title">Send a message</h2>
 
     <form class="contact-form" id="contact-form" tabindex="-1"
-      action="https://formspree.io/f/xzdkonkq"
+      action="https://api.web3forms.com/submit"
       method="POST"
       novalidate>
 
-      <input type="hidden" name="_subject" value="New enquiry – Lumen and Pixel" />
-      <input type="hidden" name="_replyto" id="replyto-field" value="" />
+      <input type="hidden" name="access_key" value="2b0f7125-de63-40f7-9f81-674a1026f915" />
+      <input type="hidden" name="subject" value="New enquiry – Lumen and Pixel" />
+      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
       <input type="hidden" name="lead_source" value="Website" />
       <input type="hidden" name="entry_page" value="About page" />
       <input type="hidden" name="quiz_result" id="quiz_result" value="" />
@@ -743,17 +744,17 @@
       <div class="form-row">
         <div class="form-group">
           <label for="contact_person">Your name</label>
-          <input type="text" id="contact_person" name="contact_person" placeholder="Ricardo Bedulho" required />
+          <input type="text" id="contact_person" name="contact_person" placeholder="John Doe" required />
         </div>
         <div class="form-group">
           <label for="organization">Company / Organization</label>
-          <input type="text" id="organization" name="organization" placeholder="Lumen and Pixel" />
+          <input type="text" id="organization" name="organization" placeholder="Your Company" />
         </div>
       </div>
 
       <div class="form-group">
         <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="you@yourcompany.com" required />
+        <input type="email" id="email" name="email" placeholder="john@yourcompany.com" required />
       </div>
 
       <div class="form-group">
@@ -770,7 +771,7 @@
 
       <div class="form-group">
         <label for="message">Tell us about your project</label>
-        <textarea id="message" name="message" placeholder="Event type, venue, goals — anything that gives us context helps." rows="5" required></textarea>
+        <textarea id="message" name="message" placeholder="Tell us a bit about your project, event, or challenge." rows="5" required></textarea>
       </div>
 
       <div class="form-submit">
@@ -852,87 +853,7 @@
     }
   })();
 
-  // Formspree AJAX submission
-  (function() {
-    const form = document.getElementById('contact-form');
-    const emailField = document.getElementById('email');
-    const replyToField = document.getElementById('replyto-field');
-    const timestampField = document.getElementById('submission_timestamp');
-    const statusField = document.getElementById('contact-form-status');
-    const submitButton = document.getElementById('contact-submit-button');
-
-    if (!form) return;
-
-    const setStatus = (message, state) => {
-      if (!statusField) return;
-      statusField.textContent = message || '';
-      if (state) statusField.setAttribute('data-state', state);
-      else statusField.removeAttribute('data-state');
-    };
-
-    const syncReplyTo = () => {
-      if (emailField && replyToField) {
-        replyToField.value = emailField.value.trim();
-      }
-    };
-
-    if (timestampField) {
-      timestampField.value = new Date().toISOString();
-    }
-
-    if (emailField) {
-      emailField.addEventListener('input', syncReplyTo);
-      syncReplyTo();
-    }
-
-    form.addEventListener('submit', async function(event) {
-      event.preventDefault();
-
-      if (!form.reportValidity()) return;
-
-      if (timestampField) {
-        timestampField.value = new Date().toISOString();
-      }
-      syncReplyTo();
-
-      const originalButtonText = submitButton ? submitButton.textContent : '';
-      if (submitButton) {
-        submitButton.disabled = true;
-        submitButton.textContent = 'Sending…';
-      }
-      setStatus('Sending…');
-
-      try {
-        const response = await fetch(form.action, {
-          method: 'POST',
-          body: new FormData(form),
-          headers: { 'Accept': 'application/json' }
-        });
-
-        if (response.ok) {
-          window.location.href = 'thank-you.html';
-          return;
-        }
-
-        let errorMessage = 'Something went wrong. Please try again in a moment.';
-        try {
-          const data = await response.json();
-          if (data && Array.isArray(data.errors) && data.errors.length) {
-            errorMessage = data.errors.map(err => err.message).join(' ');
-          }
-        } catch (error) {}
-
-        setStatus(errorMessage, 'error');
-      } catch (error) {
-        setStatus('Network error. Please check your connection and try again.', 'error');
-      } finally {
-        if (submitButton) {
-          submitButton.disabled = false;
-          submitButton.textContent = originalButtonText;
-        }
-      }
-    });
-  })();
+  // Contact form submission is handled by the provider configured in the form action.
 </script>
 
 <script>
