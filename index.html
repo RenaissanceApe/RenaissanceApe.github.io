@@ -447,255 +447,170 @@
 
   /* ─── NEWSLETTER ─── */
   .newsletter {
-    background: var(--blue-900);
-    padding: 100px 48px;
+    max-width: 1200px;
+    margin: 0 auto 120px;
+    padding: 88px 48px;
     text-align: center;
+    border-top: 1px solid rgba(223,233,240,0.12);
   }
-
   .newsletter h2 {
-    font-size: clamp(1.6rem, 3vw, 2.8rem);
-    margin-bottom: 12px;
+    margin-top: 12px;
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 5vw, 4.75rem);
+    line-height: 1.04;
+    letter-spacing: -0.02em;
   }
-
-  .newsletter p {
+  .newsletter > p:not(.section-label) {
+    margin-top: 14px;
     color: var(--gray-300);
-    margin-bottom: 36px;
-    font-size: 15px;
+    font-size: 1.05rem;
   }
-
   .newsletter-embed {
-    max-width: 520px;
-    margin: 0 auto;
+    max-width: 980px;
+    margin: 36px auto 0;
   }
-
-  .newsletter-embed .formkit-form,
-  .newsletter-embed form {
-    max-width: 100% !important;
-    width: 100% !important;
-    margin: 0 auto !important;
+  .newsletter-embed .ml-form-embedContainer,
+  .newsletter-embed .ml-form-embedWrapper,
+  .newsletter-embed .ml-form-embedBody,
+  .newsletter-embed .ml-form-embedContent {
     background: transparent !important;
+    border: 0 !important;
     box-shadow: none !important;
-    border: none !important;
-  }
-
-  .newsletter-embed .formkit-fields {
-    display: flex !important;
-    align-items: stretch !important;
-    gap: 0 !important;
-    max-width: 440px;
     margin: 0 auto !important;
+    padding: 0 !important;
+    color: var(--gray-100) !important;
+    max-width: none !important;
   }
-
-  .newsletter-embed .formkit-field,
-  .newsletter-embed .formkit-input {
-    flex: 1 1 auto;
-  }
-
-  .newsletter-embed input[type="email"],
-  .newsletter-embed .formkit-input {
+  .newsletter-embed .ml-form-embedBody {
     width: 100% !important;
-    min-height: 52px;
-    padding: 13px 18px !important;
-    background: rgba(46,52,65,0.8) !important;
-    border: 1px solid rgba(130,178,215,0.25) !important;
-    border-right: none !important;
+  }
+  .newsletter-embed .ml-form-embedSubmit,
+  .newsletter-embed .ml-form-successBody,
+  .newsletter-embed .ml-form-errorBody,
+  .newsletter-embed .ml-form-recaptcha,
+  .newsletter-embed .grecaptcha-badge {
+    margin-top: 0 !important;
+  }
+  .newsletter-embed .ml-form-embedContent h4,
+  .newsletter-embed .ml-form-embedContent p,
+  .newsletter-embed .ml-form-embedContent .ml-form-embedSubmitLoad,
+  .newsletter-embed .ml-form-embedContent .ml-form-embedContent,
+  .newsletter-embed .ml-form-horizontalRow .ml-form-embedContent {
+    color: var(--gray-100) !important;
+  }
+  .newsletter-embed .ml-form-embedContent h4,
+  .newsletter-embed .ml-form-embedContent > p:first-child,
+  .newsletter-embed .ml-form-successContent h4,
+  .newsletter-embed .ml-form-successContent p:first-child {
+    display: none !important;
+  }
+  .newsletter-embed form {
+    width: 100% !important;
+  }
+  .newsletter-embed .ml-form-horizontalRow {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    gap: 0 !important;
+    align-items: start !important;
+  }
+  .newsletter-embed .ml-input-horizontal {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+  .newsletter-embed .ml-button-horizontal {
+    width: auto !important;
+    margin: 0 !important;
+  }
+  .newsletter-embed .ml-field-group {
+    margin-bottom: 0 !important;
+  }
+  .newsletter-embed input[type="email"],
+  .newsletter-embed input[type="text"],
+  .newsletter-embed .form-control {
+    width: 100% !important;
+    min-height: 54px !important;
+    padding: 0 18px !important;
+    background: rgba(223,233,240,0.06) !important;
+    border: 1px solid rgba(223,233,240,0.16) !important;
+    border-right: 0 !important;
     border-radius: 3px 0 0 3px !important;
     color: var(--gray-100) !important;
     font-family: var(--font-body) !important;
-    font-size: 14px !important;
-    line-height: 1.2;
+    font-size: 1rem !important;
     box-shadow: none !important;
   }
-
-  .newsletter-embed input[type="email"]::placeholder,
-  .newsletter-embed .formkit-input::placeholder { color: var(--gray-300) !important; }
-
-  .newsletter-embed input[type="email"]:focus,
-  .newsletter-embed .formkit-input:focus {
-    border-color: var(--green-500) !important;
+  .newsletter-embed input::placeholder {
+    color: var(--gray-300) !important;
+    opacity: 1 !important;
+  }
+  .newsletter-embed input:focus {
     outline: none !important;
+    border-color: var(--accent) !important;
   }
-
+  .newsletter-embed .primary,
   .newsletter-embed button,
-  .newsletter-embed .formkit-submit {
-    min-height: 52px;
-    padding: 13px 26px !important;
-    background: var(--green-500) !important;
-    color: var(--blue-700) !important;
-    border: none !important;
+  .newsletter-embed .ml-form-embedSubmit button {
+    min-width: 180px !important;
+    min-height: 54px !important;
+    padding: 0 28px !important;
+    border: 0 !important;
     border-radius: 0 3px 3px 0 !important;
-    font-family: var(--font-body) !important;
-    font-size: 13px !important;
-    font-weight: 600 !important;
-    letter-spacing: 0.06em !important;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: background 0.2s;
+    background: var(--accent) !important;
+    color: var(--off-black) !important;
+    font-family: var(--font-display) !important;
+    font-size: 0.95rem !important;
+    letter-spacing: 0.02em !important;
+    cursor: pointer !important;
     box-shadow: none !important;
   }
-
+  .newsletter-embed .primary:hover,
   .newsletter-embed button:hover,
-  .newsletter-embed .formkit-submit:hover { background: var(--green-300) !important; }
-
-  .newsletter-embed [data-style="clean"],
-  .newsletter-embed [data-style="full"],
-  .newsletter-embed .formkit-powered-by-convertkit-container,
-  .newsletter-embed .formkit-powered-by-convertkit,
-  .newsletter-embed .formkit-guarantee,
-  .newsletter-embed .formkit-subheader {
-    display: none !important;
+  .newsletter-embed .ml-form-embedSubmit button:hover {
+    background: var(--green-300) !important;
   }
-
-  .newsletter-embed .formkit-alert,
-  .newsletter-embed .formkit-message {
-    margin-top: 16px !important;
-    font-size: 14px !important;
-    font-weight: 500 !important;
-    color: var(--gray-200) !important;
+  .newsletter-embed .ml-form-checkboxRow,
+  .newsletter-embed .ml-form-consent,
+  .newsletter-embed .consent-checkbox,
+  .newsletter-embed .privacy-policy {
+    margin-top: 14px !important;
+    text-align: left !important;
+    color: var(--gray-300) !important;
+    font-size: 0.9rem !important;
+    line-height: 1.55 !important;
   }
-
-  /* ─── FOOTER ─── */
-  footer {
-    background: var(--blue-700);
-    padding: 48px 48px 36px;
-    border-top: 1px solid rgba(46,52,65,0.8);
+  .newsletter-embed .ml-form-checkboxRow label,
+  .newsletter-embed .ml-form-checkboxRow p,
+  .newsletter-embed .ml-form-consent label,
+  .newsletter-embed .ml-form-consent p,
+  .newsletter-embed .privacy-policy p,
+  .newsletter-embed .privacy-policy a,
+  .newsletter-embed .ml-form-checkboxRow a {
+    color: var(--gray-300) !important;
   }
-
-  .footer-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
+  .newsletter-embed input[type="checkbox"] {
+    accent-color: var(--accent);
   }
-
-  .footer-logo {
-    font-family: var(--font-display);
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--gray-500);
+  .newsletter-embed .ml-form-recaptcha {
+    display: flex !important;
+    justify-content: flex-start !important;
+    margin-top: 18px !important;
   }
-
-  .footer-copy {
-    font-size: 12px;
-    color: var(--gray-500);
-    letter-spacing: 0.03em;
+  .newsletter-embed .ml-error input,
+  .newsletter-embed .ml-error textarea,
+  .newsletter-embed .ml-error .form-control {
+    border-color: #ff6b6b !important;
   }
-
-  .footer-links {
-    display: flex;
-    gap: 28px;
-    list-style: none;
+  .newsletter-embed .ml-form-successBody,
+  .newsletter-embed .ml-form-successContent,
+  .newsletter-embed .ml-form-successContent h4,
+  .newsletter-embed .ml-form-successContent p,
+  .newsletter-embed .ml-form-errorBody,
+  .newsletter-embed .ml-form-errorContent,
+  .newsletter-embed .ml-form-errorContent h4,
+  .newsletter-embed .ml-form-errorContent p {
+    color: var(--gray-100) !important;
+    text-align: left !important;
   }
-
-  .footer-links a {
-    font-size: 12px;
-    color: var(--gray-500);
-    transition: color 0.2s;
-    letter-spacing: 0.04em;
-  }
-
-  .footer-links a:hover { color: var(--gray-100); }
-
-  /* ─── MOBILE NAV ─── */
-  .nav-hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-    padding: 11px 8px;
-    min-width: 44px;
-    min-height: 44px;
-    align-items: center;
-    justify-content: center;
-    z-index: 200;
-    /* Reset <button> defaults */
-    background: none;
-    border: none;
-    outline: none;
-  }
-
-  .nav-hamburger span {
-    display: block;
-    width: 22px;
-    height: 1.5px;
-    background: var(--blue-700);
-    transition: transform 0.3s, opacity 0.3s;
-  }
-
-  .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-  .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-  .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-
-  .mobile-menu {
-    display: none;
-    position: fixed;
-    top: 68px; left: 0; right: 0;
-    background: rgba(223,233,240,0.99);
-    backdrop-filter: blur(20px);
-    z-index: 99;
-    padding: 32px 24px 40px;
-    border-bottom: 1px solid rgba(46,52,65,0.9);
-    transform: translateY(-8px);
-    opacity: 0;
-    transition: opacity 0.25s ease, transform 0.25s ease;
-    pointer-events: none;
-  }
-
-  .mobile-menu.open {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: all;
-  }
-
-  .mobile-menu ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .mobile-menu ul a {
-    display: block;
-    font-family: var(--font-display);
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    color: rgba(15,25,45,0.78);
-    padding: 14px 0;
-    border-bottom: 1px solid rgba(46,52,65,0.6);
-    transition: color 0.2s;
-  }
-
-  .mobile-menu ul a:hover { color: var(--blue-700); }
-
-  .mobile-menu .mobile-cta {
-    display: inline-block;
-    margin-top: 28px;
-    padding: 14px 32px;
-    background: var(--green-500);
-    color: var(--blue-700);
-    font-family: var(--font-body);
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    border-radius: 3px;
-  }
-
-  /* ─── SCROLL REVEAL ─── */
-  .reveal {
-    opacity: 0;
-    transform: translateY(28px);
-    transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
-  }
-
-  .reveal.visible {
-    opacity: 1;
-    transform: none;
-  }
-
-  /* ─── RESPONSIVE ─── */
   @media (max-width: 900px) {
     nav { padding: 0 24px; }
     nav .nav-links, nav .nav-cta { display: none; }
@@ -862,6 +777,15 @@
     .page-heading { font-size: clamp(1.8rem, 8vw, 2.6rem) !important; }
   }
 </style>
+<!-- MailerLite Universal -->
+<script>
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', '2252485');
+</script>
+<!-- End MailerLite Universal -->
 </head>
 <body>
 <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -1055,7 +979,7 @@
   <h2>Keep up with the latest news.</h2>
   <p>Sign up today.</p>
   <div class="newsletter-embed">
-    <script async data-uid="2bad9d5bd9" src="https://lumenandpixel.kit.com/2bad9d5bd9/index.js"></script>
+    <div class="ml-embedded" data-form="gZXg1D"></div>
   </div>
 </div>
 
