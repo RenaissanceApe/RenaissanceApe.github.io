@@ -5,19 +5,19 @@
 <meta name="description" content="Lumen and Pixel — a live event production studio based in Portugal. Show Design, Show Control &amp; Automation, System Architecture, and Technical Direction." />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Lumen and Pixel</title>
-  <link rel="icon" href="https://drive.google.com/uc?export=view&id=1s6koPtoLnb6q2LmII3QOpBCKBrTJKmUR" sizes="any" />
-  <link rel="shortcut icon" href="https://drive.google.com/uc?export=view&id=1s6koPtoLnb6q2LmII3QOpBCKBrTJKmUR" />
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="images/og-image.png" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Lumen and Pixel" />
   <meta property="og:title" content="Lumen and Pixel" />
   <meta property="og:description" content="Lumen and Pixel — a live event production studio based in Portugal. Show Design, Show Control &amp;amp; Automation, System Architecture, and Technical Direction." />
   <meta property="og:url" content="https://www.lumenandpixel.com/" />
-  <meta property="og:image" content="https://drive.google.com/uc?export=view&id=1w6e0BC15BrqAF_vn4pxpVBYTNeP_t8sH" />
+  <meta property="og:image" content="images/og-image.png" />
   <meta property="og:image:alt" content="Lumen and Pixel logo" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Lumen and Pixel" />
   <meta name="twitter:description" content="Lumen and Pixel — a live event production studio based in Portugal. Show Design, Show Control &amp;amp; Automation, System Architecture, and Technical Direction." />
-  <meta name="twitter:image" content="https://drive.google.com/uc?export=view&id=1w6e0BC15BrqAF_vn4pxpVBYTNeP_t8sH" />
+  <meta name="twitter:image" content="images/og-image.png" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -483,147 +483,30 @@
     max-width: 980px;
     margin: 36px auto 0;
   }
-  .newsletter-embed .ml-form-embedContainer,
-  .newsletter-embed .ml-form-embedWrapper,
-  .newsletter-embed .ml-form-embedBody,
-  .newsletter-embed .ml-form-embedContent {
-    background: transparent !important;
-    border: 0 !important;
-    box-shadow: none !important;
-    margin: 0 auto !important;
-    padding: 0 !important;
-    color: var(--gray-100) !important;
-    max-width: none !important;
-  }
-  .newsletter-embed .ml-form-embedBody {
+  .newsletter-embed .ml-embedded,
+  .newsletter-embed iframe,
+  .newsletter-embed [class*="ml-form-embed"],
+  .newsletter-embed [class*="ml-form-horizontal"],
+  .newsletter-embed [class*="ml-block-form"] {
     width: 100% !important;
+    max-width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
-  .newsletter-embed .ml-form-embedSubmit,
-  .newsletter-embed .ml-form-successBody,
-  .newsletter-embed .ml-form-errorBody,
-  .newsletter-embed .ml-form-recaptcha,
-  .newsletter-embed .grecaptcha-badge {
-    margin-top: 0 !important;
+  .newsletter-embed iframe {
+    display: block;
+    min-height: 420px;
+    border: 0;
+    background: transparent;
   }
-  .newsletter-embed .ml-form-embedContent h4,
-  .newsletter-embed .ml-form-embedContent p,
-  .newsletter-embed .ml-form-embedContent .ml-form-embedSubmitLoad,
-  .newsletter-embed .ml-form-embedContent .ml-form-embedContent,
-  .newsletter-embed .ml-form-horizontalRow .ml-form-embedContent {
-    color: var(--gray-100) !important;
+  .newsletter-fallback {
+    margin-top: 16px;
+    color: var(--gray-500);
+    font-size: 0.92rem;
   }
-  .newsletter-embed .ml-form-embedContent h4,
-  .newsletter-embed .ml-form-embedContent > p:first-child,
-  .newsletter-embed .ml-form-successContent h4,
-  .newsletter-embed .ml-form-successContent p:first-child {
-    display: none !important;
-  }
-  .newsletter-embed form {
-    width: 100% !important;
-  }
-  .newsletter-embed .ml-form-horizontalRow {
-    display: grid !important;
-    grid-template-columns: minmax(0, 1fr) auto !important;
-    gap: 0 !important;
-    align-items: start !important;
-  }
-  .newsletter-embed .ml-input-horizontal {
-    width: 100% !important;
-    margin: 0 !important;
-  }
-  .newsletter-embed .ml-button-horizontal {
-    width: auto !important;
-    margin: 0 !important;
-  }
-  .newsletter-embed .ml-field-group {
-    margin-bottom: 0 !important;
-  }
-  .newsletter-embed input[type="email"],
-  .newsletter-embed input[type="text"],
-  .newsletter-embed .form-control {
-    width: 100% !important;
-    min-height: 54px !important;
-    padding: 0 18px !important;
-    background: rgba(223,233,240,0.06) !important;
-    border: 1px solid rgba(223,233,240,0.16) !important;
-    border-right: 0 !important;
-    border-radius: 3px 0 0 3px !important;
-    color: var(--gray-100) !important;
-    font-family: var(--font-body) !important;
-    font-size: 1rem !important;
-    box-shadow: none !important;
-  }
-  .newsletter-embed input::placeholder {
-    color: var(--gray-300) !important;
-    opacity: 1 !important;
-  }
-  .newsletter-embed input:focus {
-    outline: none !important;
-    border-color: var(--accent) !important;
-  }
-  .newsletter-embed .primary,
-  .newsletter-embed button,
-  .newsletter-embed .ml-form-embedSubmit button {
-    min-width: 180px !important;
-    min-height: 54px !important;
-    padding: 0 28px !important;
-    border: 0 !important;
-    border-radius: 0 3px 3px 0 !important;
-    background: var(--accent) !important;
-    color: var(--off-black) !important;
-    font-family: var(--font-display) !important;
-    font-size: 0.95rem !important;
-    letter-spacing: 0.02em !important;
-    cursor: pointer !important;
-    box-shadow: none !important;
-  }
-  .newsletter-embed .primary:hover,
-  .newsletter-embed button:hover,
-  .newsletter-embed .ml-form-embedSubmit button:hover {
-    background: var(--green-300) !important;
-  }
-  .newsletter-embed .ml-form-checkboxRow,
-  .newsletter-embed .ml-form-consent,
-  .newsletter-embed .consent-checkbox,
-  .newsletter-embed .privacy-policy {
-    margin-top: 14px !important;
-    text-align: left !important;
-    color: var(--gray-300) !important;
-    font-size: 0.9rem !important;
-    line-height: 1.55 !important;
-  }
-  .newsletter-embed .ml-form-checkboxRow label,
-  .newsletter-embed .ml-form-checkboxRow p,
-  .newsletter-embed .ml-form-consent label,
-  .newsletter-embed .ml-form-consent p,
-  .newsletter-embed .privacy-policy p,
-  .newsletter-embed .privacy-policy a,
-  .newsletter-embed .ml-form-checkboxRow a {
-    color: var(--gray-300) !important;
-  }
-  .newsletter-embed input[type="checkbox"] {
-    accent-color: var(--accent);
-  }
-  .newsletter-embed .ml-form-recaptcha {
-    display: flex !important;
-    justify-content: flex-start !important;
-    margin-top: 18px !important;
-  }
-  .newsletter-embed .ml-error input,
-  .newsletter-embed .ml-error textarea,
-  .newsletter-embed .ml-error .form-control {
-    border-color: #ff6b6b !important;
-  }
-  .newsletter-embed .ml-form-successBody,
-  .newsletter-embed .ml-form-successContent,
-  .newsletter-embed .ml-form-successContent h4,
-  .newsletter-embed .ml-form-successContent p,
-  .newsletter-embed .ml-form-errorBody,
-  .newsletter-embed .ml-form-errorContent,
-  .newsletter-embed .ml-form-errorContent h4,
-  .newsletter-embed .ml-form-errorContent p {
-    color: var(--gray-100) !important;
-    text-align: left !important;
+  .newsletter-fallback a {
+    color: var(--accent);
+    text-decoration: underline;
   }
   @media (max-width: 900px) {
     nav { padding: 0 24px; }
@@ -807,7 +690,7 @@
 <!-- NAV -->
 <nav aria-label="Main navigation">
   <a href="index.html" class="nav-logo" aria-label="Lumen and Pixel — home">
-    <img class="nav-logo-mark" src="https://drive.google.com/uc?export=view&id=1f3O2QHYSJ9BohbAf8_qDnM3Sx-BU1DiE" alt="" aria-hidden="true" />
+    <img class="nav-logo-mark" src="images/logo-mark.svg" alt="" aria-hidden="true" />
     <span class="nav-logo-text">
       <span class="nav-logo-top">LUMEN</span>
       <span class="nav-logo-btm">AND PIXEL</span>
@@ -989,6 +872,7 @@
   <p>Sign up today.</p>
   <div class="newsletter-embed">
     <div class="ml-embedded" data-form="gZXg1D"></div>
+    <p class="newsletter-fallback">If the signup form does not load, reload the page and try again.</p>
   </div>
 </div>
 
