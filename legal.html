@@ -53,8 +53,27 @@
   .nav-cta:hover { background:var(--green-300); }
   .lang-switch { display:flex; gap:8px; font-size:12px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:rgba(15,25,45,.62); }
   .lang-switch a.active { color:var(--green-500); }
-  .nav-hamburger { display:none; background:none; border:0; width:40px; height:40px; padding:0; cursor:pointer; }
-  .nav-hamburger span { display:block; width:24px; height:2px; background:var(--blue-700); margin:5px auto; transition:.2s; }
+  .nav-hamburger {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  box-sizing: content-box;
+  overflow: visible;
+  cursor: pointer;
+  z-index: 200;
+}
+  .nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--blue-700);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: center;
+}
   .mobile-menu { display:none; position:fixed; inset:68px 0 auto 0; padding:24px; background:rgba(2,24,41,.98); border-bottom:1px solid rgba(255,255,255,.06); z-index:95; }
   .mobile-menu.open { display:block; }
   .mobile-menu ul { list-style:none; display:grid; gap:18px; }
@@ -88,7 +107,19 @@
   .footer-copy { font-size:12px; color:var(--gray-500); }
   @media (max-width:900px) {
     .nav-links, .nav-actions { display:none; }
-    .nav-hamburger { display:block; }
+    .nav-hamburger {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  box-sizing: content-box;
+  overflow: visible;
+  cursor: pointer;
+  z-index: 200;
+}
     .legal-tabs { top:68px; }
     .footer-inner { flex-direction:column; text-align:center; }
   }
@@ -96,7 +127,19 @@
 
 /* mobile nav final fix */
 @media (max-width: 900px) {
-  .nav-hamburger { display: inline-flex !important; }
+  .nav-hamburger {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  box-sizing: content-box;
+  overflow: visible;
+  cursor: pointer;
+  z-index: 200;
+}
   .nav-actions, nav .nav-links, nav .nav-cta { display: none !important; }
   .mobile-menu { display: none !important; }
   .mobile-menu.open { display: block !important; }

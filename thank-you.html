@@ -122,7 +122,19 @@
 
 /* mobile nav final fix */
 @media (max-width: 900px) {
-  .nav-hamburger { display: inline-flex !important; }
+  .nav-hamburger {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  box-sizing: content-box;
+  overflow: visible;
+  cursor: pointer;
+  z-index: 200;
+}
   .nav-actions, nav .nav-links, nav .nav-cta { display: none !important; }
   .mobile-menu { display: none !important; }
   .mobile-menu.open { display: block !important; }

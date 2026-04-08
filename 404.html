@@ -297,32 +297,31 @@
 
   /* MOBILE NAV */
   .nav-hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-    padding: 11px 8px;
-    min-width: 44px;
-    min-height: 44px;
-    align-items: center;
-    justify-content: center;
-    z-index: 200;
-    background: none;
-    border: none;
-    outline: none;
-  }
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  box-sizing: content-box;
+  overflow: visible;
+  cursor: pointer;
+  z-index: 200;
+}
 
   .nav-hamburger span {
-    display: block;
-    width: 22px;
-    height: 1.5px;
-    background: var(--blue-700);
-    transition: transform 0.3s, opacity 0.3s;
-  }
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--blue-700);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: center;
+}
 
-  .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
   .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-  .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
   .mobile-menu {
     display: none;
@@ -394,7 +393,19 @@
   @media (max-width: 900px) {
     nav { padding: 0 24px; }
     nav .nav-links, nav .nav-cta { display: none !important; }
-    .nav-hamburger { display: flex !important; }
+    .nav-hamburger {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  box-sizing: content-box;
+  overflow: visible;
+  cursor: pointer;
+  z-index: 200;
+}
     .mobile-menu { display: block; }
     main { padding: 100px 24px 60px; }
     footer { padding: 28px 24px; }
@@ -441,7 +452,19 @@
 
 /* mobile nav final fix */
 @media (max-width: 900px) {
-  .nav-hamburger { display: inline-flex !important; }
+  .nav-hamburger {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  box-sizing: content-box;
+  overflow: visible;
+  cursor: pointer;
+  z-index: 200;
+}
   .nav-actions, nav .nav-links, nav .nav-cta { display: none !important; }
   .mobile-menu { display: none !important; }
   .mobile-menu.open { display: block !important; }
