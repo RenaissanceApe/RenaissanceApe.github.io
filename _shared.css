@@ -186,3 +186,17 @@ footer {
   footer { padding: 40px 24px 28px; }
   .footer-inner { flex-direction: column; text-align: center; }
 }
+
+
+.nav-logo {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+.nav-logo-mark {
+  display: block;
+  height: 28px;
+  width: auto;
+  max-width: none;
+}
