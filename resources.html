@@ -12,12 +12,12 @@
   <meta property="og:title" content="Resources — Lumen and Pixel" />
   <meta property="og:description" content="Lumen and Pixel resources — production templates and design kits in the store, and deep-dive training in the Academy." />
   <meta property="og:url" content="https://www.lumenandpixel.com/resources.html" />
-  <meta property="og:image" content="images/og-image.png" />
+  <meta property="og:image" content="https://www.lumenandpixel.com/images/og-image.png" />
   <meta property="og:image:alt" content="Lumen and Pixel logo" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Resources — Lumen and Pixel" />
   <meta name="twitter:description" content="Lumen and Pixel resources — production templates and design kits in the store, and deep-dive training in the Academy." />
-  <meta name="twitter:image" content="images/og-image.png" />
+  <meta name="twitter:image" content="https://www.lumenandpixel.com/images/og-image.png" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -41,39 +41,241 @@
     --font-body:    'Nunito', sans-serif;
   }
 
+  /* ── NAV ─────────────────────────────────────────────────────────────────── */
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 max(24px, calc((100vw - 1200px) / 2 + 48px));
+    height: 68px;
+    background: rgba(223,233,240,0.97);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(46,52,65,0.6);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    flex-shrink: 0;
+    color: var(--blue-700);
+  }
+
+  .nav-logo-mark {
+    height: 28px;
+    width: auto;
+    display: block;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: rgba(15,25,45,0.78);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--blue-700); }
+  .nav-links a.active,
+  .nav-links a[aria-current="page"] { color: var(--green-700); }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  nav .nav-cta {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    padding: 9px 22px;
+    background: var(--green-500);
+    color: var(--blue-700);
+    border-radius: 3px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    transition: background 0.2s;
+  }
+  nav .nav-cta:hover { background: var(--green-300); }
+
+  .lang-switch {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .lang-switch span { opacity: 0.45; color: rgba(15,25,45,0.6); }
+  .lang-switch a { color: rgba(15,25,45,0.62); text-decoration: none; transition: color 0.2s; }
+  .lang-switch a:hover { color: var(--blue-700); }
+  .lang-switch a.active { color: var(--green-700); }
+
+  /* Hamburger button — hidden on desktop */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-shrink: 0;
+    z-index: 200;
+  }
+
+  .nav-hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--blue-700);
+    border-radius: 1px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform-origin: center;
+  }
+
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* Mobile menu — uses visibility+opacity for smooth transitions */
+  .mobile-menu {
+    position: fixed;
+    top: 68px; left: 0; right: 0;
+    background: rgba(223,233,240,0.99);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 99;
+    padding: 32px 24px 40px;
+    border-bottom: 1px solid rgba(46,52,65,0.9);
+    transform: translateY(-8px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+  }
+
+  .mobile-menu.open {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+    pointer-events: all;
+  }
+
+  .mobile-menu ul {
+    list-style: none;
+    margin: 0; padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobile-menu ul a {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: rgba(15,25,45,0.78);
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(46,52,65,0.6);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .mobile-menu ul a:hover { color: var(--blue-700); }
+
+  .mobile-menu .mobile-cta {
+    display: inline-block;
+    margin-top: 28px;
+    padding: 14px 32px;
+    background: var(--green-500);
+    color: var(--blue-700);
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    border-radius: 3px;
+    text-decoration: none;
+  }
+
+  .mobile-lang-switch {
+    display: none;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .mobile-lang-switch span { opacity: 0.45; }
+  .mobile-lang-switch a { color: rgba(15,25,45,0.7); text-decoration: none; transition: color 0.2s; }
+  .mobile-lang-switch a.active { color: var(--green-700); }
+
+  /* Skip link */
+  .skip-link {
+    position: absolute;
+    top: -100px; left: 0;
+    background: var(--green-500);
+    color: var(--blue-700);
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 700;
+    z-index: 9999;
+    border-radius: 0 0 4px 0;
+    transition: top 0.2s;
+    text-decoration: none;
+  }
+  .skip-link:focus { top: 0; }
+
+  :focus-visible {
+    outline: 2px solid var(--green-500);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* ── MOBILE BREAKPOINT ──────────────────────────────────────────────────── */
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .nav-actions { display: none; }
+    .nav-hamburger { display: flex; }
+    .mobile-lang-switch { display: flex; }
+  }
+
+  /* ── END NAV ─────────────────────────────────────────────────────────────── */
+
+
   html { scroll-behavior: smooth; }
   body { padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right); background: var(--blue-700); color: var(--gray-100); font-family: var(--font-body); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
   a { color: inherit; text-decoration: none; }
 
-  /* ── NAV ── */
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 max(24px, calc((100vw - 1200px) / 2 + 48px)); height: 68px; background: rgba(223,233,240,0.97); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(46,52,65,0.6); }
-  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #021829; }
-  .nav-logo-mark { width: auto; height: 28px; max-width: none; flex-shrink: 0; display: block; object-fit: contain; }
-  .nav-logo-text { display: flex; flex-direction: column; gap: 0; line-height: 1; }
-  .nav-logo-top { font-family: var(--font-display); font-size: 11px; font-weight: 700; letter-spacing: 0.16em; color: #021829; }
-  .nav-logo-btm { font-family: var(--font-display); font-size: 8px; font-weight: 400; letter-spacing: 0.14em; color: var(--blue-500); }
-  .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
-  .nav-links a { font-size: 13px; font-weight: 600; letter-spacing: 0.04em; color: rgba(15,25,45,0.88); transition: color 0.2s; }
-  .nav-links a:hover { color: var(--blue-700); }
-  .nav-links a.active, .nav-links a[aria-current="page"] { color: var(--green-500); }
-  nav .nav-cta { font-size: 13px; font-weight: 500; letter-spacing: 0.06em; padding: 9px 22px; background: var(--green-500); color: var(--blue-700); border-radius: 3px; transition: background 0.2s; display: inline-flex; align-items: center; min-height: 44px; }
-  nav .nav-cta:hover { background: var(--green-300); }
-
-  /* ── UTILITIES ── */
-  .section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green-500); margin-bottom: 20px; }
-  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
-  .reveal.visible { opacity: 1; transform: none; }
-  .skip-link { position: absolute; top: -100px; left: 0; background: var(--green-500); color: var(--blue-700); padding: 12px 20px; font-size: 14px; font-weight: 700; z-index: 9999; border-radius: 0 0 4px 0; transition: top 0.2s; text-decoration: none; }
-  .skip-link:focus { top: 0; }
-  :focus-visible { outline: 2px solid var(--green-500); outline-offset: 3px; border-radius: 2px; }
-  h1, h2, h3 { overflow-wrap: break-word; word-break: break-word; }
-
-  /* ── HERO ── */
-  .resources-hero {
-    padding: 168px 48px 80px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
   .resources-hero h1 {
     font-family: var(--font-display);
     font-size: clamp(3rem, 6vw, 5.5rem);
@@ -209,30 +411,12 @@
   footer { background: var(--blue-700); padding: 48px 48px 36px; border-top: 1px solid rgba(46,52,65,0.8); }
   .footer-inner { display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: 0 auto; gap: 24px; }
   .footer-logo { font-family: var(--font-display); font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray-500); }
-  .footer-social { display: flex; gap: 20px; list-style: none; }
+  .footer-social { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; list-style: none; }
   .footer-social a { font-size: 12px; color: var(--gray-500); letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
   .footer-social a:hover { color: var(--green-500); }
   .footer-copy { font-size: 12px; color: var(--gray-500); }
 
   /* ── MOBILE MENU ── */
-  .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; z-index: 200; background: none; border: none; }
-  .nav-hamburger span { display: block; width: 22px; height: 1.5px; background: var(--blue-700); transition: transform 0.3s, opacity 0.3s; }
-  .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-  .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-  .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-  .mobile-menu { display: none; position: fixed; top: 68px; left: 0; right: 0; background: rgba(223,233,240,0.99); backdrop-filter: blur(20px); z-index: 99; padding: 32px 24px 40px; border-bottom: 1px solid rgba(46,52,65,0.9); transform: translateY(-8px); opacity: 0; transition: opacity 0.25s ease, transform 0.25s ease; pointer-events: none; }
-  .mobile-menu.open { opacity: 1; transform: translateY(0); pointer-events: all; }
-  .mobile-menu ul { list-style: none; display: flex; flex-direction: column; }
-  .mobile-menu ul a { display: block; font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; letter-spacing: -0.01em; color: rgba(15,25,45,0.78); padding: 14px 0; border-bottom: 1px solid rgba(46,52,65,0.6); transition: color 0.2s; }
-  .mobile-menu ul a:hover { color: var(--blue-700); }
-  .mobile-menu .mobile-cta { display: inline-block; margin-top: 28px; padding: 14px 32px; background: var(--green-500); color: var(--blue-700); font-family: var(--font-body); font-size: 14px; font-weight: 600; letter-spacing: 0.06em; border-radius: 3px; }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 900px) {
-    nav { padding: 0 24px; }
-    nav .nav-links, nav .nav-cta { display: none !important; }
-    .nav-hamburger { display: flex !important; }
-    .mobile-menu { display: block; }
     .resources-hero { padding: 120px 24px 60px; }
     .resources-hero h1 { font-size: clamp(2rem, 8vw, 3rem); }
     .resources-grid { grid-template-columns: 1fr; padding: 0 24px 80px; }
@@ -244,6 +428,7 @@
   @media (max-width: 480px) {
     h1 { font-size: clamp(1.8rem, 8vw, 2.6rem) !important; }
   }
+
 </style>
 <!-- MailerLite Universal -->
 <script>
@@ -267,7 +452,14 @@
     <li><a href="resources.html" class="active" aria-current="page">Resources</a></li>
     <li><a href="about.html">About</a></li>
   </ul>
-  <a href="about.html#contact-form" class="nav-cta">Get started</a>
+  <div class="nav-actions">
+    <a href="about.html#contact-form" class="nav-cta">Get started</a>
+    <div class="lang-switch" aria-label="Language selector">
+      <a href="resources.html" class="active">EN</a>
+      <span>/</span>
+      <a href="pt/resources.html">PT</a>
+    </div>
+  </div>
   <button class="nav-hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
     <span></span><span></span><span></span>
   </button>
@@ -280,6 +472,11 @@
     <li><a href="about.html">About</a></li>
   </ul>
   <a href="about.html#contact-form" class="mobile-cta">Get started</a>
+  <div class="mobile-lang-switch">
+    <a href="resources.html" class="active">EN</a>
+    <span>/</span>
+    <a href="pt/resources.html">PT</a>
+  </div>
 </div>
 
 <main id="main-content">
@@ -359,6 +556,9 @@
     <ul class="footer-social">
       <li><a href="https://www.instagram.com/lumenandpixel" target="_blank" rel="noopener">Instagram</a></li>
       <li><a href="https://www.linkedin.com/company/lumen-and-pixel" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="legal.html#privacy">Privacy</a></li>
+      <li><a href="legal.html#terms">Terms</a></li>
+      <li><a href="legal.html#cookies">Cookies</a></li>
     </ul>
     <span class="footer-copy">© Lumen and Pixel 2025</span>
   </div>
