@@ -67,6 +67,7 @@
   .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
   .nav-links a { font-size: 13px; font-weight: 600; letter-spacing: 0.04em; color: rgba(15,25,45,0.88); transition: color 0.2s; }
   .nav-links a:hover { color: var(--blue-700); }
+  .nav-links a.active, .nav-links a[aria-current="page"] { color: var(--green-500); }
   nav .nav-cta { font-size: 13px; font-weight: 500; letter-spacing: 0.06em; padding: 9px 22px; background: var(--green-500); color: var(--blue-700); border-radius: 3px; transition: background 0.2s; display: inline-flex; align-items: center; min-height: 44px; }
   nav .nav-cta:hover { background: var(--green-300); }
 
@@ -188,7 +189,7 @@
 
 <nav aria-label="Main navigation">
   <a href="index.html" class="nav-logo" aria-label="Lumen and Pixel — home">
-    <img class="nav-logo-mark" src="images/logo-mark.svg" alt="Lumen and Pixel" />
+    <img class="nav-logo-mark" src="images/logo-mark.svg" alt="Lumen and Pixel" style="height:28px;width:auto;max-width:none;display:block;" />
   </a>
   <ul class="nav-links">
     <li><a href="services.html">Services</a></li>
