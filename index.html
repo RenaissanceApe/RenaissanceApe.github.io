@@ -10,14 +10,14 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Lumen and Pixel" />
   <meta property="og:title" content="Lumen and Pixel" />
-  <meta property="og:description" content="Lumen and Pixel — a live event production studio based in Portugal. Show Design, Show Control &amp; Automation, System Architecture, and Technical Direction." />
+  <meta property="og:description" content="Lumen and Pixel — a live event production studio based in Portugal. Show Design, Show Control &amp;amp; Automation, System Architecture, and Technical Direction." />
   <meta property="og:url" content="https://www.lumenandpixel.com/" />
-  <meta property="og:image" content="https://www.lumenandpixel.com/images/og-image.png" />
+  <meta property="og:image" content="images/og-image.png" />
   <meta property="og:image:alt" content="Lumen and Pixel logo" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Lumen and Pixel" />
-  <meta name="twitter:description" content="Lumen and Pixel — a live event production studio based in Portugal. Show Design, Show Control &amp; Automation, System Architecture, and Technical Direction." />
-  <meta name="twitter:image" content="https://www.lumenandpixel.com/images/og-image.png" />
+  <meta name="twitter:description" content="Lumen and Pixel — a live event production studio based in Portugal. Show Design, Show Control &amp;amp; Automation, System Architecture, and Technical Direction." />
+  <meta name="twitter:image" content="images/og-image.png" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -107,24 +107,24 @@
   .nav-links a {
     font-family: var(--font-body);
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 400;
     letter-spacing: 0.04em;
     color: rgba(15,25,45,0.78);
     transition: color 0.2s;
   }
 
   .nav-links a:hover { color: var(--blue-700); }
-  .nav-links a.active, .nav-links a[aria-current="page"] { color: var(--green-700); }
+  .nav-links a.active, .nav-links a[aria-current="page"] { color: var(--green-500); }
 
   .nav-cta {
     font-family: var(--font-body);
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: 0.06em;
     padding: 9px 22px;
     background: var(--green-500);
     color: var(--blue-700);
-    border-radius: 3px;
+    border-radius: 50px;
     transition: background 0.2s, transform 0.15s;
   }
 
@@ -134,7 +134,7 @@
   footer { background: var(--blue-700); padding: 48px 48px 36px; border-top: 1px solid rgba(46,52,65,0.8); }
   .footer-inner { display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: 0 auto; gap: 24px; }
   .footer-logo { font-family: var(--font-display); font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray-500); }
-  .footer-social { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; list-style: none; }
+  .footer-social { display: flex; gap: 20px; list-style: none; }
   .footer-social a { font-size: 12px; color: var(--gray-500); letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
   .footer-social a:hover { color: var(--green-500); }
   .footer-copy { font-size: 12px; color: var(--gray-500); }
@@ -598,19 +598,7 @@
   @media (max-width: 900px) {
     nav { padding: 0 24px; }
     nav .nav-links, nav .nav-cta { display: none; }
-    .nav-hamburger {
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 44px;
-  height: 44px;
-  padding: 10px;
-  box-sizing: content-box;
-  overflow: visible;
-  cursor: pointer;
-  z-index: 200;
-}
+    .nav-hamburger { display: flex; }
     .mobile-menu { display: none !important; }
     .mobile-menu.open { display: block !important; }
     section { padding: 72px 24px; }
@@ -639,26 +627,22 @@
 
 
   .nav-hamburger {
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 44px;
-  height: 44px;
-  padding: 10px;
-  box-sizing: content-box;
-  overflow: visible;
-  cursor: pointer;
-  z-index: 200;
-}
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+  }
   .nav-hamburger span {
-  display: block;
-  width: 22px;
-  height: 2px;
-  background: var(--blue-700);
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  transform-origin: center;
-}
+    display: block;
+    width: 20px;
+    height: 2px;
+    margin: 2px 0;
+    background: var(--blue-700);
+  }
   .mobile-menu {
     display: none !important;
     position: fixed;
@@ -676,16 +660,14 @@
   }
   .mobile-menu a { color: var(--blue-700); font-weight: 700; }
   .mobile-cta {
-    display: inline-block;
-    margin-top: 28px;
-    padding: 14px 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 10px 18px;
     background: var(--green-500);
-    color: var(--blue-700);
-    font-family: var(--font-body);
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    border-radius: 3px;
+    color: var(--blue-700) !important;
+    border-radius: 999px;
   }
   .footer-links {
     list-style: none;
@@ -806,97 +788,6 @@
     .store-heading { font-size: clamp(2rem, 9vw, 3rem) !important; }
     .page-heading { font-size: clamp(1.8rem, 8vw, 2.6rem) !important; }
   }
-
-/* bilingual nav */
-.nav-actions{display:flex;align-items:center;gap:14px;}
-.lang-switch{display:flex;align-items:center;gap:8px;font-family:var(--font-body);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;}
-.lang-switch span{opacity:.55;}
-.lang-switch a{color:var(--gray-300);text-decoration:none;}
-.lang-switch a:hover{color:var(--gray-100);}
-.lang-switch a.active{color:var(--green-500);}
-
-  .nav-hamburger {
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 44px;
-  height: 44px;
-  padding: 10px;
-  box-sizing: content-box;
-  overflow: visible;
-  cursor: pointer;
-  z-index: 200;
-}
-  .nav-hamburger span {
-  display: block;
-  width: 22px;
-  height: 2px;
-  background: var(--blue-700);
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  transform-origin: center;
-}
-  .nav-hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
-  .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-  .nav-hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
-  .mobile-menu {
-    display: none; position: fixed;
-    top: 68px; left: 0; right: 0;
-    background: rgba(223,233,240,0.99); backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    z-index: 99; padding: 32px 24px 40px;
-    border-bottom: 1px solid rgba(46,52,65,0.9);
-    transform: translateY(-8px); opacity: 0;
-    transition: opacity 0.25s ease, transform 0.25s ease;
-    pointer-events: none;
-  }
-  .mobile-menu.open { opacity: 1; transform: translateY(0); pointer-events: all; }
-  .mobile-menu ul { list-style: none; display: flex; flex-direction: column; }
-  .mobile-menu ul a {
-    display: block; font-family: var(--font-display);
-    font-size: 1.5rem; font-weight: 700; letter-spacing: -0.01em;
-    color: rgba(15,25,45,0.78); padding: 14px 0;
-    border-bottom: 1px solid rgba(46,52,65,0.6); transition: color 0.2s;
-  }
-  .mobile-menu ul a:hover { color: var(--blue-700); }
-  .mobile-menu .mobile-cta {
-    display: inline-block; margin-top: 28px; padding: 14px 32px;
-    background: var(--green-500); color: var(--blue-700);
-    font-family: var(--font-body); font-size: 14px; font-weight: 600;
-    letter-spacing: 0.06em; border-radius: 3px;
-  }
-
-  .mobile-lang-switch{display:none;}
-@media (max-width: 900px){
-  .nav-actions .lang-switch{display:none;}
-  .mobile-lang-switch{display:flex;justify-content:center;gap:8px;margin-top:16px;font-family:var(--font-body);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;}
-  .mobile-lang-switch span{opacity:.55;}
-  .mobile-lang-switch a{color:var(--gray-100);}
-  .mobile-lang-switch a.active{color:var(--green-500);}
-}
-
-
-
-/* mobile nav final fix */
-@media (max-width: 900px) {
-  .nav-hamburger {
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 44px;
-  height: 44px;
-  padding: 10px;
-  box-sizing: content-box;
-  overflow: visible;
-  cursor: pointer;
-  z-index: 200;
-}
-  .nav-actions, nav .nav-links, nav .nav-cta { display: none !important; }
-  .mobile-menu { display: none !important; }
-  .mobile-menu.open { display: block !important; }
-}
-
 </style>
 <!-- MailerLite Universal -->
 <script>
@@ -921,14 +812,7 @@
     <li><a href="resources.html">Resources</a></li>
     <li><a href="about.html">About</a></li>
   </ul>
-  <div class="nav-actions">
-    <a href="about.html#contact-form" class="nav-cta">Get started</a>
-    <div class="lang-switch" aria-label="Language selector">
-      <a href="index.html" class="active">EN</a>
-      <span>/</span>
-      <a href="pt/index.html">PT</a>
-    </div>
-  </div>
+  <a href="about.html#contact-form" class="nav-cta">Get started</a>
   <button class="nav-hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
     <span></span><span></span><span></span>
   </button>
@@ -936,18 +820,12 @@
 
 <!-- MOBILE MENU DRAWER -->
 <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation menu" aria-modal="true">
-  <ul>
+      <ul>
     <li><a href="services.html">Services</a></li>
     <li><a href="resources.html">Resources</a></li>
     <li><a href="about.html">About</a></li>
   </ul>
   <a href="about.html#contact-form" class="mobile-cta">Get started</a>
-  <div class="mobile-lang-switch">
-    <a href="index.html" class="active">EN</a>
-    <span>/</span>
-    <a href="pt/index.html">PT</a>
-  </div>
-</div>
 </div>
 
 <!-- HERO -->
@@ -1108,7 +986,7 @@
   <p>Sign up today.</p>
   <div class="newsletter-embed">
     <div class="ml-embedded" data-form="gZXg1D"></div>
-    <p class="newsletter-fallback">If any issue occurs, try reloading the page. If the issue persists, try using another browser.</p>
+    <p class="newsletter-fallback">If the signup form does not load, reload the page and try again.</p>
   </div>
 </div>
 
@@ -1119,9 +997,6 @@
     <ul class="footer-social">
       <li><a href="https://www.instagram.com/lumenandpixel" target="_blank" rel="noopener">Instagram</a></li>
       <li><a href="https://www.linkedin.com/company/lumen-and-pixel" target="_blank" rel="noopener">LinkedIn</a></li>
-      <li><a href="legal.html#privacy">Privacy</a></li>
-      <li><a href="legal.html#terms">Terms</a></li>
-      <li><a href="legal.html#cookies">Cookies</a></li>
     </ul>
     <span class="footer-copy">© Lumen and Pixel 2025</span>
   </div>
