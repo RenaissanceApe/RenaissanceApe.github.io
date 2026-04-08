@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-PT">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Privacy, terms, cookies, and disclaimer for Lumen and Pixel." />
+<meta name="description" content="Privacidade, termos, cookies e disclaimer da Lumen and Pixel." />
 <title>Lumen and Pixel — Legal</title>
-<link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
-<link rel="apple-touch-icon" href="images/og-image.png" />
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="../images/og-image.png" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Lumen and Pixel" />
 <meta property="og:title" content="Lumen and Pixel — Legal" />
-<meta property="og:description" content="Privacy, terms, cookies, and disclaimer for Lumen and Pixel." />
+<meta property="og:description" content="Privacidade, termos, cookies e disclaimer da Lumen and Pixel." />
 <meta property="og:image" content="https://www.lumenandpixel.com/images/og-image.png" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Lumen and Pixel — Legal" />
-<meta name="twitter:description" content="Privacy, terms, cookies, and disclaimer for Lumen and Pixel." />
+<meta name="twitter:description" content="Privacidade, termos, cookies e disclaimer da Lumen and Pixel." />
 <meta name="twitter:image" content="https://www.lumenandpixel.com/images/og-image.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -42,14 +42,14 @@
   nav {
     position:fixed; inset:0 0 auto 0; z-index:100; display:flex; align-items:center; justify-content:space-between;
     padding:0 max(24px, calc((100vw - 1200px) / 2 + 48px)); height:68px; background: rgba(223,233,240,0.97);
-    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(46,52,65,0.6);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom:1px solid rgba(15,25,45,.08);
   }
   .nav-logo { display:inline-flex; align-items:center; }
   .nav-links { display:flex; align-items:center; gap:36px; list-style:none; }
-  .nav-links a { font-size: 13px; font-weight: 600; letter-spacing: 0.04em; color: rgba(15,25,45,0.78); transition: color 0.2s; }
+  .nav-links a { font-size:13px; font-weight:700; letter-spacing:.04em; color:rgba(15,25,45,.84); }
   .nav-links a:hover { color:var(--blue-700); }
   .nav-actions { display:flex; align-items:center; gap:16px; }
-  .nav-cta { font-size: 13px; font-weight: 600; letter-spacing: 0.06em; padding: 9px 22px; background: var(--green-500); color: var(--blue-700); border-radius: 3px; }
+  .nav-cta { font-size:13px; font-weight:700; letter-spacing:.06em; padding:9px 22px; background:var(--green-500); color:var(--blue-700); border-radius: 3px; }
   .nav-cta:hover { background:var(--green-300); }
   .lang-switch { display:flex; gap:8px; font-size:12px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:rgba(15,25,45,.62); }
   .lang-switch a.active { color:var(--green-500); }
@@ -74,14 +74,11 @@
   transition: transform 0.3s ease, opacity 0.3s ease;
   transform-origin: center;
 }
-  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-  .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-  .mobile-menu { display: none; position: fixed; top: 68px; left: 0; right: 0; background: rgba(223,233,240,0.99); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 99; padding: 32px 24px 40px; border-bottom: 1px solid rgba(46,52,65,0.9); transform: translateY(-8px); opacity: 0; transition: opacity 0.25s ease, transform 0.25s ease; pointer-events: none; }
-  .mobile-menu.open { opacity: 1; transform: translateY(0); pointer-events: all; }
+  .mobile-menu { display:none; position:fixed; inset:68px 0 auto 0; padding:24px; background: rgba(223,233,240,0.99); border-bottom:1px solid rgba(255,255,255,.06); z-index:95; }
+  .mobile-menu.open { display:block; }
   .mobile-menu ul { list-style:none; display:grid; gap:18px; }
-  .mobile-menu ul a { display: block; font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; letter-spacing: -0.01em; color: rgba(15,25,45,0.78); padding: 14px 0; border-bottom: 1px solid rgba(46,52,65,0.6); transition: color 0.2s; }
-  .mobile-cta { display: inline-block; margin-top: 28px; padding: 14px 32px; border-radius: 3px; background: var(--green-500); color: var(--blue-700); font-size: 14px; font-weight: 600; letter-spacing: 0.06em; }
+  .mobile-menu a { color:var(--gray-100); font-weight:700; }
+  .mobile-cta { display:inline-flex; margin-top:20px; padding:10px 18px; border-radius: 3px; background:var(--green-500); color:var(--blue-700)!important; }
   .mobile-lang-switch{display:flex;justify-content:center;gap:8px;margin-top:16px;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;}
   .mobile-lang-switch span{opacity:.55;}
   .mobile-lang-switch a.active{color:var(--green-500);}
@@ -108,12 +105,41 @@
   .footer-social a { font-size:12px; color:var(--gray-500); letter-spacing:.06em; text-transform:uppercase; transition:color .2s; }
   .footer-social a:hover { color:var(--green-500); }
   .footer-copy { font-size:12px; color:var(--gray-500); }
-  @media (max-width: 900px) {
-    .nav-links, .nav-actions { display: none !important; }
-    .nav-hamburger { display: flex !important; }
-    .mobile-menu { display: block; }
-    .legal-tabs { top: 68px; }
-    .footer-inner { flex-direction: column; text-align: center; }
+  @media (max-width:900px) {
+    .nav-links, .nav-actions { display:none; }
+    .nav-hamburger {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  box-sizing: content-box;
+  overflow: visible;
+  cursor: pointer;
+  z-index: 200;
+}
+    .legal-tabs { top:68px; }
+    .footer-inner { flex-direction:column; text-align:center; }
+  }
+
+
+/* mobile nav final fix */
+@media (max-width: 900px) {
+  .nav-hamburger {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  box-sizing: content-box;
+  overflow: visible;
+  cursor: pointer;
+  z-index: 200;
+}
   .nav-actions, nav .nav-links, nav .nav-cta { display: none !important; }
   .mobile-menu { display: none !important; }
   .mobile-menu.open { display: block !important; }
@@ -122,11 +148,11 @@
 </style>
 </head>
 <body>
-<a href="#main-content" class="skip-link">Skip to main content</a>
+<a href="#main-content" class="skip-link">Saltar para o conteúdo principal</a>
 
 <nav aria-label="Main navigation">
   <a href="index.html" class="nav-logo" aria-label="Lumen and Pixel — home">
-    <img class="nav-logo-mark" src="images/logo-mark.svg" alt="Lumen and Pixel" style="height:28px;width:auto;max-width:none;display:block;" />
+    <img class="nav-logo-mark" src="../images/logo-mark.svg" alt="Lumen and Pixel" style="height:28px;width:auto;max-width:none;display:block;" />
   </a>
   <ul class="nav-links">
     <li><a href="services.html">Services</a></li>
@@ -136,9 +162,9 @@
   <div class="nav-actions">
     <a href="about.html#contact-form" class="nav-cta">Get started</a>
     <div class="lang-switch" aria-label="Language selector">
-      <a href="legal.html" class="active">EN</a>
+      <a href="../legal.html" class="">EN</a>
       <span>/</span>
-      <a href="pt/legal.html" class="">PT</a>
+      <a href="legal.html" class="active">PT</a>
     </div>
   </div>
   <button class="nav-hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
@@ -154,22 +180,22 @@
   </ul>
   <a href="about.html#contact-form" class="mobile-cta">Get started</a>
   <div class="mobile-lang-switch">
-    <a href="legal.html" class="active">EN</a>
+    <a href="../legal.html" class="">EN</a>
     <span>/</span>
-    <a href="pt/legal.html" class="">PT</a>
+    <a href="legal.html" class="active">PT</a>
   </div>
 </div>
 
 <header class="page-hero" id="main-content">
   <p class="section-label">Legal</p>
-  <h1>Clear terms. Minimal friction. Full transparency.</h1>
-  <p>Everything relevant to privacy, website usage, cookies, and general disclaimers lives here in one place.</p>
+  <h1>Transparência clara. Fricção mínima. Tudo no mesmo sítio.</h1>
+  <p>Tudo o que é relevante sobre privacidade, utilização do website, cookies e disclaimers gerais está reunido nesta página.</p>
 </header>
 
 <div class="legal-tabs">
   <div class="legal-tabs-inner">
-    <a href="#privacy" class="tab-link active">Privacy Policy</a>
-    <a href="#terms" class="tab-link">Terms of Use</a>
+    <a href="#privacy" class="tab-link active">Privacidade</a>
+    <a href="#terms" class="tab-link">Termos</a>
     <a href="#cookies" class="tab-link">Cookies</a>
     <a href="#disclaimer" class="tab-link">Disclaimer</a>
   </div>
@@ -177,60 +203,60 @@
 
 <main class="legal-wrap">
   <section class="legal-section" id="privacy">
-    <h2>Privacy Policy</h2>
-    <p>This section explains what data we collect through the website, why we collect it, which third-party services are involved, and how we handle that data.</p>
-    <h3>Who we are</h3>
-    <p>Lumen and Pixel is a live event production studio based in Portugal. This website is used to present our services, collect project enquiries, and allow visitors to subscribe to our newsletter.</p>
-    <h3>What we collect</h3>
-    <ul><li>Contact form submissions, including name, company or organization, email address, selected service, and project message.</li>
-<li>Newsletter signups submitted through the embedded MailerLite form.</li>
-<li>Basic technical information required for website delivery through GitHub Pages and the external tools listed below.</li></ul>
-    <h3>Why we use it</h3>
-    <ul><li>To respond to project enquiries and other messages sent through the website.</li>
-<li>To send newsletter updates to users who explicitly subscribe.</li>
-<li>To deliver resources or redirect visitors to external purchase pages where relevant.</li></ul>
-    <h3>Legal bases</h3>
-    <ul><li>Project enquiries are processed on the basis of legitimate interest, so we can respond to incoming requests.</li>
-<li>Newsletter subscriptions are processed on the basis of consent.</li>
-<li>Where purchases happen through Gumroad, payment and checkout data are handled on Gumroad’s side under their own terms and privacy practices.</li></ul>
-    <h3>Third-party services used on this website</h3>
-    <ul><li>Web3Forms — used to receive and forward contact form submissions.</li>
-<li>MailerLite — used for newsletter signup and email marketing automation.</li>
-<li>Gumroad — used for external product pages and transactions.</li>
-<li>GitHub Pages — used to host the website.</li></ul>
-    <h3>How long we keep data</h3>
-    <p>We keep enquiry and newsletter data only for as long as it is reasonably necessary for communication, operational follow-up, or legal and administrative purposes.</p>
-    <h3>Your rights</h3>
-    <p>You may request access to, correction of, or deletion of your personal data, or object to certain types of processing, as applicable under relevant law. Newsletter emails also include an unsubscribe option.</p>
-    <h3>How to contact us</h3>
-    <p>For privacy-related requests, use the contact form on the <a href="about.html#contact-form">About page</a>.</p>
+    <h2>Política de Privacidade</h2>
+    <p>Esta secção explica que dados recolhemos através do website, por que motivo os recolhemos, que serviços externos estão envolvidos e como tratamos essa informação.</p>
+    <h3>Quem somos</h3>
+    <p>A Lumen and Pixel é um estúdio de produção para live events sediado em Portugal. Este website é utilizado para apresentar os nossos serviços, receber pedidos de contacto e permitir a subscrição da newsletter.</p>
+    <h3>Que dados recolhemos</h3>
+    <ul><li>Submissões do formulário de contacto, incluindo nome, empresa ou organização, email, serviço selecionado e mensagem sobre o projeto.</li>
+<li>Subscrições da newsletter enviadas através do formulário embebido da MailerLite.</li>
+<li>Informação técnica básica necessária para a entrega do website através do GitHub Pages e das ferramentas externas indicadas abaixo.</li></ul>
+    <h3>Porque utilizamos esses dados</h3>
+    <ul><li>Para responder a pedidos de contacto e outras mensagens enviadas através do website.</li>
+<li>Para enviar atualizações da newsletter a utilizadores que subscrevam explicitamente.</li>
+<li>Para disponibilizar recursos ou encaminhar visitantes para páginas externas de compra, quando aplicável.</li></ul>
+    <h3>Fundamentos legais</h3>
+    <ul><li>Os pedidos de contacto são tratados com base em interesse legítimo, para que possamos responder aos pedidos recebidos.</li>
+<li>As subscrições da newsletter são tratadas com base em consentimento.</li>
+<li>Quando existem compras através da Gumroad, os dados de pagamento e checkout são tratados do lado da Gumroad, segundo os seus próprios termos e práticas de privacidade.</li></ul>
+    <h3>Serviços externos utilizados neste website</h3>
+    <ul><li>Web3Forms — utilizado para receber e encaminhar submissões do formulário de contacto.</li>
+<li>MailerLite — utilizada para subscrição da newsletter e automação de email marketing.</li>
+<li>Gumroad — utilizada para páginas externas de produto e transações.</li>
+<li>GitHub Pages — utilizado para alojar o website.</li></ul>
+    <h3>Durante quanto tempo guardamos os dados</h3>
+    <p>Guardamos dados de contacto e newsletter apenas durante o período razoavelmente necessário para comunicação, seguimento operacional ou finalidades legais e administrativas.</p>
+    <h3>Os teus direitos</h3>
+    <p>Podes pedir acesso, retificação ou eliminação dos teus dados pessoais, ou opor-te a determinados tipos de tratamento, nos termos aplicáveis da lei. Os emails da newsletter incluem também uma opção de unsubscribe.</p>
+    <h3>Como nos contactar</h3>
+    <p>Para pedidos relacionados com privacidade, utiliza o formulário de contacto na <a href="about.html#contact-form">página About</a>.</p>
   </section>
 
   <section class="legal-section" id="terms">
-    <h2>Terms of Use</h2>
-    <p>These terms govern the use of this website and the content published on it.</p>
-    <ul><li><strong>Website purpose.</strong> This website is intended to present Lumen and Pixel, describe services, and provide access to contact, newsletter, and external resource links.</li>
-<li><strong>Content ownership.</strong> Unless stated otherwise, the text, structure, visual assets, and branding on this website belong to Lumen and Pixel and may not be reproduced or reused without permission.</li>
-<li><strong>Informational nature.</strong> Website content is provided for general informational purposes and may be updated, refined, or removed without notice.</li>
-<li><strong>External links.</strong> This website may link to third-party services such as MailerLite or Gumroad. We are not responsible for the content, policies, or technical availability of those external services.</li>
-<li><strong>No service agreement created automatically.</strong> Sending a message through the website or subscribing to the newsletter does not create a commercial agreement by itself.</li></ul>
+    <h2>Termos de Utilização</h2>
+    <p>Estes termos regulam a utilização deste website e do conteúdo nele publicado.</p>
+    <ul><li><strong>Objetivo do website.</strong> Este website destina-se a apresentar a Lumen and Pixel, descrever serviços e disponibilizar acesso a contactos, newsletter e links externos de recursos.</li>
+<li><strong>Titularidade do conteúdo.</strong> Salvo indicação em contrário, os textos, a estrutura, os elementos visuais e o branding deste website pertencem à Lumen and Pixel e não podem ser reproduzidos ou reutilizados sem autorização.</li>
+<li><strong>Natureza informativa.</strong> O conteúdo do website é disponibilizado para fins informativos gerais e pode ser atualizado, refinado ou removido sem aviso prévio.</li>
+<li><strong>Links externos.</strong> Este website pode incluir links para serviços de terceiros, como MailerLite ou Gumroad. Não somos responsáveis pelo conteúdo, políticas ou disponibilidade técnica desses serviços externos.</li>
+<li><strong>Nenhum acordo comercial é criado automaticamente.</strong> O envio de uma mensagem através do website ou a subscrição da newsletter não cria, por si só, qualquer acordo comercial.</li></ul>
   </section>
 
   <section class="legal-section" id="cookies">
     <h2>Cookies</h2>
-    <p>This website is designed to keep tracking to a minimum.</p>
-    <ul><li><strong>No analytics or advertising cookies are intentionally deployed by Lumen and Pixel at this stage.</strong></li>
-<li><strong>Essential technical elements may still be used by third-party services</strong> where needed for core functionality, such as spam protection or embedded form delivery.</li>
-<li>If the website stack changes in the future and non-essential analytics or marketing tracking is added, this section will be updated accordingly.</li></ul>
+    <p>Este website foi desenhado para manter o tracking no mínimo possível.</p>
+    <ul><li><strong>Nesta fase, a Lumen and Pixel não implementa intencionalmente cookies de analytics nem de publicidade.</strong></li>
+<li><strong>Poderão, ainda assim, existir elementos técnicos essenciais utilizados por serviços externos</strong> quando necessários para funcionalidades base, como proteção anti-spam ou entrega de formulários embebidos.</li>
+<li>Se a stack do website vier a mudar no futuro e forem adicionados mecanismos não essenciais de analytics ou marketing, esta secção será atualizada em conformidade.</li></ul>
   </section>
 
   <section class="legal-section" id="disclaimer">
     <h2>Disclaimer</h2>
-    <p>This disclaimer sets expectations around the website and the information published on it.</p>
-    <ul><li>Website content is provided on an “as is” basis for informational purposes.</li>
-<li>We make reasonable efforts to keep information accurate and current, but we do not guarantee that all content will always be complete, error-free, or up to date.</li>
-<li>Project availability, timelines, deliverables, and commercial terms are always subject to direct discussion and formal agreement.</li>
-<li>Any reliance on website content is at the visitor’s own discretion.</li></ul>
+    <p>Este disclaimer define expectativas relativamente ao website e à informação aqui publicada.</p>
+    <ul><li>O conteúdo do website é disponibilizado “as is” para fins informativos.</li>
+<li>Fazemos esforços razoáveis para manter a informação correta e atualizada, mas não garantimos que todo o conteúdo esteja sempre completo, sem erros ou permanentemente atualizado.</li>
+<li>Disponibilidade de projeto, timings, entregáveis e termos comerciais estão sempre sujeitos a discussão direta e a acordo formal.</li>
+<li>Qualquer utilização do conteúdo do website é feita por conta e risco do visitante.</li></ul>
   </section>
 </main>
 
@@ -240,8 +266,8 @@
     <ul class="footer-social">
       <li><a href="https://www.instagram.com/lumenandpixel" target="_blank" rel="noopener">Instagram</a></li>
       <li><a href="https://www.linkedin.com/company/lumen-and-pixel" target="_blank" rel="noopener">LinkedIn</a></li>
-      <li><a href="legal.html#privacy">Privacy</a></li>
-      <li><a href="legal.html#terms">Terms</a></li>
+      <li><a href="legal.html#privacy">Privacidade</a></li>
+      <li><a href="legal.html#terms">Termos</a></li>
       <li><a href="legal.html#cookies">Cookies</a></li>
     </ul>
     <span class="footer-copy">© Lumen and Pixel 2025</span>
@@ -257,8 +283,6 @@
         var isOpen = mobileMenu.classList.toggle('open');
         hamburger.classList.toggle('open');
         hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-        hamburger.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
-        document.body.style.overflow = isOpen ? 'hidden' : '';
       });
       mobileMenu.querySelectorAll('a').forEach(function(link) {
         link.addEventListener('click', function() {
