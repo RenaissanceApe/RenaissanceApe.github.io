@@ -101,6 +101,33 @@
     .card { padding: 36px 24px; }
     .actions { flex-direction: column; }
   }
+
+/* bilingual nav */
+.nav-actions{display:flex;align-items:center;gap:14px;}
+.lang-switch{display:flex;align-items:center;gap:8px;font-family:var(--font-body);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;}
+.lang-switch span{opacity:.55;}
+.lang-switch a{color:var(--gray-300);text-decoration:none;}
+.lang-switch a:hover{color:var(--gray-100);}
+.lang-switch a.active{color:var(--green-500);}
+.mobile-lang-switch{display:none;}
+@media (max-width: 900px){
+  .nav-actions .lang-switch{display:none;}
+  .mobile-lang-switch{display:flex;justify-content:center;gap:8px;margin-top:16px;font-family:var(--font-body);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;}
+  .mobile-lang-switch span{opacity:.55;}
+  .mobile-lang-switch a{color:var(--gray-100);}
+  .mobile-lang-switch a.active{color:var(--green-500);}
+}
+
+
+
+/* mobile nav final fix */
+@media (max-width: 900px) {
+  .nav-hamburger { display: inline-flex !important; }
+  .nav-actions, nav .nav-links, nav .nav-cta { display: none !important; }
+  .mobile-menu { display: none !important; }
+  .mobile-menu.open { display: block !important; }
+}
+
 </style>
 <!-- MailerLite Universal -->
 <script>
@@ -117,7 +144,14 @@
   <a href="index.html" class="nav-logo" aria-label="Lumen and Pixel — home">
     <img class="nav-logo-mark" src="images/logo-mark.svg" alt="Lumen and Pixel" style="height:28px;width:auto;max-width:none;display:block;" />
   </a>
-  <a href="index.html" class="nav-home">Back to home</a>
+  <div class="nav-actions">
+    <a href="index.html" class="nav-home">Back to home</a>
+    <div class="lang-switch" aria-label="Language selector">
+      <a href="thank-you.html" class="active">EN</a>
+      <span>/</span>
+      <a href="pt/thank-you.html">PT</a>
+    </div>
+  </div>
 </nav>
 <main>
   <section class="card" aria-labelledby="thank-you-title">

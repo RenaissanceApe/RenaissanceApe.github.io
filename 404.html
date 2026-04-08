@@ -420,6 +420,33 @@
     .store-heading { font-size: clamp(2rem, 9vw, 3rem) !important; }
     .page-heading { font-size: clamp(1.8rem, 8vw, 2.6rem) !important; }
   }
+
+/* bilingual nav */
+.nav-actions{display:flex;align-items:center;gap:14px;}
+.lang-switch{display:flex;align-items:center;gap:8px;font-family:var(--font-body);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;}
+.lang-switch span{opacity:.55;}
+.lang-switch a{color:var(--gray-300);text-decoration:none;}
+.lang-switch a:hover{color:var(--gray-100);}
+.lang-switch a.active{color:var(--green-500);}
+.mobile-lang-switch{display:none;}
+@media (max-width: 900px){
+  .nav-actions .lang-switch{display:none;}
+  .mobile-lang-switch{display:flex;justify-content:center;gap:8px;margin-top:16px;font-family:var(--font-body);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;}
+  .mobile-lang-switch span{opacity:.55;}
+  .mobile-lang-switch a{color:var(--gray-100);}
+  .mobile-lang-switch a.active{color:var(--green-500);}
+}
+
+
+
+/* mobile nav final fix */
+@media (max-width: 900px) {
+  .nav-hamburger { display: inline-flex !important; }
+  .nav-actions, nav .nav-links, nav .nav-cta { display: none !important; }
+  .mobile-menu { display: none !important; }
+  .mobile-menu.open { display: block !important; }
+}
+
 </style>
 <!-- MailerLite Universal -->
 <script>
@@ -443,7 +470,14 @@
     <li><a href="resources.html">Resources</a></li>
     <li><a href="about.html">About</a></li>
   </ul>
-  <a href="about.html#contact-form" class="nav-cta">Get started</a>
+  <div class="nav-actions">
+    <a href="about.html#contact-form" class="nav-cta">Get started</a>
+    <div class="lang-switch" aria-label="Language selector">
+      <a href="404.html" class="active">EN</a>
+      <span>/</span>
+      <a href="pt/404.html">PT</a>
+    </div>
+  </div>
   <button class="nav-hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
     <span></span><span></span><span></span>
   </button>
