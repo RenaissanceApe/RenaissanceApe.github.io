@@ -1,160 +1,145 @@
 <!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="pt">
 <head>
 <meta charset="UTF-8" />
-<meta name="description" content="Descobre o serviço Lumen and Pixel certo para o teu evento — recomendador interativo de serviços." />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Descobre o Teu Fit — Lumen and Pixel</title>
-  <link rel="icon" href="../images/favicon.svg" type="image/svg+xml" />
-  <link rel="apple-touch-icon" href="../images/og-image.png" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Lumen and Pixel" />
-  <meta property="og:title" content="Find Your Fit — Lumen and Pixel" />
-  <meta property="og:description" content="Descobre o serviço Lumen and Pixel certo para o teu evento — recomendador interativo de serviços." />
-  <meta property="og:url" content="https://www.lumenandpixel.com/pt/quiz.html" />
-  <meta property="og:image" content="https://www.lumenandpixel.com/images/og-image.png" />
-  <meta property="og:image:alt" content="Lumen and Pixel logo" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Find Your Fit — Lumen and Pixel" />
-  <meta name="twitter:description" content="Descobre o serviço Lumen and Pixel certo para o teu evento — recomendador interativo de serviços." />
-  <meta name="twitter:image" content="https://www.lumenandpixel.com/images/og-image.png" />
-
+<meta name="description" content="Encontre o serviço certo da Lumen and Pixel para o seu evento — seletor de serviços interativo." />
+<title>Encontre o Seu Serviço — Lumen and Pixel</title>
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="../images/og-image.png" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Lumen and Pixel" />
+<meta property="og:title" content="Encontre o Seu Serviço — Lumen and Pixel" />
+<meta property="og:description" content="Encontre o serviço certo da Lumen and Pixel para o seu evento — seletor de serviços interativo." />
+<meta property="og:url" content="https://www.lumenandpixel.com/pt/quiz.html" />
+<meta property="og:image" content="https://www.lumenandpixel.com/images/og-image.png" />
+<meta property="og:image:alt" content="Lumen and Pixel" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Encontre o Seu Serviço — Lumen and Pixel" />
+<meta name="twitter:description" content="Encontre o serviço certo da Lumen and Pixel para o seu evento — seletor de serviços interativo." />
+<meta name="twitter:image" content="https://www.lumenandpixel.com/images/og-image.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<!-- MailerLite Universal -->
+<script>
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', '2252485');
+</script>
+<!-- End MailerLite Universal -->
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --blue-100: #dfe9f0;
-    --blue-300: #82b2d7;
-    --blue-500: #16598c;
-    --blue-700: #021829;
-    --blue-900: #00080e;
-    --green-300: #7ef67d;
-    --green-500: #33fb31;
-    --green-700: #576e20;
-    --gray-100: #f0f1f3;
-    --gray-300: #b8bec8;
-    --gray-500: #6b7485;
-    --gray-700: #2e3441;
-    --font-display: 'Space Mono', monospace;
-    --font-body: 'Nunito', sans-serif;
-  }
 
-  html { scroll-behavior: smooth; }
-  body {
-    background: var(--blue-700);
-    color: var(--gray-100);
-    font-family: var(--font-body);
-    font-size: 16px;
-    line-height: 1.6;
-    overflow-x: hidden;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    padding-left: env(safe-area-inset-left);
-    padding-right: env(safe-area-inset-right);
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  :root {
+    --blue-100:#dfe9f0; --blue-300:#82b2d7; --blue-500:#16598c;
+    --blue-700:#021829; --blue-900:#00080e;
+    --green-100:#dcf8dc; --green-300:#7ef67d; --green-500:#33fb31;
+    --green-700:#576e20; --green-900:#273012;
+    --gray-100:#f0f1f3; --gray-300:#b8bec8; --gray-500:#6b7485;
+    --gray-700:#2e3441; --gray-900:#0f141c;
+    --font-display:'Space Mono',monospace;
+    --font-body:'Nunito',sans-serif;
   }
-  a { color: inherit; text-decoration: none; }
+  html{scroll-behavior:smooth;}
+  body{padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right);background:var(--blue-700);color:var(--gray-100);font-family:var(--font-body);font-size:16px;line-height:1.6;overflow-x:hidden;}
+  a{color:inherit;text-decoration:none;}
+  body{min-height:100vh;display:flex;flex-direction:column;}
+  /* ── NAV ── */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 max(24px,calc((100vw - 1200px)/2 + 48px));height:68px;background:rgba(223,233,240,0.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(46,52,65,0.6);}
+  .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;}
+  .nav-logo-mark{height:28px;width:auto;display:block;}
+  .nav-logo-text{display:flex;flex-direction:column;gap:0;line-height:1;}
+  .nav-logo-top{font-family:var(--font-display);font-size:11px;font-weight:700;letter-spacing:0.16em;color:#021829;}
+  .nav-logo-btm{font-family:var(--font-display);font-size:8px;font-weight:400;letter-spacing:0.14em;color:var(--blue-500);}
+  .nav-links{display:flex;align-items:center;gap:36px;list-style:none;margin:0;padding:0;}
+  .nav-links a{font-size:13px;font-weight:700;letter-spacing:0.04em;color:rgba(15,25,45,0.78);transition:color 0.2s;}
+  .nav-links a:hover{color:var(--blue-700);}
+  .nav-links a.active,.nav-links a[aria-current="page"]{color:var(--green-700);}
+  .nav-actions{display:flex;align-items:center;gap:16px;}
+  nav .nav-cta{font-size:13px;font-weight:600;letter-spacing:0.06em;padding:9px 22px;background:var(--green-500);color:var(--blue-700);border-radius:3px;text-decoration:none;display:inline-flex;align-items:center;min-height:44px;transition:background 0.2s;}
+  nav .nav-cta:hover{background:var(--green-300);}
+  .lang-switch{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;white-space:nowrap;}
+  .lang-switch span{opacity:0.45;color:rgba(15,25,45,0.6);}
+  .lang-switch a{color:rgba(15,25,45,0.62);text-decoration:none;transition:color 0.2s;}
+  .lang-switch a:hover{color:var(--blue-700);}
+  .lang-switch a.active{color:var(--green-700);}
+  /* Hamburger — hidden on desktop */
+  .nav-hamburger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:44px;height:44px;padding:0;background:none;border:none;cursor:pointer;flex-shrink:0;z-index:200;}
+  .nav-hamburger span{display:block;width:22px;height:1.5px;background:var(--blue-700);border-radius:1px;transition:transform 0.3s,opacity 0.3s;transform-origin:center;}
+  .nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+  .nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+  .nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+  /* Mobile menu — hidden until .open toggled by JS */
+  .mobile-menu{display:none;position:fixed;top:68px;left:0;right:0;background:rgba(223,233,240,0.99);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);z-index:99;padding:32px 24px 40px;border-bottom:1px solid rgba(46,52,65,0.9);transform:translateY(-8px);opacity:0;transition:opacity 0.25s ease,transform 0.25s ease;pointer-events:none;}
+  .mobile-menu.open{opacity:1;transform:translateY(0);pointer-events:all;}
+  .mobile-menu ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;}
+  .mobile-menu ul a{display:block;font-family:var(--font-display);font-size:1.5rem;font-weight:700;letter-spacing:-0.01em;color:rgba(15,25,45,0.78);padding:14px 0;border-bottom:1px solid rgba(46,52,65,0.6);text-decoration:none;transition:color 0.2s;}
+  .mobile-menu ul a:hover{color:var(--blue-700);}
+  .mobile-menu .mobile-cta{display:inline-block;margin-top:28px;padding:14px 32px;background:var(--green-500);color:var(--blue-700);font-size:14px;font-weight:600;letter-spacing:0.06em;border-radius:3px;text-decoration:none;}
+  .mobile-lang-switch{display:none;justify-content:center;gap:8px;margin-top:16px;font-size:12px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;}
+  .mobile-lang-switch span{opacity:0.45;}
+  .mobile-lang-switch a{color:rgba(15,25,45,0.7);text-decoration:none;}
+  .mobile-lang-switch a.active{color:var(--green-700);}
+  /* Skip + focus */
+  .skip-link{position:absolute;top:-100px;left:0;background:var(--green-500);color:var(--blue-700);padding:12px 20px;font-size:14px;font-weight:700;z-index:9999;border-radius:0 0 4px 0;transition:top 0.2s;text-decoration:none;}
+  .skip-link:focus{top:0;}
+  :focus-visible{outline:2px solid var(--green-500);outline-offset:3px;border-radius:2px;}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+  /* Responsive */
+  @media(max-width:900px){
+    nav{padding:0 24px;}
+    .nav-links{display:none;}
+    .nav-actions{display:none;}
+    .nav-hamburger{display:flex;}
+    .mobile-menu{display:block;}
+    .mobile-lang-switch{display:flex;}
+  }
+/* ── NAV ── */
+
+  .nav-actions { display: flex; align-items: center; gap: 16px; }
+  nav
+
+  nav
+
+  .lang-switch { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  .lang-switch span { opacity: 0.45; color: rgba(15,25,45,0.6); }
+  .lang-switch
+  .lang-switch a:hover { color: var(--blue-700); }
+  .lang-switch a.active { color: var(--green-700); }
+  /* Hamburger — hidden on desktop, shown on mobile */
+
+  /* Mobile menu */
+
+  .mobile-lang-switch {
+    display: none; justify-content: center; gap: 8px; margin-top: 16px;
+    font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .mobile-lang-switch span { opacity: 0.45; }
+  .mobile-lang-switch
+  .mobile-lang-switch a.active { color: var(--green-700); }
+  /* Skip link */
+
+  /* Mobile breakpoint */
+  @media (max-width: 900px) {
+
+    .nav-actions { display: none; }
+
+    .mobile-lang-switch { display: flex; }
+  }
+  /* ── END NAV ── */
+  /* ── FOOTER ── */
+
+  @media (max-width: 900px) {
+
+  }
+───────────────── */
 
   /* NAV */
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 max(24px, calc((100vw - 1200px) / 2 + 48px)); height: 68px; background: rgba(223,233,240,0.97); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(46,52,65,0.6); }
-  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--blue-700); }
-  .nav-logo-mark { width: auto; height: 28px; max-width: none; flex-shrink: 0; display: block; object-fit: contain; }
-  .nav-logo-text { display: flex; flex-direction: column; gap: 0; line-height: 1; }
-  .nav-logo-top { font-family: var(--font-display); font-size: 11px; font-weight: 700; letter-spacing: 0.16em; color: var(--blue-700); }
-  .nav-logo-btm { font-family: var(--font-display); font-size: 8px; font-weight: 400; letter-spacing: 0.14em; color: var(--blue-500); }
-  .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
-  .nav-links a { font-size: 13px; font-weight: 600; letter-spacing: 0.04em; color: rgba(15,25,45,0.88); transition: color 0.2s; }
-  .nav-links a:hover { color: var(--blue-700); }
-  .nav-links a.active, .nav-links a[aria-current="page"] { color: var(--green-500); }
-  nav .nav-cta { font-size: 13px; font-weight: 500; letter-spacing: 0.06em; padding: 9px 22px; background: var(--green-500); color: var(--blue-700); border-radius: 3px; transition: background 0.2s; display: inline-flex; align-items: center; min-height: 44px; }
-  nav .nav-cta:hover { background: var(--green-300); }
-
-  /* MOBILE MENU */
-  .nav-hamburger {
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 44px;
-  height: 44px;
-  padding: 10px;
-  box-sizing: content-box;
-  overflow: visible;
-  cursor: pointer;
-  z-index: 200;
-}
-  .nav-hamburger span {
-  display: block;
-  width: 22px;
-  height: 2px;
-  background: var(--blue-700);
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  transform-origin: center;
-}
-  .nav-hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
-  .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-  .nav-hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
-  .mobile-menu { display: none; position: fixed; top: 68px; left: 0; right: 0; background: rgba(223,233,240,0.99); backdrop-filter: blur(20px); z-index: 99; padding: 32px 24px 40px; border-bottom: 1px solid rgba(46,52,65,0.9); transform: translateY(-8px); opacity: 0; transition: opacity 0.25s ease, transform 0.25s ease; pointer-events: none; }
-  .mobile-menu.open { opacity: 1; transform: translateY(0); pointer-events: all; }
-  .mobile-menu ul { list-style: none; display: flex; flex-direction: column; }
-  .mobile-menu ul a { display: block; font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; letter-spacing: -0.01em; color: rgba(15,25,45,0.78); padding: 14px 0; border-bottom: 1px solid rgba(46,52,65,0.6); transition: color 0.2s; }
-  .mobile-menu ul a:hover { color: var(--blue-700); }
-  .mobile-menu .mobile-cta { display: inline-block; margin-top: 28px; padding: 14px 32px; background: var(--green-500); color: var(--blue-700); font-family: var(--font-body); font-size: 14px; font-weight: 600; letter-spacing: 0.06em; border-radius: 3px; }
-  @media (max-width: 900px) {
-    nav { padding: 0 24px; }
-    nav .nav-links, nav .nav-cta { display: none !important; }
-    .nav-hamburger {
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 44px;
-  height: 44px;
-  padding: 10px;
-  box-sizing: content-box;
-  overflow: visible;
-  cursor: pointer;
-  z-index: 200;
-}
-    .mobile-menu { display: block; }
-  }
 
   /* UTILITIES */
-  .skip-link { position: absolute; top: -100px; left: 0; background: var(--green-500); color: var(--blue-700); padding: 12px 20px; font-size: 14px; font-weight: 700; z-index: 9999; border-radius: 0 0 4px 0; transition: top 0.2s; text-decoration: none; }
-  .skip-link:focus { top: 0; }
-  :focus-visible { outline: 2px solid var(--green-500); outline-offset: 3px; border-radius: 2px; }
-  h1 { overflow-wrap: break-word; word-break: break-word; }
-
-  /* QUIZ SHELL */
-  main { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 108px 24px 80px; }
-  .quiz-wrap { width: 100%; max-width: 700px; }
-
-  /* PROGRESS BAR */
-  .progress-bar { display: flex; gap: 6px; margin-bottom: 56px; }
-  .progress-segment { height: 2px; flex: 1; background: rgba(130,178,215,0.15); border-radius: 2px; transition: background 0.45s ease; }
-  .progress-segment.done { background: var(--green-500); }
-  .progress-segment.active { background: rgba(51,251,49,0.4); }
-
-  /* QUESTION SCREEN */
-  .q-screen { display: none; }
-  .q-screen.active { display: block; animation: fadeUp 0.38s cubic-bezier(0.16,1,0.3,1) both; }
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
-
-  .q-label { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green-500); margin-bottom: 16px; }
-  .q-text { font-family: var(--font-display); font-size: clamp(1.45rem, 3.5vw, 2.1rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.01em; margin-bottom: 12px; }
-  .q-sub { font-size: 15px; font-weight: 300; color: var(--gray-300); line-height: 1.7; margin-bottom: 36px; max-width: 520px; }
-
-  /* OPTIONS */
-  .options { display: flex; flex-direction: column; gap: 10px; }
-  .option-btn {
-    display: flex; align-items: flex-start; gap: 18px; width: 100%;
-    background: var(--blue-900); border: 1px solid rgba(130,178,215,0.1);
-    border-radius: 3px; padding: 20px 22px; cursor: pointer; text-align: left;
-    transition: border-color 0.18s, background 0.18s, transform 0.15s;
-    color: var(--gray-100); font-family: var(--font-body);
-  }
   .option-btn:hover { border-color: rgba(51,251,49,0.3); background: rgba(51,251,49,0.04); transform: translateX(3px); }
   .option-btn.selected { border-color: var(--green-500); background: rgba(51,251,49,0.07); }
   .option-letter { font-family: var(--font-display); font-size: 10px; font-weight: 700; letter-spacing: 0.12em; color: var(--green-500); flex-shrink: 0; margin-top: 3px; width: 16px; }
@@ -191,95 +176,54 @@
   .result-restart:hover { color: var(--gray-300); }
 
   /* FOOTER */
-  footer { background: var(--blue-700); padding: 36px 48px; border-top: 1px solid rgba(46,52,65,0.8); }
-  .footer-inner { display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: 0 auto; gap: 24px; }
-  .footer-logo { font-family: var(--font-display); font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray-500); }
-  .footer-copy { font-size: 12px; color: var(--gray-500); }
 
   @media (max-width: 600px) {
     .q-actions { flex-direction: column-reverse; align-items: stretch; }
     .btn-next { justify-content: center; }
     .result-actions { flex-direction: column; align-items: stretch; }
     .result-primary, .result-secondary { justify-content: center; }
-    footer { padding: 28px 24px; }
-    .footer-inner { flex-direction: column; text-align: center; }
+
+  }
+  /* ── FOOTER ── */
+  footer{background:var(--blue-700);padding:48px 48px 36px;border-top:1px solid rgba(46,52,65,0.8);}
+  .footer-inner{display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto;gap:24px;}
+  .footer-logo{font-family:var(--font-display);font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gray-500);}
+  .footer-social{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;list-style:none;}
+  .footer-social a{font-size:12px;color:var(--gray-500);letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s;}
+  .footer-social a:hover{color:var(--green-500);}
+  .footer-copy{font-size:12px;color:var(--gray-500);}
+  @media(max-width:900px){footer{padding:40px 24px 28px;}.footer-inner{flex-direction:column;gap:20px;text-align:center;}}
+  h1,h2,h3,.error-code,.page-heading{overflow-wrap:break-word;word-break:break-word;}
+  @media(max-width:480px){
+    h1{font-size:clamp(1.8rem,8vw,2.6rem)!important;}
+    h2{font-size:clamp(1.4rem,6vw,2rem)!important;}
+    .error-code{font-size:clamp(5rem,22vw,7rem)!important;}
   }
 
-/* bilingual nav */
-.nav-actions{display:flex;align-items:center;gap:14px;}
-.lang-switch{display:flex;align-items:center;gap:8px;font-family:var(--font-body);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;}
-.lang-switch span{opacity:.55;}
-.lang-switch a{color:var(--gray-300);text-decoration:none;}
-.lang-switch a:hover{color:var(--gray-100);}
-.lang-switch a.active{color:var(--green-500);}
-.mobile-lang-switch{display:none;}
-@media (max-width: 900px){
-  .nav-actions .lang-switch{display:none;}
-  .mobile-lang-switch{display:flex;justify-content:center;gap:8px;margin-top:16px;font-family:var(--font-body);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;}
-  .mobile-lang-switch span{opacity:.55;}
-  .mobile-lang-switch a{color:var(--gray-100);}
-  .mobile-lang-switch a.active{color:var(--green-500);}
-}
-
-
-
-/* mobile nav final fix */
-@media (max-width: 900px) {
-  .nav-hamburger {
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 44px;
-  height: 44px;
-  padding: 10px;
-  box-sizing: content-box;
-  overflow: visible;
-  cursor: pointer;
-  z-index: 200;
-}
-  .nav-actions, nav .nav-links, nav .nav-cta { display: none !important; }
-  .mobile-menu { display: none !important; }
-  .mobile-menu.open { display: block !important; }
-}
-
 </style>
-<!-- MailerLite Universal -->
-<script>
-    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
-    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
-    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
-    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
-    ml('account', '2252485');
-</script>
-<!-- End MailerLite Universal -->
 </head>
 <body>
-<a href="#main-content" class="skip-link">Skip to main content</a>
-
-<nav aria-label="Main navigation">
-  <a href="index.html" class="nav-logo" aria-label="Lumen and Pixel — home">
-    <img class="nav-logo-mark" src="../images/logo-mark.svg" alt="Lumen and Pixel" style="height:28px;width:auto;max-width:none;display:block;" />
+<a href="#main-content" class="skip-link">Saltar para o conteúdo principal</a>
+<nav aria-label="Navegação principal">
+  <a href="../index.html" class="nav-logo" aria-label="Lumen and Pixel — início">
+    <img class="nav-logo-mark" src="../images/logo-mark.svg" alt="Lumen and Pixel" />
   </a>
   <ul class="nav-links">
-    <li><a href="services.html">Serviços</a></li>
-    <li><a href="resources.html">Recursos</a></li>
-    <li><a href="about.html">Sobre</a></li>
+    <li><a href="services.html" >Serviços</a></li>
+    <li><a href="resources.html" >Recursos</a></li>
+    <li><a href="about.html" >Sobre</a></li>
   </ul>
   <div class="nav-actions">
     <a href="about.html#contact-form" class="nav-cta">Começar</a>
-    <div class="lang-switch" aria-label="Language selector">
-      <a href="../quiz.html" class="">EN</a>
-      <span>/</span>
-      <a href="quiz.html" class="active">PT</a>
+    <div class="lang-switch" aria-label="Seletor de idioma">
+      <a href="../quiz.html">EN</a><span>/</span><a href="quiz.html" class="active">PT</a>
     </div>
   </div>
-  <button class="nav-hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
+  <button class="nav-hamburger" id="hamburger" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="mobileMenu">
     <span></span><span></span><span></span>
   </button>
 </nav>
-
-<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation menu" aria-modal="true">
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menu de navegação" aria-modal="true">
   <ul>
     <li><a href="services.html">Serviços</a></li>
     <li><a href="resources.html">Recursos</a></li>
@@ -287,10 +231,14 @@
   </ul>
   <a href="about.html#contact-form" class="mobile-cta">Começar</a>
   <div class="mobile-lang-switch">
-    <a href="../quiz.html" class="">EN</a>
-    <span>/</span>
-    <a href="quiz.html" class="active">PT</a>
+    <a href="../quiz.html">EN</a><span>/</span><a href="quiz.html" class="active">PT</a>
   </div>
+</div>
+
+</div>
+
+</div>
+
 </div>
 
 <main id="main-content">
@@ -305,9 +253,9 @@
 
     <!-- Q1 — Gap -->
     <div class="q-screen active" id="q0">
-      <p class="q-label">Pergunta 1 de 4</p>
-      <h1 class="q-text">Qual é a maior lacuna no teu show neste momento?</h1>
-      <p class="q-sub">Pensa no que está a impedir o projeto de avançar com confiança.</p>
+      <p class="q-label">Question 1 of 4</p>
+      <h1 class="q-text">What's the biggest gap in your show right now?</h1>
+      <p class="q-sub">Think about what's keeping the project from moving forward with confidence.</p>
       <div class="options" role="group" aria-label="Select one option">
         <button class="option-btn"
           data-scores='{"SD":4,"SC":1,"SA":1,"TD":1}'
@@ -315,7 +263,7 @@
           <span class="option-letter">A</span>
           <span class="option-content">
             <span class="option-title">The concept exists but nobody can see it yet</span>
-            <span class="option-desc">Temos uma direção criativa mas ainda não existe prova visual — o cliente não aprovou e a equipa não partilha a mesma imagem.</span>
+            <span class="option-desc">We have a creative direction but no visual proof — clients haven't signed off and the team doesn't share the same picture.</span>
           </span>
         </button>
         <button class="option-btn"
@@ -349,10 +297,10 @@
       <div class="q-actions">
         <button class="btn-back" disabled aria-label="Go back">
           <svg width="12" height="10" viewBox="0 0 12 10" fill="none" aria-hidden="true"><path d="M12 5H0M4 1L0 5l4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Voltar
+          Back
         </button>
         <button class="btn-next" disabled id="next-0">
-          Seguinte
+          Next
           <svg width="12" height="10" viewBox="0 0 12 10" fill="none" aria-hidden="true"><path d="M0 5h12M8 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
       </div>
@@ -360,9 +308,9 @@
 
     <!-- Q2 — Timeline -->
     <div class="q-screen" id="q1">
-      <p class="q-label">Pergunta 2 de 4</p>
-      <h1 class="q-text">Em que fase da timeline de produção estás?</h1>
-      <p class="q-sub">Isto ajuda a perceber que versão do serviço encaixa melhor na tua situação.</p>
+      <p class="q-label">Question 2 of 4</p>
+      <h1 class="q-text">Where are you in the production timeline?</h1>
+      <p class="q-sub">This determines which version of the service fits your situation best.</p>
       <div class="options" role="group" aria-label="Select one option">
         <button class="option-btn"
           data-scores='{"SD":2,"SC":2,"SA":2,"TD":1}'
@@ -404,10 +352,10 @@
       <div class="q-actions">
         <button class="btn-back" aria-label="Go back">
           <svg width="12" height="10" viewBox="0 0 12 10" fill="none" aria-hidden="true"><path d="M12 5H0M4 1L0 5l4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Voltar
+          Back
         </button>
         <button class="btn-next" disabled id="next-1">
-          Seguinte
+          Next
           <svg width="12" height="10" viewBox="0 0 12 10" fill="none" aria-hidden="true"><path d="M0 5h12M8 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
       </div>
@@ -415,9 +363,9 @@
 
     <!-- Q3 — Team -->
     <div class="q-screen" id="q2">
-      <p class="q-label">Pergunta 3 de 4</p>
-      <h1 class="q-text">Quem mais está a tratar das decisões técnicas?</h1>
-      <p class="q-sub">Isto ajuda-nos a perceber se precisas de um parceiro para liderar ou de um especialista para reforçar algo que já está em andamento.</p>
+      <p class="q-label">Question 3 of 4</p>
+      <h1 class="q-text">Who else is handling the technical decisions?</h1>
+      <p class="q-sub">This tells us whether you need a partner to lead or a specialist to support what's already in motion.</p>
       <div class="options" role="group" aria-label="Select one option">
         <button class="option-btn"
           data-scores='{"SD":2,"SC":1,"SA":2,"TD":1}'
@@ -459,10 +407,10 @@
       <div class="q-actions">
         <button class="btn-back" aria-label="Go back">
           <svg width="12" height="10" viewBox="0 0 12 10" fill="none" aria-hidden="true"><path d="M12 5H0M4 1L0 5l4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Voltar
+          Back
         </button>
         <button class="btn-next" disabled id="next-2">
-          Seguinte
+          Next
           <svg width="12" height="10" viewBox="0 0 12 10" fill="none" aria-hidden="true"><path d="M0 5h12M8 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
       </div>
@@ -470,9 +418,9 @@
 
     <!-- Q4 — Outcome -->
     <div class="q-screen" id="q3">
-      <p class="q-label">Pergunta 4 de 4</p>
-      <h1 class="q-text">Como é que o sucesso deste projeto se traduz na prática?</h1>
-      <p class="q-sub">O resultado a que queres chegar ajuda-nos a confirmar qual o serviço que cria mais valor para ti.</p>
+      <p class="q-label">Question 4 of 4</p>
+      <h1 class="q-text">What does success look like for this project?</h1>
+      <p class="q-sub">The outcome you're aiming for helps us confirm which service creates the most value for you.</p>
       <div class="options" role="group" aria-label="Select one option">
         <button class="option-btn"
           data-scores='{"SD":3,"SC":1,"SA":1,"TD":1}'
@@ -514,10 +462,10 @@
       <div class="q-actions">
         <button class="btn-back" aria-label="Go back">
           <svg width="12" height="10" viewBox="0 0 12 10" fill="none" aria-hidden="true"><path d="M12 5H0M4 1L0 5l4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Voltar
+          Back
         </button>
         <button class="btn-next" disabled id="next-3">
-          Ver resultado
+          See my result
           <svg width="12" height="10" viewBox="0 0 12 10" fill="none" aria-hidden="true"><path d="M0 5h12M8 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
       </div>
@@ -525,7 +473,7 @@
 
     <!-- RESULT -->
     <div id="result-screen">
-      <div class="result-badge">O teu resultado</div>
+      <div class="result-badge">Your match</div>
       <h1 class="result-service" id="result-service-name"></h1>
       <p class="result-mode" id="result-mode-name"></p>
       <div class="result-divider"></div>
@@ -533,15 +481,15 @@
       <p class="result-mode-desc" id="result-mode-desc"></p>
       <div class="result-actions">
         <a class="result-primary" id="result-link-service" href="services.html">
-          Ver detalhe do serviço
+          See full service detail
           <svg width="12" height="10" viewBox="0 0 12 10" fill="none" aria-hidden="true"><path d="M0 5h12M8 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
         <a class="result-secondary" id="result-link-contact" href="about.html#contact-form">
-          Iniciar conversa
+          Start a conversation
           <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true"><path d="M1.5 9.5l8-8M9.5 1.5H3M9.5 1.5v6.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
         </a>
       </div>
-      <button class="result-restart" id="restart-btn">Recomeçar</button>
+      <button class="result-restart" id="restart-btn">Start over</button>
     </div>
 
   </div>
@@ -550,251 +498,47 @@
 <footer>
   <div class="footer-inner">
     <span class="footer-logo">Lumen and Pixel</span>
+    <ul class="footer-social">
+      <li><a href="https://www.instagram.com/lumenandpixel" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href="https://www.linkedin.com/company/lumen-and-pixel" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="legal.html#privacy">Privacidade</a></li>
+      <li><a href="legal.html#terms">Termos</a></li>
+      <li><a href="legal.html#cookies">Cookies</a></li>
+    </ul>
     <span class="footer-copy">© Lumen and Pixel 2025</span>
   </div>
 </footer>
-
 <script>
-// ─── SERVICE DATA ─────────────────────────────────────────────────────────────
-const SERVICES = {
-  SD: {
-    name: ['Show', '<em>Design</em>'],
-    anchor: '#show-design',
-    why: 'Your answers point to a gap between where the creative vision lives and where the technical reality begins. Show Design bridges that gap — we build the visual system that connects what you imagine to what can actually be built, programmed, and delivered on stage.',
-    modes: {
-      lead: {
-        name: 'Design Lead',
-        desc: 'Based on your timeline and team setup, you need someone to own the design process from concept through to handoff — not just contribute to it. We take the brief and drive it to a production-ready outcome.'
-      },
-      support: {
-        name: 'Design Support',
-        desc: 'You have a team in place and need a specialist to own a specific piece — pre-visualization, the visual system, or the technical documentation. We slot in where you need us, scoped to what the project actually requires.'
-      }
-    }
-  },
-  SC: {
-    name: ['Show Control', '<em>&amp; Automation</em>'],
-    anchor: '#show-control',
-    why: 'Your answers point to a synchronization problem — multiple systems that need to fire together but currently don\'t. Show Control & Automation gives the show a single clock that everything runs from, eliminating the manual decisions and timing risks that compound on show day.',
-    modes: {
-      lead: {
-        name: 'On-Site Programming & Operation',
-        desc: 'Given where you are in production, you need someone who can programme in the venue, adapt to last-minute changes, and operate through the show. Real-time flexibility is what your situation demands.'
-      },
-      support: {
-        name: 'Pre-Production Programming',
-        desc: 'Your timeline allows us to programme the full show file before you enter the venue. The show is ready on day one of load-in — cues, timecode maps, contingency states, and an operator briefing all handed over in advance.'
-      }
-    }
-  },
-  SA: {
-    name: ['System', '<em>Architecture</em>'],
-    anchor: '#system-architecture',
-    why: 'Your answers point to an infrastructure problem — the technical backbone of the show hasn\'t been properly designed. System Architecture defines every signal path, control network, and equipment interface before a cable is run, so the show is built on documented fact rather than assumption.',
-    modes: {
-      lead: {
-        name: 'Full Architecture',
-        desc: 'You\'re at a stage where the system can still be designed correctly from scratch. We map the complete infrastructure — signal flow, control networks, equipment specification, and documentation — delivered as a production-ready brief for your suppliers and crew.'
-      },
-      support: {
-        name: 'Audit & Review',
-        desc: 'A system exists or is being specified. We review it against your show\'s real requirements, identify the risks hiding in the gaps, and produce a clear recommendations document. The fastest way to find problems before they become show-day emergencies.'
-      }
-    }
-  },
-  TD: {
-    name: ['Technical', '<em>Direction</em>'],
-    anchor: '#technical-direction',
-    why: 'Your answers point to an accountability gap — there\'s no single person who understands both the creative intent and the technical infrastructure and has the authority to align them. Technical Direction fills that role, bridging crew, creative team, and venue so every element of the show lands as designed.',
-    modes: {
-      lead: {
-        name: 'Full Production Cycle',
-        desc: 'Your project needs technical leadership from the planning stage through to post-show wrap. We come in early — owning the technical rider, site visits, supplier briefs, and rehearsal schedule — so the show arrives at load-in already aligned.'
-      },
-      support: {
-        name: 'Show-Day Direction',
-        desc: 'Pre-production is handled. What you need is experienced technical authority in the room for load-in, rehearsal, and the live show — someone who can make decisions fast and keep everything running to the design.'
-      }
-    }
-  }
-};
 
-// ─── STATE ────────────────────────────────────────────────────────────────────
-const TOTAL_Q = 4;
-const SCORE_KEYS = ['SD', 'SC', 'SA', 'TD'];
-let currentQ = 0;
-const answers = new Array(TOTAL_Q).fill(null);
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', '2252485');
 
-// ─── PROGRESS ─────────────────────────────────────────────────────────────────
-function updateProgress(qIndex) {
-  for (let i = 0; i < TOTAL_Q; i++) {
-    const seg = document.getElementById('seg-' + i);
-    if (i < qIndex)      seg.className = 'progress-segment done';
-    else if (i === qIndex) seg.className = 'progress-segment active';
-    else                  seg.className = 'progress-segment';
-  }
-  const bar = document.getElementById('progress-bar');
-  bar.setAttribute('aria-valuenow', qIndex + 1);
-}
 
-// ─── SHOW SCREEN ──────────────────────────────────────────────────────────────
-function showScreen(index) {
-  document.querySelectorAll('.q-screen').forEach(function(s) { s.classList.remove('active'); });
-  document.getElementById('result-screen').classList.remove('active');
 
-  const screen = document.getElementById('q' + index);
-  if (!screen) return;
-  screen.classList.add('active');
-
-  // Restore previously selected option
-  screen.querySelectorAll('.option-btn').forEach(function(btn) { btn.classList.remove('selected'); });
-  if (answers[index] && answers[index].el) {
-    answers[index].el.classList.add('selected');
-    document.getElementById('next-' + index).disabled = false;
-  }
-
-  updateProgress(index);
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function showResult() {
-  document.querySelectorAll('.q-screen').forEach(function(s) { s.classList.remove('active'); });
-  const result = document.getElementById('result-screen');
-  result.classList.add('active');
-  for (let i = 0; i < TOTAL_Q; i++) {
-    document.getElementById('seg-' + i).className = 'progress-segment done';
-  }
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-  renderResult();
-}
-
-// ─── OPTION SELECTION ─────────────────────────────────────────────────────────
-document.querySelectorAll('.q-screen').forEach(function(screen, qIndex) {
-  screen.querySelectorAll('.option-btn').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      screen.querySelectorAll('.option-btn').forEach(function(b) { b.classList.remove('selected'); });
-      btn.classList.add('selected');
-      answers[qIndex] = {
-        scores: JSON.parse(btn.dataset.scores),
-        engage: JSON.parse(btn.dataset.engage),
-        el: btn
-      };
-      document.getElementById('next-' + qIndex).disabled = false;
-    });
+(function(){
+  var h=document.getElementById('hamburger');
+  var m=document.getElementById('mobileMenu');
+  if(!h||!m)return;
+  h.addEventListener('click',function(){
+    var open=m.classList.toggle('open');
+    h.classList.toggle('open');
+    h.setAttribute('aria-expanded',open?'true':'false');
+    h.setAttribute('aria-label',open?'Close navigation menu':'Open navigation menu');
+    document.body.style.overflow=open?'hidden':'';
   });
-});
-
-// ─── NEXT / BACK ──────────────────────────────────────────────────────────────
-for (let i = 0; i < TOTAL_Q; i++) {
-  (function(idx) {
-    var nextBtn = document.getElementById('next-' + idx);
-    if (nextBtn) {
-      nextBtn.addEventListener('click', function() {
-        if (idx < TOTAL_Q - 1) { currentQ = idx + 1; showScreen(currentQ); }
-        else { showResult(); }
-      });
-    }
-  })(i);
-}
-
-document.querySelectorAll('.btn-back').forEach(function(btn, i) {
-  btn.addEventListener('click', function() {
-    if (currentQ > 0) { currentQ--; showScreen(currentQ); }
-  });
-});
-
-// ─── SCORING ──────────────────────────────────────────────────────────────────
-function computeResult() {
-  var totals = { SD: 0, SC: 0, SA: 0, TD: 0 };
-  var engage = { earlyStage: 0, wantsLead: 0 };
-
-  answers.forEach(function(a) {
-    if (!a) return;
-    SCORE_KEYS.forEach(function(k) { totals[k] += (a.scores[k] || 0); });
-    Object.keys(engage).forEach(function(k) { engage[k] += (a.engage[k] || 0); });
-  });
-
-  // Winning service = highest score; ties broken by SCORE_KEYS order
-  var winService = SCORE_KEYS.reduce(function(a, b) { return totals[a] >= totals[b] ? a : b; });
-
-  // Engagement signals
-  // earlyStage >= 3 = early-stage project
-  // wantsLead >= 4  = wants a partner to lead, not just support
-  var isEarly = engage.earlyStage >= 3;
-  var isLead  = engage.wantsLead  >= 4;
-
-  // Mode resolution per service:
-  // SD:   lead -> Design Lead          | support -> Design Support
-  // SC:   early -> Pre-Prod Prog (sup) | late -> On-Site (lead)
-  // SA:   early -> Full Arch (lead)    | late -> Audit (support)
-  // TD:   early OR lead -> Full Cycle  | else -> Show-Day
-  var modeKey;
-  if (winService === 'SD') {
-    modeKey = isLead ? 'lead' : 'support';
-  } else if (winService === 'SC') {
-    modeKey = isEarly ? 'support' : 'lead';
-  } else if (winService === 'SA') {
-    modeKey = isEarly ? 'lead' : 'support';
-  } else {
-    modeKey = (isEarly || isLead) ? 'lead' : 'support';
-  }
-
-  return { winService: winService, modeKey: modeKey };
-}
-
-// ─── RENDER RESULT ────────────────────────────────────────────────────────────
-function renderResult() {
-  var r = computeResult();
-  var svc = SERVICES[r.winService];
-  var mode = svc.modes[r.modeKey];
-
-  // Service name with italic second line
-  document.getElementById('result-service-name').innerHTML =
-    svc.name[0] + '<br>' + svc.name[1];
-
-  document.getElementById('result-mode-name').textContent = '\u2192 ' + mode.name;
-  document.getElementById('result-why').textContent = svc.why;
-  document.getElementById('result-mode-desc').textContent = mode.desc;
-
-  document.getElementById('result-link-service').href = 'services.html' + svc.anchor;
-  document.getElementById('result-link-contact').href =
-    'about.html?service=' + encodeURIComponent(r.winService) + '#contact-form';
-}
-
-// ─── RESTART ──────────────────────────────────────────────────────────────────
-document.getElementById('restart-btn').addEventListener('click', function() {
-  answers.fill(null);
-  currentQ = 0;
-  document.querySelectorAll('.option-btn').forEach(function(btn) { btn.classList.remove('selected'); });
-  for (var i = 0; i < TOTAL_Q; i++) {
-    var nb = document.getElementById('next-' + i);
-    if (nb) nb.disabled = true;
-  }
-  showScreen(0);
-});
-
-// ─── MOBILE MENU ──────────────────────────────────────────────────────────────
-(function() {
-  var hamburger = document.getElementById('hamburger');
-  var mobileMenu = document.getElementById('mobileMenu');
-  if (!hamburger || !mobileMenu) return;
-  hamburger.addEventListener('click', function() {
-    var isOpen = mobileMenu.classList.toggle('open');
-    hamburger.classList.toggle('open');
-    hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    hamburger.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
-    document.body.style.overflow = isOpen ? 'hidden' : '';
-  });
-  mobileMenu.querySelectorAll('a').forEach(function(link) {
-    link.addEventListener('click', function() {
-      hamburger.classList.remove('open');
-      mobileMenu.classList.remove('open');
-      hamburger.setAttribute('aria-expanded', 'false');
-      hamburger.setAttribute('aria-label', 'Open navigation menu');
-      document.body.style.overflow = '';
+  m.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){
+      m.classList.remove('open');h.classList.remove('open');
+      h.setAttribute('aria-expanded','false');
+      h.setAttribute('aria-label','Open navigation menu');
+      document.body.style.overflow='';
     });
   });
 })();
+
 </script>
 </body>
 </html>

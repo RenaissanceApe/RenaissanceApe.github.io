@@ -1,73 +1,109 @@
 <!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="pt">
 <head>
 <meta charset="UTF-8" />
-<meta name="description" content="Serviços Lumen and Pixel — Show Design, Show Control & Automation, System Architecture e Technical Direction para eventos ao vivo." />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Serviços da Lumen and Pixel — Design de Espetáculo, Controlo de Cena e Automação, Arquitetura de Sistemas e Direção Técnica." />
 <title>Serviços — Lumen and Pixel</title>
-  <link rel="icon" href="../images/favicon.svg" type="image/svg+xml" />
-  <link rel="apple-touch-icon" href="../images/og-image.png" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Lumen and Pixel" />
-  <meta property="og:title" content="Services — Lumen and Pixel" />
-  <meta property="og:description" content="Serviços Lumen and Pixel — Show Design, Show Control & Automation, System Architecture e Technical Direction para eventos ao vivo." />
-  <meta property="og:url" content="https://www.lumenandpixel.com/pt/services.html" />
-  <meta property="og:image" content="https://www.lumenandpixel.com/images/og-image.png" />
-  <meta property="og:image:alt" content="Lumen and Pixel logo" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Services — Lumen and Pixel" />
-  <meta name="twitter:description" content="Serviços Lumen and Pixel — Show Design, Show Control & Automation, System Architecture e Technical Direction para eventos ao vivo." />
-  <meta name="twitter:image" content="https://www.lumenandpixel.com/images/og-image.png" />
-
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="../images/og-image.png" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Lumen and Pixel" />
+<meta property="og:title" content="Serviços — Lumen and Pixel" />
+<meta property="og:description" content="Serviços da Lumen and Pixel — Design de Espetáculo, Controlo de Cena e Automação, Arquitetura de Sistemas e Direção Técnica." />
+<meta property="og:url" content="https://www.lumenandpixel.com/pt/services.html" />
+<meta property="og:image" content="https://www.lumenandpixel.com/images/og-image.png" />
+<meta property="og:image:alt" content="Lumen and Pixel" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Serviços — Lumen and Pixel" />
+<meta name="twitter:description" content="Serviços da Lumen and Pixel — Design de Espetáculo, Controlo de Cena e Automação, Arquitetura de Sistemas e Direção Técnica." />
+<meta name="twitter:image" content="https://www.lumenandpixel.com/images/og-image.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<!-- MailerLite Universal -->
+<script>
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', '2252485');
+</script>
+<!-- End MailerLite Universal -->
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   :root {
-    --blue-100: #dfe9f0;
-    --blue-300: #82b2d7;
-    --blue-500: #16598c;
-    --blue-700: #021829;
-    --blue-900: #00080e;
-    --green-300: #7ef67d;
-    --green-500: #33fb31;
-    --green-700: #576e20;
-    --gray-100: #f0f1f3;
-    --gray-300: #b8bec8;
-    --gray-500: #6b7485;
-    --gray-700: #2e3441;
-    --font-display: 'Space Mono', monospace;
-    --font-body:    'Nunito', sans-serif;
+    --blue-100:#dfe9f0; --blue-300:#82b2d7; --blue-500:#16598c;
+    --blue-700:#021829; --blue-900:#00080e;
+    --green-100:#dcf8dc; --green-300:#7ef67d; --green-500:#33fb31;
+    --green-700:#576e20; --green-900:#273012;
+    --gray-100:#f0f1f3; --gray-300:#b8bec8; --gray-500:#6b7485;
+    --gray-700:#2e3441; --gray-900:#0f141c;
+    --font-display:'Space Mono',monospace;
+    --font-body:'Nunito',sans-serif;
   }
-
-  html { scroll-behavior: smooth; }
-  body { padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right); background: var(--blue-700); color: var(--gray-100); font-family: var(--font-body); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
-  a { color: inherit; text-decoration: none; }
-
+  html{scroll-behavior:smooth;}
+  body{padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right);background:var(--blue-700);color:var(--gray-100);font-family:var(--font-body);font-size:16px;line-height:1.6;overflow-x:hidden;}
+  a{color:inherit;text-decoration:none;}
   /* ── NAV ── */
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 max(24px, calc((100vw - 1200px) / 2 + 48px)); height: 68px; background: rgba(223,233,240,0.97); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(46,52,65,0.6); }
-  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #021829; }
-  .nav-logo-mark { width: auto; height: 28px; max-width: none; flex-shrink: 0; display: block; object-fit: contain; }
-  .nav-logo-text { display: flex; flex-direction: column; gap: 0; line-height: 1; }
-  .nav-logo-top { font-family: var(--font-display); font-size: 11px; font-weight: 700; letter-spacing: 0.16em; color: #021829; }
-  .nav-logo-btm { font-family: var(--font-display); font-size: 8px; font-weight: 400; letter-spacing: 0.14em; color: var(--blue-500); }
-  .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
-  .nav-links a { font-size: 13px; font-weight: 700; letter-spacing: 0.04em; color: rgba(15,25,45,0.92); transition: color 0.2s; }
-  .nav-links a:hover { color: var(--blue-700); }
-  .nav-links a.active, .nav-links a[aria-current="page"] { color: var(--green-500); }
-  nav .nav-cta { font-size: 13px; font-weight: 500; letter-spacing: 0.06em; padding: 9px 22px; background: var(--green-500); color: var(--blue-700); border-radius: 3px; transition: background 0.2s; display: inline-flex; align-items: center; min-height: 44px; }
-  nav .nav-cta:hover { background: var(--green-300); }
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 max(24px,calc((100vw - 1200px)/2 + 48px));height:68px;background:rgba(223,233,240,0.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(46,52,65,0.6);}
+  .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;}
+  .nav-logo-mark{height:28px;width:auto;display:block;}
+  .nav-logo-text{display:flex;flex-direction:column;gap:0;line-height:1;}
+  .nav-logo-top{font-family:var(--font-display);font-size:11px;font-weight:700;letter-spacing:0.16em;color:#021829;}
+  .nav-logo-btm{font-family:var(--font-display);font-size:8px;font-weight:400;letter-spacing:0.14em;color:var(--blue-500);}
+  .nav-links{display:flex;align-items:center;gap:36px;list-style:none;margin:0;padding:0;}
+  .nav-links a{font-size:13px;font-weight:700;letter-spacing:0.04em;color:rgba(15,25,45,0.78);transition:color 0.2s;}
+  .nav-links a:hover{color:var(--blue-700);}
+  .nav-links a.active,.nav-links a[aria-current="page"]{color:var(--green-700);}
+  .nav-actions{display:flex;align-items:center;gap:16px;}
+  nav .nav-cta{font-size:13px;font-weight:600;letter-spacing:0.06em;padding:9px 22px;background:var(--green-500);color:var(--blue-700);border-radius:3px;text-decoration:none;display:inline-flex;align-items:center;min-height:44px;transition:background 0.2s;}
+  nav .nav-cta:hover{background:var(--green-300);}
+  .lang-switch{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;white-space:nowrap;}
+  .lang-switch span{opacity:0.45;color:rgba(15,25,45,0.6);}
+  .lang-switch a{color:rgba(15,25,45,0.62);text-decoration:none;transition:color 0.2s;}
+  .lang-switch a:hover{color:var(--blue-700);}
+  .lang-switch a.active{color:var(--green-700);}
+  /* Hamburger — hidden on desktop */
+  .nav-hamburger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:44px;height:44px;padding:0;background:none;border:none;cursor:pointer;flex-shrink:0;z-index:200;}
+  .nav-hamburger span{display:block;width:22px;height:1.5px;background:var(--blue-700);border-radius:1px;transition:transform 0.3s,opacity 0.3s;transform-origin:center;}
+  .nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+  .nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+  .nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+  /* Mobile menu — hidden until .open toggled by JS */
+  .mobile-menu{display:none;position:fixed;top:68px;left:0;right:0;background:rgba(223,233,240,0.99);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);z-index:99;padding:32px 24px 40px;border-bottom:1px solid rgba(46,52,65,0.9);transform:translateY(-8px);opacity:0;transition:opacity 0.25s ease,transform 0.25s ease;pointer-events:none;}
+  .mobile-menu.open{opacity:1;transform:translateY(0);pointer-events:all;}
+  .mobile-menu ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;}
+  .mobile-menu ul a{display:block;font-family:var(--font-display);font-size:1.5rem;font-weight:700;letter-spacing:-0.01em;color:rgba(15,25,45,0.78);padding:14px 0;border-bottom:1px solid rgba(46,52,65,0.6);text-decoration:none;transition:color 0.2s;}
+  .mobile-menu ul a:hover{color:var(--blue-700);}
+  .mobile-menu .mobile-cta{display:inline-block;margin-top:28px;padding:14px 32px;background:var(--green-500);color:var(--blue-700);font-size:14px;font-weight:600;letter-spacing:0.06em;border-radius:3px;text-decoration:none;}
+  .mobile-lang-switch{display:none;justify-content:center;gap:8px;margin-top:16px;font-size:12px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;}
+  .mobile-lang-switch span{opacity:0.45;}
+  .mobile-lang-switch a{color:rgba(15,25,45,0.7);text-decoration:none;}
+  .mobile-lang-switch a.active{color:var(--green-700);}
+  /* Skip + focus */
+  .skip-link{position:absolute;top:-100px;left:0;background:var(--green-500);color:var(--blue-700);padding:12px 20px;font-size:14px;font-weight:700;z-index:9999;border-radius:0 0 4px 0;transition:top 0.2s;text-decoration:none;}
+  .skip-link:focus{top:0;}
+  :focus-visible{outline:2px solid var(--green-500);outline-offset:3px;border-radius:2px;}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+  /* Responsive */
+  @media(max-width:900px){
+    nav{padding:0 24px;}
+    .nav-links{display:none;}
+    .nav-actions{display:none;}
+    .nav-hamburger{display:flex;}
+    .mobile-menu{display:block;}
+    .mobile-lang-switch{display:flex;}
+  }
+nav
+
+  nav
 
   /* ── UTILITIES ── */
   .section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green-500); margin-bottom: 16px; }
-  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
-  .reveal.visible { opacity: 1; transform: none; }
-  .skip-link { position: absolute; top: -100px; left: 0; background: var(--green-500); color: var(--blue-700); padding: 12px 20px; font-size: 14px; font-weight: 700; z-index: 9999; border-radius: 0 0 4px 0; transition: top 0.2s; text-decoration: none; }
-  .skip-link:focus { top: 0; }
-  :focus-visible { outline: 2px solid var(--green-500); outline-offset: 3px; border-radius: 2px; }
+
   h1, h2, h3 { overflow-wrap: break-word; word-break: break-word; }
-  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
   /* ── HERO ── */
   .services-hero { padding: 168px 48px 80px; max-width: 1200px; margin: 0 auto; }
@@ -113,7 +149,7 @@
   details.sub-accordion[open] .sub-accordion-icon { border-color: var(--green-500); background: rgba(51,251,49,0.06); }
   details.sub-accordion[open] .sub-accordion-icon::before { background: var(--green-500); }
   details.sub-accordion[open] .sub-accordion-icon::after { background: var(--green-500); transform: rotate(90deg) scaleY(0); opacity: 0; }
-  .sub-accordion-body { padding-bottom: 36px; animation: subOpen 0.4s cubic-bezier(0.16,1,0.3,1) both; }
+  .sub-accordion-
   @keyframes subOpen { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
   .sub-accordion-body p { font-size: 15px; font-weight: 300; color: var(--gray-300); line-height: 1.8; margin-bottom: 16px; max-width: 720px; }
 
@@ -154,46 +190,7 @@
   .cta-button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 14px 32px; background: var(--green-500); color: var(--blue-700); border-radius: 3px; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; transition: background 0.2s, transform 0.15s; }
   .cta-button:hover { background: var(--green-300); transform: translateY(-1px); }
 
-  /* ── FOOTER ── */
-  footer { background: var(--blue-700); padding: 48px 48px 36px; border-top: 1px solid rgba(46,52,65,0.8); }
-  .footer-inner { display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: 0 auto; gap: 24px; }
-  .footer-logo { font-family: var(--font-display); font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray-500); }
-  .footer-social { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; list-style: none; }
-  .footer-social a { font-size: 12px; color: var(--gray-500); letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
-  .footer-social a:hover { color: var(--green-500); }
-  .footer-copy { font-size: 12px; color: var(--gray-500); }
-
   /* ── MOBILE MENU ── */
-  .nav-hamburger {
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 44px;
-  height: 44px;
-  padding: 10px;
-  box-sizing: content-box;
-  overflow: visible;
-  cursor: pointer;
-  z-index: 200;
-}
-  .nav-hamburger span {
-  display: block;
-  width: 22px;
-  height: 2px;
-  background: var(--blue-700);
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  transform-origin: center;
-}
-  .nav-hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
-  .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-  .nav-hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
-  .mobile-menu { display: none; position: fixed; top: 68px; left: 0; right: 0; background: rgba(223,233,240,0.99); backdrop-filter: blur(20px); z-index: 99; padding: 32px 24px 40px; border-bottom: 1px solid rgba(46,52,65,0.9); transform: translateY(-8px); opacity: 0; transition: opacity 0.25s ease, transform 0.25s ease; pointer-events: none; }
-  .mobile-menu.open { opacity: 1; transform: translateY(0); pointer-events: all; }
-  .mobile-menu ul { list-style: none; display: flex; flex-direction: column; }
-  .mobile-menu ul a { display: block; font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; letter-spacing: -0.01em; color: rgba(15,25,45,0.78); padding: 14px 0; border-bottom: 1px solid rgba(46,52,65,0.6); transition: color 0.2s; }
-  .mobile-menu ul a:hover { color: var(--blue-700); }
-  .mobile-menu .mobile-cta { display: inline-block; margin-top: 28px; padding: 14px 32px; background: var(--green-500); color: var(--blue-700); font-family: var(--font-body); font-size: 14px; font-weight: 600; letter-spacing: 0.06em; border-radius: 3px; }
 
   /* ── RESPONSIVE ── */
   @media (max-width: 1024px) {
@@ -201,22 +198,9 @@
     .engage-box { grid-template-columns: 1fr; }
   }
   @media (max-width: 900px) {
-    nav { padding: 0 24px; }
-    nav .nav-links, nav .nav-cta { display: none !important; }
-    .nav-hamburger {
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 44px;
-  height: 44px;
-  padding: 10px;
-  box-sizing: content-box;
-  overflow: visible;
-  cursor: pointer;
-  z-index: 200;
-}
-    .mobile-menu { display: block; }
+
+    nav
+
     .services-hero { padding: 120px 24px 60px; }
     .services-hero h1 { font-size: clamp(1.8rem, 7vw, 2.8rem); }
     .service-tabs-inner { padding: 0 24px; }
@@ -226,8 +210,7 @@
     .maturity-row { grid-template-columns: 1fr; }
     .engage-box { grid-template-columns: 1fr; }
     .services-cta { padding: 72px 24px; }
-    footer { padding: 40px 24px 28px; }
-    .footer-inner { flex-direction: column; text-align: center; }
+
     .data-table, .data-table thead, .data-table tbody, .data-table tr, .data-table th, .data-table td { display: block; width: 100%; }
     .data-table thead { display: none; }
     .data-table tbody tr { background: var(--blue-900); border-radius: 3px; padding: 20px 20px 16px; margin-bottom: 8px; border-bottom: none; }
@@ -240,82 +223,60 @@
     h1 { font-size: clamp(1.8rem, 8vw, 2.6rem) !important; }
     h2 { font-size: clamp(1.4rem, 6vw, 2rem) !important; }
   }
-
-/* bilingual nav */
-.nav-actions{display:flex;align-items:center;gap:14px;}
-.lang-switch{display:flex;align-items:center;gap:8px;font-family:var(--font-body);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;}
-.lang-switch span{opacity:.55;}
-.lang-switch a{color:var(--gray-300);text-decoration:none;}
-.lang-switch a:hover{color:var(--gray-100);}
-.lang-switch a.active{color:var(--green-500);}
-.mobile-lang-switch{display:none;}
-@media (max-width: 900px){
-  .nav-actions .lang-switch{display:none;}
-  .mobile-lang-switch{display:flex;justify-content:center;gap:8px;margin-top:16px;font-family:var(--font-body);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;}
-  .mobile-lang-switch span{opacity:.55;}
-  .mobile-lang-switch a{color:var(--gray-100);}
-  .mobile-lang-switch a.active{color:var(--green-500);}
-}
-
-
-
-/* mobile nav final fix */
-@media (max-width: 900px) {
-  .nav-hamburger {
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 44px;
-  height: 44px;
-  padding: 10px;
-  box-sizing: content-box;
-  overflow: visible;
-  cursor: pointer;
-  z-index: 200;
-}
-  .nav-actions, nav .nav-links, nav .nav-cta { display: none !important; }
-  .mobile-menu { display: none !important; }
-  .mobile-menu.open { display: block !important; }
-}
+  /* ── FOOTER ── */
+  footer{background:var(--blue-700);padding:48px 48px 36px;border-top:1px solid rgba(46,52,65,0.8);}
+  .footer-inner{display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto;gap:24px;}
+  .footer-logo{font-family:var(--font-display);font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gray-500);}
+  .footer-social{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;list-style:none;}
+  .footer-social a{font-size:12px;color:var(--gray-500);letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s;}
+  .footer-social a:hover{color:var(--green-500);}
+  .footer-copy{font-size:12px;color:var(--gray-500);}
+  @media(max-width:900px){footer{padding:40px 24px 28px;}.footer-inner{flex-direction:column;gap:20px;text-align:center;}}
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s cubic-bezier(0.16,1,0.3,1),transform 0.7s cubic-bezier(0.16,1,0.3,1);}
+  .reveal.visible{opacity:1;transform:none;}
+  h1,h2,h3,.error-code,.page-heading{overflow-wrap:break-word;word-break:break-word;}
+  @media(max-width:1024px){.maturity-row{grid-template-columns:repeat(2,1fr);}.engage-box{grid-template-columns:1fr;}}
+  @media(max-width:900px){
+    .services-hero{padding:120px 24px 60px;}.services-hero h1{font-size:clamp(1.8rem,7vw,2.8rem);}
+    .service-tabs-inner{padding:0 24px;}.service-section{padding:72px 24px;}
+    .service-header{grid-template-columns:1fr;gap:28px;}.quadrant-grid{grid-template-columns:1fr;}
+    .maturity-row{grid-template-columns:1fr;}.engage-box{grid-template-columns:1fr;}
+    .services-cta{padding:72px 24px;}
+    .data-table,.data-table thead,.data-table tbody,.data-table tr,.data-table th,.data-table td{display:block;width:100%;}
+    .data-table thead{display:none;}.data-table tbody tr{background:var(--blue-900);border-radius:3px;padding:20px 20px 16px;margin-bottom:8px;border-bottom:none;}
+    .data-table td{padding:0;border-bottom:none;line-height:1.6;}.data-table td:first-child{font-family:var(--font-display);font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--green-500);white-space:normal;margin-bottom:8px;}
+    .data-table td:nth-child(2){font-size:14px;color:var(--gray-100);margin-bottom:8px;}.data-table td:nth-child(3){font-size:13px;color:var(--gray-300);padding-top:6px;border-top:1px solid rgba(46,52,65,0.6);margin-top:4px;}
+  }
+  @media(max-width:480px){
+    h1{font-size:clamp(1.8rem,8vw,2.6rem)!important;}
+    h2{font-size:clamp(1.4rem,6vw,2rem)!important;}
+    .error-code{font-size:clamp(5rem,22vw,7rem)!important;}
+  }
 
 </style>
-<!-- MailerLite Universal -->
-<script>
-    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
-    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
-    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
-    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
-    ml('account', '2252485');
-</script>
-<!-- End MailerLite Universal -->
 </head>
 <body>
-<a href="#main-content" class="skip-link">Skip to main content</a>
-
-<nav aria-label="Main navigation">
-  <a href="index.html" class="nav-logo" aria-label="Lumen and Pixel — home">
-    <img class="nav-logo-mark" src="../images/logo-mark.svg" alt="Lumen and Pixel" style="height:28px;width:auto;max-width:none;display:block;" />
+<a href="#main-content" class="skip-link">Saltar para o conteúdo principal</a>
+<nav aria-label="Navegação principal">
+  <a href="../index.html" class="nav-logo" aria-label="Lumen and Pixel — início">
+    <img class="nav-logo-mark" src="../images/logo-mark.svg" alt="Lumen and Pixel" />
   </a>
   <ul class="nav-links">
-    <li><a href="services.html" class="active" aria-current="page">Serviços</a></li>
-    <li><a href="resources.html">Recursos</a></li>
-    <li><a href="about.html">Sobre</a></li>
+    <li><a href="services.html" class="active" aria-current="page" >Serviços</a></li>
+    <li><a href="resources.html" >Recursos</a></li>
+    <li><a href="about.html" >Sobre</a></li>
   </ul>
   <div class="nav-actions">
     <a href="about.html#contact-form" class="nav-cta">Começar</a>
-    <div class="lang-switch" aria-label="Language selector">
-      <a href="../services.html" class="">EN</a>
-      <span>/</span>
-      <a href="services.html" class="active">PT</a>
+    <div class="lang-switch" aria-label="Seletor de idioma">
+      <a href="../services.html">EN</a><span>/</span><a href="services.html" class="active">PT</a>
     </div>
   </div>
-  <button class="nav-hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
+  <button class="nav-hamburger" id="hamburger" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="mobileMenu">
     <span></span><span></span><span></span>
   </button>
 </nav>
-
-<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation menu" aria-modal="true">
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menu de navegação" aria-modal="true">
   <ul>
     <li><a href="services.html">Serviços</a></li>
     <li><a href="resources.html">Recursos</a></li>
@@ -323,17 +284,16 @@
   </ul>
   <a href="about.html#contact-form" class="mobile-cta">Começar</a>
   <div class="mobile-lang-switch">
-    <a href="../services.html" class="">EN</a>
-    <span>/</span>
-    <a href="services.html" class="active">PT</a>
+    <a href="../services.html">EN</a><span>/</span><a href="services.html" class="active">PT</a>
   </div>
 </div>
+
 </div>
 
 <div class="services-hero reveal" id="main-content">
-  <p class="section-label">Serviços</p>
-  <h1>Desenhamos e controlamos a forma como os sistemas visuais <em>se comportam</em> em eventos ao vivo.</h1>
-  <p>Do primeiro conceito ao cue final — ligamos intenção criativa e execução técnica para que cada sistema performe exatamente como foi desenhado.</p>
+  <p class="section-label">Services</p>
+  <h1>We design and control how visual systems <em>behave</em> in live events.</h1>
+  <p>From first concept to final cue — we bridge creative intent and technical execution so every system performs exactly as designed.</p>
 </div>
 
 <div class="service-tabs">
@@ -352,7 +312,7 @@
 <div class="service-section" id="show-design">
   <div class="service-header">
     <div class="service-header-text reveal">
-      <p class="section-label">Serviço 01</p>
+      <p class="section-label">Service 01</p>
       <h2>Show<br><em>Design</em></h2>
       <p class="lead">We translate creative ambition into technically executable systems — giving every idea a clear path from vision to stage.</p>
     </div>
@@ -362,8 +322,8 @@
   </div>
 
   <div class="service-intro">
-    <h3>Onde o design encontra a realidade</h3>
-    <p>Most shows fail before they begin — not because of weak creative, but because the creative was never grounded in what the technology can actually do. Show Design closes that gap. We take your concept and stress-test it against the physics of the venue, the constraints of the gear, and the demands of the schedule. O resultado é um design não só bonito, mas executável — um show que a equipa consegue montar, que o sistema consegue correr e que o público consegue sentir.</p>
+    <h3>Where design meets reality</h3>
+    <p>Most shows fail before they begin — not because of weak creative, but because the creative was never grounded in what the technology can actually do. Show Design closes that gap. We take your concept and stress-test it against the physics of the venue, the constraints of the gear, and the demands of the schedule. What comes out is a design that is not only beautiful but executable — a show that the crew can build, the system can run, and the audience will feel.</p>
     <p>Pre-visualization is embedded in this process: we model the space in 3D, program lighting looks, map the LED surfaces, and validate the visual language before anything touches the real world. Clients get sign-off on exactly what they will see. Teams get a shared reference that removes ambiguity. Shows get built right the first time.</p>
   </div>
 
@@ -371,12 +331,12 @@
 
     <details class="sub-accordion">
       <summary>
-        <span class="sub-accordion-label">Onde intervimos</span>
+        <span class="sub-accordion-label">Where we intervene</span>
         <span class="sub-accordion-icon" aria-hidden="true"></span>
       </summary>
       <div class="sub-accordion-body">
         <table class="data-table">
-          <thead><tr><th>Situação</th><th>O que ouvimos</th><th>O que fazemos</th></tr></thead>
+          <thead><tr><th>Situation</th><th>What we hear</th><th>What we do</th></tr></thead>
           <tbody>
             <tr><td>Concept to Brief</td><td><em>"We have a feeling for the show but no technical brief."</em></td><td>We translate the creative vision into a structured design document — surfaces, systems, interactions, and intent.</td></tr>
             <tr><td>Client Approval</td><td><em>"My client can't read a technical plot — how do I get sign-off?"</em></td><td>Photorealistic 3D renders and interactive fly-throughs turn technical language into experiences the client can see and approve.</td></tr>
@@ -390,7 +350,7 @@
 
     <details class="sub-accordion">
       <summary>
-        <span class="sub-accordion-label">Fases de design</span>
+        <span class="sub-accordion-label">Design phases</span>
         <span class="sub-accordion-icon" aria-hidden="true"></span>
       </summary>
       <div class="sub-accordion-body">
@@ -405,7 +365,7 @@
 
     <details class="sub-accordion">
       <summary>
-        <span class="sub-accordion-label">O que está incluído</span>
+        <span class="sub-accordion-label">What's included</span>
         <span class="sub-accordion-icon" aria-hidden="true"></span>
       </summary>
       <div class="sub-accordion-body">
@@ -421,7 +381,7 @@
   </div>
 
   <div class="service-engage">
-    <h3>Duas formas de colaborar</h3>
+    <h3>Two ways to engage</h3>
     <div class="engage-box">
       <div class="engage-option"><h4>Design Lead</h4><p>We lead the visual and technical design of your show from concept through to handoff. You bring the creative ambition — we translate it into a system that can be built, programmed, and run.</p></div>
       <div class="engage-option"><h4>Design Support</h4><p>You have a production team already — we come in as the specialist who owns the pre-viz, the visual system, or the technical documentation. Scoped to what you need, not the whole service.</p></div>
@@ -436,7 +396,7 @@
 <div class="service-section" id="show-control">
   <div class="service-header">
     <div class="service-header-text reveal">
-      <p class="section-label">Serviço 02</p>
+      <p class="section-label">Service 02</p>
       <h2>Show Control<br><em>&amp; Automation</em></h2>
       <p class="lead">We synchronize lighting, video, and effects into one unified system — so the show runs with precision, not luck.</p>
     </div>
@@ -455,12 +415,12 @@
 
     <details class="sub-accordion">
       <summary>
-        <span class="sub-accordion-label">Onde intervimos</span>
+        <span class="sub-accordion-label">Where we intervene</span>
         <span class="sub-accordion-icon" aria-hidden="true"></span>
       </summary>
       <div class="sub-accordion-body">
         <table class="data-table">
-          <thead><tr><th>Situação</th><th>O que ouvimos</th><th>O que fazemos</th></tr></thead>
+          <thead><tr><th>Situation</th><th>What we hear</th><th>What we do</th></tr></thead>
           <tbody>
             <tr><td>Multi-System Sync</td><td><em>"Lighting, video, and audio all need to hit the same beat — how do we sync them?"</em></td><td>We tie every system to a single timecode clock. One trigger, everything moves together.</td></tr>
             <tr><td>Repeatability</td><td><em>"We're running this five nights in a row — how do we make every show identical?"</em></td><td>A programmed show file fires every cue at exactly the same moment, every performance.</td></tr>
@@ -505,7 +465,7 @@
   </div>
 
   <div class="service-engage">
-    <h3>Duas formas de colaborar</h3>
+    <h3>Two ways to engage</h3>
     <div class="engage-box">
       <div class="engage-option"><h4>Pre-Production Programming</h4><p>We program the full show file — cues, timecode maps, contingency states, and operator documentation — and hand it off before you enter the venue. The show is ready on day one of load-in.</p></div>
       <div class="engage-option"><h4>On-Site Programming &amp; Operation</h4><p>We program in the venue during load-in, adapt to last-minute changes, and operate the system through the show. The right choice for complex productions where flexibility matters as much as precision.</p></div>
@@ -520,7 +480,7 @@
 <div class="service-section" id="system-architecture">
   <div class="service-header">
     <div class="service-header-text reveal">
-      <p class="section-label">Serviço 03</p>
+      <p class="section-label">Service 03</p>
       <h2>System<br><em>Architecture</em></h2>
       <p class="lead">We define the technical backbone — signal flow, equipment topology, and integration logic — before a single cable is run.</p>
     </div>
@@ -539,12 +499,12 @@
 
     <details class="sub-accordion">
       <summary>
-        <span class="sub-accordion-label">Onde intervimos</span>
+        <span class="sub-accordion-label">Where we intervene</span>
         <span class="sub-accordion-icon" aria-hidden="true"></span>
       </summary>
       <div class="sub-accordion-body">
         <table class="data-table">
-          <thead><tr><th>Situação</th><th>O que ouvimos</th><th>O que fazemos</th></tr></thead>
+          <thead><tr><th>Situation</th><th>What we hear</th><th>What we do</th></tr></thead>
           <tbody>
             <tr><td>Signal Integrity</td><td><em>"We keep losing signal between the server and the LED wall — no one can tell us why."</em></td><td>We trace every signal path, identify failure points, and redesign the chain with proper redundancy.</td></tr>
             <tr><td>Scalability</td><td><em>"We're adding a second screen and nothing is talking to each other."</em></td><td>We design the network and distribution architecture to expand cleanly — no retrofit hacks.</td></tr>
@@ -589,7 +549,7 @@
   </div>
 
   <div class="service-engage">
-    <h3>Duas formas de colaborar</h3>
+    <h3>Two ways to engage</h3>
     <div class="engage-box">
       <div class="engage-option"><h4>Full Architecture</h4><p>We design the complete technical system from scratch — signal paths, control networks, equipment specification, and documentation package. Delivered as a production-ready technical brief for your suppliers and crew.</p></div>
       <div class="engage-option"><h4>Audit &amp; Review</h4><p>You have a system in place — we review it against your show requirements, identify risks, and produce a clear recommendations document. Effective at any stage of production, and often the fastest way to find and fix hidden problems.</p></div>
@@ -604,7 +564,7 @@
 <div class="service-section" id="technical-direction">
   <div class="service-header">
     <div class="service-header-text reveal">
-      <p class="section-label">Serviço 04</p>
+      <p class="section-label">Service 04</p>
       <h2>Technical<br><em>Direction</em></h2>
       <p class="lead">We are the single point of technical authority on your event — ensuring everything that was designed is what the audience experiences.</p>
     </div>
@@ -623,12 +583,12 @@
 
     <details class="sub-accordion">
       <summary>
-        <span class="sub-accordion-label">Onde intervimos</span>
+        <span class="sub-accordion-label">Where we intervene</span>
         <span class="sub-accordion-icon" aria-hidden="true"></span>
       </summary>
       <div class="sub-accordion-body">
         <table class="data-table">
-          <thead><tr><th>Situação</th><th>O que ouvimos</th><th>O que fazemos</th></tr></thead>
+          <thead><tr><th>Situation</th><th>What we hear</th><th>What we do</th></tr></thead>
           <tbody>
             <tr><td>Accountability Gap</td><td><em>"I'm the event manager — I shouldn't have to own signal routing decisions."</em></td><td>We take full ownership of the technical layer. One clear point of responsibility, end to end.</td></tr>
             <tr><td>Communication Breakdown</td><td><em>"The creative team and the AV crew are speaking different languages."</em></td><td>We translate between creative intent and technical execution, keeping both sides aligned and moving forward.</td></tr>
@@ -673,7 +633,7 @@
   </div>
 
   <div class="service-engage">
-    <h3>Duas formas de colaborar</h3>
+    <h3>Two ways to engage</h3>
     <div class="engage-box">
       <div class="engage-option"><h4>Show-Day Direction</h4><p>We join the team for load-in, rehearsal, and the live show — taking technical ownership for the day. The right choice when pre-production is handled but you want experienced leadership in the room when it counts.</p></div>
       <div class="engage-option"><h4>Full Production Cycle</h4><p>We come in at the planning stage — owning the technical rider, attending site visits, briefing suppliers, and building the rehearsal schedule — through to post-show wrap. The complete Technical Direction service.</p></div>
@@ -687,7 +647,9 @@
   <p class="section-label">Work with us</p>
   <h2>Not sure which service fits your project?</h2>
   <p class="services-cta-copy">Answer a few quick questions and get pointed toward the service that makes the most sense for your current stage.</p>
-  <a href="quiz.html" class="cta-button">Descobre o teu fit</a>
+  <a href="quiz.html" class="cta-button">Find your fit
+        <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M0 5h12M9 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
 </div>
 
 <footer>
@@ -703,52 +665,43 @@
     <span class="footer-copy">© Lumen and Pixel 2025</span>
   </div>
 </footer>
-
 <script>
-  const io = new IntersectionObserver(e => e.forEach(x => {
-    if (x.isIntersecting) { x.target.classList.add('visible'); io.unobserve(x.target); }
-  }), { threshold: 0.08 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-  const tabs = document.querySelectorAll('.tab-link');
-  const sectionObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        tabs.forEach(t => t.classList.remove('active'));
-        const match = document.querySelector(`.tab-link[href="#${entry.target.id}"]`);
-        if (match) match.classList.add('active');
-      }
-    });
-  }, { rootMargin: '-30% 0px -60% 0px' });
-  ['show-design','show-control','system-architecture','technical-direction'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) sectionObserver.observe(el);
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', '2252485');
+
+
+(function(){
+  var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target);}});},{threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+})();
+  var tabs=document.querySelectorAll('.tab-link');
+  var sobs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){tabs.forEach(function(t){t.classList.remove('active');});var m=document.querySelector('.tab-link[href="#'+e.target.id+'"]');if(m)m.classList.add('active');}})},{rootMargin:'-30% 0px -60% 0px'});
+  ['show-design','show-control','system-architecture','technical-direction'].forEach(function(id){var el=document.getElementById(id);if(el)sobs.observe(el);});
+(function(){
+  var h=document.getElementById('hamburger');
+  var m=document.getElementById('mobileMenu');
+  if(!h||!m)return;
+  h.addEventListener('click',function(){
+    var open=m.classList.toggle('open');
+    h.classList.toggle('open');
+    h.setAttribute('aria-expanded',open?'true':'false');
+    h.setAttribute('aria-label',open?'Close navigation menu':'Open navigation menu');
+    document.body.style.overflow=open?'hidden':'';
   });
-</script>
-
-<script>
-  (function() {
-    var hamburger = document.getElementById('hamburger');
-    var mobileMenu = document.getElementById('mobileMenu');
-    if (!hamburger || !mobileMenu) return;
-    hamburger.addEventListener('click', function() {
-      var isOpen = mobileMenu.classList.toggle('open');
-      hamburger.classList.toggle('open');
-      hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      hamburger.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
-      document.body.style.overflow = isOpen ? 'hidden' : '';
+  m.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){
+      m.classList.remove('open');h.classList.remove('open');
+      h.setAttribute('aria-expanded','false');
+      h.setAttribute('aria-label','Open navigation menu');
+      document.body.style.overflow='';
     });
-    mobileMenu.querySelectorAll('a').forEach(function(link) {
-      link.addEventListener('click', function() {
-        hamburger.classList.remove('open');
-        mobileMenu.classList.remove('open');
-        hamburger.setAttribute('aria-expanded', 'false');
-        hamburger.setAttribute('aria-label', 'Open navigation menu');
-        document.body.style.overflow = '';
-      });
-    });
-  })();
-</script>
+  });
+})();
 
+</script>
 </body>
 </html>
