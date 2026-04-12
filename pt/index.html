@@ -108,8 +108,10 @@
   .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(2,24,41,0.3) 0%,rgba(2,24,41,0.1) 40%,rgba(2,24,41,0.65) 80%,rgba(2,24,41,0.95) 100%);}
   .hero-content{position:relative;z-index:2;text-align:center;max-width:800px;padding:0 24px;animation:heroFadeUp 1.1s cubic-bezier(0.16,1,0.3,1) 0.3s both;}
   @keyframes heroFadeUp{from{opacity:0;transform:translateY(32px);}to{opacity:1;transform:translateY(0);}}
-  .hero-content h1{font-family:var(--font-display);font-size:clamp(2.2rem,5vw,3.8rem);font-weight:700;line-height:1.12;letter-spacing:-0.01em;color:var(--gray-100);margin-bottom:28px;}
+  .hero-content h1{font-family:var(--font-display);font-size:clamp(2.2rem,5vw,3.8rem);font-weight:700;line-height:1.12;letter-spacing:-0.01em;color:var(--gray-100);margin-bottom:20px;}
   .hero-content h1 em{font-style:normal;color:var(--green-500);}
+  .hero-scope{font-family:var(--font-display);font-size:10px;font-weight:400;letter-spacing:0.14em;color:rgba(240,241,243,0.45);text-transform:uppercase;margin-bottom:28px;line-height:1.8;}
+  .hero-scope em{font-style:normal;color:rgba(51,251,49,0.65);}
   .hero-learn-more{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--gray-100);border:1px solid rgba(240,241,243,0.35);padding:12px 28px;border-radius:3px;min-height:44px;transition:border-color 0.2s;}
   .hero-learn-more:hover{border-color:var(--green-500);}
   .hero-learn-more svg{transition:transform 0.2s;}
@@ -118,14 +120,6 @@
   .marquee-inner{display:inline-flex;animation:marquee 22s linear infinite;}
   .marquee-inner span{font-family:var(--font-display);font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--blue-700);padding:0 32px;}
   .marquee-inner span::after{content:'◆';margin-left:32px;opacity:0.5;}
-
-  /* ── SCOPE SIGNAL BLOCK ── */
-  .scope-strip{background:var(--blue-900);padding:18px max(24px,calc((100vw - 1200px)/2 + 48px));border-bottom:1px solid rgba(46,52,65,0.7);}
-  .scope-inner{display:flex;flex-wrap:wrap;align-items:center;gap:6px 0;max-width:1200px;}
-  .scope-token{font-family:var(--font-display);font-size:10.5px;font-weight:400;letter-spacing:0.1em;color:var(--gray-500);white-space:nowrap;}
-  .scope-token em{font-style:normal;color:var(--green-500);font-weight:700;}
-  .scope-sep{font-family:var(--font-display);font-size:10px;color:rgba(107,116,133,0.35);margin:0 10px;line-height:1;}
-  @media(max-width:600px){.scope-strip{padding:14px 24px;}.scope-token{font-size:10px;}}
   @keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
   .section-label{font-size:11px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--green-500);margin-bottom:20px;}
   .services{background:var(--blue-900);padding:100px 48px;}
@@ -270,6 +264,7 @@
   <div class="hero-bg"></div>
   <div class="hero-content">
     <h1>O criativo está pronto.<br>E o <em>sistema?</em></h1>
+    <p class="hero-scope"><em>Conferências corporativas</em> &nbsp;·&nbsp; <em>Festivais de música</em> &nbsp;·&nbsp; <em>Produções em tour</em> &nbsp;·&nbsp; <em>Ativações de marca</em><br>Baseados em <em>Portugal</em> &nbsp;·&nbsp; A trabalhar <em>globalmente</em> &nbsp;·&nbsp; Da pré-produção ao <em>dia do show</em></p>
     <div class="hero-actions">
       <a href="#services" class="hero-learn-more">
         Explorar serviços
@@ -284,23 +279,6 @@
 </section>
 
 
-<div class="scope-strip" aria-label="Contexto de projeto">
-  <div class="scope-inner">
-    <span class="scope-token"><em>Conferências corporativas</em></span>
-    <span class="scope-sep" aria-hidden="true">·</span>
-    <span class="scope-token"><em>Festivais de música</em></span>
-    <span class="scope-sep" aria-hidden="true">·</span>
-    <span class="scope-token"><em>Produções em tour</em></span>
-    <span class="scope-sep" aria-hidden="true">·</span>
-    <span class="scope-token"><em>Ativações de marca</em></span>
-    <span class="scope-sep" aria-hidden="true">·</span>
-    <span class="scope-token">Baseados em <em>Portugal</em></span>
-    <span class="scope-sep" aria-hidden="true">·</span>
-    <span class="scope-token">A trabalhar <em>globalmente</em></span>
-    <span class="scope-sep" aria-hidden="true">·</span>
-    <span class="scope-token">Da pré-produção ao <em>dia do show</em></span>
-  </div>
-</div>
 <div class="marquee-strip">
   <div class="marquee-inner">
     <span>Design de Espetáculo</span><span>Controlo de Cena</span><span>Arquitetura de Sistemas</span><span>Direção Técnica</span><span>Produção ao Vivo</span><span>Sistemas Visuais</span>
