@@ -141,6 +141,30 @@
   .service-card--wide .service-card-icon{grid-column:1;grid-row:1/3;width:64px;height:64px;margin-bottom:0;align-self:center;}
   .service-card--wide>div{grid-column:2;grid-row:1;}
   .service-card--wide>.read-more{grid-column:2;grid-row:2;margin-top:28px;align-self:end;}
+  /* ── CLIENTS ── */
+  .clients{padding:64px 48px;border-top:1px solid rgba(46,52,65,0.5);border-bottom:1px solid rgba(46,52,65,0.5);}
+  .clients-inner{max-width:1200px;margin:0 auto;}
+  .clients-label{font-family:var(--font-display);font-size:10px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gray-500);text-align:center;margin-bottom:40px;}
+  .clients-grid{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:0;}
+  .client-item{display:flex;align-items:center;justify-content:center;padding:16px 36px;opacity:0.45;transition:opacity 0.25s;filter:grayscale(1) brightness(2);}
+  .client-item:hover{opacity:0.75;}
+  .client-item img{height:28px;width:auto;display:block;object-fit:contain;max-width:110px;}
+  .client-item-text{font-family:var(--font-display);font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--gray-100);white-space:nowrap;}
+  /* dividers between items */
+  .client-item+.client-item{border-left:1px solid rgba(46,52,65,0.6);}
+  @media(max-width:900px){
+    .clients{padding:48px 24px;}
+    .client-item{padding:14px 24px;}
+    .client-item img{height:22px;max-width:88px;}
+    .client-item-text{font-size:11px;}
+  }
+  @media(max-width:600px){
+    .clients-grid{gap:0;}
+    .client-item{padding:12px 18px;}
+    .client-item+.client-item{border-left:none;border-top:1px solid rgba(46,52,65,0.6);}
+    .clients-grid{flex-direction:column;align-items:stretch;}
+    .client-item{justify-content:center;}
+  }
   /* ── CTA BANNER ── */
   .cta-banner{background:var(--blue-500);padding:100px 48px;text-align:center;border-top:1px solid rgba(46,52,65,0.6);border-bottom:1px solid rgba(46,52,65,0.6);}
   .cta-banner h2{font-family:var(--font-display);font-size:clamp(2rem,4vw,3.6rem);max-width:700px;margin:0 auto;line-height:1.1;font-weight:700;letter-spacing:-0.01em;}
@@ -329,6 +353,56 @@
       <svg class="service-card-icon" viewBox="0 0 52 52" fill="none" aria-hidden="true"><circle cx="26" cy="26" r="20" stroke="currentColor" stroke-width="1.6"/><circle cx="26" cy="26" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M26 23l-4 10 4-4 4 4z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" fill="none"/><path d="M26 29l3-8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity=".35"/><path d="M26 8v4M26 40v4M8 26h4M40 26h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity=".4"/></svg>
       <div><h3>Technical Direction</h3><p class="subtitle">We are the single point of technical authority on your event — bridging creative intent and crew execution so every element lands exactly as designed.</p></div>
       <a href="services.html#technical-direction" class="read-more" aria-label="Read more about Technical Direction">Read More <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M0 5h12M9 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+  </div>
+</div>
+
+<!-- CLIENTS -->
+<div class="clients reveal">
+  <div class="clients-inner">
+    <p class="clients-label">Trusted by</p>
+    <div class="clients-grid">
+
+      <div class="client-item">
+        <img src="https://logo.clearbit.com/sap.com" alt="SAP"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
+        <span class="client-item-text" style="display:none">SAP</span>
+      </div>
+
+      <div class="client-item">
+        <img src="https://logo.clearbit.com/randstad.com" alt="Randstad"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
+        <span class="client-item-text" style="display:none">Randstad</span>
+      </div>
+
+      <div class="client-item">
+        <img src="https://logo.clearbit.com/verisure.com" alt="Verisure"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
+        <span class="client-item-text" style="display:none">Verisure</span>
+      </div>
+
+      <div class="client-item">
+        <img src="https://logo.clearbit.com/cgd.pt" alt="Caixa Geral de Depósitos"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
+        <span class="client-item-text" style="display:none">CGD</span>
+      </div>
+
+      <div class="client-item">
+        <span class="client-item-text">Palácio da Bolsa</span>
+      </div>
+
+      <div class="client-item">
+        <img src="https://logo.clearbit.com/theyeatman.com" alt="Yeatman"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
+        <span class="client-item-text" style="display:none">Yeatman</span>
+      </div>
+
+      <div class="client-item">
+        <img src="https://logo.clearbit.com/realcompanhiavelha.pt" alt="Real Companhia Velha"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
+        <span class="client-item-text" style="display:none">Real Companhia Velha</span>
+      </div>
+
     </div>
   </div>
 </div>
