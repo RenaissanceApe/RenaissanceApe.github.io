@@ -146,25 +146,17 @@
   .clients-inner{max-width:1200px;margin:0 auto;}
   .clients-label{font-family:var(--font-display);font-size:10px;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gray-500);text-align:center;margin-bottom:40px;}
   .clients-grid{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:0;}
-  .client-item{display:flex;align-items:center;justify-content:center;padding:16px 36px;opacity:0.45;transition:opacity 0.25s;filter:grayscale(1) brightness(2);}
-  .client-item:hover{opacity:0.75;}
-  .client-item img{height:28px;width:auto;display:block;object-fit:contain;max-width:110px;}
-  .client-item-text{font-family:var(--font-display);font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--gray-100);white-space:nowrap;}
-  /* dividers between items */
+  .client-item{display:flex;align-items:center;justify-content:center;padding:16px 36px;opacity:0.42;transition:opacity 0.25s;}
+  .client-item:hover{opacity:0.72;}
   .client-item+.client-item{border-left:1px solid rgba(46,52,65,0.6);}
-  @media(max-width:900px){
-    .clients{padding:48px 24px;}
-    .client-item{padding:14px 24px;}
-    .client-item img{height:22px;max-width:88px;}
-    .client-item-text{font-size:11px;}
-  }
-  @media(max-width:600px){
-    .clients-grid{gap:0;}
-    .client-item{padding:12px 18px;}
-    .client-item+.client-item{border-left:none;border-top:1px solid rgba(46,52,65,0.6);}
-    .clients-grid{flex-direction:column;align-items:stretch;}
-    .client-item{justify-content:center;}
-  }
+  /* PNGs: dark marks on transparent bg → invert to white */
+  .client-item img.logo-invert{height:28px;width:auto;display:block;object-fit:contain;max-width:120px;filter:invert(1);}
+  /* SVGs: already white paths */
+  .client-item img.logo-white{height:28px;width:auto;display:block;object-fit:contain;max-width:120px;filter:brightness(100);}
+  /* Text fallback */
+  .client-item-text{font-family:var(--font-display);font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray-100);white-space:nowrap;}
+  @media(max-width:1100px){.client-item{padding:14px 24px;}.client-item img.logo-invert,.client-item img.logo-white{height:22px;max-width:96px;}.client-item-text{font-size:11px;}}
+  @media(max-width:700px){.clients{padding:40px 24px;}.clients-grid{flex-direction:column;align-items:stretch;}.client-item{justify-content:center;padding:14px 0;}.client-item+.client-item{border-left:none;border-top:1px solid rgba(46,52,65,0.6);}}
   /* ── CTA BANNER ── */
   .cta-banner{background:var(--blue-500);padding:100px 48px;text-align:center;border-top:1px solid rgba(46,52,65,0.6);border-bottom:1px solid rgba(46,52,65,0.6);}
   .cta-banner h2{font-family:var(--font-display);font-size:clamp(2rem,4vw,3.6rem);max-width:700px;margin:0 auto;line-height:1.1;font-weight:700;letter-spacing:-0.01em;}
@@ -364,27 +356,19 @@
     <div class="clients-grid">
 
       <div class="client-item">
-        <img src="https://logo.clearbit.com/sap.com" alt="SAP"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
-        <span class="client-item-text" style="display:none">SAP</span>
+        <img src="images/logos/sap.png" alt="SAP" class="logo-invert" />
       </div>
 
       <div class="client-item">
-        <img src="https://logo.clearbit.com/randstad.com" alt="Randstad"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
-        <span class="client-item-text" style="display:none">Randstad</span>
+        <img src="images/logos/randstad.svg" alt="Randstad" class="logo-white" />
       </div>
 
       <div class="client-item">
-        <img src="https://logo.clearbit.com/verisure.com" alt="Verisure"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
-        <span class="client-item-text" style="display:none">Verisure</span>
+        <img src="images/logos/verisure.svg" alt="Verisure" class="logo-white" />
       </div>
 
       <div class="client-item">
-        <img src="https://logo.clearbit.com/cgd.pt" alt="Caixa Geral de Depósitos"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
-        <span class="client-item-text" style="display:none">CGD</span>
+        <img src="images/logos/cgd.svg" alt="Caixa Geral de Depósitos" class="logo-white" />
       </div>
 
       <div class="client-item">
@@ -392,15 +376,11 @@
       </div>
 
       <div class="client-item">
-        <img src="https://logo.clearbit.com/theyeatman.com" alt="Yeatman"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
-        <span class="client-item-text" style="display:none">Yeatman</span>
+        <img src="images/logos/yeatman.png" alt="The Yeatman" class="logo-invert" />
       </div>
 
       <div class="client-item">
-        <img src="https://logo.clearbit.com/realcompanhiavelha.pt" alt="Real Companhia Velha"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
-        <span class="client-item-text" style="display:none">Real Companhia Velha</span>
+        <img src="images/logos/rcv.png" alt="Real Companhia Velha" class="logo-invert" />
       </div>
 
     </div>
