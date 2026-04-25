@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Find the right Lumen and Pixel service for your event — interactive service finder." />
-<title>Find Your Fit — Lumen and Pixel</title>
-<link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
-<link rel="apple-touch-icon" href="images/og-image.png" />
+<meta name="description" content="Encontre o serviço certo da Lumen and Pixel para o seu evento." />
+<title>Encontre o Seu Serviço &#8212; Lumen and Pixel</title>
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="../images/og-image.png" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Lumen and Pixel" />
-<meta property="og:title" content="Find Your Fit — Lumen and Pixel" />
-<meta property="og:description" content="Find the right Lumen and Pixel service for your event — interactive service finder." />
-<meta property="og:url" content="https://www.lumenandpixel.com/quiz.html" />
+<meta property="og:title" content="Encontre o Seu Serviço &#8212; Lumen and Pixel" />
+<meta property="og:description" content="Encontre o serviço certo da Lumen and Pixel para o seu evento." />
+<meta property="og:url" content="https://www.lumenandpixel.com/pt/quiz.html" />
 <meta property="og:image" content="https://www.lumenandpixel.com/images/og-image.png" />
 <meta property="og:image:alt" content="Lumen and Pixel" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Find Your Fit — Lumen and Pixel" />
-<meta name="twitter:description" content="Find the right Lumen and Pixel service for your event — interactive service finder." />
+<meta name="twitter:title" content="Encontre o Seu Serviço &#8212; Lumen and Pixel" />
+<meta name="twitter:description" content="Encontre o serviço certo da Lumen and Pixel para o seu evento." />
 <meta name="twitter:image" content="https://www.lumenandpixel.com/images/og-image.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -100,42 +100,26 @@
     .mobile-menu{display:block;}
     .mobile-lang-switch{display:flex;}
   }
-  /* ── QUIZ SHELL ── */
   main { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 108px 24px 80px; }
   .quiz-wrap { width: 100%; max-width: 700px; }
-
-  /* Progress bar */
   .progress-bar { display: flex; gap: 6px; margin-bottom: 56px; }
   .progress-segment { height: 2px; flex: 1; background: rgba(130,178,215,0.15); border-radius: 2px; transition: background 0.45s ease; }
   .progress-segment.done { background: var(--green-500); }
   .progress-segment.active { background: rgba(51,251,49,0.4); }
-
-  /* Question screens — hidden by default, only .active shows */
   .q-screen { display: none; }
   .q-screen.active { display: block; animation: fadeUp 0.38s cubic-bezier(0.16,1,0.3,1) both; }
   @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
-
   .q-label { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green-500); margin-bottom: 16px; }
   .q-text { font-family: var(--font-display); font-size: clamp(1.45rem, 3.5vw, 2.1rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.01em; margin-bottom: 12px; overflow-wrap: break-word; word-break: break-word; }
   .q-sub { font-size: 15px; font-weight: 300; color: var(--gray-300); line-height: 1.7; margin-bottom: 36px; max-width: 520px; }
-
-  /* Options */
   .options { display: flex; flex-direction: column; gap: 10px; }
-  .option-btn {
-    display: flex; align-items: flex-start; gap: 18px; width: 100%;
-    background: var(--blue-900); border: 1px solid rgba(130,178,215,0.1);
-    border-radius: 3px; padding: 20px 22px; cursor: pointer; text-align: left;
-    color: var(--gray-100); font-family: var(--font-body);
-    transition: border-color 0.18s, background 0.18s, transform 0.15s;
-  }
+  .option-btn { display: flex; align-items: flex-start; gap: 18px; width: 100%; background: var(--blue-900); border: 1px solid rgba(130,178,215,0.1); border-radius: 3px; padding: 20px 22px; cursor: pointer; text-align: left; color: var(--gray-100); font-family: var(--font-body); transition: border-color 0.18s, background 0.18s, transform 0.15s; }
   .option-btn:hover { border-color: rgba(51,251,49,0.3); background: rgba(51,251,49,0.04); transform: translateX(3px); }
   .option-btn.selected { border-color: var(--green-500); background: rgba(51,251,49,0.07); }
   .option-letter { font-family: var(--font-display); font-size: 10px; font-weight: 700; letter-spacing: 0.12em; color: var(--green-500); flex-shrink: 0; margin-top: 3px; width: 16px; }
   .option-content { flex: 1; }
   .option-title { font-size: 15px; font-weight: 600; line-height: 1.3; margin-bottom: 4px; display: block; }
   .option-desc { font-size: 13px; font-weight: 300; color: var(--gray-300); line-height: 1.6; display: block; }
-
-  /* Navigation buttons */
   .q-actions { display: flex; align-items: center; justify-content: space-between; margin-top: 28px; gap: 16px; }
   .btn-back { font-family: var(--font-display); font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-500); background: none; border: none; cursor: pointer; padding: 8px 0; transition: color 0.2s; display: flex; align-items: center; gap: 8px; }
   .btn-back:hover { color: var(--gray-100); }
@@ -143,14 +127,12 @@
   .btn-next { font-family: var(--font-body); font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue-700); background: var(--green-500); border: none; border-radius: 3px; padding: 13px 26px; cursor: pointer; transition: background 0.2s, opacity 0.2s; min-height: 44px; display: inline-flex; align-items: center; gap: 10px; }
   .btn-next:hover { background: var(--green-300); }
   .btn-next:disabled { opacity: 0.3; cursor: not-allowed; pointer-events: none; }
-
-  /* Result screen */
   #result-screen { display: none; }
   #result-screen.active { display: block; animation: fadeUp 0.45s cubic-bezier(0.16,1,0.3,1) both; }
   .result-badge { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-display); font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green-500); border: 1px solid rgba(51,251,49,0.25); padding: 6px 14px; border-radius: 2px; margin-bottom: 28px; }
   .result-service { font-family: var(--font-display); font-size: clamp(2rem, 5.5vw, 3.6rem); font-weight: 700; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 10px; overflow-wrap: break-word; word-break: break-word; }
   .result-service em { font-style: italic; color: var(--green-500); }
-  .result-mode { font-family: var(--font-display); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue-300); margin-bottom: 0; }
+  .result-mode { font-family: var(--font-display); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue-300); }
   .result-divider { width: 40px; height: 1px; background: rgba(51,251,49,0.35); margin: 36px 0; }
   .result-why { font-size: 16px; font-weight: 300; color: var(--gray-300); line-height: 1.8; max-width: 580px; margin-bottom: 24px; }
   .result-mode-desc { font-size: 14px; font-weight: 300; color: var(--gray-500); line-height: 1.75; max-width: 560px; border-left: 2px solid rgba(51,251,49,0.3); padding-left: 20px; margin-bottom: 48px; }
@@ -171,274 +153,188 @@
   .footer-copy{font-size:12px;color:var(--gray-500);}
   @media(max-width:900px){footer{padding:40px 24px 28px;}.footer-inner{flex-direction:column;gap:20px;text-align:center;}}
   h1, h2, h3 { overflow-wrap: break-word; word-break: break-word; }
-  @media (max-width: 600px) {
-    .q-actions { flex-direction: column-reverse; align-items: stretch; }
-    .btn-next { justify-content: center; }
-    .result-actions { flex-direction: column; align-items: stretch; }
-    .result-primary, .result-secondary { justify-content: center; }
-  }
-  @media (max-width: 480px) {
-    h1 { font-size: clamp(1.8rem, 8vw, 2.6rem) !important; }
-  }
+  @media (max-width: 600px) { .q-actions { flex-direction: column-reverse; align-items: stretch; } .btn-next { justify-content: center; } .result-actions { flex-direction: column; align-items: stretch; } .result-primary, .result-secondary { justify-content: center; } }
+  @media (max-width: 480px) { h1 { font-size: clamp(1.8rem, 8vw, 2.6rem) !important; } }
   /* Quiz nav link */
   .nav-quiz-link{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(15,25,45,0.62)!important;border:1px solid rgba(15,25,45,0.2);border-radius:2px;padding:5px 10px;transition:border-color 0.2s,color 0.2s!important;white-space:nowrap;}
   .nav-quiz-link:hover{border-color:var(--blue-500)!important;color:var(--blue-700)!important;}
 </style>
 </head>
 <body>
-<a href="#main-content" class="skip-link">Skip to main content</a>
-<nav aria-label="Main navigation">
-  <a href="index.html" class="nav-logo" aria-label="Lumen and Pixel — home">
-    <img class="nav-logo-mark" src="images/logo-mark.svg" alt="Lumen and Pixel" />
+<a href="#main-content" class="skip-link">Saltar para o conte&#250;do principal</a>
+<nav aria-label="Navega&#231;&#227;o principal">
+  <a href="../index.html" class="nav-logo" aria-label="Lumen and Pixel &#8212; in&#237;cio">
+    <img class="nav-logo-mark" src="../images/logo-mark.svg" alt="Lumen and Pixel" />
   </a>
   <ul class="nav-links">
-    <li><a href="services.html">Services</a></li>
-    <li><a href="resources.html">Resources</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="quiz.html" class="nav-quiz-link">Find your fit</a></li>
+    <li><a href="services.html">Servi&#231;os</a></li>
+    <li><a href="resources.html">Recursos</a></li>
+    <li><a href="about.html">Sobre</a></li>
+    <li><a href="quiz.html" class="nav-quiz-link">Qual é o meu serviço?</a></li>
   </ul>
   <div class="nav-actions">
-    <a href="about.html#contact-form" class="nav-cta">Get started</a>
-    <div class="lang-switch" aria-label="Language selector">
-      <a href="quiz.html" class="active">EN</a><span>/</span><a href="pt/quiz.html">PT</a>
+    <a href="about.html#contact-form" class="nav-cta">Come&#231;ar</a>
+    <div class="lang-switch" aria-label="Seletor de idioma">
+      <a href="../quiz.html">EN</a><span>/</span><a href="quiz.html" class="active">PT</a>
     </div>
   </div>
-  <button class="nav-hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
+  <button class="nav-hamburger" id="hamburger" aria-label="Abrir menu de navega&#231;&#227;o" aria-expanded="false" aria-controls="mobileMenu">
     <span></span><span></span><span></span>
   </button>
 </nav>
-<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation menu" aria-modal="true">
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menu de navega&#231;&#227;o" aria-modal="true">
   <ul>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="resources.html">Resources</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="quiz.html">Find your fit</a></li>
+    <li><a href="services.html">Servi&#231;os</a></li>
+    <li><a href="resources.html">Recursos</a></li>
+    <li><a href="about.html">Sobre</a></li>
+    <li><a href="quiz.html">Qual é o meu serviço?</a></li>
   </ul>
-  <a href="about.html#contact-form" class="mobile-cta">Get started</a>
+  <a href="about.html#contact-form" class="mobile-cta">Come&#231;ar</a>
   <div class="mobile-lang-switch">
-    <a href="quiz.html" class="active">EN</a><span>/</span><a href="pt/quiz.html">PT</a>
+    <a href="../quiz.html">EN</a><span>/</span><a href="quiz.html" class="active">PT</a>
   </div>
 </div>
 
 <main id="main-content">
   <div class="quiz-wrap">
-
-    <div class="progress-bar" role="progressbar" aria-label="Quiz progress" aria-valuenow="1" aria-valuemin="1" aria-valuemax="4" id="progress-bar">
+    <div class="progress-bar" role="progressbar" aria-label="Progresso do question&#225;rio" aria-valuenow="1" aria-valuemin="1" aria-valuemax="4" id="progress-bar">
       <div class="progress-segment active" id="seg-0"></div>
       <div class="progress-segment" id="seg-1"></div>
       <div class="progress-segment" id="seg-2"></div>
       <div class="progress-segment" id="seg-3"></div>
     </div>
 
-    <!-- Q1 -->
     <div class="q-screen active" id="q0">
-      <p class="q-label">Question 1 of 4</p>
-      <h1 class="q-text">What&#8217;s the biggest gap in your show right now?</h1>
-      <p class="q-sub">Think about what&#8217;s keeping the project from moving forward with confidence.</p>
-      <div class="options" role="group" aria-label="Select one option">
+      <p class="q-label">Quest&#227;o 1 de 4</p>
+      <h1 class="q-text">Qual &#233; a maior lacuna no seu espet&#225;culo agora?</h1>
+      <p class="q-sub">Pense no que est&#225; a impedir o projeto de avan&#231;ar com confian&#231;a.</p>
+      <div class="options" role="group" aria-label="Selecione uma op&#231;&#227;o">
         <button class="option-btn" data-scores='{"SD":4,"SC":1,"SA":1,"TD":1}' data-engage='{"earlyStage":1,"wantsLead":1}'>
           <span class="option-letter">A</span>
           <span class="option-content">
-            <span class="option-title">The concept exists but nobody can see it yet</span>
-            <span class="option-desc">We have a creative direction but no visual proof &#8212; clients haven&#8217;t signed off and the team doesn&#8217;t share the same picture.</span>
+            <span class="option-title">O conceito existe mas ningu&#233;m o consegue ver ainda</span>
+            <span class="option-desc">Temos uma dire&#231;&#227;o criativa mas nenhuma prova visual &#8212; os clientes n&#227;o aprovaram e a equipa n&#227;o partilha a mesma imagem.</span>
           </span>
         </button>
         <button class="option-btn" data-scores='{"SD":1,"SC":4,"SA":1,"TD":1}' data-engage='{"earlyStage":0,"wantsLead":1}'>
           <span class="option-letter">B</span>
           <span class="option-content">
-            <span class="option-title">The systems don&#8217;t talk to each other</span>
-            <span class="option-desc">Lighting, video, and audio are running separately &#8212; there&#8217;s no show control layer tying them to a common timeline.</span>
+            <span class="option-title">Os sistemas n&#227;o comunicam entre si</span>
+            <span class="option-desc">Ilumina&#231;&#227;o, v&#237;deo e &#225;udio correm separadamente &#8212; n&#227;o h&#225; uma camada de controlo de cena a uni-los numa linha temporal comum.</span>
           </span>
         </button>
         <button class="option-btn" data-scores='{"SD":1,"SC":1,"SA":4,"TD":1}' data-engage='{"earlyStage":1,"wantsLead":0}'>
           <span class="option-letter">C</span>
           <span class="option-content">
-            <span class="option-title">Nobody has defined the technical infrastructure</span>
-            <span class="option-desc">Signal paths, equipment spec, and integration logic haven&#8217;t been designed &#8212; we&#8217;re building on assumptions instead of a documented system.</span>
+            <span class="option-title">Ningu&#233;m definiu a infraestrutura t&#233;cnica</span>
+            <span class="option-desc">Os caminhos de sinal, a especifica&#231;&#227;o de equipamento e a l&#243;gica de integra&#231;&#227;o n&#227;o foram concebidos &#8212; estamos a construir com base em suposi&#231;&#245;es em vez de um sistema documentado.</span>
           </span>
         </button>
         <button class="option-btn" data-scores='{"SD":1,"SC":1,"SA":1,"TD":4}' data-engage='{"earlyStage":0,"wantsLead":1}'>
           <span class="option-letter">D</span>
           <span class="option-content">
-            <span class="option-title">There&#8217;s no single technical authority on-site</span>
-            <span class="option-desc">Creative, crew, and venue are operating independently &#8212; things are falling through the gaps and nobody owns the technical outcome.</span>
+            <span class="option-title">N&#227;o existe uma &#250;nica autoridade t&#233;cnica no local</span>
+            <span class="option-desc">A equipa criativa, a equipa t&#233;cnica e a sala operam de forma independente &#8212; as coisas est&#227;o a cair nas lacunas e ningu&#233;m &#233; respons&#225;vel pelo resultado t&#233;cnico.</span>
           </span>
         </button>
       </div>
       <div class="q-actions">
-        <button class="btn-back" disabled aria-label="Go back">
+        <button class="btn-back" disabled aria-label="Voltar">
           <svg width="12" height="10" viewBox="0 0 12 10" fill="none" aria-hidden="true"><path d="M12 5H0M4 1L0 5l4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Back
+          Voltar
         </button>
         <button class="btn-next" disabled id="next-0">
-          Next
+          Seguinte
           <svg width="12" height="10" viewBox="0 0 12 10" fill="none" aria-hidden="true"><path d="M0 5h12M8 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
       </div>
     </div>
 
-    <!-- Q2 -->
     <div class="q-screen" id="q1">
-      <p class="q-label">Question 2 of 4</p>
-      <h1 class="q-text">Where are you in the production timeline?</h1>
-      <p class="q-sub">This determines which version of the service fits your situation best.</p>
-      <div class="options" role="group" aria-label="Select one option">
+      <p class="q-label">Quest&#227;o 2 de 4</p>
+      <h1 class="q-text">Onde est&#225; na linha temporal de produ&#231;&#227;o?</h1>
+      <p class="q-sub">Isto determina qual vers&#227;o do servi&#231;o melhor se adapta &#224; sua situa&#231;&#227;o.</p>
+      <div class="options" role="group" aria-label="Selecione uma op&#231;&#227;o">
         <button class="option-btn" data-scores='{"SD":2,"SC":2,"SA":2,"TD":1}' data-engage='{"earlyStage":2,"wantsLead":1}'>
-          <span class="option-letter">A</span>
-          <span class="option-content">
-            <span class="option-title">Early planning &#8212; concept stage</span>
-            <span class="option-desc">The show is being shaped. Decisions made now determine everything that follows.</span>
-          </span>
+          <span class="option-letter">A</span><span class="option-content"><span class="option-title">Planeamento inicial &#8212; fase de conceito</span><span class="option-desc">O espet&#225;culo est&#225; a ser moldado. As decis&#245;es tomadas agora determinam tudo o que se segue.</span></span>
         </button>
         <button class="option-btn" data-scores='{"SD":2,"SC":2,"SA":2,"TD":1}' data-engage='{"earlyStage":1,"wantsLead":1}'>
-          <span class="option-letter">B</span>
-          <span class="option-content">
-            <span class="option-title">Pre-production &#8212; 6 to 12 weeks out</span>
-            <span class="option-desc">Direction is set, suppliers are being briefed, production is building momentum.</span>
-          </span>
+          <span class="option-letter">B</span><span class="option-content"><span class="option-title">Pr&#233;-produ&#231;&#227;o &#8212; 6 a 12 semanas antes</span><span class="option-desc">A dire&#231;&#227;o est&#225; definida, os fornecedores est&#227;o a ser contactados, a produ&#231;&#227;o est&#225; a ganhar ritmo.</span></span>
         </button>
         <button class="option-btn" data-scores='{"SD":1,"SC":2,"SA":1,"TD":2}' data-engage='{"earlyStage":0,"wantsLead":1}'>
-          <span class="option-letter">C</span>
-          <span class="option-content">
-            <span class="option-title">Close in &#8212; under 4 weeks to show</span>
-            <span class="option-desc">The show is locked. What&#8217;s needed now is execution and risk containment.</span>
-          </span>
+          <span class="option-letter">C</span><span class="option-content"><span class="option-title">Pr&#243;ximo &#8212; menos de 4 semanas para o show</span><span class="option-desc">O show est&#225; fechado. O que &#233; necess&#225;rio agora &#233; execu&#231;&#227;o e conten&#231;&#227;o de riscos.</span></span>
         </button>
         <button class="option-btn" data-scores='{"SD":0,"SC":1,"SA":0,"TD":3}' data-engage='{"earlyStage":0,"wantsLead":2}'>
-          <span class="option-letter">D</span>
-          <span class="option-content">
-            <span class="option-title">Already in production or on-site</span>
-            <span class="option-desc">Things are moving now. We need a decision-maker in the room, not a planner.</span>
-          </span>
+          <span class="option-letter">D</span><span class="option-content"><span class="option-title">J&#225; em produ&#231;&#227;o ou no local</span><span class="option-desc">As coisas est&#227;o a acontecer agora. Precisamos de algu&#233;m que tome decis&#245;es no local, n&#227;o de um planeador.</span></span>
         </button>
       </div>
       <div class="q-actions">
-        <button class="btn-back" aria-label="Go back">
-          <svg width="12" height="10" viewBox="0 0 12 10" fill="none" aria-hidden="true"><path d="M12 5H0M4 1L0 5l4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Back
-        </button>
-        <button class="btn-next" disabled id="next-1">
-          Next
-          <svg width="12" height="10" viewBox="0 0 12 10" fill="none" aria-hidden="true"><path d="M0 5h12M8 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
+        <button class="btn-back" aria-label="Voltar"><svg width="12" height="10" viewBox="0 0 12 10" fill="none" aria-hidden="true"><path d="M12 5H0M4 1L0 5l4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg> Voltar</button>
+        <button class="btn-next" disabled id="next-1">Seguinte <svg width="12" height="10" viewBox="0 0 12 10" fill="none" aria-hidden="true"><path d="M0 5h12M8 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       </div>
     </div>
 
-    <!-- Q3 -->
     <div class="q-screen" id="q2">
-      <p class="q-label">Question 3 of 4</p>
-      <h1 class="q-text">Who else is handling the technical decisions?</h1>
-      <p class="q-sub">This tells us whether you need a partner to lead or a specialist to support what&#8217;s already in motion.</p>
-      <div class="options" role="group" aria-label="Select one option">
+      <p class="q-label">Quest&#227;o 3 de 4</p>
+      <h1 class="q-text">Quem est&#225; a gerir as decis&#245;es t&#233;cnicas?</h1>
+      <p class="q-sub">Isto diz-nos se precisa de um parceiro para liderar ou de um especialista para apoiar o que j&#225; est&#225; em curso.</p>
+      <div class="options" role="group" aria-label="Selecione uma op&#231;&#227;o">
         <button class="option-btn" data-scores='{"SD":2,"SC":1,"SA":2,"TD":1}' data-engage='{"earlyStage":1,"wantsLead":2}'>
-          <span class="option-letter">A</span>
-          <span class="option-content">
-            <span class="option-title">Nobody &#8212; that gap is why we&#8217;re here</span>
-            <span class="option-desc">There&#8217;s no technical lead on this project. We need someone to own that role from the start.</span>
-          </span>
+          <span class="option-letter">A</span><span class="option-content"><span class="option-title">Ningu&#233;m &#8212; essa lacuna &#233; a raz&#227;o pela qual estamos aqui</span><span class="option-desc">N&#227;o existe respons&#225;vel t&#233;cnico neste projeto. Precisamos de algu&#233;m que assuma esse papel desde o in&#237;cio.</span></span>
         </button>
         <button class="option-btn" data-scores='{"SD":1,"SC":2,"SA":1,"TD":2}' data-engage='{"earlyStage":0,"wantsLead":2}'>
-          <span class="option-letter">B</span>
-          <span class="option-content">
-            <span class="option-title">A production or event manager, but not a technical specialist</span>
-            <span class="option-desc">Someone is managing logistics, but nobody has deep AV or show systems expertise in the room.</span>
-          </span>
+          <span class="option-letter">B</span><span class="option-content"><span class="option-title">Um gestor de produ&#231;&#227;o ou eventos, mas n&#227;o um especialista t&#233;cnico</span><span class="option-desc">Algu&#233;m est&#225; a gerir a log&#237;stica, mas n&#227;o existe experi&#234;ncia profunda em AV ou sistemas de show na sala.</span></span>
         </button>
         <button class="option-btn" data-scores='{"SD":1,"SC":2,"SA":2,"TD":1}' data-engage='{"earlyStage":1,"wantsLead":0}'>
-          <span class="option-letter">C</span>
-          <span class="option-content">
-            <span class="option-title">We have a team but need a specialist for one area</span>
-            <span class="option-desc">The production is staffed &#8212; we need an expert to own a specific piece, not the whole technical picture.</span>
-          </span>
+          <span class="option-letter">C</span><span class="option-content"><span class="option-title">Temos uma equipa mas precisamos de um especialista numa &#225;rea</span><span class="option-desc">A produ&#231;&#227;o est&#225; dotada de pessoal &#8212; precisamos de um especialista para ser respons&#225;vel por uma parte espec&#237;fica, n&#227;o por toda a imagem t&#233;cnica.</span></span>
         </button>
         <button class="option-btn" data-scores='{"SD":1,"SC":1,"SA":1,"TD":3}' data-engage='{"earlyStage":0,"wantsLead":1}'>
-          <span class="option-letter">D</span>
-          <span class="option-content">
-            <span class="option-title">A full production team &#8212; we need senior technical oversight</span>
-            <span class="option-desc">Crew and suppliers are in place. What&#8217;s missing is a technical director who can align them and make the final calls.</span>
-          </span>
+          <span class="option-letter">D</span><span class="option-content"><span class="option-title">Uma equipa de produ&#231;&#227;o completa &#8212; precisamos de supervis&#227;o t&#233;cnica s&#233;nior</span><span class="option-desc">A equipa e os fornecedores est&#227;o no lugar. O que falta &#233; um diretor t&#233;cnico que os alinhe e tome as decis&#245;es finais.</span></span>
         </button>
       </div>
       <div class="q-actions">
-        <button class="btn-back" aria-label="Go back">
-          <svg width="12" height="10" viewBox="0 0 12 10" fill="none" aria-hidden="true"><path d="M12 5H0M4 1L0 5l4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Back
-        </button>
-        <button class="btn-next" disabled id="next-2">
-          Next
-          <svg width="12" height="10" viewBox="0 0 12 10" fill="none" aria-hidden="true"><path d="M0 5h12M8 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
+        <button class="btn-back" aria-label="Voltar"><svg width="12" height="10" viewBox="0 0 12 10" fill="none" aria-hidden="true"><path d="M12 5H0M4 1L0 5l4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg> Voltar</button>
+        <button class="btn-next" disabled id="next-2">Seguinte <svg width="12" height="10" viewBox="0 0 12 10" fill="none" aria-hidden="true"><path d="M0 5h12M8 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       </div>
     </div>
 
-    <!-- Q4 -->
     <div class="q-screen" id="q3">
-      <p class="q-label">Question 4 of 4</p>
-      <h1 class="q-text">What does success look like for this project?</h1>
-      <p class="q-sub">The outcome you&#8217;re aiming for helps us confirm which service creates the most value for you.</p>
-      <div class="options" role="group" aria-label="Select one option">
+      <p class="q-label">Quest&#227;o 4 de 4</p>
+      <h1 class="q-text">Como &#233; o sucesso para este projeto?</h1>
+      <p class="q-sub">O resultado que pretende alcan&#231;ar ajuda-nos a confirmar qual o servi&#231;o que cria mais valor para si.</p>
+      <div class="options" role="group" aria-label="Selecione uma op&#231;&#227;o">
         <button class="option-btn" data-scores='{"SD":3,"SC":1,"SA":1,"TD":1}' data-engage='{"earlyStage":1,"wantsLead":0}'>
-          <span class="option-letter">A</span>
-          <span class="option-content">
-            <span class="option-title">Everyone shares the same vision of what the show will be</span>
-            <span class="option-desc">Client sign-off is fast, the crew has a shared reference, and the design is executable from day one of load-in.</span>
-          </span>
+          <span class="option-letter">A</span><span class="option-content"><span class="option-title">Todos partilham a mesma vis&#227;o do que o espet&#225;culo vai ser</span><span class="option-desc">A aprova&#231;&#227;o do cliente &#233; r&#225;pida, a equipa tem uma refer&#234;ncia partilhada e o design &#233; execut&#225;vel desde o primeiro dia de load-in.</span></span>
         </button>
         <button class="option-btn" data-scores='{"SD":1,"SC":3,"SA":1,"TD":1}' data-engage='{"earlyStage":0,"wantsLead":0}'>
-          <span class="option-letter">B</span>
-          <span class="option-content">
-            <span class="option-title">Every cue lands exactly where it should, every time</span>
-            <span class="option-desc">The show runs with precision &#8212; lighting, video, and effects in perfect sync, regardless of how many times it plays.</span>
-          </span>
+          <span class="option-letter">B</span><span class="option-content"><span class="option-title">Cada deixa aterra exatamente onde deve, sempre</span><span class="option-desc">O show corre com precis&#227;o &#8212; ilumina&#231;&#227;o, v&#237;deo e efeitos em sincroniza&#231;&#227;o perfeita, independentemente de quantas vezes toca.</span></span>
         </button>
         <button class="option-btn" data-scores='{"SD":1,"SC":1,"SA":3,"TD":1}' data-engage='{"earlyStage":1,"wantsLead":0}'>
-          <span class="option-letter">C</span>
-          <span class="option-content">
-            <span class="option-title">The technical system is documented and nothing is a mystery</span>
-            <span class="option-desc">Any technician can pick up the system, understand it, and troubleshoot it &#8212; because it was designed, not improvised.</span>
-          </span>
+          <span class="option-letter">C</span><span class="option-content"><span class="option-title">O sistema t&#233;cnico est&#225; documentado e nada &#233; um mist&#233;rio</span><span class="option-desc">Qualquer t&#233;cnico pode pegar no sistema, compreend&#234;-lo e diagnostic&#225;-lo &#8212; porque foi concebido, n&#227;o improvisado.</span></span>
         </button>
         <button class="option-btn" data-scores='{"SD":1,"SC":1,"SA":1,"TD":3}' data-engage='{"earlyStage":0,"wantsLead":2}'>
-          <span class="option-letter">D</span>
-          <span class="option-content">
-            <span class="option-title">The show delivers exactly as designed and nothing breaks visibly</span>
-            <span class="option-desc">A senior technical person was in the room, made every system decision, and could fix anything that moved.</span>
-          </span>
+          <span class="option-letter">D</span><span class="option-content"><span class="option-title">O show entrega exatamente como foi concebido e nada falha visivelmente</span><span class="option-desc">Uma pessoa t&#233;cnica s&#233;nior estava na sala, tomou todas as decis&#245;es de sistema e conseguia resolver qualquer coisa que se movesse.</span></span>
         </button>
       </div>
       <div class="q-actions">
-        <button class="btn-back" aria-label="Go back">
-          <svg width="12" height="10" viewBox="0 0 12 10" fill="none" aria-hidden="true"><path d="M12 5H0M4 1L0 5l4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Back
-        </button>
-        <button class="btn-next" disabled id="next-3">
-          See my result
-          <svg width="12" height="10" viewBox="0 0 12 10" fill="none" aria-hidden="true"><path d="M0 5h12M8 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
+        <button class="btn-back" aria-label="Voltar"><svg width="12" height="10" viewBox="0 0 12 10" fill="none" aria-hidden="true"><path d="M12 5H0M4 1L0 5l4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg> Voltar</button>
+        <button class="btn-next" disabled id="next-3">Ver o meu resultado <svg width="12" height="10" viewBox="0 0 12 10" fill="none" aria-hidden="true"><path d="M0 5h12M8 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       </div>
     </div>
 
-    <!-- Result -->
     <div id="result-screen">
-      <div class="result-badge">Your match</div>
+      <div class="result-badge">O seu resultado</div>
       <h1 class="result-service" id="result-service-name"></h1>
       <p class="result-mode" id="result-mode-name"></p>
       <div class="result-divider"></div>
       <p class="result-why" id="result-why"></p>
       <p class="result-mode-desc" id="result-mode-desc"></p>
       <div class="result-actions">
-        <a class="result-primary" id="result-link-service" href="services.html">
-          See full service detail
-          <svg width="12" height="10" viewBox="0 0 12 10" fill="none" aria-hidden="true"><path d="M0 5h12M8 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <a class="result-secondary" id="result-link-contact" href="about.html#contact-form">
-          Start a conversation
-          <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true"><path d="M1.5 9.5l8-8M9.5 1.5H3M9.5 1.5v6.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-        </a>
+        <a class="result-primary" id="result-link-service" href="services.html">Ver detalhe completo do servi&#231;o <svg width="12" height="10" viewBox="0 0 12 10" fill="none" aria-hidden="true"><path d="M0 5h12M8 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a class="result-secondary" id="result-link-contact" href="about.html#contact-form">Iniciar uma conversa <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true"><path d="M1.5 9.5l8-8M9.5 1.5H3M9.5 1.5v6.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></a>
       </div>
-      <button class="result-restart" id="restart-btn">Start over</button>
+      <button class="result-restart" id="restart-btn">Come&#231;ar de novo</button>
     </div>
-
   </div>
 </main>
 
@@ -448,8 +344,8 @@
     <ul class="footer-social">
       <li><a href="https://www.instagram.com/lumenandpixel" target="_blank" rel="noopener">Instagram</a></li>
       <li><a href="https://www.linkedin.com/company/lumen-and-pixel" target="_blank" rel="noopener">LinkedIn</a></li>
-      <li><a href="legal.html#privacy">Privacy</a></li>
-      <li><a href="legal.html#terms">Terms</a></li>
+      <li><a href="legal.html#privacy">Privacidade</a></li>
+      <li><a href="legal.html#terms">Termos</a></li>
       <li><a href="legal.html#cookies">Cookies</a></li>
     </ul>
     <span class="footer-copy">&#169; Lumen and Pixel 2025</span>
@@ -457,186 +353,47 @@
 </footer>
 
 <script>
-// ─── SERVICE DATA ─────────────────────────────────────────────────────────────
-var SERVICES = {
-  SD: {
-    nameHTML: 'Show<br><em>Design</em>',
-    anchor: '#show-design',
-    why: "Your answers point to a gap between where the creative vision lives and where the technical reality begins. Show Design bridges that gap — we build the visual system that connects what you imagine to what can actually be built, programmed, and delivered on stage.",
+var SERVICES_PT = {
+  SD: { nameHTML: 'Design de<br><em>Espet&#225;culo</em>', anchor: '#show-design',
+    why: "As suas respostas apontam para uma lacuna entre onde vive a vis&#227;o criativa e onde come&#231;a a realidade t&#233;cnica. O Design de Espet&#225;culo fecha essa lacuna &#8212; constru&#237;mos o sistema visual que liga o que imagina ao que pode ser efetivamente constru&#237;do, programado e entregue em palco.",
     modes: {
-      lead: { name: 'Design Lead', desc: "Based on your timeline and team setup, you need someone to own the design process from concept through to handoff — not just contribute to it. We take the brief and drive it to a production-ready outcome." },
-      support: { name: 'Design Support', desc: "You have a team in place and need a specialist to own a specific piece — pre-visualization, the visual system, or the technical documentation. We slot in where you need us, scoped to what the project actually requires." }
+      lead: { name: 'L&#237;der de Design', desc: "Com base na sua linha temporal e configura&#231;&#227;o de equipa, precisa de algu&#233;m que seja respons&#225;vel pelo processo de design desde o conceito at&#233; &#224; entrega. N&#243;s assumimos o briefing e levamo-lo a um resultado pronto para produ&#231;&#227;o." },
+      support: { name: 'Suporte de Design', desc: "Tem uma equipa no lugar e precisa de um especialista para ser respons&#225;vel por uma parte espec&#237;fica &#8212; pr&#233;-visualiza&#231;&#227;o, o sistema visual ou a documenta&#231;&#227;o t&#233;cnica. Encaixamo-nos onde &#233; necess&#225;rio, dimensionado ao que o projeto realmente precisa." }
     }
   },
-  SC: {
-    nameHTML: 'Show Control<br><em>&amp; Automation</em>',
-    anchor: '#show-control',
-    why: "Your answers point to a synchronization problem — multiple systems that need to fire together but currently don't. Show Control & Automation gives the show a single clock that everything runs from, eliminating the manual decisions and timing risks that compound on show day.",
+  SC: { nameHTML: 'Controlo de Cena<br><em>&amp; Automa&#231;&#227;o</em>', anchor: '#show-control',
+    why: "As suas respostas apontam para um problema de sincroniza&#231;&#227;o &#8212; m&#250;ltiplos sistemas que precisam de disparar juntos mas atualmente n&#227;o o fazem. O Controlo de Cena &amp; Automa&#231;&#227;o d&#225; ao espet&#225;culo um &#250;nico rel&#243;gio a partir do qual tudo corre, eliminando as decis&#245;es manuais e os riscos de timing que se acumulam no dia do show.",
     modes: {
-      lead: { name: 'On-Site Programming & Operation', desc: "Given where you are in production, you need someone who can programme in the venue, adapt to last-minute changes, and operate through the show. Real-time flexibility is what your situation demands." },
-      support: { name: 'Pre-Production Programming', desc: "Your timeline allows us to programme the full show file before you enter the venue. The show is ready on day one of load-in — cues, timecode maps, contingency states, and an operator briefing all handed over in advance." }
+      lead: { name: 'Programa&#231;&#227;o e Opera&#231;&#227;o no Local', desc: "Dado onde est&#225; na produ&#231;&#227;o, precisa de algu&#233;m que consiga programar na sala, adaptar-se a mudan&#231;as de &#250;ltima hora e operar durante o show. A flexibilidade em tempo real &#233; o que a sua situa&#231;&#227;o exige." },
+      support: { name: 'Programa&#231;&#227;o em Pr&#233;-Produ&#231;&#227;o', desc: "A sua linha temporal permite-nos programar o ficheiro completo de show antes de entrar na sala. O show est&#225; pronto no primeiro dia de load-in &#8212; deixas, mapas de timecode, estados de conting&#234;ncia e um briefing de operador tudo entregue antecipadamente." }
     }
   },
-  SA: {
-    nameHTML: 'System<br><em>Architecture</em>',
-    anchor: '#system-architecture',
-    why: "Your answers point to an infrastructure problem — the technical backbone of the show hasn't been properly designed. System Architecture defines every signal path, control network, and equipment interface before a cable is run, so the show is built on documented fact rather than assumption.",
+  SA: { nameHTML: 'Arquitetura<br><em>de Sistemas</em>', anchor: '#system-architecture',
+    why: "As suas respostas apontam para um problema de infraestrutura &#8212; a espinha dorsal t&#233;cnica do show n&#227;o foi devidamente concebida. A Arquitetura de Sistemas define cada caminho de sinal, rede de controlo e interface de equipamento antes de qualquer cabo ser passado, para que o show seja constru&#237;do com base em factos documentados em vez de suposi&#231;&#245;es.",
     modes: {
-      lead: { name: 'Full Architecture', desc: "You're at a stage where the system can still be designed correctly from scratch. We map the complete infrastructure — signal flow, control networks, equipment specification, and documentation — delivered as a production-ready brief for your suppliers and crew." },
-      support: { name: 'Audit & Review', desc: "A system exists or is being specified. We review it against your show's real requirements, identify the risks hiding in the gaps, and produce a clear recommendations document. The fastest way to find problems before they become show-day emergencies." }
+      lead: { name: 'Arquitetura Completa', desc: "Est&#225; numa fase em que o sistema ainda pode ser concebido corretamente de raiz. Mapeamos a infraestrutura completa &#8212; fluxo de sinal, redes de controlo, especifica&#231;&#227;o de equipamento e documenta&#231;&#227;o &#8212; entregue como um briefing t&#233;cnico pronto para produ&#231;&#227;o." },
+      support: { name: 'Auditoria &amp; Revis&#227;o', desc: "J&#225; existe ou est&#225; a ser especificado um sistema. Revemos face aos requisitos reais do show, identificamos os riscos escondidos nas lacunas e produzimos um documento claro de recomenda&#231;&#245;es. A forma mais r&#225;pida de encontrar problemas antes de se tornarem emerg&#234;ncias no dia do show." }
     }
   },
-  TD: {
-    nameHTML: 'Technical<br><em>Direction</em>',
-    anchor: '#technical-direction',
-    why: "Your answers point to an accountability gap — there's no single person who understands both the creative intent and the technical infrastructure and has the authority to align them. Technical Direction fills that role, bridging crew, creative team, and venue so every element of the show lands as designed.",
+  TD: { nameHTML: 'Dire&#231;&#227;o<br><em>T&#233;cnica</em>', anchor: '#technical-direction',
+    why: "As suas respostas apontam para uma lacuna de responsabilidade &#8212; n&#227;o existe uma &#250;nica pessoa que compreenda tanto a inten&#231;&#227;o criativa como a infraestrutura t&#233;cnica e tenha autoridade para as alinhar. A Dire&#231;&#227;o T&#233;cnica preenche esse papel, fazendo a ponte entre a equipa, a equipa criativa e a sala para que cada elemento do show aterro como foi concebido.",
     modes: {
-      lead: { name: 'Full Production Cycle', desc: "Your project needs technical leadership from the planning stage through to post-show wrap. We come in early — owning the technical rider, site visits, supplier briefs, and rehearsal schedule — so the show arrives at load-in already aligned." },
-      support: { name: 'Show-Day Direction', desc: "Pre-production is handled. What you need is experienced technical authority in the room for load-in, rehearsal, and the live show — someone who can make decisions fast and keep everything running to the design." }
+      lead: { name: 'Ciclo Completo de Produ&#231;&#227;o', desc: "O seu projeto precisa de lideran&#231;a t&#233;cnica desde a fase de planeamento at&#233; ao wrap p&#243;s-show. Entramos cedo &#8212; sendo respons&#225;veis pelo rider t&#233;cnico, visitas ao local, briefings de fornecedores e calend&#225;rio de ensaios &#8212; para que o show chegue ao load-in j&#225; alinhado." },
+      support: { name: 'Dire&#231;&#227;o no Dia do Show', desc: "A pr&#233;-produ&#231;&#227;o est&#225; tratada. O que precisa &#233; de autoridade t&#233;cnica experiente na sala para o load-in, ensaio e o show ao vivo &#8212; algu&#233;m que tome decis&#245;es rapidamente e mantenha tudo a correr conforme o design." }
     }
   }
 };
-
-var TOTAL_Q = 4;
-var SCORE_KEYS = ['SD', 'SC', 'SA', 'TD'];
-var currentQ = 0;
-var answers = new Array(TOTAL_Q).fill(null);
-
-function updateProgress(qIndex) {
-  for (var i = 0; i < TOTAL_Q; i++) {
-    var seg = document.getElementById('seg-' + i);
-    if (i < qIndex) seg.className = 'progress-segment done';
-    else if (i === qIndex) seg.className = 'progress-segment active';
-    else seg.className = 'progress-segment';
-  }
-  document.getElementById('progress-bar').setAttribute('aria-valuenow', qIndex + 1);
-}
-
-function showScreen(index) {
-  document.querySelectorAll('.q-screen').forEach(function(s) { s.classList.remove('active'); });
-  document.getElementById('result-screen').classList.remove('active');
-  var screen = document.getElementById('q' + index);
-  if (!screen) return;
-  screen.classList.add('active');
-  if (answers[index] && answers[index].el) {
-    screen.querySelectorAll('.option-btn').forEach(function(b) { b.classList.remove('selected'); });
-    answers[index].el.classList.add('selected');
-    var nb = document.getElementById('next-' + index);
-    if (nb) nb.disabled = false;
-  }
-  updateProgress(index);
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function showResult() {
-  document.querySelectorAll('.q-screen').forEach(function(s) { s.classList.remove('active'); });
-  var rs = document.getElementById('result-screen');
-  rs.classList.add('active');
-  for (var i = 0; i < TOTAL_Q; i++) {
-    document.getElementById('seg-' + i).className = 'progress-segment done';
-  }
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-  renderResult();
-}
-
-// Attach option click handlers
-document.querySelectorAll('.q-screen').forEach(function(screen, qIndex) {
-  screen.querySelectorAll('.option-btn').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      screen.querySelectorAll('.option-btn').forEach(function(b) { b.classList.remove('selected'); });
-      btn.classList.add('selected');
-      answers[qIndex] = {
-        scores: JSON.parse(btn.getAttribute('data-scores')),
-        engage: JSON.parse(btn.getAttribute('data-engage')),
-        el: btn
-      };
-      var nb = document.getElementById('next-' + qIndex);
-      if (nb) nb.disabled = false;
-    });
-  });
-});
-
-// Next / Back buttons
-for (var qi = 0; qi < TOTAL_Q; qi++) {
-  (function(idx) {
-    var nb = document.getElementById('next-' + idx);
-    if (nb) {
-      nb.addEventListener('click', function() {
-        if (idx < TOTAL_Q - 1) { currentQ = idx + 1; showScreen(currentQ); }
-        else { showResult(); }
-      });
-    }
-  })(qi);
-}
-document.querySelectorAll('.btn-back').forEach(function(btn, i) {
-  btn.addEventListener('click', function() {
-    if (currentQ > 0) { currentQ--; showScreen(currentQ); }
-  });
-});
-
-function computeResult() {
-  var totals = { SD: 0, SC: 0, SA: 0, TD: 0 };
-  var engage = { earlyStage: 0, wantsLead: 0 };
-  answers.forEach(function(a) {
-    if (!a) return;
-    SCORE_KEYS.forEach(function(k) { totals[k] += (a.scores[k] || 0); });
-    Object.keys(engage).forEach(function(k) { engage[k] += (a.engage[k] || 0); });
-  });
-  var win = SCORE_KEYS.reduce(function(a, b) { return totals[a] >= totals[b] ? a : b; });
-  var isEarly = engage.earlyStage >= 3;
-  var isLead  = engage.wantsLead  >= 4;
-  var modeKey;
-  if (win === 'SD') modeKey = isLead ? 'lead' : 'support';
-  else if (win === 'SC') modeKey = isEarly ? 'support' : 'lead';
-  else if (win === 'SA') modeKey = isEarly ? 'lead' : 'support';
-  else modeKey = (isEarly || isLead) ? 'lead' : 'support';
-  return { win: win, modeKey: modeKey };
-}
-
-function renderResult() {
-  var r = computeResult();
-  var svc = SERVICES[r.win];
-  var mode = svc.modes[r.modeKey];
-  document.getElementById('result-service-name').innerHTML = svc.nameHTML;
-  document.getElementById('result-mode-name').textContent = '\u2192 ' + mode.name;
-  document.getElementById('result-why').textContent = svc.why;
-  document.getElementById('result-mode-desc').textContent = mode.desc;
-  document.getElementById('result-link-service').href = 'services.html' + svc.anchor;
-  document.getElementById('result-link-contact').href = 'about.html?service=' + encodeURIComponent(r.win) + '#contact-form';
-}
-
-document.getElementById('restart-btn').addEventListener('click', function() {
-  answers.fill(null);
-  currentQ = 0;
-  document.querySelectorAll('.option-btn').forEach(function(b) { b.classList.remove('selected'); });
-  for (var i = 0; i < TOTAL_Q; i++) {
-    var nb = document.getElementById('next-' + i);
-    if (nb) nb.disabled = true;
-  }
-  showScreen(0);
-});
-
-// Mobile nav
-(function() {
-  var h = document.getElementById('hamburger');
-  var m = document.getElementById('mobileMenu');
-  if (!h || !m) return;
-  h.addEventListener('click', function() {
-    var open = m.classList.toggle('open');
-    h.classList.toggle('open');
-    h.setAttribute('aria-expanded', open ? 'true' : 'false');
-    h.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
-    document.body.style.overflow = open ? 'hidden' : '';
-  });
-  m.querySelectorAll('a').forEach(function(a) {
-    a.addEventListener('click', function() {
-      m.classList.remove('open'); h.classList.remove('open');
-      h.setAttribute('aria-expanded', 'false');
-      h.setAttribute('aria-label', 'Open navigation menu');
-      document.body.style.overflow = '';
-    });
-  });
-})();
+var TOTAL_Q=4,SCORE_KEYS=['SD','SC','SA','TD'],currentQ=0,answers=new Array(TOTAL_Q).fill(null);
+function updateProgress(i){for(var j=0;j<TOTAL_Q;j++){var s=document.getElementById('seg-'+j);s.className='progress-segment'+(j<i?' done':j===i?' active':'');}document.getElementById('progress-bar').setAttribute('aria-valuenow',i+1);}
+function showScreen(i){document.querySelectorAll('.q-screen').forEach(function(s){s.classList.remove('active');});document.getElementById('result-screen').classList.remove('active');var sc=document.getElementById('q'+i);if(!sc)return;sc.classList.add('active');if(answers[i]&&answers[i].el){sc.querySelectorAll('.option-btn').forEach(function(b){b.classList.remove('selected');});answers[i].el.classList.add('selected');var nb=document.getElementById('next-'+i);if(nb)nb.disabled=false;}updateProgress(i);window.scrollTo({top:0,behavior:'smooth'});}
+function showResult(){document.querySelectorAll('.q-screen').forEach(function(s){s.classList.remove('active');});var rs=document.getElementById('result-screen');rs.classList.add('active');for(var i=0;i<TOTAL_Q;i++)document.getElementById('seg-'+i).className='progress-segment done';window.scrollTo({top:0,behavior:'smooth'});renderResult();}
+document.querySelectorAll('.q-screen').forEach(function(screen,qi){screen.querySelectorAll('.option-btn').forEach(function(btn){btn.addEventListener('click',function(){screen.querySelectorAll('.option-btn').forEach(function(b){b.classList.remove('selected');});btn.classList.add('selected');answers[qi]={scores:JSON.parse(btn.getAttribute('data-scores')),engage:JSON.parse(btn.getAttribute('data-engage')),el:btn};var nb=document.getElementById('next-'+qi);if(nb)nb.disabled=false;});});});
+for(var qi=0;qi<TOTAL_Q;qi++){(function(idx){var nb=document.getElementById('next-'+idx);if(nb)nb.addEventListener('click',function(){if(idx<TOTAL_Q-1){currentQ=idx+1;showScreen(currentQ);}else{showResult();}});})(qi);}
+document.querySelectorAll('.btn-back').forEach(function(btn){btn.addEventListener('click',function(){if(currentQ>0){currentQ--;showScreen(currentQ);}});});
+function computeResult(){var t={SD:0,SC:0,SA:0,TD:0},e={earlyStage:0,wantsLead:0};answers.forEach(function(a){if(!a)return;SCORE_KEYS.forEach(function(k){t[k]+=(a.scores[k]||0);});Object.keys(e).forEach(function(k){e[k]+=(a.engage[k]||0);});});var w=SCORE_KEYS.reduce(function(a,b){return t[a]>=t[b]?a:b;});var isE=e.earlyStage>=3,isL=e.wantsLead>=4,mk;if(w==='SD')mk=isL?'lead':'support';else if(w==='SC')mk=isE?'support':'lead';else if(w==='SA')mk=isE?'lead':'support';else mk=(isE||isL)?'lead':'support';return{win:w,modeKey:mk};}
+function renderResult(){var r=computeResult(),svc=SERVICES_PT[r.win],mode=svc.modes[r.modeKey];document.getElementById('result-service-name').innerHTML=svc.nameHTML;document.getElementById('result-mode-name').textContent='→ '+mode.name;document.getElementById('result-why').textContent=svc.why;document.getElementById('result-mode-desc').textContent=mode.desc;document.getElementById('result-link-service').href='services.html'+svc.anchor;document.getElementById('result-link-contact').href='about.html#contact-form';}
+document.getElementById('restart-btn').addEventListener('click',function(){answers.fill(null);currentQ=0;document.querySelectorAll('.option-btn').forEach(function(b){b.classList.remove('selected');});for(var i=0;i<TOTAL_Q;i++){var nb=document.getElementById('next-'+i);if(nb)nb.disabled=true;}showScreen(0);});
+(function(){var h=document.getElementById('hamburger'),m=document.getElementById('mobileMenu');if(!h||!m)return;h.addEventListener('click',function(){var o=m.classList.toggle('open');h.classList.toggle('open');h.setAttribute('aria-expanded',o?'true':'false');h.setAttribute('aria-label',o?'Fechar menu de navegação':'Abrir menu de navegação');document.body.style.overflow=o?'hidden':'';});m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){m.classList.remove('open');h.classList.remove('open');h.setAttribute('aria-expanded','false');h.setAttribute('aria-label','Abrir menu de navegação');document.body.style.overflow='';});});})();
 </script>
 </body>
 </html>
