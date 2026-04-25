@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Lumen and Pixel — estúdio de produção de eventos ao vivo baseado em Portugal." />
+<meta name="description" content="Lumen and Pixel — a live event production studio based in Portugal." />
 <title>Lumen and Pixel</title>
-<link rel="icon" href="../images/favicon.svg" type="image/svg+xml" />
-<link rel="apple-touch-icon" href="../images/og-image.png" />
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="images/og-image.png" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Lumen and Pixel" />
 <meta property="og:title" content="Lumen and Pixel" />
-<meta property="og:description" content="Lumen and Pixel — estúdio de produção de eventos ao vivo baseado em Portugal." />
-<meta property="og:url" content="https://www.lumenandpixel.com/pt/index.html" />
+<meta property="og:description" content="Lumen and Pixel — a live event production studio based in Portugal. Show Design, Show Control &amp; Automation, System Architecture, and Technical Direction." />
+<meta property="og:url" content="https://www.lumenandpixel.com/" />
 <meta property="og:image" content="https://www.lumenandpixel.com/images/og-image.png" />
 <meta property="og:image:alt" content="Lumen and Pixel" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Lumen and Pixel" />
-<meta name="twitter:description" content="Lumen and Pixel — estúdio de produção de eventos ao vivo baseado em Portugal." />
+<meta name="twitter:description" content="Lumen and Pixel — a live event production studio based in Portugal. Show Design, Show Control &amp; Automation, System Architecture, and Technical Direction." />
 <meta name="twitter:image" content="https://www.lumenandpixel.com/images/og-image.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -96,8 +96,9 @@
     .mobile-menu{display:block;}
     .mobile-lang-switch{display:flex;}
   }
+  /* ── HERO ── */
   .hero{position:relative;height:100vh;min-height:640px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:96px;overflow:hidden;}
-  .hero-bg{position:absolute;inset:0;background-image:url('../images/og-image.png');background-size:cover;background-position:center;transform:scale(1.04);animation:heroZoom 12s ease-out forwards;}
+  .hero-bg{position:absolute;inset:0;background-image:url('images/og-image.png');background-size:cover;background-position:center;transform:scale(1.04);animation:heroZoom 12s ease-out forwards;}
 
   .hero-actions{display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap;}
   .hero-cta-quiz{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--green-500);border:1px solid rgba(51,251,49,0.4);padding:12px 28px;border-radius:3px;min-height:44px;transition:border-color 0.2s,background 0.2s;}
@@ -112,15 +113,17 @@
   .hero-content h1 em{font-style:normal;color:var(--green-500);}
   .hero-scope{font-family:var(--font-display);font-size:10px;font-weight:400;letter-spacing:0.14em;color:rgba(240,241,243,0.45);text-transform:uppercase;margin-bottom:28px;line-height:1.8;}
   .hero-scope em{font-style:normal;color:rgba(51,251,49,0.65);}
-  .hero-learn-more{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--gray-100);border:1px solid rgba(240,241,243,0.35);padding:12px 28px;border-radius:3px;min-height:44px;transition:border-color 0.2s;}
+  .hero-learn-more{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--gray-100);border:1px solid rgba(240,241,243,0.35);padding:12px 28px;border-radius:3px;min-height:44px;transition:border-color 0.2s,background 0.2s;}
   .hero-learn-more:hover{border-color:var(--green-500);}
   .hero-learn-more svg{transition:transform 0.2s;}
   .hero-learn-more:hover svg{transform:translateX(4px);}
+  /* ── MARQUEE ── */
   .marquee-strip{background:var(--green-500);padding:12px 0;overflow:hidden;white-space:nowrap;}
   .marquee-inner{display:inline-flex;animation:marquee 22s linear infinite;}
   .marquee-inner span{font-family:var(--font-display);font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--blue-700);padding:0 32px;}
   .marquee-inner span::after{content:'◆';margin-left:32px;opacity:0.5;}
   @keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+  /* ── SERVICES SECTION ── */
   .section-label{font-size:11px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--green-500);margin-bottom:20px;}
   .services{background:var(--blue-900);padding:100px 48px;}
   .services-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:72px;max-width:1200px;margin-left:auto;margin-right:auto;}
@@ -134,6 +137,10 @@
   h6,.subtitle{font-size:15px;font-weight:300;color:var(--gray-300);line-height:1.7;max-width:420px;margin-top:14px;}
   .read-more{display:inline-flex;align-items:center;gap:8px;margin-top:28px;font-size:13px;font-weight:500;letter-spacing:0.06em;color:var(--green-500);min-height:44px;transition:gap 0.2s;}
   .read-more:hover{gap:14px;}
+  .service-card--wide{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;gap:0 52px;align-items:start;}
+  .service-card--wide .service-card-icon{grid-column:1;grid-row:1/3;width:64px;height:64px;margin-bottom:0;align-self:center;}
+  .service-card--wide>div{grid-column:2;grid-row:1;}
+  .service-card--wide>.read-more{grid-column:2;grid-row:2;margin-top:28px;align-self:end;}
   /* ── CLIENTS ── */
   .clients{padding:56px 48px;border-top:1px solid rgba(46,52,65,0.5);border-bottom:1px solid rgba(46,52,65,0.5);}
   .clients-inner{max-width:1200px;margin:0 auto;}
@@ -144,12 +151,16 @@
   .client-item+.client-item{border-left:1px solid rgba(46,52,65,0.6);}
   .client-item img.logo-invert{height:36px;width:auto;display:block;object-fit:contain;max-width:140px;filter:invert(1);}
   .client-item img.logo-white{height:36px;width:auto;display:block;object-fit:contain;max-width:140px;filter:brightness(100);}
+  /* Randstad is stacked (mark+text) — give it more height */
   .client-item img.logo-white.logo-stacked{height:52px;max-width:80px;}
+  /* RCV wordmark is very wide — cap width, let height scale */
   .client-item img.logo-invert.logo-wide{height:auto;max-width:160px;min-height:20px;}
   @media(max-width:1100px){.client-item{padding:12px 20px;}.client-item img.logo-invert,.client-item img.logo-white{height:30px;max-width:110px;}.client-item img.logo-white.logo-stacked{height:44px;max-width:66px;}.client-item img.logo-invert.logo-wide{max-width:130px;}}
   @media(max-width:700px){.clients{padding:36px 24px;}.clients-grid{flex-direction:column;align-items:stretch;}.client-item{justify-content:center;padding:14px 0;}.client-item+.client-item{border-left:none;border-top:1px solid rgba(46,52,65,0.6);}}
+  /* ── CTA BANNER ── */
   .cta-banner{background:var(--blue-500);padding:100px 48px;text-align:center;border-top:1px solid rgba(46,52,65,0.6);border-bottom:1px solid rgba(46,52,65,0.6);}
   .cta-banner h2{font-family:var(--font-display);font-size:clamp(2rem,4vw,3.6rem);max-width:700px;margin:0 auto;line-height:1.1;font-weight:700;letter-spacing:-0.01em;}
+  /* ── NEWSLETTER ── */
   .newsletter{background:transparent;padding:100px 48px;text-align:center;}
   .newsletter h2{font-family:var(--font-display);font-size:clamp(1.6rem,3vw,2.8rem);margin-bottom:12px;font-weight:700;letter-spacing:-0.01em;}
   .newsletter>p{color:var(--gray-300);margin-bottom:36px;font-size:15px;}
@@ -226,8 +237,15 @@
   .reveal.visible{opacity:1;transform:none;}
   h1,h2,h3,.error-code,.page-heading{overflow-wrap:break-word;word-break:break-word;}
   @media(max-width:900px){
-    .services{padding:72px 24px;}.services-header{flex-direction:column;align-items:flex-start;gap:24px;margin-bottom:48px;}
-    .service-grid{grid-template-columns:1fr;}.cta-banner{padding:72px 24px;}.newsletter{padding:72px 24px;}
+    .services{padding:72px 24px;}
+    .services-header{flex-direction:column;align-items:flex-start;gap:24px;margin-bottom:48px;}
+    .service-grid{grid-template-columns:1fr;}
+    .service-card--wide{grid-template-columns:1fr;}
+    .service-card--wide .service-card-icon{grid-row:1;grid-column:1;margin-bottom:32px;}
+    .service-card--wide>div{grid-column:1;grid-row:2;}
+    .service-card--wide>.read-more{grid-column:1;grid-row:3;}
+    .cta-banner{padding:72px 24px;}
+    .newsletter{padding:72px 24px;}
   }
   @media(max-width:480px){
     h1{font-size:clamp(1.8rem,8vw,2.6rem)!important;}
@@ -240,52 +258,52 @@
 </style>
 </head>
 <body>
-<a href="#main-content" class="skip-link">Saltar para o conteúdo principal</a>
-<nav aria-label="Navegação principal">
-  <a href="../index.html" class="nav-logo" aria-label="Lumen and Pixel — início">
-    <img class="nav-logo-mark" src="../images/logo-mark.svg" alt="Lumen and Pixel" />
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<nav aria-label="Main navigation">
+  <a href="index.html" class="nav-logo" aria-label="Lumen and Pixel — home">
+    <img class="nav-logo-mark" src="images/logo-mark.svg" alt="Lumen and Pixel" />
   </a>
   <ul class="nav-links">
-    <li><a href="services.html">Serviços</a></li>
-    <li><a href="resources.html">Recursos</a></li>
-    <li><a href="about.html">Sobre</a></li>
-    <li><a href="quiz.html" class="nav-quiz-link">Qual é o meu serviço?</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="quiz.html" class="nav-quiz-link">Find your fit</a></li>
   </ul>
   <div class="nav-actions">
-    <a href="about.html#contact-form" class="nav-cta">Começar</a>
-    <div class="lang-switch" aria-label="Seletor de idioma">
-      <a href="../index.html">EN</a><span>/</span><a href="index.html" class="active">PT</a>
+    <a href="about.html#contact-form" class="nav-cta">Get started</a>
+    <div class="lang-switch" aria-label="Language selector">
+      <a href="index.html" class="active">EN</a><span>/</span><a href="pt/index.html">PT</a>
     </div>
   </div>
-  <button class="nav-hamburger" id="hamburger" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="mobileMenu">
+  <button class="nav-hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
     <span></span><span></span><span></span>
   </button>
 </nav>
-<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menu de navegação" aria-modal="true">
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation menu" aria-modal="true">
   <ul>
-    <li><a href="services.html">Serviços</a></li>
-    <li><a href="resources.html">Recursos</a></li>
-    <li><a href="about.html">Sobre</a></li>
-    <li><a href="quiz.html">Qual é o meu serviço?</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="quiz.html">Find your fit</a></li>
   </ul>
-  <a href="about.html#contact-form" class="mobile-cta">Começar</a>
+  <a href="about.html#contact-form" class="mobile-cta">Get started</a>
   <div class="mobile-lang-switch">
-    <a href="../index.html">EN</a><span>/</span><a href="index.html" class="active">PT</a>
+    <a href="index.html" class="active">EN</a><span>/</span><a href="pt/index.html">PT</a>
   </div>
 </div>
 
 <section class="hero" id="main-content">
   <div class="hero-bg"></div>
   <div class="hero-content">
-    <h1>O criativo está pronto.<br>E o <em>sistema?</em></h1>
-    <p class="hero-scope"><em>Conferências corporativas</em> &nbsp;·&nbsp; <em>Festivais de música</em> &nbsp;·&nbsp; <em>Produções em tour</em> &nbsp;·&nbsp; <em>Ativações de marca</em><br>Baseados em <em>Portugal</em> &nbsp;·&nbsp; A trabalhar <em>globalmente</em> &nbsp;·&nbsp; Da pré-produção ao <em>dia do show</em></p>
+    <h1>The creative is ready.<br>Is the <em>system?</em></h1>
+    <p class="hero-scope"><em>Corporate conferences</em> &nbsp;·&nbsp; <em>Music festivals</em> &nbsp;·&nbsp; <em>Touring productions</em> &nbsp;·&nbsp; <em>Brand activations</em><br>Based in <em>Portugal</em> &nbsp;·&nbsp; Working <em>worldwide</em> &nbsp;·&nbsp; Pre-production through <em>show day</em></p>
     <div class="hero-actions">
       <a href="#services" class="hero-learn-more">
-        Explorar serviços
+        Explore services
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
       <a href="quiz.html" class="hero-cta-quiz">
-        Qual é o meu serviço?
+        Find your fit
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
@@ -295,69 +313,88 @@
 
 <div class="marquee-strip">
   <div class="marquee-inner">
-    <span>Design de Espetáculo</span><span>Controlo de Cena</span><span>Arquitetura de Sistemas</span><span>Direção Técnica</span><span>Produção ao Vivo</span><span>Sistemas Visuais</span>
-    <span>Design de Espetáculo</span><span>Controlo de Cena</span><span>Arquitetura de Sistemas</span><span>Direção Técnica</span><span>Produção ao Vivo</span><span>Sistemas Visuais</span>
+    <span>Show Design</span><span>Show Control</span><span>System Architecture</span><span>Technical Direction</span><span>Live Production</span><span>Visual Systems</span>
+    <span>Show Design</span><span>Show Control</span><span>System Architecture</span><span>Technical Direction</span><span>Live Production</span><span>Visual Systems</span>
   </div>
 </div>
 
 <div class="services" id="services">
   <div class="services-header reveal">
     <div>
-      <p class="section-label">O Que Fazemos</p>
-      <h2>Pensamento a nível de sistema.<br>Resultados ao nível do <em>espetáculo.</em></h2>
+      <p class="section-label">What We Do</p>
+      <h2>System-level thinking.<br>Show-level <em>results.</em></h2>
     </div>
   </div>
   <div class="service-grid">
     <div class="service-card reveal">
       <svg class="service-card-icon" viewBox="0 0 52 52" fill="none" aria-hidden="true"><rect x="4" y="28" width="36" height="18" rx="1" stroke="currentColor" stroke-width="1.6"/><path d="M4 34h36" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity=".35"/><path d="M30 6l12 12-18 10H12l6-14z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M30 6l6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".5"/></svg>
-      <div><h3>Design de Espetáculo</h3><p class="subtitle">Traduzimos ideias criativas em sistemas tecnicamente executáveis — transformando visão num espetáculo que pode ser construído, programado e entregue.</p></div>
-      <a href="services.html#show-design" class="read-more">Saber Mais <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M0 5h12M9 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <div><h3>Show Design</h3><p class="subtitle">We translate creative ideas into technically executable systems — turning vision into a show that can actually be built, programmed, and delivered.</p></div>
+      <a href="services.html#show-design" class="read-more" aria-label="Read more about Show Design">Read More <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M0 5h12M9 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
     <div class="service-card reveal" style="transition-delay:0.1s">
-      <svg class="service-card-icon" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M6 26h40" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".3"/><circle cx="14" cy="26" r="3.5" stroke="currentColor" stroke-width="1.6"/><circle cx="26" cy="26" r="3.5" stroke="currentColor" stroke-width="1.6"/><circle cx="38" cy="26" r="3.5" stroke="currentColor" stroke-width="1.6"/><path d="M14 22.5V12M26 22.5V8M38 22.5V14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-      <div><h3>Controlo de Cena &amp; Automação</h3><p class="subtitle">Sincronizamos iluminação, vídeo e efeitos num sistema único e unificado. Cada deixa, cada batida, cada transição — controlada com precisão.</p></div>
-      <a href="services.html#show-control" class="read-more">Saber Mais <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M0 5h12M9 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <svg class="service-card-icon" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M6 26h40" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".3"/><circle cx="14" cy="26" r="3.5" stroke="currentColor" stroke-width="1.6"/><circle cx="26" cy="26" r="3.5" stroke="currentColor" stroke-width="1.6"/><circle cx="38" cy="26" r="3.5" stroke="currentColor" stroke-width="1.6"/><path d="M14 22.5V12M26 22.5V8M38 22.5V14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M14 29.5V38M26 29.5V40M38 29.5V36" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".45"/></svg>
+      <div><h3>Show Control &amp; Automation</h3><p class="subtitle">We synchronize lighting, video, and effects into a single, unified system. Every cue, every beat, every transition — controlled with precision.</p></div>
+      <a href="services.html#show-control" class="read-more" aria-label="Read more about Show Control and Automation">Read More <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M0 5h12M9 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
     <div class="service-card reveal" style="transition-delay:0.15s">
       <svg class="service-card-icon" viewBox="0 0 52 52" fill="none" aria-hidden="true"><circle cx="10" cy="14" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="10" cy="38" r="4" stroke="currentColor" stroke-width="1.6" opacity=".5"/><rect x="20" y="20" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.6"/><circle cx="42" cy="10" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="42" cy="26" r="4" stroke="currentColor" stroke-width="1.6" opacity=".6"/><circle cx="42" cy="42" r="4" stroke="currentColor" stroke-width="1.6" opacity=".35"/><path d="M14 14l6 8M14 36l6-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M32 24l6-14M32 26h6M32 28l6 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-      <div><h3>Arquitetura de Sistemas</h3><p class="subtitle">Definimos a espinha dorsal técnica — fluxo de sinal, topologia de equipamentos e lógica de integração — para que a infraestrutura do seu evento funcione em qualquer condição.</p></div>
-      <a href="services.html#system-architecture" class="read-more">Saber Mais <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M0 5h12M9 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <div><h3>System Architecture</h3><p class="subtitle">We define the technical backbone — signal flow, equipment topology, and integration logic — so your event infrastructure is built to perform under any condition.</p></div>
+      <a href="services.html#system-architecture" class="read-more" aria-label="Read more about System Architecture">Read More <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M0 5h12M9 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
     <div class="service-card reveal" style="transition-delay:0.2s">
-      <svg class="service-card-icon" viewBox="0 0 52 52" fill="none" aria-hidden="true"><circle cx="26" cy="26" r="20" stroke="currentColor" stroke-width="1.6"/><circle cx="26" cy="26" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M26 23l-4 10 4-4 4 4z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" fill="none"/><path d="M26 8v4M26 40v4M8 26h4M40 26h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity=".4"/></svg>
-      <div><h3>Direção Técnica</h3><p class="subtitle">Somos o único ponto de autoridade técnica no seu evento — ligando a intenção criativa à execução da equipa para que cada elemento aterro exatamente como foi concebido.</p></div>
-      <a href="services.html#technical-direction" class="read-more">Saber Mais <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M0 5h12M9 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <svg class="service-card-icon" viewBox="0 0 52 52" fill="none" aria-hidden="true"><circle cx="26" cy="26" r="20" stroke="currentColor" stroke-width="1.6"/><circle cx="26" cy="26" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M26 23l-4 10 4-4 4 4z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" fill="none"/><path d="M26 29l3-8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity=".35"/><path d="M26 8v4M26 40v4M8 26h4M40 26h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity=".4"/></svg>
+      <div><h3>Technical Direction</h3><p class="subtitle">We are the single point of technical authority on your event — bridging creative intent and crew execution so every element lands exactly as designed.</p></div>
+      <a href="services.html#technical-direction" class="read-more" aria-label="Read more about Technical Direction">Read More <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M0 5h12M9 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
   </div>
 </div>
 
-<!-- CLIENTES -->
+<!-- CLIENTS -->
 <div class="clients reveal">
   <div class="clients-inner">
-    <p class="clients-label">Confiam em nós</p>
+    <p class="clients-label">Trusted by</p>
     <div class="clients-grid">
-      <div class="client-item"><img src="../images/logos/sap.png" alt="SAP" class="logo-invert" /></div>
-      <div class="client-item"><img src="../images/logos/randstad.svg" alt="Randstad" class="logo-white logo-stacked" /></div>
-      <div class="client-item"><img src="../images/logos/verisure.svg" alt="Verisure" class="logo-white" /></div>
-      <div class="client-item"><img src="../images/logos/cgd.svg" alt="Caixa Geral de Depósitos" class="logo-white" /></div>
-      <div class="client-item"><img src="../images/logos/yeatman.png" alt="The Yeatman" class="logo-invert" /></div>
-      <div class="client-item"><img src="../images/logos/rcv.png" alt="Real Companhia Velha" class="logo-invert logo-wide" /></div>
+
+      <div class="client-item">
+        <img src="images/logos/sap.png" alt="SAP" class="logo-invert" />
+      </div>
+
+      <div class="client-item">
+        <img src="images/logos/randstad.svg" alt="Randstad" class="logo-white logo-stacked" />
+      </div>
+
+      <div class="client-item">
+        <img src="images/logos/verisure.svg" alt="Verisure" class="logo-white" />
+      </div>
+
+      <div class="client-item">
+        <img src="images/logos/cgd.svg" alt="Caixa Geral de Depósitos" class="logo-white" />
+      </div>
+
+      <div class="client-item">
+        <img src="images/logos/yeatman.png" alt="The Yeatman" class="logo-invert" />
+      </div>
+
+      <div class="client-item">
+        <img src="images/logos/rcv.png" alt="Real Companhia Velha" class="logo-invert logo-wide" />
+      </div>
+
     </div>
   </div>
 </div>
 
-<div class="cta-banner reveal">
-  <h2>Um parceiro. Todos os sistemas. Exatamente certo.</h2>
+<div class="cta-banner reveal" id="about">
+  <h2>One partner. Every system. Exactly right.</h2>
 </div>
 
-<div class="newsletter reveal">
-  <p class="section-label">Fique a par</p>
-  <h2>Acompanhe as últimas novidades.</h2>
-  <p>Subscreva hoje.</p>
+<div class="newsletter reveal" id="contact">
+  <p class="section-label">Stay in the loop</p>
+  <h2>Keep up with the latest news.</h2>
+  <p>Sign up today.</p>
   <div class="newsletter-embed">
     <div class="ml-embedded" data-form="gZXg1D"></div>
   </div>
-  <p class="newsletter-fallback">Se ocorrer algum problema, tente recarregar a página. Se o problema persistir, tente usar outro browser.</p>
+  <p class="newsletter-fallback">If any issue occurs, try reloading the page. If the issue persists, try using another browser.</p>
 </div>
 
 <footer>
@@ -366,8 +403,8 @@
     <ul class="footer-social">
       <li><a href="https://www.instagram.com/lumenandpixel" target="_blank" rel="noopener">Instagram</a></li>
       <li><a href="https://www.linkedin.com/company/lumen-and-pixel" target="_blank" rel="noopener">LinkedIn</a></li>
-      <li><a href="legal.html#privacy">Privacidade</a></li>
-      <li><a href="legal.html#terms">Termos</a></li>
+      <li><a href="legal.html#privacy">Privacy</a></li>
+      <li><a href="legal.html#terms">Terms</a></li>
       <li><a href="legal.html#cookies">Cookies</a></li>
     </ul>
     <span class="footer-copy">© Lumen and Pixel 2025</span>
