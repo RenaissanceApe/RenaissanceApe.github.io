@@ -124,7 +124,10 @@ nav
   .service-header-text h2 { font-family: var(--font-display); font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 20px; }
   .service-header-text h2 em { font-style: italic; color: var(--green-500); }
   .service-header-text .lead { font-size: 16px; font-weight: 300; color: var(--gray-300); line-height: 1.8; }
-  .service-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 2px; filter: brightness(0.85); }
+  .service-img { display: none; }
+  .service-panel { width: 100%; aspect-ratio: 4/3; border-radius: 2px; overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center; }
+  .service-panel-bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
+  .service-panel-icon { position: relative; z-index: 1; width: 120px; height: 120px; filter: invert(1); opacity: 0.85; }
 
   /* ── ALWAYS-VISIBLE INTRO ── */
   .service-intro { margin-top: 48px; padding-top: 40px; border-top: 1px solid rgba(46,52,65,0.8); }
@@ -321,9 +324,10 @@ nav
       <h2>Show<br><em>Design</em></h2>
       <p class="lead">Traduzimos a ambição criativa em sistemas tecnicamente executáveis — dando a cada ideia um caminho claro da visão ao palco.</p>
     </div>
-    <img class="service-img reveal" style="transition-delay:0.1s"
-      src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1200&q=80"
-      alt="Design de palco com iluminação dramática para um evento ao vivo" />
+    <div class="service-panel reveal" style="transition-delay:0.1s">
+      <div class="service-panel-bg" style="background-image:url('../../images/gradients/show-design.svg')"></div>
+      <img class="service-panel-icon" src="../../images/icons/show-design.png" alt="" aria-hidden="true" />
+    </div>
   </div>
 
   <div class="service-intro">
@@ -405,9 +409,10 @@ nav
       <h2>Controlo de Cena<br><em>&amp; Automation</em></h2>
       <p class="lead">Sincronizamos iluminação, vídeo e efeitos num sistema unificado — para que o espetáculo corra com precisão, não com sorte.</p>
     </div>
-    <img class="service-img reveal" style="transition-delay:0.1s"
-      src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=80"
-      alt="Sistemas complexos de controlo de iluminação e vídeo para um evento de grande escala" />
+    <div class="service-panel reveal" style="transition-delay:0.1s">
+      <div class="service-panel-bg" style="background-image:url('../../images/gradients/show-control.svg')"></div>
+      <img class="service-panel-icon" src="../../images/icons/show-control.png" alt="" aria-hidden="true" />
+    </div>
   </div>
 
   <div class="service-intro">
@@ -489,9 +494,10 @@ nav
       <h2>System<br><em>Architecture</em></h2>
       <p class="lead">Definimos a espinha dorsal técnica — fluxo de sinal, topologia de equipamentos e lógica de integração — antes de qualquer cabo ser passado.</p>
     </div>
-    <img class="service-img reveal" style="transition-delay:0.1s"
-      src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80"
-      alt="Rack de equipamento técnico e infraestrutura de roteamento de sinal para um evento ao vivo" />
+    <div class="service-panel reveal" style="transition-delay:0.1s">
+      <div class="service-panel-bg" style="background-image:url('../../images/gradients/system-architecture.svg')"></div>
+      <img class="service-panel-icon" src="../../images/icons/system-architecture.png" alt="" aria-hidden="true" />
+    </div>
   </div>
 
   <div class="service-intro">
@@ -573,9 +579,10 @@ nav
       <h2>Technical<br><em>Direction</em></h2>
       <p class="lead">Somos o único ponto de autoridade técnica no seu evento — garantindo que tudo o que foi concebido é o que o público experiencia.</p>
     </div>
-    <img class="service-img reveal" style="transition-delay:0.1s"
-      src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=1200&q=80"
-      alt="Diretor técnico numa mesa de produção de evento ao vivo com vista para o palco" />
+    <div class="service-panel reveal" style="transition-delay:0.1s">
+      <div class="service-panel-bg" style="background-image:url('../../images/gradients/technical-direction.svg')"></div>
+      <img class="service-panel-icon" src="../../images/icons/technical-direction.png" alt="" aria-hidden="true" />
+    </div>
   </div>
 
   <div class="service-intro">
