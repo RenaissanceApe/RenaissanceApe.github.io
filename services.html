@@ -123,7 +123,10 @@ nav
   .service-header-text h2 { font-family: var(--font-display); font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 20px; }
   .service-header-text h2 em { font-style: italic; color: var(--green-500); }
   .service-header-text .lead { font-size: 16px; font-weight: 300; color: var(--gray-300); line-height: 1.8; }
-  .service-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 2px; filter: brightness(0.85); }
+  .service-img { display: none; } /* replaced by gradient panel */
+  .service-panel { width: 100%; aspect-ratio: 4/3; border-radius: 2px; overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center; }
+  .service-panel-bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
+  .service-panel-icon { position: relative; z-index: 1; width: 120px; height: 120px; filter: invert(1); opacity: 0.85; }
 
   /* ── ALWAYS-VISIBLE INTRO ── */
   .service-intro { margin-top: 48px; padding-top: 40px; border-top: 1px solid rgba(46,52,65,0.8); }
@@ -318,9 +321,10 @@ nav
       <h2>Show<br><em>Design</em></h2>
       <p class="lead">We translate creative ambition into technically executable systems — giving every idea a clear path from vision to stage.</p>
     </div>
-    <img class="service-img reveal" style="transition-delay:0.1s"
-      src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1200&q=80"
-      alt="Stage design with dramatic lighting for a live event" />
+    <div class="service-panel reveal" style="transition-delay:0.1s">
+      <div class="service-panel-bg" style="background-image:url('../images/gradients/show-design.svg')"></div>
+      <img class="service-panel-icon" src="../images/icons/show-design.png" alt="" aria-hidden="true" />
+    </div>
   </div>
 
   <div class="service-intro">
@@ -402,9 +406,10 @@ nav
       <h2>Show Control<br><em>&amp; Automation</em></h2>
       <p class="lead">We synchronize lighting, video, and effects into one unified system — so the show runs with precision, not luck.</p>
     </div>
-    <img class="service-img reveal" style="transition-delay:0.1s"
-      src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=80"
-      alt="Complex lighting and video control systems for a large-scale live event" />
+    <div class="service-panel reveal" style="transition-delay:0.1s">
+      <div class="service-panel-bg" style="background-image:url('../images/gradients/show-control.svg')"></div>
+      <img class="service-panel-icon" src="../images/icons/show-control.png" alt="" aria-hidden="true" />
+    </div>
   </div>
 
   <div class="service-intro">
@@ -486,9 +491,10 @@ nav
       <h2>System<br><em>Architecture</em></h2>
       <p class="lead">We define the technical backbone — signal flow, equipment topology, and integration logic — before a single cable is run.</p>
     </div>
-    <img class="service-img reveal" style="transition-delay:0.1s"
-      src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80"
-      alt="Technical equipment rack and signal routing infrastructure for a live event" />
+    <div class="service-panel reveal" style="transition-delay:0.1s">
+      <div class="service-panel-bg" style="background-image:url('../images/gradients/system-architecture.svg')"></div>
+      <img class="service-panel-icon" src="../images/icons/system-architecture.png" alt="" aria-hidden="true" />
+    </div>
   </div>
 
   <div class="service-intro">
@@ -570,9 +576,10 @@ nav
       <h2>Technical<br><em>Direction</em></h2>
       <p class="lead">We are the single point of technical authority on your event — ensuring everything that was designed is what the audience experiences.</p>
     </div>
-    <img class="service-img reveal" style="transition-delay:0.1s"
-      src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=1200&q=80"
-      alt="Technical director at a live event production desk overlooking the stage" />
+    <div class="service-panel reveal" style="transition-delay:0.1s">
+      <div class="service-panel-bg" style="background-image:url('../images/gradients/technical-direction.svg')"></div>
+      <img class="service-panel-icon" src="../images/icons/technical-direction.png" alt="" aria-hidden="true" />
+    </div>
   </div>
 
   <div class="service-intro">

@@ -129,18 +129,18 @@
   .services-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:72px;max-width:1200px;margin-left:auto;margin-right:auto;}
   .services-header h2{font-family:var(--font-display);font-weight:700;line-height:1.1;letter-spacing:-0.01em;font-size:clamp(2rem,3.5vw,3rem);max-width:500px;}
   .service-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;max-width:1200px;margin:0 auto;}
-  .service-card{background:var(--blue-500);padding:52px 48px;display:grid;grid-template-rows:auto 1fr auto;transition:background 0.3s;overflow:hidden;}
-  .service-card:hover{background:#1e1e1e;}
-  .service-card-icon{width:52px;height:52px;margin-bottom:32px;color:var(--green-500);flex-shrink:0;transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);}
-  .service-card:hover .service-card-icon{transform:scale(1.08) rotate(-3deg);}
+  .service-card{position:relative;padding:52px 48px;display:grid;grid-template-rows:auto 1fr auto;overflow:hidden;}
+  .service-card-bg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0;transition:transform 0.6s cubic-bezier(0.16,1,0.3,1);}
+  .service-card:hover .service-card-bg{transform:scale(1.04);}
+  .service-card::after{content:'';position:absolute;inset:0;background:rgba(2,24,41,0.55);z-index:1;transition:background 0.3s;}
+  .service-card:hover::after{background:rgba(2,24,41,0.35);}
+  .service-card>*{position:relative;z-index:2;}
+  .service-card-icon{width:64px;height:64px;margin-bottom:32px;flex-shrink:0;filter:invert(1);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);}
+  .service-card:hover .service-card-icon{transform:scale(1.06);}
   .service-card h3{font-family:var(--font-display);font-size:clamp(1.3rem,2vw,1.9rem);font-weight:700;line-height:1.1;letter-spacing:-0.01em;margin-bottom:16px;}
   h6,.subtitle{font-size:15px;font-weight:300;color:var(--gray-300);line-height:1.7;max-width:420px;margin-top:14px;}
   .read-more{display:inline-flex;align-items:center;gap:8px;margin-top:28px;font-size:13px;font-weight:500;letter-spacing:0.06em;color:var(--green-500);min-height:44px;transition:gap 0.2s;}
   .read-more:hover{gap:14px;}
-  .service-card--wide{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;gap:0 52px;align-items:start;}
-  .service-card--wide .service-card-icon{grid-column:1;grid-row:1/3;width:64px;height:64px;margin-bottom:0;align-self:center;}
-  .service-card--wide>div{grid-column:2;grid-row:1;}
-  .service-card--wide>.read-more{grid-column:2;grid-row:2;margin-top:28px;align-self:end;}
   /* ── CLIENTS ── */
   .clients{padding:56px 48px;border-top:1px solid rgba(46,52,65,0.5);border-bottom:1px solid rgba(46,52,65,0.5);}
   .clients-inner{max-width:1200px;margin:0 auto;}
@@ -240,10 +240,7 @@
     .services{padding:72px 24px;}
     .services-header{flex-direction:column;align-items:flex-start;gap:24px;margin-bottom:48px;}
     .service-grid{grid-template-columns:1fr;}
-    .service-card--wide{grid-template-columns:1fr;}
-    .service-card--wide .service-card-icon{grid-row:1;grid-column:1;margin-bottom:32px;}
-    .service-card--wide>div{grid-column:1;grid-row:2;}
-    .service-card--wide>.read-more{grid-column:1;grid-row:3;}
+    .service-card{padding:40px 28px;}
     .cta-banner{padding:72px 24px;}
     .newsletter{padding:72px 24px;}
   }
@@ -327,22 +324,26 @@
   </div>
   <div class="service-grid">
     <div class="service-card reveal">
-      <svg class="service-card-icon" viewBox="0 0 52 52" fill="none" aria-hidden="true"><rect x="4" y="28" width="36" height="18" rx="1" stroke="currentColor" stroke-width="1.6"/><path d="M4 34h36" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity=".35"/><path d="M30 6l12 12-18 10H12l6-14z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M30 6l6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".5"/></svg>
+      <div class="service-card-bg" style="background-image:url('images/gradients/show-design.svg')"></div>
+      <img class="service-card-icon" src="images/icons/show-design.png" alt="" aria-hidden="true" />
       <div><h3>Show Design</h3><p class="subtitle">We translate creative ideas into technically executable systems — turning vision into a show that can actually be built, programmed, and delivered.</p></div>
       <a href="services.html#show-design" class="read-more" aria-label="Read more about Show Design">Read More <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M0 5h12M9 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
     <div class="service-card reveal" style="transition-delay:0.1s">
-      <svg class="service-card-icon" viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M6 26h40" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".3"/><circle cx="14" cy="26" r="3.5" stroke="currentColor" stroke-width="1.6"/><circle cx="26" cy="26" r="3.5" stroke="currentColor" stroke-width="1.6"/><circle cx="38" cy="26" r="3.5" stroke="currentColor" stroke-width="1.6"/><path d="M14 22.5V12M26 22.5V8M38 22.5V14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M14 29.5V38M26 29.5V40M38 29.5V36" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".45"/></svg>
+      <div class="service-card-bg" style="background-image:url('images/gradients/show-control.svg')"></div>
+      <img class="service-card-icon" src="images/icons/show-control.png" alt="" aria-hidden="true" />
       <div><h3>Show Control &amp; Automation</h3><p class="subtitle">We synchronize lighting, video, and effects into a single, unified system. Every cue, every beat, every transition — controlled with precision.</p></div>
       <a href="services.html#show-control" class="read-more" aria-label="Read more about Show Control and Automation">Read More <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M0 5h12M9 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
     <div class="service-card reveal" style="transition-delay:0.15s">
-      <svg class="service-card-icon" viewBox="0 0 52 52" fill="none" aria-hidden="true"><circle cx="10" cy="14" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="10" cy="38" r="4" stroke="currentColor" stroke-width="1.6" opacity=".5"/><rect x="20" y="20" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.6"/><circle cx="42" cy="10" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="42" cy="26" r="4" stroke="currentColor" stroke-width="1.6" opacity=".6"/><circle cx="42" cy="42" r="4" stroke="currentColor" stroke-width="1.6" opacity=".35"/><path d="M14 14l6 8M14 36l6-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M32 24l6-14M32 26h6M32 28l6 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+      <div class="service-card-bg" style="background-image:url('images/gradients/system-architecture.svg')"></div>
+      <img class="service-card-icon" src="images/icons/system-architecture.png" alt="" aria-hidden="true" />
       <div><h3>System Architecture</h3><p class="subtitle">We define the technical backbone — signal flow, equipment topology, and integration logic — so your event infrastructure is built to perform under any condition.</p></div>
       <a href="services.html#system-architecture" class="read-more" aria-label="Read more about System Architecture">Read More <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M0 5h12M9 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
     <div class="service-card reveal" style="transition-delay:0.2s">
-      <svg class="service-card-icon" viewBox="0 0 52 52" fill="none" aria-hidden="true"><circle cx="26" cy="26" r="20" stroke="currentColor" stroke-width="1.6"/><circle cx="26" cy="26" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M26 23l-4 10 4-4 4 4z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" fill="none"/><path d="M26 29l3-8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity=".35"/><path d="M26 8v4M26 40v4M8 26h4M40 26h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity=".4"/></svg>
+      <div class="service-card-bg" style="background-image:url('images/gradients/technical-direction.svg')"></div>
+      <img class="service-card-icon" src="images/icons/technical-direction.png" alt="" aria-hidden="true" />
       <div><h3>Technical Direction</h3><p class="subtitle">We are the single point of technical authority on your event — bridging creative intent and crew execution so every element lands exactly as designed.</p></div>
       <a href="services.html#technical-direction" class="read-more" aria-label="Read more about Technical Direction">Read More <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M0 5h12M9 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
