@@ -130,7 +130,27 @@
   .social-links{display:flex;gap:16px;margin-top:36px;}
   .social-link{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding:10px 20px;border:1px solid rgba(130,178,215,0.3);border-radius:3px;transition:border-color 0.2s,color 0.2s;min-height:44px;}
   .social-link:hover{border-color:var(--green-500);color:var(--green-500);}
-  /* ── CONTACT SECTION ── */
+  /* ── FIELD STORIES ── */
+  .field-stories{padding:100px 48px;background:var(--blue-700);}
+  .field-stories-inner{max-width:1200px;margin:0 auto;}
+  .field-stories-header{margin-bottom:64px;}
+  .field-stories-header .section-label{margin-bottom:12px;}
+  .field-stories-header h2{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.8rem);font-weight:700;letter-spacing:-0.01em;line-height:1.1;}
+  .story-card{border:1px solid rgba(130,178,215,0.12);padding:52px 56px;position:relative;}
+  .story-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--green-500);opacity:0.6;}
+  .story-meta{display:flex;align-items:center;gap:20px;margin-bottom:36px;flex-wrap:wrap;}
+  .story-tag{font-family:var(--font-display);font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--green-500);border:1px solid rgba(51,251,49,0.25);padding:4px 12px;border-radius:2px;}
+  .story-service{font-family:var(--font-display);font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--gray-500);}
+  .story-headline{font-family:var(--font-display);font-size:clamp(1.3rem,2.2vw,1.8rem);font-weight:700;line-height:1.15;letter-spacing:-0.01em;margin-bottom:28px;overflow-wrap:break-word;}
+  .story-body{font-size:15px;font-weight:300;color:var(--gray-300);line-height:1.85;max-width:680px;}
+  .story-body p+p{margin-top:18px;}
+  .story-quote{margin-top:36px;padding:28px 32px;background:rgba(51,251,49,0.04);border-left:2px solid rgba(51,251,49,0.3);}
+  .story-quote blockquote{font-family:var(--font-display);font-size:1.05rem;font-weight:400;font-style:italic;line-height:1.55;color:var(--gray-100);margin:0 0 14px;}
+  .story-quote cite{font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray-500);font-style:normal;}
+  @media(max-width:900px){
+    .field-stories{padding:72px 24px;}
+    .story-card{padding:40px 28px;}
+  }
   .contact-section{max-width:1200px;margin:0 auto 100px;padding:0 48px;display:grid;grid-template-columns:1fr 1fr;}
   .contact-left{background:var(--blue-900);padding:96px 64px;display:flex;flex-direction:column;justify-content:space-between;border-right:1px solid rgba(46,52,65,0.8);}
   .contact-left h2{font-family:var(--font-display);font-size:clamp(2.5rem,4vw,4rem);font-weight:700;line-height:1.05;letter-spacing:-0.02em;margin-bottom:24px;}
@@ -289,6 +309,33 @@
       <p>He thinks laughter is underrated, that good design should be invisible, and that the best shows are the ones where the audience never notices the technology — only the experience.</p>
       <p>When he's not pre-vizzing a stage or programming a lighting console, he's probably chasing the next thing that makes him curious.</p>
 
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="field-stories">
+  <div class="field-stories-inner">
+    <div class="field-stories-header reveal">
+      <p class="section-label">From the field</p>
+      <h2>How it works in practice.</h2>
+    </div>
+
+    <div class="story-card reveal">
+      <div class="story-meta">
+        <span class="story-tag">System Architecture</span>
+        <span class="story-service">Corporate · Awards Ceremony · 1,200 guests</span>
+      </div>
+      <h3 class="story-headline">The brief arrived six weeks before load-in.</h3>
+      <div class="story-body">
+        <p>A production company had a creative direction, a venue, and a supplier list. What they didn't have was a signal flow that actually worked — the video server, the LED wall, and the lighting console were three separate systems that nobody had confirmed could talk to each other under show conditions.</p>
+        <p>We came in at specification stage, mapped every signal path against the real technical requirements of the show, and identified three critical failure points that would have surfaced on load-in day. The system was redesigned around a single control architecture. The show ran identically across two nights.</p>
+      </div>
+      <div class="story-quote">
+        <blockquote>&#8220;We&#8217;ve never had a load-in this clean.&#8221;</blockquote>
+        <cite>Production Manager</cite>
+      </div>
     </div>
   </div>
 </div>
