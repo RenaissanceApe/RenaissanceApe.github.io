@@ -33,7 +33,49 @@ Format: version → date → what changed and why.
 
 ---
 
-## v36 — April 2026 (pre-versioning convention)
+## v1.41 — May 2026
+
+### PT copy audit fixes
+
+Full audit conducted across all EN and PT pages. EN copy assessed as consistent and deliberately left unchanged. The following PT errors were corrected:
+
+**Values section — pt/about.html**
+- "Artesanato Intencional" → "Execução Intencional" (artesanato = handicraft, wrong connotation for professional practice)
+- "Clareza Antes da Complexidade" → "Clareza Primeiro" (literal translation, reads as translated rather than native)
+- "A Alegria como Padrão" → "A Alegria como Critério" (padrão reads as ISO standard; critério = the measure by which success is judged)
+
+**Terminology and consistency — pt/services.html**
+- "Pré-Produção Programming" → "Programação de Pré-Produção" (untranslated English word)
+- `<em>&amp; Automation</em>` → `<em>&amp; Automação</em>` in Show Control h2 heading (untranslated)
+- "3D Pre-Visualização" → "Pré-Visualização 3D" (inverted word order from PT convention)
+- "fly-throughs interativos" → "percursos virtuais interativos"
+- "walkthroughs animados" → "percursos animados"
+
+**European PT corrections**
+- "Ainda não tenho certeza" → "Ainda não tenho a certeza" (Brazilian PT → European PT; missing article)
+- "Director de Produção" → "Diretor de Produção" (old orthographic convention)
+
+**Anglicisms**
+- "Produções em tour" → "Digressões" (personal preference over "produções itinerantes")
+- "dia do show" → "dia do espetáculo" (mixed register)
+- "browser" → "navegador" (pt/index.html newsletter fallback)
+
+**Terms intentionally kept in English (industry standard in PT context)**
+- load-in (universal in Portuguese production industry; "montagem" would signal outsider)
+- briefing (fully adopted into PT)
+- rigging (no established PT equivalent in this industry)
+- plot (technical term, no PT equivalent)
+- show file / ficheiro de show (hybrid accepted in industry)
+
+**EN copy — no changes made**
+EN copy assessed as consistent in register throughout. The quiz and services page problem/response tables are the strongest writing on the site. AI-pattern density exists but is not at a level that damages credibility with a professional audience. Specific observations documented but not acted on pending Ricardo's direction.
+
+**PT quiz encoding — no action needed**
+Apparent encoding issue was a false positive from text extraction. The file uses HTML entities (&#227; etc.) which are valid HTML and render correctly in browsers.
+
+---
+
+
 
 ### Hero image replaced
 - New image: backstage technical rig with stage visible in background.
