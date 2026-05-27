@@ -169,6 +169,10 @@
   .contact-social{display:flex;gap:14px;margin-top:48px;flex-wrap:wrap;}
   .contact-social a{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray-300);border:1px solid rgba(130,178,215,0.2);padding:9px 16px;border-radius:3px;transition:color 0.2s,border-color 0.2s;min-height:44px;}
   .contact-social a:hover{color:var(--green-500);border-color:var(--green-500);}
+  .cal-cta{margin-top:40px;padding-top:36px;border-top:1px solid rgba(46,52,65,0.6);}
+  .cal-cta-label{font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray-500);margin-bottom:14px;}
+  .cal-cta-btn{display:inline-flex;align-items:center;gap:10px;padding:13px 24px;background:transparent;border:1px solid rgba(51,251,49,0.35);border-radius:3px;color:var(--green-500);font-family:var(--font-body);font-size:13px;font-weight:600;letter-spacing:0.06em;text-decoration:none;transition:background 0.2s,border-color 0.2s;min-height:44px;}
+  .cal-cta-btn:hover{background:rgba(51,251,49,0.07);border-color:var(--green-500);}
   .contact-right{background:var(--blue-700);padding:96px 64px;display:flex;flex-direction:column;justify-content:center;}
   .form-title{font-family:var(--font-display);font-size:1.4rem;font-weight:700;margin-bottom:40px;}
   .contact-form{display:flex;flex-direction:column;gap:20px;scroll-margin-top:96px;}
@@ -215,7 +219,6 @@
   </a>
   <ul class="nav-links">
     <li><a href="services.html" >Serviços</a></li>
-    <li><a href="resources.html" >Recursos</a></li>
     <li><a href="about.html" class="active" aria-current="page" >Sobre</a></li>
     <li><a href="quiz.html" class="nav-quiz-link">Qual é o meu serviço?</a></li>
   </ul>
@@ -232,7 +235,6 @@
 <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menu de navegação" aria-modal="true">
   <ul>
     <li><a href="services.html">Serviços</a></li>
-    <li><a href="resources.html">Recursos</a></li>
     <li><a href="about.html">Sobre</a></li>
   </ul>
   <a href="#contact-form" class="mobile-cta">Começar</a>
@@ -277,7 +279,7 @@
   </div>
 </div>
 
-<div class="divider"></div>
+<div style="display:none"><div class="divider"></div>
 
 <div class="founder">
   <div class="founder-inner">
@@ -295,7 +297,7 @@
 
     </div>
   </div>
-</div>
+</div></div>
 
 <div class="divider"></div>
 
@@ -348,6 +350,13 @@
     <div class="contact-social">
       <a href="https://www.instagram.com/lumenandpixel" target="_blank" rel="noopener"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg>Instagram</a>
       <a href="https://www.linkedin.com/company/lumen-and-pixel" target="_blank" rel="noopener"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 10v7M7 7v.01M12 17v-4a2 2 0 014 0v4M12 10v7"/></svg>LinkedIn</a>
+    </div>
+    <div class="cal-cta">
+      <p class="cal-cta-label">Prefere falar diretamente?</p>
+      <a href="https://cal.com/lumenandpixel" target="_blank" rel="noopener" class="cal-cta-btn">
+        <svg width="15" height="15" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2" y="3" width="16" height="15" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M2 8h16" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M6 1v4M14 1v4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><circle cx="10" cy="13" r="1.2" fill="currentColor"/></svg>
+        Agendar uma chamada
+      </a>
     </div>
   </div>
   <div class="contact-right reveal" style="transition-delay:0.1s">
