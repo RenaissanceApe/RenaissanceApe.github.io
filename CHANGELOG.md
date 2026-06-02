@@ -6,6 +6,39 @@ Format: version → date → what changed and why.
 
 ---
 
+## v1.41 — June 2026
+
+### Complete `<head>` audit and upgrade across all 16 pages
+
+**New assets added to `/images/`:**
+- `favicon-16x16.png` and `favicon-32x32.png` — PNG fallback favicons (rasterised from SVG) for browsers that don't support SVG favicons
+- `apple-touch-icon.png` (180×180) — replaces incorrect `og-image.png` reference on iOS home screen save
+- `android-chrome-192x192.png` and `android-chrome-512x512.png` — for Android PWA/Chrome
+
+**New root file:**
+- `site.webmanifest` — PWA manifest referencing Android icons, theme colour `#021829`
+
+**OG image fixed:**
+- `og-image.png` resized from 1536×1024 to correct 1200×630 (LinkedIn/WhatsApp spec) with centre crop
+
+**All 16 pages updated:**
+- Favicon set: SVG primary + PNG 32×32 / 16×16 fallbacks
+- `apple-touch-icon` corrected to `apple-touch-icon.png` (180×180)
+- `<link rel="manifest">` added
+- `<meta name="theme-color">` added (#021829)
+- `<link rel="canonical">` added (page-specific absolute URL)
+- `<meta name="robots">` added (`index,follow` on content pages; `noindex,nofollow` on quiz, thank-you, 404)
+- `<meta name="description">` added (unique per page, separate from og:description — required for Google SEO)
+- `og:image:width` (1200) and `og:image:height` (630) declared explicitly after og:image
+- `og:type` and `og:site_name` standardised across all pages
+
+**Homepage only:**
+- JSON-LD Organisation schema added (schema.org/Organization — name, URL, logo, description, founder, address, email, sameAs)
+
+**Decision: Drive URL approach abandoned.** All brand assets live in the repo under `/images/`. No external hosting needed for a static site on GitHub Pages. Reliable, fast, zero dependency.
+
+---
+
 ## v1.40 — May 2026
 
 ### Resources page hidden from navigation

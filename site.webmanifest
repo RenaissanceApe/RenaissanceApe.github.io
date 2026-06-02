@@ -1,0 +1,21 @@
+{
+  "name": "Lumen and Pixel",
+  "short_name": "L&P",
+  "description": "Live event production studio — Show Design, Show Control & Automation, System Architecture, and Technical Direction.",
+  "icons": [
+    {
+      "src": "/images/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#021829",
+  "background_color": "#021829",
+  "display": "browser",
+  "start_url": "/"
+}
