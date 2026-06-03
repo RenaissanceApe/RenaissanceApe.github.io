@@ -67,7 +67,8 @@
   .nav-links{display:flex;align-items:center;gap:36px;list-style:none;margin:0;padding:0;}
   .nav-links a{font-size:13px;font-weight:700;letter-spacing:0.04em;color:rgba(15,25,45,0.78);transition:color 0.2s;}
   .nav-links a:hover{color:var(--blue-700);}
-  .nav-links a.active,.nav-links a[aria-current="page"]{color:var(--green-500);}
+  .nav-links a.active,.nav-links a[aria-current="page"]{color:var(--blue-700);position:relative;}
+  .nav-links a.active::after,.nav-links a[aria-current="page"]::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:2px;background:var(--green-500);border-radius:1px;}
   .nav-actions{display:flex;align-items:center;gap:16px;}
   nav .nav-cta{font-size:13px;font-weight:600;letter-spacing:0.06em;padding:9px 22px;background:var(--green-500);color:var(--blue-700);border-radius:3px;text-decoration:none;display:inline-flex;align-items:center;min-height:44px;transition:background 0.2s;}
   nav .nav-cta:hover{background:var(--green-300);}
@@ -75,7 +76,7 @@
   .lang-switch span{opacity:0.45;color:rgba(15,25,45,0.6);}
   .lang-switch a{color:rgba(15,25,45,0.62);text-decoration:none;transition:color 0.2s;}
   .lang-switch a:hover{color:var(--blue-700);}
-  .lang-switch a.active{color:var(--green-500);}
+  .lang-switch a.active{color:var(--blue-700);font-weight:700;position:relative;}.lang-switch a.active::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:1.5px;background:var(--green-500);border-radius:1px;}
   /* Hamburger — hidden on desktop */
   .nav-hamburger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:44px;height:44px;padding:0;background:none;border:none;cursor:pointer;flex-shrink:0;z-index:200;}
   .nav-hamburger span{display:block;width:22px;height:1.5px;background:var(--blue-700);border-radius:1px;transition:transform 0.3s,opacity 0.3s;transform-origin:center;}
@@ -201,6 +202,7 @@
   <ul class="nav-links">
     <li><a href="services.html">Services</a></li>
     <li><a href="about.html">About</a></li>
+    <li><a href="field-notes/index.html">Field Notes</a></li>
     <li><a href="quiz.html" class="nav-quiz-link">Find your fit</a></li>
   </ul>
   <div class="nav-actions">
@@ -217,6 +219,7 @@
   <ul>
     <li><a href="services.html">Services</a></li>
     <li><a href="about.html">About</a></li>
+    <li><a href="field-notes/index.html">Field Notes</a></li>
     <li><a href="quiz.html">Find your fit</a></li>
   </ul>
   <a href="about.html#contact-form" class="mobile-cta">Get started</a>
