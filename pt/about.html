@@ -2,24 +2,17 @@
 <html lang="pt">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Sobre — Lumen and Pixel</title>
-  <link rel="icon" type="image/svg+xml" href="../images/favicon.svg" />
-  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16x16.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png" />
-  <link rel="manifest" href="../site.webmanifest" />
-  <meta name="theme-color" content="#021829" />
-  <link rel="canonical" href="https://www.lumenandpixel.com/pt/about.html" />
-  <meta name="robots" content="index, follow" />
-  <meta name="description" content="Sobre a Lumen and Pixel. Fundada por Ricardo Bedulho, diretor criativo e diretor técnico baseado em Portugal." />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Lumen and Pixel" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Sobre a Lumen and Pixel. Fundada por Ricardo Bedulho, diretor criativo e designer de iluminação baseado em Portugal." />
+<title>Sobre — Lumen and Pixel</title>
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="../images/og-image.png" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Lumen and Pixel" />
 <meta property="og:title" content="Sobre — Lumen and Pixel" />
 <meta property="og:description" content="Sobre a Lumen and Pixel. Fundada por Ricardo Bedulho, diretor criativo e designer de iluminação baseado em Portugal." />
 <meta property="og:url" content="https://www.lumenandpixel.com/pt/about.html" />
 <meta property="og:image" content="https://www.lumenandpixel.com/images/og-image.png" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="Lumen and Pixel" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Sobre — Lumen and Pixel" />
@@ -62,8 +55,7 @@
   .nav-links{display:flex;align-items:center;gap:36px;list-style:none;margin:0;padding:0;}
   .nav-links a{font-size:13px;font-weight:700;letter-spacing:0.04em;color:rgba(15,25,45,0.78);transition:color 0.2s;}
   .nav-links a:hover{color:var(--blue-700);}
-  .nav-links a.active,.nav-links a[aria-current="page"]{color:var(--blue-700);position:relative;}
-  .nav-links a.active::after,.nav-links a[aria-current="page"]::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:2px;background:var(--green-500);border-radius:1px;}
+  .nav-links a.active,.nav-links a[aria-current="page"]{color:var(--green-500);}
   .nav-actions{display:flex;align-items:center;gap:16px;}
   nav .nav-cta{font-size:13px;font-weight:600;letter-spacing:0.06em;padding:9px 22px;background:var(--green-500);color:var(--blue-700);border-radius:3px;text-decoration:none;display:inline-flex;align-items:center;min-height:44px;transition:background 0.2s;}
   nav .nav-cta:hover{background:var(--green-300);}
@@ -71,7 +63,7 @@
   .lang-switch span{opacity:0.45;color:rgba(15,25,45,0.6);}
   .lang-switch a{color:rgba(15,25,45,0.62);text-decoration:none;transition:color 0.2s;}
   .lang-switch a:hover{color:var(--blue-700);}
-  .lang-switch a.active{color:var(--blue-700);font-weight:700;position:relative;}.lang-switch a.active::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:1.5px;background:var(--green-500);border-radius:1px;}
+  .lang-switch a.active{color:var(--green-500);}
   /* Hamburger — hidden on desktop */
   .nav-hamburger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:44px;height:44px;padding:0;background:none;border:none;cursor:pointer;flex-shrink:0;z-index:200;}
   .nav-hamburger span{display:block;width:22px;height:1.5px;background:var(--blue-700);border-radius:1px;transition:transform 0.3s,opacity 0.3s;transform-origin:center;}
@@ -228,7 +220,6 @@
   <ul class="nav-links">
     <li><a href="services.html" >Serviços</a></li>
     <li><a href="about.html" class="active" aria-current="page" >Sobre</a></li>
-    <li><a href="field-notes/index.html">Notas de Campo</a></li>
     <li><a href="quiz.html" class="nav-quiz-link">Qual é o meu serviço?</a></li>
   </ul>
   <div class="nav-actions">
@@ -370,14 +361,7 @@
   </div>
   <div class="contact-right reveal" style="transition-delay:0.1s">
     <h2 class="form-title">Enviar mensagem</h2>
-    <form class="contact-form" id="contact-form" tabindex="-1"
-      action="https://api.web3forms.com/submit" method="POST" novalidate>
-      <input type="hidden" name="access_key" value="2b0f7125-de63-40f7-9f81-674a1026f915" />
-      <input type="hidden" name="subject" value="Nova consulta – Lumen and Pixel" />
-      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
-      <input type="hidden" name="redirect" value="https://www.lumenandpixel.com/pt/thank-you.html" />
-      <input type="hidden" name="lead_source" value="Website PT" />
-      <input type="hidden" name="entry_page" value="Página Sobre (PT)" />
+    <form class="contact-form" id="contact-form" tabindex="-1" novalidate>
       <div class="form-row">
         <div class="form-group"><label for="contact_person">O seu nome</label><input type="text" id="contact_person" name="contact_person" placeholder="João Silva" required /></div>
         <div class="form-group"><label for="organization">Empresa / Organização</label><input type="text" id="organization" name="organization" placeholder="A Sua Empresa" /></div>
@@ -396,7 +380,7 @@
       </div>
       <div class="form-group"><label for="message">Fale-nos do seu projeto</label><textarea id="message" name="message" placeholder="Conte-nos um pouco sobre o seu projeto, evento ou desafio." rows="5" required></textarea></div>
       <div class="form-submit">
-        <button type="submit">Enviar mensagem</button>
+        <button type="submit" id="form-submit-btn">Enviar mensagem</button>
         <p class="form-note">Ao submeter este formulário, concorda que podemos processar os seus dados para responder ao seu pedido, conforme descrito na nossa <a href="legal.html#privacy">Política de Privacidade</a>.</p>
       </div>
       <p class="contact-form-status" id="contact-form-status" aria-live="polite"></p>
@@ -422,6 +406,87 @@
   var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target);}});},{threshold:0.1});
   document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
 })();
+  // Pre-fill from URL params (quiz results)
+  (function(){
+    var p=new URLSearchParams(window.location.search);
+    var k=p.get('service');
+    var sel=document.getElementById('service');
+    var map={SD:'Show Design',SC:'Show Control & Automation',SA:'System Architecture',TD:'Technical Direction'};
+    var val=map[k]||k||'';
+    if(sel&&val)sel.value=val;
+    if(window.location.hash==='#contact-form'){
+      var ft=document.getElementById('contact-form');
+      if(ft){requestAnimationFrame(function(){
+        ft.closest('.contact-section')&&ft.closest('.contact-section').querySelectorAll('.reveal').forEach(function(el){el.classList.add('visible');});
+        ft.scrollIntoView({behavior:'smooth',block:'start'});
+        if(sel&&sel.value)sel.focus({preventScroll:true});
+        else ft.querySelector('input,select,textarea')&&ft.querySelector('input,select,textarea').focus({preventScroll:true});
+      });}
+    }
+  })();
+  // n8n form submission
+  (function(){
+    var form   = document.getElementById('contact-form');
+    var btn    = document.getElementById('form-submit-btn');
+    var status = document.getElementById('contact-form-status');
+    if(!form) return;
+
+    function setStatus(type, text){
+      status.textContent = text;
+      status.style.color = type === 'success' ? 'var(--green-500)' : '#e05c5c';
+      if(type === 'success'){
+        setTimeout(function(){ status.textContent = ''; }, 8000);
+      }
+    }
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var name  = form.querySelector('#contact_person').value.trim();
+      var email = form.querySelector('#email').value.trim();
+      var msg   = form.querySelector('#message').value.trim();
+      if(!name || !email || !msg){
+        setStatus('error', 'Por favor preencha o seu nome, email e mensagem.');
+        return;
+      }
+      var payload = {
+        name:        name,
+        company:     form.querySelector('#organization').value.trim() || '',
+        email:       email,
+        service:     form.querySelector('#service').value || '',
+        message:     msg,
+        source:      'Website PT',
+        entry_page:  'Página Sobre (PT)',
+        quiz_result: (function(){
+          var p=new URLSearchParams(window.location.search);
+          var map={SD:'Show Design',SC:'Show Control & Automation',SA:'System Architecture',TD:'Technical Direction'};
+          var k=p.get('service'); return map[k]||k||'';
+        })()
+      };
+      btn.disabled = true;
+      btn.textContent = 'A enviar\u2026';
+      status.textContent = '';
+
+      fetch('https://n8n.lumenandpixel.com/webhook/inbound-lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .then(function(res){
+        if(res.ok){
+          window.location.href = 'thank-you.html';
+        } else {
+          setStatus('error', 'Ocorreu um erro. Por favor tente novamente.');
+          btn.disabled = false;
+          btn.textContent = 'Enviar mensagem';
+        }
+      })
+      .catch(function(){
+        setStatus('error', 'Não foi possível enviar a mensagem. Verifique a sua ligação e tente novamente.');
+        btn.disabled = false;
+        btn.textContent = 'Enviar mensagem';
+      });
+    });
+  })();
 (function(){
   var h=document.getElementById('hamburger');
   var m=document.getElementById('mobileMenu');

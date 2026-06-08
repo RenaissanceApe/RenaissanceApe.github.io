@@ -6,97 +6,6 @@ Format: version → date → what changed and why.
 
 ---
 
-## v1.42 — June 2026
-
-### Field Notes section — correct structure + nav active state fix
-
-**URL structure (final):**
-- `/field-notes/index.html` — EN hub
-- `/field-notes/slug.html` — EN article/case study
-- `/pt/field-notes/index.html` — PT hub (fully translated UI)
-- `/pt/field-notes/slug.html` — PT article/case study
-- Language switcher on each page links to the same slug in the other language
-
-**Active nav link fix (all 16 existing pages):**
-- Active nav link: `var(--blue-700)` text + 2px `var(--green-500)` underline via `::after`
-- Language switcher active: bold navy + 1.5px green underline
-- Replaces illegible green-text-on-light-nav pattern
-
-**New files (4):**
-- `field-notes/index.html` — EN hub with filter (All / Articles / Case Studies), empty state, filter JS
-- `field-notes/article-template.html` — EN article template with all meta, lede, body styles, callout box, footer CTA
-- `pt/field-notes/index.html` — PT hub, full Portuguese UI, mirrors EN article list
-- `pt/field-notes/article-template.html` — PT article template, all strings translated
-
-**Nav updated on all 16 existing pages:**
-- EN: Field Notes → `field-notes/index.html`
-- PT: Notas de Campo → `field-notes/index.html` (relative = `/pt/field-notes/index.html`)
-- Desktop nav + mobile menu updated on all pages
-
-**How to publish a new article:**
-1. Duplicate the relevant template (EN + PT), rename both to the same slug
-2. Fill in all PLACEHOLDER values (title, slug, date, read time, lede, body, meta)
-3. Add matching `<a class="fn-article-item">` entry to both hub pages
-4. Deploy both language versions together
-
----
-
-### Field Notes section + nav active state fix
-
-**Active nav link fix (all 16 pages):**
-- Active nav links now use `var(--blue-700)` text (dark navy, WCAG compliant) with a 2px `var(--green-500)` underline `::after` pseudo-element instead of green text on light nav background
-- Language switcher active state fixed with same pattern (bold navy + thin green underline)
-
-**New section: Field Notes**
-- `/articles/index.html` — EN hub. Hero, filter buttons (All / Articles / Case Studies), article list (empty at launch, placeholder state shown). Filterable by JS with no page reload.
-- `/articles/article-template.html` — reusable template for every new article or case study. Contains all semantic markup, full CSS, `og:type: article`, `article:published_time` meta, back navigation, article body styles (h2/h3, blockquote, callout note, lede), footer CTA.
-- `/pt/field-notes.html` — PT hub mirror. Full PT UI (nav, hero, filters, footer). Articles link to EN `/articles/` pages. Language switcher on EN articles links back to this PT hub.
-
-**Nav updated on all 16 existing pages:**
-- Field Notes added to desktop nav and mobile menu on all EN pages (`articles/index.html`)
-- Notas de Campo added to desktop nav and mobile menu on all PT pages (`../articles/index.html`)
-
-**How to publish an article:**
-1. Duplicate `articles/article-template.html`, rename to slug
-2. Fill in: title, slug, date, read time, category tag, lede, body content, all meta tags
-3. Add matching `<a class="fn-article-item">` entry to both `articles/index.html` and `pt/field-notes.html`
-4. Deploy
-
----
-
-## v1.41 — June 2026
-
-### Complete `<head>` audit and upgrade across all 16 pages
-
-**New assets added to `/images/`:**
-- `favicon-16x16.png` and `favicon-32x32.png` — PNG fallback favicons (rasterised from SVG) for browsers that don't support SVG favicons
-- `apple-touch-icon.png` (180×180) — replaces incorrect `og-image.png` reference on iOS home screen save
-- `android-chrome-192x192.png` and `android-chrome-512x512.png` — for Android PWA/Chrome
-
-**New root file:**
-- `site.webmanifest` — PWA manifest referencing Android icons, theme colour `#021829`
-
-**OG image fixed:**
-- `og-image.png` resized from 1536×1024 to correct 1200×630 (LinkedIn/WhatsApp spec) with centre crop
-
-**All 16 pages updated:**
-- Favicon set: SVG primary + PNG 32×32 / 16×16 fallbacks
-- `apple-touch-icon` corrected to `apple-touch-icon.png` (180×180)
-- `<link rel="manifest">` added
-- `<meta name="theme-color">` added (#021829)
-- `<link rel="canonical">` added (page-specific absolute URL)
-- `<meta name="robots">` added (`index,follow` on content pages; `noindex,nofollow` on quiz, thank-you, 404)
-- `<meta name="description">` added (unique per page, separate from og:description — required for Google SEO)
-- `og:image:width` (1200) and `og:image:height` (630) declared explicitly after og:image
-- `og:type` and `og:site_name` standardised across all pages
-
-**Homepage only:**
-- JSON-LD Organisation schema added (schema.org/Organization — name, URL, logo, description, founder, address, email, sameAs)
-
-**Decision: Drive URL approach abandoned.** All brand assets live in the repo under `/images/`. No external hosting needed for a static site on GitHub Pages. Reliable, fast, zero dependency.
-
----
-
 ## v1.40 — May 2026
 
 ### Resources page hidden from navigation
@@ -124,7 +33,49 @@ Format: version → date → what changed and why.
 
 ---
 
-## v1.41 — May 2026
+## v1.42 — May 2026
+
+### Contact form migrated from Web3Forms to n8n
+
+Both `about.html` and `pt/about.html` contact forms replaced. Web3Forms dependency removed entirely.
+
+**What changed:**
+- Removed `action="https://api.web3forms.com/submit"` and `method="POST"` from form element
+- Removed hidden fields: `access_key`, `subject`, `botcheck`, `redirect`, `lead_source`, `entry_page`, `quiz_result`
+- Form now submits via JavaScript `fetch()` POST to `https://n8n.lumenandpixel.com/webhook/inbound-lead`
+- Added `id="form-submit-btn"` to submit button for JS targeting
+
+**n8n payload fields:**
+
+| Key | Source | Notes |
+|---|---|---|
+| `name` | `#contact_person` | Required |
+| `company` | `#organization` | Optional |
+| `email` | `#email` | Required |
+| `service` | `#service` select | English value regardless of page language |
+| `message` | `#message` | Required |
+| `source` | hardcoded | "Website" (EN) / "Website PT" (PT) |
+| `entry_page` | hardcoded | "About page" (EN) / "Página Sobre (PT)" (PT) |
+| `quiz_result` | URL param `?service=` | Populated from quiz routing |
+
+**Behaviour:**
+- On success: `window.location.href = 'thank-you.html'` (same redirect as before)
+- On error: inline status message in brand colours (green-500 success, #e05c5c error)
+- Button disabled + text changed to "Sending…" / "A enviar…" while request is in flight
+- Client-side validation: name, email, message required before fetch fires
+
+**Preserved from previous implementation:**
+- Quiz result URL param pre-fill (`?service=SD/SC/SA/TD`)
+- Smooth scroll and hash routing (`#contact-form`)
+- All form field labels, placeholders, and select options unchanged
+- Privacy Policy note with link to `legal.html#privacy`
+
+**Webhook URL:** `https://n8n.lumenandpixel.com/webhook/inbound-lead`
+Confirm this matches the exact webhook path configured in your n8n workflow.
+
+---
+
+
 
 ### PT copy audit fixes
 
