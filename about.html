@@ -391,15 +391,7 @@
 
   <div class="contact-right reveal" style="transition-delay:0.1s">
     <h2 class="form-title">Send a message</h2>
-    <form class="contact-form" id="contact-form" tabindex="-1"
-      action="https://api.web3forms.com/submit" method="POST" novalidate>
-      <input type="hidden" name="access_key" value="2b0f7125-de63-40f7-9f81-674a1026f915" />
-      <input type="hidden" name="subject" value="New enquiry – Lumen and Pixel" />
-      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
-      <input type="hidden" name="redirect" value="https://www.lumenandpixel.com/thank-you.html" />
-      <input type="hidden" name="lead_source" value="Website" />
-      <input type="hidden" name="entry_page" value="About page" />
-      <input type="hidden" name="quiz_result" id="quiz_result" value="" />
+    <form class="contact-form" id="contact-form" tabindex="-1" novalidate>
       <div class="form-row">
         <div class="form-group">
           <label for="contact_person">Your name</label>
@@ -430,7 +422,7 @@
         <textarea id="message" name="message" placeholder="Tell us a bit about your project, event, or challenge." rows="5" required></textarea>
       </div>
       <div class="form-submit">
-        <button type="submit">Send message</button>
+        <button type="submit" id="form-submit-btn">Send message</button>
         <p class="form-note">By submitting this form, you agree that we may process your data to respond to your enquiry as described in our <a href="legal.html#privacy">Privacy Policy</a>.</p>
       </div>
       <p class="contact-form-status" id="contact-form-status" aria-live="polite"></p>
@@ -489,6 +481,60 @@
         else ft.querySelector('input,select,textarea')&&ft.querySelector('input,select,textarea').focus({preventScroll:true});
       });}
     }
+  })();
+  // n8n form submission
+  (function(){
+    var form   = document.getElementById('contact-form');
+    var btn    = document.getElementById('form-submit-btn');
+    var status = document.getElementById('contact-form-status');
+    if(!form) return;
+    function setStatus(type, text){
+      status.textContent = text;
+      status.style.color = type === 'success' ? 'var(--green-500)' : '#e05c5c';
+      if(type === 'success') setTimeout(function(){ status.textContent = ''; }, 8000);
+    }
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var name  = form.querySelector('#contact_person').value.trim();
+      var email = form.querySelector('#email').value.trim();
+      var msg   = form.querySelector('#message').value.trim();
+      if(!name || !email || !msg){
+        setStatus('error', 'Please fill in your name, email, and message.');
+        return;
+      }
+      var qp=new URLSearchParams(window.location.search);
+      var qmap={SD:'Show Design',SC:'Show Control & Automation',SA:'System Architecture',TD:'Technical Direction'};
+      var payload = {
+        name:        name,
+        company:     form.querySelector('#organization').value.trim() || '',
+        email:       email,
+        service:     form.querySelector('#service').value || '',
+        message:     msg,
+        source:      'Website',
+        entry_page:  'About page',
+        quiz_result: qmap[qp.get('service')] || qp.get('service') || ''
+      };
+      btn.disabled = true;
+      btn.textContent = 'Sending\u2026';
+      status.textContent = '';
+      fetch('https://lumenandpixel.app.n8n.cloud/webhook/inbound-lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .then(function(res){
+        if(res.ok){
+          window.location.href = 'thank-you.html';
+        } else {
+          setStatus('error', 'Something went wrong. Please try again or email us directly.');
+          btn.disabled = false; btn.textContent = 'Send message';
+        }
+      })
+      .catch(function(){
+        setStatus('error', 'Could not send message. Check your connection and try again.');
+        btn.disabled = false; btn.textContent = 'Send message';
+      });
+    });
   })();
 (function(){
   var h=document.getElementById('hamburger');

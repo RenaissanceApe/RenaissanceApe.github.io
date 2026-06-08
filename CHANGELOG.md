@@ -6,6 +6,28 @@ Format: version → date → what changed and why.
 
 ---
 
+## v1.43 — June 2026
+
+### Base: uploaded v1.42 (with Field Notes section added externally)
+This version uses the externally-produced v1.42 as its base, which includes the Field Notes section and articles directory created in a separate chat. The contact form migration was applied on top of this base.
+
+**Important process note:** All website changes must be made in this chat only to avoid version conflicts. The Field Notes incident (changes made outside this chat) is documented here as a reminder of why this matters.
+
+### Contact form migrated from Web3Forms to n8n
+Applied to `about.html` and `pt/about.html`.
+- Removed: `action`, `access_key`, `botcheck`, `redirect`, `subject` hidden fields
+- Added: `fetch()` POST to `https://lumenandpixel.app.n8n.cloud/webhook/inbound-lead`
+- On success: `window.location.href = 'thank-you.html'`
+- On error: inline status message in brand colours
+- Button disables + label changes during request
+- All existing JS preserved: quiz pre-fill, smooth scroll, hash routing, hamburger nav
+- Payload keys: `name`, `company`, `email`, `service`, `message`, `source`, `entry_page`, `quiz_result`
+- Webhook note: `webhook/` = production (always on); `webhook-test/` = only active during n8n editor testing
+
+---
+
+---
+
 ## v1.42 — June 2026
 
 ### Field Notes section — correct structure + nav active state fix
