@@ -78,6 +78,27 @@ on cascade order. **When editing a page, do not re-add reveal or hamburger JS.**
   URL bar, so the hero no longer jumps on first scroll. The 640px floor is also
   released on short landscape viewports.
 
+### Follow-up fixes (reported from mobile testing)
+
+- **About page mobile menu was missing half the site.** `about.html` and
+  `pt/about.html` listed only Serviços/Services and Sobre/About — 4 links where
+  every other page has 6. Field Notes and the quiz were unreachable from a phone
+  on the About page in both languages. The desktop nav was complete, so this was
+  mobile-only.
+- **PT quiz results rendered raw HTML entities** (`L&#237;der de Design`).
+  `SERVICES_PT` held 125 entities like `&#237;`, and `renderResult` writes the
+  mode name, rationale and description with `.textContent`, which does not
+  decode them — only `nameHTML` went through `.innerHTML`, which is why the
+  heading looked right and everything under it did not. The data is now literal
+  UTF-8; `&amp;` is preserved in `nameHTML`, which is genuinely markup. EN was
+  never affected — it had no entities.
+- **PT pages sent visitors back to the English home.** The logo on all 11 PT
+  pages pointed at `../index.html`, and `pt/404.html` and `pt/thank-you.html`
+  did the same from their back-to-home CTAs. `pt/404.html`'s CTA also still read
+  "Back to home" in English. No language detection was added — on a static site
+  each page already knows its own language, so the links are simply correct now.
+  The EN/PT switcher still crosses languages, as it should.
+
 ### Corrected from the audit
 
 An earlier draft reported the service icons and gradients on `services.html` and
