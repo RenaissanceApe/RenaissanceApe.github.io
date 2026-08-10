@@ -1,0 +1,101 @@
+/* ─── LUMEN AND PIXEL — SHARED OVERRIDES ───────────────────────────────────
+   Loaded on every page *after* that page's inline <style> block, so these
+   rules win on cascade order without the inline CSS needing to change.
+
+   Scope is deliberately narrow: motion preferences, mobile-menu focus
+   safety, and viewport-unit correctness. Everything else still lives in
+   each page's own <style> block for now.
+   ────────────────────────────────────────────────────────────────────────── */
+
+
+/* ── Mobile menu: hidden means hidden ──────────────────────────────────────
+   The inline CSS hides the closed menu with opacity + pointer-events only.
+   Neither removes an element from the tab order, so on any viewport at or
+   below 900px (where the menu becomes display:block) a keyboard user could
+   tab straight into five invisible links.
+
+   `visibility` does remove them. The 0s transition is delayed by the length
+   of the fade on close so the menu is still painted while it animates out,
+   and undelayed on open so it is focusable immediately.                     */
+.mobile-menu {
+  visibility: hidden;
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s linear 0.25s;
+}
+
+.mobile-menu.open {
+  visibility: visible;
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0s linear 0s;
+}
+
+
+/* ── Contact form honeypot ────────────────────────────────────────────────
+   Moved off-screen rather than `display:none` or `hidden`, both of which a
+   lot of form bots know to skip. `aria-hidden` on the wrapper and
+   `tabindex="-1"` on the input keep it away from assistive tech and the tab
+   order, so only a script that fills every field will trip it.             */
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+
+/* ── Viewport units ────────────────────────────────────────────────────────
+   `vh` on mobile browsers is measured against the viewport with the URL bar
+   *collapsed*, so a 100vh hero is taller than what is actually visible on
+   load and shifts as the bar retracts. `svh` (smallest viewport height) is
+   the stable measurement — it always fits, and never moves.                 */
+@supports (height: 100svh) {
+  .hero { height: 100svh; }
+}
+
+@supports (min-height: 100svh) {
+  body { min-height: 100svh; }
+}
+
+/* A 640px floor is taller than a phone held sideways, which pushes the hero's
+   call to action below the fold in landscape. Let it shrink to fit instead. */
+@media (max-height: 640px) and (orientation: landscape) {
+  .hero { min-height: 0; }
+}
+
+
+/* ── Reduced motion ───────────────────────────────────────────────────────
+   Honours the OS-level "reduce motion" setting. The marquee matters most:
+   it loops indefinitely, which is a WCAG 2.2.2 (Pause, Stop, Hide) failure
+   for moving content lasting more than five seconds with no pause control.
+
+   Reveal-on-scroll is resolved to its final state rather than disabled, so
+   content is present immediately instead of fading in.                      */
+@media (prefers-reduced-motion: reduce) {
+
+  html { scroll-behavior: auto; }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .marquee-inner { animation: none !important; }
+
+  .hero-bg {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  /* Keep the menu's focus safety intact — the blanket transition override
+     above would otherwise strand `visibility` mid-transition. */
+  .mobile-menu { transition: none !important; }
+  .mobile-menu:not(.open) { visibility: hidden !important; }
+}

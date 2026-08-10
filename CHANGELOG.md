@@ -6,6 +6,109 @@ Format: version → date → what changed and why.
 
 ---
 
+## v1.44 — August 2026
+
+Outcome of a full audit and stress test of the site. Only P0 and P1 findings are
+addressed here; the remaining P2/P3 backlog is listed at the end.
+
+### New shared files: `site.css` + `site.js`
+
+Every page previously carried its own copy of the scroll-reveal observer and the
+mobile-menu handler. That duplication is why the same bug could be fixed on one
+page and left broken on twenty others. Both are now single files, loaded from the
+site root on all 20 nav-bearing pages:
+
+```html
+<link rel="stylesheet" href="/site.css" />
+<noscript><style>.reveal{opacity:1;transform:none;}</style></noscript>
+<script>window.__lpRevealFailsafe=setTimeout(…,4000);</script>
+<script src="/site.js" defer></script>
+```
+
+Absolute paths, so `/`, `/pt/` and `/field-notes/` all resolve identically.
+The inline `<style>` blocks are untouched — `site.css` loads after them and wins
+on cascade order. **When editing a page, do not re-add reveal or hamburger JS.**
+
+### Fixed — P0
+
+- **Field Notes was unnavigable on mobile.** `field-notes/index.html`,
+  `pt/field-notes/index.html` and both article templates shipped the hamburger
+  button and menu markup but no JavaScript to open it. Below 900px the desktop
+  nav is hidden, so the only working link out of the section was the logo. They
+  now load `site.js` like every other page.
+- **Contact form had no spam protection or input bounds** (`about.html`,
+  `pt/about.html`). The `botcheck` field was dropped in the v1.43 Web3Forms→n8n
+  migration and nothing replaced it, leaving a public, per-execution-metered
+  webhook wide open. Added: off-screen honeypot, a 3-second minimum fill time,
+  email format validation (the form carries `novalidate`, so the browser's own
+  check was off), `maxlength` on every field with matching server-side-style
+  truncation, a 15-second `AbortController` timeout, and a re-entrancy guard.
+- **The PT quiz threw away its own result.** `pt/quiz.html` linked to
+  `about.html#contact-form` without the `?service=` parameter the EN version
+  sends, and `pt/about.html` never had the pre-fill logic in the first place.
+  Every Portuguese visitor who completed the quiz arrived at a blank form with
+  an empty `quiz_result` in the payload. Both halves fixed; PT and EN quiz
+  engines are now structurally identical so they can be diffed.
+
+### Fixed — P1
+
+- **Blank page without JavaScript.** `.reveal` defaults to `opacity:0` and was
+  only ever cleared by JS, so with JS off the services grid, client logos, CTA,
+  newsletter and the whole contact form were invisible. Added a `<noscript>`
+  fallback, plus a self-cancelling timer that reveals everything if `site.js`
+  itself is blocked or fails to load.
+- **Mobile menu.** Closed menus were hidden with `opacity` + `pointer-events`
+  only, which leaves links in the tab order — keyboard users fell into five
+  invisible links on every phone viewport. Now `visibility:hidden`. Added an
+  Escape handler, a real focus trap (the markup claims `aria-modal="true"`),
+  focus restore to the hamburger, and release of the `body{overflow:hidden}`
+  scroll lock when crossing back to desktop width — previously, opening the menu
+  and rotating to landscape left the page permanently unscrollable.
+- **Reduced motion.** Nothing in the site honoured `prefers-reduced-motion`.
+  The infinite 22s marquee was a WCAG 2.2.2 failure on its own. Now the marquee,
+  hero zoom, reveal transitions and all smooth scrolling stop when the OS
+  setting is on.
+- **Quiz state and accessibility.** Browser Back used to leave the page and
+  destroy all four answers; step and answers now live in the URL hash, so Back
+  steps between questions and a result can be refreshed, bookmarked and shared.
+  Focus moves to each new question heading instead of falling to `<body>`.
+  `JSON.parse` of the option data-attributes is guarded. The tie-break
+  (always Show Design on a perfect tie) is now documented rather than incidental.
+- **`100vh` hero** replaced with `100svh`, which excludes the collapsing mobile
+  URL bar, so the hero no longer jumps on first scroll. The 640px floor is also
+  released on short landscape viewports.
+
+### Corrected from the audit
+
+An earlier draft reported the service icons and gradients on `services.html` and
+`pt/services.html` as broken, because they use `../images/…` from pages at or near
+the site root. **That was wrong.** Browsers discard leading `..` segments that
+would escape the root (RFC 3986), so the paths resolve correctly and always have.
+The site has zero broken links. The paths remain fragile — they would break if
+either page moved into a subdirectory — but nothing is broken today.
+
+### Still outstanding (P2/P3 backlog)
+
+- `legal.html` / `pt/legal.html` name **Web3Forms** as the contact-form processor;
+  it is n8n Cloud since v1.43. cal.com is undisclosed. The cookie section claims
+  no analytics is active while MailerLite loads on all 23 pages with no consent
+  gate. *Agreed direction: correct the text and gate MailerLite behind consent.*
+- `© 2025` hardcoded on 23 pages.
+- JSON-LD `sameAs` points at `linkedin.com/company/lumenandpixel`; every visible
+  link uses `lumen-and-pixel`. One of them is wrong.
+- Superseded files still live and crawlable: `articles/index.html`,
+  `articles/article-template.html`, `pt/field-notes.html`.
+- Article templates are `robots: index, follow` with `ARTICLE TITLE` placeholders.
+- No `hreflang` on 20 EN/PT pairs; no `sitemap.xml`; no `robots.txt`.
+- Dead assets: `_shared.css` (an abandoned, entirely different design system),
+  `images/RB.png` (3.1 MB), `images/logos/palacio.png`, two stray `.txt` files.
+- `<main>` missing on index/about/services in both languages.
+- 51 `<img>` tags, none with `width`/`height` or `loading="lazy"`.
+- The remaining shared-CSS extraction: ~200 lines of tokens/nav/footer are still
+  duplicated in every page's inline `<style>`.
+
+---
+
 ## v1.43 — June 2026
 
 ### Base: uploaded v1.42 (with Field Notes section added externally)

@@ -266,6 +266,10 @@ nav
   .nav-quiz-link{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(15,25,45,0.62)!important;border:1px solid rgba(15,25,45,0.2);border-radius:2px;padding:5px 10px;transition:border-color 0.2s,color 0.2s!important;white-space:nowrap;}
   .nav-quiz-link:hover{border-color:var(--blue-500)!important;color:var(--blue-700)!important;}
 </style>
+<link rel="stylesheet" href="/site.css" />
+<noscript><style>.reveal{opacity:1;transform:none;}</style></noscript>
+<script>window.__lpRevealFailsafe=setTimeout(function(){document.querySelectorAll(".reveal").forEach(function(e){e.classList.add("visible");});},4000);</script>
+<script src="/site.js" defer></script>
 </head>
 <body>
 <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -684,33 +688,11 @@ nav
 </footer>
 
 <script>
-(function(){
-  var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target);}});},{threshold:0.1});
-  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
-})();
+
   var tabs=document.querySelectorAll('.tab-link');
   var sobs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){tabs.forEach(function(t){t.classList.remove('active');});var m=document.querySelector('.tab-link[href="#'+e.target.id+'"]');if(m)m.classList.add('active');}})},{rootMargin:'-30% 0px -60% 0px'});
   ['show-design','show-control','system-architecture','technical-direction'].forEach(function(id){var el=document.getElementById(id);if(el)sobs.observe(el);});
-(function(){
-  var h=document.getElementById('hamburger');
-  var m=document.getElementById('mobileMenu');
-  if(!h||!m)return;
-  h.addEventListener('click',function(){
-    var open=m.classList.toggle('open');
-    h.classList.toggle('open');
-    h.setAttribute('aria-expanded',open?'true':'false');
-    h.setAttribute('aria-label',open?'Close navigation menu':'Open navigation menu');
-    document.body.style.overflow=open?'hidden':'';
-  });
-  m.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click',function(){
-      m.classList.remove('open');h.classList.remove('open');
-      h.setAttribute('aria-expanded','false');
-      h.setAttribute('aria-label','Open navigation menu');
-      document.body.style.overflow='';
-    });
-  });
-})();
+
 </script>
 </body>
 </html>

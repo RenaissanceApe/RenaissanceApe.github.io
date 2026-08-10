@@ -192,6 +192,10 @@
   .nav-quiz-link{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(15,25,45,0.62)!important;border:1px solid rgba(15,25,45,0.2);border-radius:2px;padding:5px 10px;transition:border-color 0.2s,color 0.2s!important;white-space:nowrap;}
   .nav-quiz-link:hover{border-color:var(--blue-500)!important;color:var(--blue-700)!important;}
 </style>
+<link rel="stylesheet" href="/site.css" />
+<noscript><style>.reveal{opacity:1;transform:none;}</style></noscript>
+<script>window.__lpRevealFailsafe=setTimeout(function(){document.querySelectorAll(".reveal").forEach(function(e){e.classList.add("visible");});},4000);</script>
+<script src="/site.js" defer></script>
 </head>
 <body>
 <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -507,59 +511,168 @@ var SERVICES = {
 
 var TOTAL_Q = 4;
 var SCORE_KEYS = ['SD', 'SC', 'SA', 'TD'];
+var RESULT_STEP = TOTAL_Q;          // the step index that means "show the result"
 var currentQ = 0;
 var answers = new Array(TOTAL_Q).fill(null);
 
-function updateProgress(qIndex) {
+var prefersReducedMotion = window.matchMedia
+  && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+var screens = document.querySelectorAll('.q-screen');
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+}
+
+/* Option metadata is carried in data-attributes. A malformed or missing one
+   would otherwise throw inside the click handler and silently kill the quiz,
+   so parse defensively and fall back to a zero-weight answer. */
+function parseData(btn, attr) {
+  try {
+    return JSON.parse(btn.getAttribute(attr)) || {};
+  } catch (err) {
+    return {};
+  }
+}
+
+function updateProgress(step) {
   for (var i = 0; i < TOTAL_Q; i++) {
     var seg = document.getElementById('seg-' + i);
-    if (i < qIndex) seg.className = 'progress-segment done';
-    else if (i === qIndex) seg.className = 'progress-segment active';
+    if (step >= RESULT_STEP || i < step) seg.className = 'progress-segment done';
+    else if (i === step) seg.className = 'progress-segment active';
     else seg.className = 'progress-segment';
   }
-  document.getElementById('progress-bar').setAttribute('aria-valuenow', qIndex + 1);
+  document.getElementById('progress-bar')
+    .setAttribute('aria-valuenow', Math.min(step + 1, TOTAL_Q));
+}
+
+/* Record an answer. Shared by the click handler and by state restored from
+   the URL, so both paths produce identical state. */
+function applyAnswer(qIndex, optIndex) {
+  var screen = screens[qIndex];
+  if (!screen) return false;
+  var options = screen.querySelectorAll('.option-btn');
+  var btn = options[optIndex];
+  if (!btn) return false;
+
+  options.forEach(function(b) {
+    b.classList.remove('selected');
+    b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+  });
+  btn.classList.add('selected');
+
+  answers[qIndex] = {
+    scores: parseData(btn, 'data-scores'),
+    engage: parseData(btn, 'data-engage'),
+    index: optIndex
+  };
+
+  var nb = document.getElementById('next-' + qIndex);
+  if (nb) nb.disabled = false;
+  return true;
 }
 
 function showScreen(index) {
-  document.querySelectorAll('.q-screen').forEach(function(s) { s.classList.remove('active'); });
+  screens.forEach(function(s) { s.classList.remove('active'); });
   document.getElementById('result-screen').classList.remove('active');
   var screen = document.getElementById('q' + index);
   if (!screen) return;
   screen.classList.add('active');
-  if (answers[index] && answers[index].el) {
-    screen.querySelectorAll('.option-btn').forEach(function(b) { b.classList.remove('selected'); });
-    answers[index].el.classList.add('selected');
-    var nb = document.getElementById('next-' + index);
-    if (nb) nb.disabled = false;
-  }
+  currentQ = index;
   updateProgress(index);
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  scrollToTop();
+
+  /* The control that triggered this transition is now display:none, so focus
+     would fall back to <body> and a keyboard user would have to tab from the
+     top of the document on every question. Move it to the new heading. */
+  var heading = screen.querySelector('h1, h2, .q-title');
+  if (heading) {
+    if (!heading.hasAttribute('tabindex')) heading.setAttribute('tabindex', '-1');
+    heading.focus({ preventScroll: true });
+  }
 }
 
 function showResult() {
-  document.querySelectorAll('.q-screen').forEach(function(s) { s.classList.remove('active'); });
+  screens.forEach(function(s) { s.classList.remove('active'); });
   var rs = document.getElementById('result-screen');
   rs.classList.add('active');
-  for (var i = 0; i < TOTAL_Q; i++) {
-    document.getElementById('seg-' + i).className = 'progress-segment done';
-  }
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  updateProgress(RESULT_STEP);
   renderResult();
+  scrollToTop();
+
+  var heading = document.getElementById('result-service-name');
+  if (heading) {
+    if (!heading.hasAttribute('tabindex')) heading.setAttribute('tabindex', '-1');
+    heading.focus({ preventScroll: true });
+  }
 }
 
+function render(step) {
+  if (step >= RESULT_STEP) showResult();
+  else showScreen(step);
+}
+
+/* \u2500\u2500 URL state \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+   Without this the browser Back button leaves the page entirely \u2014 the most
+   natural "previous question" gesture destroys every answer \u2014 and a result
+   can be neither refreshed nor shared. The step and the chosen option index
+   per question are small enough to live in the hash.                        */
+
+function encodeState(step) {
+  var digits = answers.map(function(a) {
+    return a ? String(a.index) : '-';
+  }).join('');
+  return '#s=' + step + '&a=' + digits;
+}
+
+function readState() {
+  var m = /^#s=(\d+)&a=([\d-]*)$/.exec(window.location.hash || '');
+  if (!m) return null;
+  var step = parseInt(m[1], 10);
+  if (!(step >= 0 && step <= RESULT_STEP)) return null;
+  return { step: step, digits: m[2] };
+}
+
+function restoreAnswers(digits) {
+  var restored = 0;
+  for (var i = 0; i < TOTAL_Q; i++) {
+    var ch = digits.charAt(i);
+    if (ch && ch !== '-' && applyAnswer(i, parseInt(ch, 10))) restored++;
+  }
+  return restored;
+}
+
+function navigate(step) {
+  render(step);
+  if (window.history && history.pushState) {
+    history.pushState({ lpStep: step }, '', encodeState(step));
+  }
+}
+
+function replaceState(step) {
+  if (window.history && history.replaceState) {
+    history.replaceState({ lpStep: step }, '', encodeState(step));
+  }
+}
+
+window.addEventListener('popstate', function(e) {
+  var step = e.state && typeof e.state.lpStep === 'number'
+    ? e.state.lpStep
+    : (readState() || { step: 0 }).step;
+  render(step);
+});
+
 // Attach option click handlers
-document.querySelectorAll('.q-screen').forEach(function(screen, qIndex) {
-  screen.querySelectorAll('.option-btn').forEach(function(btn) {
+screens.forEach(function(screen, qIndex) {
+  screen.querySelectorAll('.option-btn').forEach(function(btn, optIndex) {
+    // Selection was previously conveyed by class alone, which assistive tech
+    // cannot see. Establish the state up front so it's consistent from load.
+    btn.setAttribute('aria-pressed', 'false');
     btn.addEventListener('click', function() {
-      screen.querySelectorAll('.option-btn').forEach(function(b) { b.classList.remove('selected'); });
-      btn.classList.add('selected');
-      answers[qIndex] = {
-        scores: JSON.parse(btn.getAttribute('data-scores')),
-        engage: JSON.parse(btn.getAttribute('data-engage')),
-        el: btn
-      };
-      var nb = document.getElementById('next-' + qIndex);
-      if (nb) nb.disabled = false;
+      applyAnswer(qIndex, optIndex);
+      // Keep the URL in step with the answer without adding a history entry \u2014
+      // choosing an option isn't a navigation.
+      replaceState(currentQ);
     });
   });
 });
@@ -569,16 +682,17 @@ for (var qi = 0; qi < TOTAL_Q; qi++) {
   (function(idx) {
     var nb = document.getElementById('next-' + idx);
     if (nb) {
-      nb.addEventListener('click', function() {
-        if (idx < TOTAL_Q - 1) { currentQ = idx + 1; showScreen(currentQ); }
-        else { showResult(); }
-      });
+      nb.addEventListener('click', function() { navigate(idx + 1); });
     }
   })(qi);
 }
-document.querySelectorAll('.btn-back').forEach(function(btn, i) {
+
+/* Delegate to the browser so the in-page Back button and the browser's own
+   Back button can't disagree about where "back" is. */
+document.querySelectorAll('.btn-back').forEach(function(btn) {
   btn.addEventListener('click', function() {
-    if (currentQ > 0) { currentQ--; showScreen(currentQ); }
+    if (window.history && history.length > 1) history.back();
+    else if (currentQ > 0) navigate(currentQ - 1);
   });
 });
 
@@ -590,6 +704,9 @@ function computeResult() {
     SCORE_KEYS.forEach(function(k) { totals[k] += (a.scores[k] || 0); });
     Object.keys(engage).forEach(function(k) { engage[k] += (a.engage[k] || 0); });
   });
+  /* Ties resolve to the earliest key in SCORE_KEYS order (SD \u2192 SC \u2192 SA \u2192 TD).
+     A perfectly balanced answer set therefore always returns Show Design;
+     that is intentional and stable, not a coin flip. */
   var win = SCORE_KEYS.reduce(function(a, b) { return totals[a] >= totals[b] ? a : b; });
   var isEarly = engage.earlyStage >= 3;
   var isLead  = engage.wantsLead  >= 4;
@@ -615,36 +732,33 @@ function renderResult() {
 
 document.getElementById('restart-btn').addEventListener('click', function() {
   answers.fill(null);
-  currentQ = 0;
-  document.querySelectorAll('.option-btn').forEach(function(b) { b.classList.remove('selected'); });
+  document.querySelectorAll('.option-btn').forEach(function(b) {
+    b.classList.remove('selected');
+    b.setAttribute('aria-pressed', 'false');
+  });
   for (var i = 0; i < TOTAL_Q; i++) {
     var nb = document.getElementById('next-' + i);
     if (nb) nb.disabled = true;
   }
-  showScreen(0);
+  navigate(0);
 });
 
-// Mobile nav
+/* Boot: resume from the URL if it describes a valid state, otherwise start
+   clean. A result step with no answers behind it falls back to question 1. */
 (function() {
-  var h = document.getElementById('hamburger');
-  var m = document.getElementById('mobileMenu');
-  if (!h || !m) return;
-  h.addEventListener('click', function() {
-    var open = m.classList.toggle('open');
-    h.classList.toggle('open');
-    h.setAttribute('aria-expanded', open ? 'true' : 'false');
-    h.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
-    document.body.style.overflow = open ? 'hidden' : '';
-  });
-  m.querySelectorAll('a').forEach(function(a) {
-    a.addEventListener('click', function() {
-      m.classList.remove('open'); h.classList.remove('open');
-      h.setAttribute('aria-expanded', 'false');
-      h.setAttribute('aria-label', 'Open navigation menu');
-      document.body.style.overflow = '';
-    });
-  });
+  var state = readState();
+  if (state) {
+    var restored = restoreAnswers(state.digits);
+    var step = (state.step === RESULT_STEP && restored === 0) ? 0 : state.step;
+    render(step);
+    replaceState(step);
+  } else {
+    render(0);
+    replaceState(0);
+  }
 })();
+
+
 </script>
 </body>
 </html>

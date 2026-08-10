@@ -167,6 +167,10 @@
   .nav-quiz-link{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(15,25,45,0.62)!important;border:1px solid rgba(15,25,45,0.2);border-radius:2px;padding:5px 10px;transition:border-color 0.2s,color 0.2s!important;white-space:nowrap;}
   .nav-quiz-link:hover{border-color:var(--blue-500)!important;color:var(--blue-700)!important;}
 </style>
+<link rel="stylesheet" href="/site.css" />
+<noscript><style>.reveal{opacity:1;transform:none;}</style></noscript>
+<script>window.__lpRevealFailsafe=setTimeout(function(){document.querySelectorAll(".reveal").forEach(function(e){e.classList.add("visible");});},4000);</script>
+<script src="/site.js" defer></script>
 </head>
 <body>
 <a href="#main-content" class="skip-link">Saltar para o conte&#250;do principal</a>
@@ -391,17 +395,261 @@ var SERVICES_PT = {
     }
   }
 };
-var TOTAL_Q=4,SCORE_KEYS=['SD','SC','SA','TD'],currentQ=0,answers=new Array(TOTAL_Q).fill(null);
-function updateProgress(i){for(var j=0;j<TOTAL_Q;j++){var s=document.getElementById('seg-'+j);s.className='progress-segment'+(j<i?' done':j===i?' active':'');}document.getElementById('progress-bar').setAttribute('aria-valuenow',i+1);}
-function showScreen(i){document.querySelectorAll('.q-screen').forEach(function(s){s.classList.remove('active');});document.getElementById('result-screen').classList.remove('active');var sc=document.getElementById('q'+i);if(!sc)return;sc.classList.add('active');if(answers[i]&&answers[i].el){sc.querySelectorAll('.option-btn').forEach(function(b){b.classList.remove('selected');});answers[i].el.classList.add('selected');var nb=document.getElementById('next-'+i);if(nb)nb.disabled=false;}updateProgress(i);window.scrollTo({top:0,behavior:'smooth'});}
-function showResult(){document.querySelectorAll('.q-screen').forEach(function(s){s.classList.remove('active');});var rs=document.getElementById('result-screen');rs.classList.add('active');for(var i=0;i<TOTAL_Q;i++)document.getElementById('seg-'+i).className='progress-segment done';window.scrollTo({top:0,behavior:'smooth'});renderResult();}
-document.querySelectorAll('.q-screen').forEach(function(screen,qi){screen.querySelectorAll('.option-btn').forEach(function(btn){btn.addEventListener('click',function(){screen.querySelectorAll('.option-btn').forEach(function(b){b.classList.remove('selected');});btn.classList.add('selected');answers[qi]={scores:JSON.parse(btn.getAttribute('data-scores')),engage:JSON.parse(btn.getAttribute('data-engage')),el:btn};var nb=document.getElementById('next-'+qi);if(nb)nb.disabled=false;});});});
-for(var qi=0;qi<TOTAL_Q;qi++){(function(idx){var nb=document.getElementById('next-'+idx);if(nb)nb.addEventListener('click',function(){if(idx<TOTAL_Q-1){currentQ=idx+1;showScreen(currentQ);}else{showResult();}});})(qi);}
-document.querySelectorAll('.btn-back').forEach(function(btn){btn.addEventListener('click',function(){if(currentQ>0){currentQ--;showScreen(currentQ);}});});
-function computeResult(){var t={SD:0,SC:0,SA:0,TD:0},e={earlyStage:0,wantsLead:0};answers.forEach(function(a){if(!a)return;SCORE_KEYS.forEach(function(k){t[k]+=(a.scores[k]||0);});Object.keys(e).forEach(function(k){e[k]+=(a.engage[k]||0);});});var w=SCORE_KEYS.reduce(function(a,b){return t[a]>=t[b]?a:b;});var isE=e.earlyStage>=3,isL=e.wantsLead>=4,mk;if(w==='SD')mk=isL?'lead':'support';else if(w==='SC')mk=isE?'support':'lead';else if(w==='SA')mk=isE?'lead':'support';else mk=(isE||isL)?'lead':'support';return{win:w,modeKey:mk};}
-function renderResult(){var r=computeResult(),svc=SERVICES_PT[r.win],mode=svc.modes[r.modeKey];document.getElementById('result-service-name').innerHTML=svc.nameHTML;document.getElementById('result-mode-name').textContent='→ '+mode.name;document.getElementById('result-why').textContent=svc.why;document.getElementById('result-mode-desc').textContent=mode.desc;document.getElementById('result-link-service').href='services.html'+svc.anchor;document.getElementById('result-link-contact').href='about.html#contact-form';}
-document.getElementById('restart-btn').addEventListener('click',function(){answers.fill(null);currentQ=0;document.querySelectorAll('.option-btn').forEach(function(b){b.classList.remove('selected');});for(var i=0;i<TOTAL_Q;i++){var nb=document.getElementById('next-'+i);if(nb)nb.disabled=true;}showScreen(0);});
-(function(){var h=document.getElementById('hamburger'),m=document.getElementById('mobileMenu');if(!h||!m)return;h.addEventListener('click',function(){var o=m.classList.toggle('open');h.classList.toggle('open');h.setAttribute('aria-expanded',o?'true':'false');h.setAttribute('aria-label',o?'Fechar menu de navegação':'Abrir menu de navegação');document.body.style.overflow=o?'hidden':'';});m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){m.classList.remove('open');h.classList.remove('open');h.setAttribute('aria-expanded','false');h.setAttribute('aria-label','Abrir menu de navegação');document.body.style.overflow='';});});})();
+/* Kept structurally identical to the EN quiz in quiz.html so the two can be
+   diffed against each other — the PT copy previously drifted and silently
+   dropped the ?service= parameter on the contact CTA. */
+
+var TOTAL_Q = 4;
+var SCORE_KEYS = ['SD', 'SC', 'SA', 'TD'];
+var RESULT_STEP = TOTAL_Q;          // the step index that means "show the result"
+var currentQ = 0;
+var answers = new Array(TOTAL_Q).fill(null);
+
+var prefersReducedMotion = window.matchMedia
+  && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+var screens = document.querySelectorAll('.q-screen');
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+}
+
+/* Option metadata is carried in data-attributes. A malformed or missing one
+   would otherwise throw inside the click handler and silently kill the quiz,
+   so parse defensively and fall back to a zero-weight answer. */
+function parseData(btn, attr) {
+  try {
+    return JSON.parse(btn.getAttribute(attr)) || {};
+  } catch (err) {
+    return {};
+  }
+}
+
+function updateProgress(step) {
+  for (var i = 0; i < TOTAL_Q; i++) {
+    var seg = document.getElementById('seg-' + i);
+    if (step >= RESULT_STEP || i < step) seg.className = 'progress-segment done';
+    else if (i === step) seg.className = 'progress-segment active';
+    else seg.className = 'progress-segment';
+  }
+  document.getElementById('progress-bar')
+    .setAttribute('aria-valuenow', Math.min(step + 1, TOTAL_Q));
+}
+
+/* Record an answer. Shared by the click handler and by state restored from
+   the URL, so both paths produce identical state. */
+function applyAnswer(qIndex, optIndex) {
+  var screen = screens[qIndex];
+  if (!screen) return false;
+  var options = screen.querySelectorAll('.option-btn');
+  var btn = options[optIndex];
+  if (!btn) return false;
+
+  options.forEach(function(b) {
+    b.classList.remove('selected');
+    b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+  });
+  btn.classList.add('selected');
+
+  answers[qIndex] = {
+    scores: parseData(btn, 'data-scores'),
+    engage: parseData(btn, 'data-engage'),
+    index: optIndex
+  };
+
+  var nb = document.getElementById('next-' + qIndex);
+  if (nb) nb.disabled = false;
+  return true;
+}
+
+function showScreen(index) {
+  screens.forEach(function(s) { s.classList.remove('active'); });
+  document.getElementById('result-screen').classList.remove('active');
+  var screen = document.getElementById('q' + index);
+  if (!screen) return;
+  screen.classList.add('active');
+  currentQ = index;
+  updateProgress(index);
+  scrollToTop();
+
+  /* The control that triggered this transition is now display:none, so focus
+     would fall back to <body> and a keyboard user would have to tab from the
+     top of the document on every question. Move it to the new heading. */
+  var heading = screen.querySelector('h1, h2, .q-title');
+  if (heading) {
+    if (!heading.hasAttribute('tabindex')) heading.setAttribute('tabindex', '-1');
+    heading.focus({ preventScroll: true });
+  }
+}
+
+function showResult() {
+  screens.forEach(function(s) { s.classList.remove('active'); });
+  var rs = document.getElementById('result-screen');
+  rs.classList.add('active');
+  updateProgress(RESULT_STEP);
+  renderResult();
+  scrollToTop();
+
+  var heading = document.getElementById('result-service-name');
+  if (heading) {
+    if (!heading.hasAttribute('tabindex')) heading.setAttribute('tabindex', '-1');
+    heading.focus({ preventScroll: true });
+  }
+}
+
+function render(step) {
+  if (step >= RESULT_STEP) showResult();
+  else showScreen(step);
+}
+
+/* ── URL state ────────────────────────────────────────────────────────────
+   Without this the browser Back button leaves the page entirely — the most
+   natural "previous question" gesture destroys every answer — and a result
+   can be neither refreshed nor shared. The step and the chosen option index
+   per question are small enough to live in the hash.                        */
+
+function encodeState(step) {
+  var digits = answers.map(function(a) {
+    return a ? String(a.index) : '-';
+  }).join('');
+  return '#s=' + step + '&a=' + digits;
+}
+
+function readState() {
+  var m = /^#s=(\d+)&a=([\d-]*)$/.exec(window.location.hash || '');
+  if (!m) return null;
+  var step = parseInt(m[1], 10);
+  if (!(step >= 0 && step <= RESULT_STEP)) return null;
+  return { step: step, digits: m[2] };
+}
+
+function restoreAnswers(digits) {
+  var restored = 0;
+  for (var i = 0; i < TOTAL_Q; i++) {
+    var ch = digits.charAt(i);
+    if (ch && ch !== '-' && applyAnswer(i, parseInt(ch, 10))) restored++;
+  }
+  return restored;
+}
+
+function navigate(step) {
+  render(step);
+  if (window.history && history.pushState) {
+    history.pushState({ lpStep: step }, '', encodeState(step));
+  }
+}
+
+function replaceState(step) {
+  if (window.history && history.replaceState) {
+    history.replaceState({ lpStep: step }, '', encodeState(step));
+  }
+}
+
+window.addEventListener('popstate', function(e) {
+  var step = e.state && typeof e.state.lpStep === 'number'
+    ? e.state.lpStep
+    : (readState() || { step: 0 }).step;
+  render(step);
+});
+
+// Attach option click handlers
+screens.forEach(function(screen, qIndex) {
+  screen.querySelectorAll('.option-btn').forEach(function(btn, optIndex) {
+    // Selection was previously conveyed by class alone, which assistive tech
+    // cannot see. Establish the state up front so it's consistent from load.
+    btn.setAttribute('aria-pressed', 'false');
+    btn.addEventListener('click', function() {
+      applyAnswer(qIndex, optIndex);
+      // Keep the URL in step with the answer without adding a history entry —
+      // choosing an option isn't a navigation.
+      replaceState(currentQ);
+    });
+  });
+});
+
+// Next / Back buttons
+for (var qi = 0; qi < TOTAL_Q; qi++) {
+  (function(idx) {
+    var nb = document.getElementById('next-' + idx);
+    if (nb) {
+      nb.addEventListener('click', function() { navigate(idx + 1); });
+    }
+  })(qi);
+}
+
+/* Delegate to the browser so the in-page Back button and the browser's own
+   Back button can't disagree about where "back" is. */
+document.querySelectorAll('.btn-back').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    if (window.history && history.length > 1) history.back();
+    else if (currentQ > 0) navigate(currentQ - 1);
+  });
+});
+
+function computeResult() {
+  var totals = { SD: 0, SC: 0, SA: 0, TD: 0 };
+  var engage = { earlyStage: 0, wantsLead: 0 };
+  answers.forEach(function(a) {
+    if (!a) return;
+    SCORE_KEYS.forEach(function(k) { totals[k] += (a.scores[k] || 0); });
+    Object.keys(engage).forEach(function(k) { engage[k] += (a.engage[k] || 0); });
+  });
+  /* Ties resolve to the earliest key in SCORE_KEYS order (SD → SC → SA → TD).
+     A perfectly balanced answer set therefore always returns Show Design;
+     that is intentional and stable, not a coin flip. */
+  var win = SCORE_KEYS.reduce(function(a, b) { return totals[a] >= totals[b] ? a : b; });
+  var isEarly = engage.earlyStage >= 3;
+  var isLead  = engage.wantsLead  >= 4;
+  var modeKey;
+  if (win === 'SD') modeKey = isLead ? 'lead' : 'support';
+  else if (win === 'SC') modeKey = isEarly ? 'support' : 'lead';
+  else if (win === 'SA') modeKey = isEarly ? 'lead' : 'support';
+  else modeKey = (isEarly || isLead) ? 'lead' : 'support';
+  return { win: win, modeKey: modeKey };
+}
+
+function renderResult() {
+  var r = computeResult();
+  var svc = SERVICES_PT[r.win];
+  var mode = svc.modes[r.modeKey];
+  document.getElementById('result-service-name').innerHTML = svc.nameHTML;
+  document.getElementById('result-mode-name').textContent = '→ ' + mode.name;
+  document.getElementById('result-why').textContent = svc.why;
+  document.getElementById('result-mode-desc').textContent = mode.desc;
+  document.getElementById('result-link-service').href = 'services.html' + svc.anchor;
+  // Carries the result through to the PT contact form, which reads ?service=
+  // to pre-select the dropdown and to populate quiz_result in the payload.
+  document.getElementById('result-link-contact').href = 'about.html?service=' + encodeURIComponent(r.win) + '#contact-form';
+}
+
+document.getElementById('restart-btn').addEventListener('click', function() {
+  answers.fill(null);
+  document.querySelectorAll('.option-btn').forEach(function(b) {
+    b.classList.remove('selected');
+    b.setAttribute('aria-pressed', 'false');
+  });
+  for (var i = 0; i < TOTAL_Q; i++) {
+    var nb = document.getElementById('next-' + i);
+    if (nb) nb.disabled = true;
+  }
+  navigate(0);
+});
+
+/* Boot: resume from the URL if it describes a valid state, otherwise start
+   clean. A result step with no answers behind it falls back to question 1. */
+(function() {
+  var state = readState();
+  if (state) {
+    var restored = restoreAnswers(state.digits);
+    var step = (state.step === RESULT_STEP && restored === 0) ? 0 : state.step;
+    render(step);
+    replaceState(step);
+  } else {
+    render(0);
+    replaceState(0);
+  }
+})();
+
 </script>
 </body>
 </html>
