@@ -6,6 +6,72 @@ Format: version → date → what changed and why.
 
 ---
 
+## v1.48 — August 2026
+
+### Shared design-system CSS extracted to `base.css`
+
+The last item on the audit backlog. Every page carried its own copy of the
+tokens, reset, navigation, mobile menu, footer and accessibility primitives —
+the root cause behind most of the drift this audit found, because fixing a nav
+bug meant editing 20 files and remembering all 20.
+
+**1,166 duplicated rules removed.** They now live once in `/base.css` (9.8 KB),
+linked immediately **before** each page's inline `<style>` — which is exactly
+where those rules already sat, so the cascade is unchanged:
+
+```html
+<link rel="stylesheet" href="/fonts.css" />
+<link rel="stylesheet" href="/base.css" />   <!-- shared design system -->
+<style> … page-specific … </style>            <!-- can still override base -->
+<link rel="stylesheet" href="/site.css" />    <!-- always has the last word -->
+```
+
+Two rules are split rather than lifted whole, because pages legitimately differ:
+
+- **`body`** — the eight declarations every page agrees on move to `base.css`;
+  a page's own `min-height` / `display:flex` stay inline.
+- **`@media (max-width: 900px)`** — only the nav/footer half is shared. Each
+  page's mobile layout rules stay where they were.
+
+`thank-you.html` and `pt/thank-you.html` make their nav `sticky` instead of
+`fixed` and never set `left`/`right`. They keep their own `nav` rule inline, now
+with explicit `left:auto; right:auto` so that lifting the shared rule cannot
+introduce values they never had.
+
+### Dev-only tooling: `_tools/`
+
+The extraction is reproducible, not a one-off edit:
+
+```bash
+cd _tools && npm install
+node extract-base-css.mjs --check    # report, change nothing
+node extract-base-css.mjs            # rewrite base.css and the pages
+```
+
+`postcss` is a **dev dependency only** — the published site is still plain
+static files with no build step, and pages remain editable in the GitHub web UI.
+`_tools/` starts with `_`, so Jekyll never serves it, and `node_modules/` is
+git-ignored.
+
+A hand-rolled parser is what corrupted the first attempt (v1.47). postcss also
+caught a subtler bug during this pass: it stores `!important` on `decl.important`
+rather than in `decl.value`, so a naive emitter silently drops the flag. That
+turned `.nav-quiz-link`'s `color: … !important` into a normal declaration and
+changed the colour on all 20 pages — caught by the verification below, fixed,
+and re-verified.
+
+### Verification
+
+Every computed style — 34 properties plus geometry — was captured for every
+element on 20 pages at both 1280px and 375px, before and after. **Zero
+substantive differences across all 40 page/viewport combinations.**
+
+The behavioural suites were re-run on top: mobile menu opens on every page,
+zero off-origin requests, fonts load, newsletter screening intact, both quizzes
+working, hreflang and sitemap served.
+
+---
+
 ## v1.47 — August 2026
 
 ### 18 broken CSS rules across 10 pages
@@ -41,22 +107,12 @@ Verified by capturing every computed style on 20 pages at two viewports before
 and after: the only substantive differences are `.error-actions` on the 404
 pages and `.section-label` on the services pages. Nothing else moved.
 
-### Shared-CSS extraction — attempted, deferred
+### Shared-CSS extraction — attempted with a hand-rolled parser, reverted
 
-The last item on the audit backlog is the ~44 KB of design-system CSS duplicated
-across 20 inline `<style>` blocks. It was attempted here and **reverted**.
-
-The dangling selectors above are why: a hand-rolled CSS parser cannot split a
-stylesheet safely when rules are structurally broken, and the first attempt
-produced corrupted output. Those are now fixed, so a retry is more likely to
-work — but doing it properly wants a real CSS parser (postcss), and that means
-adding a build step to a repo that is deliberately buildless and edited through
-the GitHub web UI. That trade-off is a decision, not a detail, so it is left
-open rather than made silently.
-
-The intended shape, when it happens: a `base.css` linked **before** each page's
-inline `<style>` (which is where those rules already sit, so the cascade order
-is unchanged), with `site.css` still last.
+A first attempt to lift the duplicated CSS used a hand-rolled parser and
+produced corrupted output — the dangling selectors above are exactly why. It
+was reverted, the dangling selectors were fixed, and the extraction was redone
+properly with postcss (see v1.48).
 
 ---
 
