@@ -6,6 +6,60 @@ Format: version → date → what changed and why.
 
 ---
 
+## v1.47 — August 2026
+
+### 18 broken CSS rules across 10 pages
+
+Found while attempting the shared-CSS extraction: the inline `<style>` blocks
+contained **dangling selectors** — a selector with no declaration block. CSS has
+no way to know one is missing, so the parser glues the stray token onto the next
+rule's selector, and that rule silently stops matching.
+
+```css
+  nav                              /* ← stray token, no { } */
+
+  .section-label { … }             /* parsed as: nav nav .section-label */
+```
+
+26 stray lines forming 18 broken rules, all removed. Two had visible effects:
+
+- **`.error-actions` on both 404 pages was completely unstyled.** `.error-`
+  turned it into `.error- .error-actions`, which matches nothing, so the two
+  buttons rendered stacked as plain blocks instead of a centred flex row with a
+  20px gap. Confirmed against the deployed code, then re-measured after the fix
+  (`display: block → flex`, `gap: normal → 20px`).
+- **`.section-label` on both services pages was completely unstyled** — no
+  uppercase, no letter-spacing, no bottom margin — because `nav nav
+  .section-label` matches nothing.
+
+The rest were latent: `.sub-accordion-` was swallowing `@keyframes subOpen`
+(which nothing referenced, and no keyframes survived parsing at all), and the
+`h1, h2, h3` and `.resources-hero` cases were either partly covered by the
+comma-separated selector list or duplicated by a second, correct rule.
+
+Verified by capturing every computed style on 20 pages at two viewports before
+and after: the only substantive differences are `.error-actions` on the 404
+pages and `.section-label` on the services pages. Nothing else moved.
+
+### Shared-CSS extraction — attempted, deferred
+
+The last item on the audit backlog is the ~44 KB of design-system CSS duplicated
+across 20 inline `<style>` blocks. It was attempted here and **reverted**.
+
+The dangling selectors above are why: a hand-rolled CSS parser cannot split a
+stylesheet safely when rules are structurally broken, and the first attempt
+produced corrupted output. Those are now fixed, so a retry is more likely to
+work — but doing it properly wants a real CSS parser (postcss), and that means
+adding a build step to a repo that is deliberately buildless and edited through
+the GitHub web UI. That trade-off is a decision, not a detail, so it is left
+open rather than made silently.
+
+The intended shape, when it happens: a `base.css` linked **before** each page's
+inline `<style>` (which is where those rules already sit, so the cascade order
+is unchanged), with `site.css` still last.
+
+---
+
 ## v1.46 — August 2026
 
 Clears the P2/P3 backlog, and adds the n8n workflow the newsletter depends on.
