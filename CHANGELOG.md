@@ -6,6 +6,71 @@ Format: version → date → what changed and why.
 
 ---
 
+## v1.46 — August 2026
+
+Clears the P2/P3 backlog, and adds the n8n workflow the newsletter depends on.
+
+### Two PT pages were rendering blank in production
+
+Found while checking markup balance. `pt/resources.html` and `pt/404.html` each
+had an unclosed `<div class="mobile-menu">`, so the parser nested `<main>` and
+`<footer>` *inside* the mobile menu — which is `display:none` above 900px. Both
+pages have been showing a nav bar above an empty void on desktop. Verified
+against the deployed code before fixing, and re-rendered after.
+
+`pt/services.html` had a third instance: an unclosed `.services-cta` left the
+footer nested inside it and indented to 1184px instead of full width. All three
+divs are now closed; every page in the repo balances.
+
+`pt/404.html` also still carried an English button label ("Contact us"), now
+"Fale connosco".
+
+### New — `_n8n/newsletter-double-opt-in.json`
+
+The workflow behind the newsletter form, importable as-is: signup, confirm and
+unsubscribe webhooks, double opt-in, consent stored as evidence rather than a
+boolean, and CORS set for the site's origins. `_n8n/README.md` covers import,
+the storage swap point, deliverability caveats and a curl test sequence.
+
+The directory starts with `_`, so Jekyll does not publish it — versioned with
+the site but never served. Do not add `.nojekyll` without moving it first.
+
+### P2
+
+- **Copyright year.** The markup now carries the correct year plus a
+  `data-copyright-year` hook; `site.js` rolls it forward only once the calendar
+  passes it. Correct with JavaScript off, and no annual edit across 23 files.
+- **LinkedIn.** JSON-LD `sameAs` pointed at `/company/lumenandpixel`, which is
+  dead. Corrected to `/company/lumen-and-pixel`, matching the 25 visible links.
+
+### P3
+
+- **Orphaned pages.** `articles/index.html` and `pt/field-notes.html` were real
+  URLs that may be indexed, so they are now redirect stubs (canonical + meta
+  refresh) pointing at `/field-notes/` and `/pt/field-notes/`, consolidating any
+  inbound links rather than 404ing them. `articles/article-template.html` was
+  never a public URL and is deleted.
+- **Article templates** are now `noindex, nofollow` — they ship with
+  `ARTICLE TITLE` placeholders and should never have been indexable.
+- **hreflang** on all 9 EN/PT pairs (18 pages), each with `x-default` and
+  verified to match that page's own canonical.
+- **`sitemap.xml`** (12 indexable URLs with language alternates) and
+  **`robots.txt`** pointing at it and disallowing the redirect stubs.
+- **Dead assets removed** — `_shared.css` (abandoned design system),
+  `images/RB.png` (3.1 MB), `images/logos/palacio.png` and two stray `.txt`
+  files, each confirmed unreferenced first. `images/` is now 628 KB.
+- **`<main>` landmark** added to index/about/services in both languages, so the
+  skip link lands on a real landmark. Layout captured before and after across
+  all six pages and compared — identical, apart from the `pt/services.html`
+  footer that the unclosed-div fix corrected.
+- **Image dimensions.** All 48 `<img>` tags now carry intrinsic `width`/`height`
+  read from the files themselves, to stop layout shift, plus `loading="lazy"`
+  and `decoding="async"` on the 28 below-the-fold images. Nav logos are
+  deliberately excluded from lazy loading — they are above the fold, and lazy
+  loading them would delay the largest contentful paint.
+
+---
+
 ## v1.45 — August 2026
 
 Removes every third-party script from the visitor's browser, and makes the legal
