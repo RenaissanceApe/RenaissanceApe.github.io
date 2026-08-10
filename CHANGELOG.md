@@ -6,6 +6,87 @@ Format: version → date → what changed and why.
 
 ---
 
+## v1.45 — August 2026
+
+Removes every third-party script from the visitor's browser, and makes the legal
+pages describe what the site actually does.
+
+### ⚠️ Required before this goes live
+
+The newsletter now posts to an n8n webhook that **must exist first**, or signups
+will fail:
+
+```
+POST https://lumenandpixel.app.n8n.cloud/webhook/newsletter-signup
+{
+  "email":        "someone@example.com",
+  "consent":      true,
+  "consent_text": "<the exact wording shown next to the checkbox>",
+  "consent_at":   "2026-08-10T12:00:00.000Z",
+  "language":     "en" | "pt",
+  "source":       "Website newsletter",
+  "entry_page":   "/index.html"
+}
+```
+
+The workflow is expected to: send a confirmation email and only add the address
+once that link is clicked (double opt-in — the site's success message already
+says "check your inbox"), store the consent fields as the record of consent,
+include a working unsubscribe link in every email sent, and honour unsubscribes
+and bounces. A `200` marks success; anything else surfaces an error to the user.
+
+**If a sending provider is added later** (SES, Resend, Postmark, …), it must be
+added to the third-party list in `legal.html` and `pt/legal.html`. Called
+server-side from n8n it never touches the visitor's browser, so it does not
+reintroduce a consent requirement — but it is still a processor and must be
+disclosed.
+
+### MailerLite removed entirely
+
+`universal.js` was loading on all 23 pages while the signup form existed on only
+2 — 21 pages ran a marketing tracker for no functional reason, including
+`legal.html`, whose cookie policy claimed no tracking was active.
+
+The embed is replaced by a first-party form on both homepages, posting to n8n
+with the same screening as the contact form: off-screen honeypot, 3-second
+minimum fill time, email format validation, 15-second timeout, re-entrancy
+guard. Consent is an explicit unticked checkbox, and the exact wording shown is
+captured and sent so the record is evidence rather than a boolean.
+
+### Fonts self-hosted
+
+Google Fonts is gone. Space Mono (400/700, upright and italic) and Nunito
+(300–800, variable) are served from `/fonts/` via `/fonts.css`, latin and
+latin-ext only — the same faces the CDN link requested. Visitor IPs are no
+longer disclosed to Google on every page load. `unicode-range` is preserved, so
+a page still downloads only the subsets it uses.
+
+To regenerate: fetch `https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700`
+and `…?family=Nunito:wght@300..800` with a modern browser User-Agent, keep the
+`latin` and `latin-ext` blocks, download each woff2 into `/fonts/`, and rewrite
+the `src` URLs to local paths.
+
+**This also fixed a bug:** `field-notes/`, `pt/field-notes/`, `articles/` and
+`pt/field-notes.html` (7 pages) declared Space Mono and Nunito but never loaded
+either font and had no `@font-face`. They had been rendering in fallback system
+fonts, visibly different from the rest of the site. They now link `/fonts.css`
+like everything else.
+
+### Result: no third-party code in the browser at all
+
+Verified in Chromium across 14 pages in both languages — a page load now makes
+**zero off-origin requests**. Nothing sets a cookie. No consent banner is needed
+because there is nothing to consent to.
+
+### Legal pages rewritten to match reality
+
+- Removed **Web3Forms** (gone since v1.43) and **MailerLite** (gone as of now).
+- Third-party list is now GitHub Pages (hosting), n8n Cloud (form + newsletter
+  delivery), cal.com and Gumroad (only reached if you follow a link).
+- "What we collect" describes the newsletter consent record accurately.
+- The cookie section now states plainly that no cookies are set and no
+  third-party code loads — which is true as written, and testable.
+
 ## v1.44 — August 2026
 
 Outcome of a full audit and stress test of the site. Only P0 and P1 findings are
