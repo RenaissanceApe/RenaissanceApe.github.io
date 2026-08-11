@@ -10,6 +10,9 @@
   <link rel="manifest" href="site.webmanifest" />
   <meta name="theme-color" content="#021829" />
   <link rel="canonical" href="https://www.lumenandpixel.com/thank-you.html" />
+<link rel="alternate" hreflang="en" href="https://www.lumenandpixel.com/thank-you.html" />
+<link rel="alternate" hreflang="pt" href="https://www.lumenandpixel.com/pt/thank-you.html" />
+<link rel="alternate" hreflang="x-default" href="https://www.lumenandpixel.com/thank-you.html" />
   <meta name="robots" content="noindex, nofollow" />
   <meta name="description" content="Thank you — your submission was received." />
   <meta property="og:type" content="website" />
@@ -25,44 +28,14 @@
 <meta name="twitter:title" content="Thank You — Lumen and Pixel" />
 <meta name="twitter:description" content="Thank you — your submission was received." />
 <meta name="twitter:image" content="https://www.lumenandpixel.com/images/og-image.png" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-<!-- MailerLite Universal -->
-<script>
-    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
-    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
-    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
-    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
-    ml('account', '2252485');
-</script>
-<!-- End MailerLite Universal -->
+<link rel="stylesheet" href="/fonts.css" />
+<link rel="stylesheet" href="/base.css" />
 <style>
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-  :root {
-    --blue-100:#dfe9f0; --blue-300:#82b2d7; --blue-500:#16598c;
-    --blue-700:#021829; --blue-900:#00080e;
-    --green-100:#dcf8dc; --green-300:#7ef67d; --green-500:#33fb31;
-    --green-700:#576e20; --green-900:#273012;
-    --gray-100:#f0f1f3; --gray-300:#b8bec8; --gray-500:#6b7485;
-    --gray-700:#2e3441; --gray-900:#0f141c;
-    --font-display:'Space Mono',monospace;
-    --font-body:'Nunito',sans-serif;
-  }
-  html{scroll-behavior:smooth;}
-  body{padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right);background:var(--blue-700);color:var(--gray-100);font-family:var(--font-body);font-size:16px;line-height:1.6;overflow-x:hidden;}
-  a{color:inherit;text-decoration:none;}
-  body{min-height:100vh;display:flex;flex-direction:column;}
+body{min-height:100vh;display:flex;flex-direction:column;}
   /* Simplified nav — no hamburger needed on this page */
-  nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 max(24px,calc((100vw - 1200px)/2 + 48px));height:68px;background:rgba(223,233,240,0.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(46,52,65,0.6);}
-  .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;}
-  .nav-logo-mark{height:28px;width:auto;display:block;}
+  nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 max(24px,calc((100vw - 1200px)/2 + 48px));height:68px;background:rgba(223,233,240,0.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(46,52,65,0.6);left:auto;right:auto;}
   .nav-home{font-size:13px;font-weight:600;letter-spacing:0.04em;color:rgba(15,25,45,0.78);transition:color 0.2s;}
   .nav-home:hover{color:var(--blue-700);}
-  .lang-switch{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;white-space:nowrap;}
-  .lang-switch span{opacity:0.45;color:rgba(15,25,45,0.6);}
-  .lang-switch a{color:rgba(15,25,45,0.62);text-decoration:none;transition:color 0.2s;}
-  .lang-switch a.active{color:var(--blue-700);font-weight:700;position:relative;}.lang-switch a.active::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:1.5px;background:var(--green-500);border-radius:1px;}
   main{flex:1;display:grid;place-items:center;padding:72px 24px;}
   .card{width:min(720px,100%);background:var(--blue-900);border:1px solid rgba(130,178,215,0.2);padding:48px;border-radius:2px;}
   .eyebrow{font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--green-500);margin-bottom:20px;}
@@ -75,18 +48,8 @@
   .secondary{border:1px solid rgba(130,178,215,0.25);color:var(--gray-100);transition:border-color 0.2s,color 0.2s;}
   .secondary:hover{border-color:var(--green-500);color:var(--green-500);}
   /* ── FOOTER ── */
-  footer{background:var(--blue-700);padding:48px 48px 36px;border-top:1px solid rgba(46,52,65,0.8);}
-  .footer-inner{display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto;gap:24px;}
-  .footer-logo{font-family:var(--font-display);font-size:13px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gray-500);}
-  .footer-social{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;list-style:none;}
-  .footer-social a{font-size:12px;color:var(--gray-500);letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s;}
-  .footer-social a:hover{color:var(--green-500);}
-  .footer-copy{font-size:12px;color:var(--gray-500);}
-  @media(max-width:900px){footer{padding:40px 24px 28px;}.footer-inner{flex-direction:column;gap:20px;text-align:center;}}
   @media(max-width:700px){nav{padding:0 24px;}.card{padding:36px 24px;}.actions{flex-direction:column;}}
   /* Quiz nav link */
-  .nav-quiz-link{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(15,25,45,0.62)!important;border:1px solid rgba(15,25,45,0.2);border-radius:2px;padding:5px 10px;transition:border-color 0.2s,color 0.2s!important;white-space:nowrap;}
-  .nav-quiz-link:hover{border-color:var(--blue-500)!important;color:var(--blue-700)!important;}
 </style>
 <link rel="stylesheet" href="/site.css" />
 <noscript><style>.reveal{opacity:1;transform:none;}</style></noscript>
@@ -96,7 +59,7 @@
 <body>
 <nav aria-label="Main navigation">
   <a href="index.html" class="nav-logo" aria-label="Lumen and Pixel — home">
-    <img class="nav-logo-mark" src="images/logo-mark.svg" alt="Lumen and Pixel" />
+    <img class="nav-logo-mark" src="images/logo-mark.svg" alt="Lumen and Pixel" width="236" height="236" />
   </a>
   <div style="display:flex;align-items:center;gap:16px;">
     <a href="index.html" class="nav-home">Back to home</a>
@@ -127,7 +90,7 @@
       <li><a href="legal.html#terms">Terms</a></li>
       <li><a href="legal.html#cookies">Cookies</a></li>
     </ul>
-    <span class="footer-copy">© Lumen and Pixel 2025</span>
+    <span class="footer-copy" data-copyright-year>© Lumen and Pixel 2026</span>
   </div>
 </footer>
 </body>

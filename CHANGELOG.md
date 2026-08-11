@@ -6,6 +6,262 @@ Format: version → date → what changed and why.
 
 ---
 
+## v1.48 — August 2026
+
+### Shared design-system CSS extracted to `base.css`
+
+The last item on the audit backlog. Every page carried its own copy of the
+tokens, reset, navigation, mobile menu, footer and accessibility primitives —
+the root cause behind most of the drift this audit found, because fixing a nav
+bug meant editing 20 files and remembering all 20.
+
+**1,166 duplicated rules removed.** They now live once in `/base.css` (9.8 KB),
+linked immediately **before** each page's inline `<style>` — which is exactly
+where those rules already sat, so the cascade is unchanged:
+
+```html
+<link rel="stylesheet" href="/fonts.css" />
+<link rel="stylesheet" href="/base.css" />   <!-- shared design system -->
+<style> … page-specific … </style>            <!-- can still override base -->
+<link rel="stylesheet" href="/site.css" />    <!-- always has the last word -->
+```
+
+Two rules are split rather than lifted whole, because pages legitimately differ:
+
+- **`body`** — the eight declarations every page agrees on move to `base.css`;
+  a page's own `min-height` / `display:flex` stay inline.
+- **`@media (max-width: 900px)`** — only the nav/footer half is shared. Each
+  page's mobile layout rules stay where they were.
+
+`thank-you.html` and `pt/thank-you.html` make their nav `sticky` instead of
+`fixed` and never set `left`/`right`. They keep their own `nav` rule inline, now
+with explicit `left:auto; right:auto` so that lifting the shared rule cannot
+introduce values they never had.
+
+### Dev-only tooling: `_tools/`
+
+The extraction is reproducible, not a one-off edit:
+
+```bash
+cd _tools && npm install
+node extract-base-css.mjs --check    # report, change nothing
+node extract-base-css.mjs            # rewrite base.css and the pages
+```
+
+`postcss` is a **dev dependency only** — the published site is still plain
+static files with no build step, and pages remain editable in the GitHub web UI.
+`_tools/` starts with `_`, so Jekyll never serves it, and `node_modules/` is
+git-ignored.
+
+A hand-rolled parser is what corrupted the first attempt (v1.47). postcss also
+caught a subtler bug during this pass: it stores `!important` on `decl.important`
+rather than in `decl.value`, so a naive emitter silently drops the flag. That
+turned `.nav-quiz-link`'s `color: … !important` into a normal declaration and
+changed the colour on all 20 pages — caught by the verification below, fixed,
+and re-verified.
+
+### Verification
+
+Every computed style — 34 properties plus geometry — was captured for every
+element on 20 pages at both 1280px and 375px, before and after. **Zero
+substantive differences across all 40 page/viewport combinations.**
+
+The behavioural suites were re-run on top: mobile menu opens on every page,
+zero off-origin requests, fonts load, newsletter screening intact, both quizzes
+working, hreflang and sitemap served.
+
+---
+
+## v1.47 — August 2026
+
+### 18 broken CSS rules across 10 pages
+
+Found while attempting the shared-CSS extraction: the inline `<style>` blocks
+contained **dangling selectors** — a selector with no declaration block. CSS has
+no way to know one is missing, so the parser glues the stray token onto the next
+rule's selector, and that rule silently stops matching.
+
+```css
+  nav                              /* ← stray token, no { } */
+
+  .section-label { … }             /* parsed as: nav nav .section-label */
+```
+
+26 stray lines forming 18 broken rules, all removed. Two had visible effects:
+
+- **`.error-actions` on both 404 pages was completely unstyled.** `.error-`
+  turned it into `.error- .error-actions`, which matches nothing, so the two
+  buttons rendered stacked as plain blocks instead of a centred flex row with a
+  20px gap. Confirmed against the deployed code, then re-measured after the fix
+  (`display: block → flex`, `gap: normal → 20px`).
+- **`.section-label` on both services pages was completely unstyled** — no
+  uppercase, no letter-spacing, no bottom margin — because `nav nav
+  .section-label` matches nothing.
+
+The rest were latent: `.sub-accordion-` was swallowing `@keyframes subOpen`
+(which nothing referenced, and no keyframes survived parsing at all), and the
+`h1, h2, h3` and `.resources-hero` cases were either partly covered by the
+comma-separated selector list or duplicated by a second, correct rule.
+
+Verified by capturing every computed style on 20 pages at two viewports before
+and after: the only substantive differences are `.error-actions` on the 404
+pages and `.section-label` on the services pages. Nothing else moved.
+
+### Shared-CSS extraction — attempted with a hand-rolled parser, reverted
+
+A first attempt to lift the duplicated CSS used a hand-rolled parser and
+produced corrupted output — the dangling selectors above are exactly why. It
+was reverted, the dangling selectors were fixed, and the extraction was redone
+properly with postcss (see v1.48).
+
+---
+
+## v1.46 — August 2026
+
+Clears the P2/P3 backlog, and adds the n8n workflow the newsletter depends on.
+
+### Two PT pages were rendering blank in production
+
+Found while checking markup balance. `pt/resources.html` and `pt/404.html` each
+had an unclosed `<div class="mobile-menu">`, so the parser nested `<main>` and
+`<footer>` *inside* the mobile menu — which is `display:none` above 900px. Both
+pages have been showing a nav bar above an empty void on desktop. Verified
+against the deployed code before fixing, and re-rendered after.
+
+`pt/services.html` had a third instance: an unclosed `.services-cta` left the
+footer nested inside it and indented to 1184px instead of full width. All three
+divs are now closed; every page in the repo balances.
+
+`pt/404.html` also still carried an English button label ("Contact us"), now
+"Fale connosco".
+
+### New — `_n8n/newsletter-double-opt-in.json`
+
+The workflow behind the newsletter form, importable as-is: signup, confirm and
+unsubscribe webhooks, double opt-in, consent stored as evidence rather than a
+boolean, and CORS set for the site's origins. `_n8n/README.md` covers import,
+the storage swap point, deliverability caveats and a curl test sequence.
+
+The directory starts with `_`, so Jekyll does not publish it — versioned with
+the site but never served. Do not add `.nojekyll` without moving it first.
+
+### P2
+
+- **Copyright year.** The markup now carries the correct year plus a
+  `data-copyright-year` hook; `site.js` rolls it forward only once the calendar
+  passes it. Correct with JavaScript off, and no annual edit across 23 files.
+- **LinkedIn.** JSON-LD `sameAs` pointed at `/company/lumenandpixel`, which is
+  dead. Corrected to `/company/lumen-and-pixel`, matching the 25 visible links.
+
+### P3
+
+- **Orphaned pages.** `articles/index.html` and `pt/field-notes.html` were real
+  URLs that may be indexed, so they are now redirect stubs (canonical + meta
+  refresh) pointing at `/field-notes/` and `/pt/field-notes/`, consolidating any
+  inbound links rather than 404ing them. `articles/article-template.html` was
+  never a public URL and is deleted.
+- **Article templates** are now `noindex, nofollow` — they ship with
+  `ARTICLE TITLE` placeholders and should never have been indexable.
+- **hreflang** on all 9 EN/PT pairs (18 pages), each with `x-default` and
+  verified to match that page's own canonical.
+- **`sitemap.xml`** (12 indexable URLs with language alternates) and
+  **`robots.txt`** pointing at it and disallowing the redirect stubs.
+- **Dead assets removed** — `_shared.css` (abandoned design system),
+  `images/RB.png` (3.1 MB), `images/logos/palacio.png` and two stray `.txt`
+  files, each confirmed unreferenced first. `images/` is now 628 KB.
+- **`<main>` landmark** added to index/about/services in both languages, so the
+  skip link lands on a real landmark. Layout captured before and after across
+  all six pages and compared — identical, apart from the `pt/services.html`
+  footer that the unclosed-div fix corrected.
+- **Image dimensions.** All 48 `<img>` tags now carry intrinsic `width`/`height`
+  read from the files themselves, to stop layout shift, plus `loading="lazy"`
+  and `decoding="async"` on the 28 below-the-fold images. Nav logos are
+  deliberately excluded from lazy loading — they are above the fold, and lazy
+  loading them would delay the largest contentful paint.
+
+---
+
+## v1.45 — August 2026
+
+Removes every third-party script from the visitor's browser, and makes the legal
+pages describe what the site actually does.
+
+### ⚠️ Required before this goes live
+
+The newsletter now posts to an n8n webhook that **must exist first**, or signups
+will fail:
+
+```
+POST https://lumenandpixel.app.n8n.cloud/webhook/newsletter-signup
+{
+  "email":        "someone@example.com",
+  "consent":      true,
+  "consent_text": "<the exact wording shown next to the checkbox>",
+  "consent_at":   "2026-08-10T12:00:00.000Z",
+  "language":     "en" | "pt",
+  "source":       "Website newsletter",
+  "entry_page":   "/index.html"
+}
+```
+
+The workflow is expected to: send a confirmation email and only add the address
+once that link is clicked (double opt-in — the site's success message already
+says "check your inbox"), store the consent fields as the record of consent,
+include a working unsubscribe link in every email sent, and honour unsubscribes
+and bounces. A `200` marks success; anything else surfaces an error to the user.
+
+**If a sending provider is added later** (SES, Resend, Postmark, …), it must be
+added to the third-party list in `legal.html` and `pt/legal.html`. Called
+server-side from n8n it never touches the visitor's browser, so it does not
+reintroduce a consent requirement — but it is still a processor and must be
+disclosed.
+
+### MailerLite removed entirely
+
+`universal.js` was loading on all 23 pages while the signup form existed on only
+2 — 21 pages ran a marketing tracker for no functional reason, including
+`legal.html`, whose cookie policy claimed no tracking was active.
+
+The embed is replaced by a first-party form on both homepages, posting to n8n
+with the same screening as the contact form: off-screen honeypot, 3-second
+minimum fill time, email format validation, 15-second timeout, re-entrancy
+guard. Consent is an explicit unticked checkbox, and the exact wording shown is
+captured and sent so the record is evidence rather than a boolean.
+
+### Fonts self-hosted
+
+Google Fonts is gone. Space Mono (400/700, upright and italic) and Nunito
+(300–800, variable) are served from `/fonts/` via `/fonts.css`, latin and
+latin-ext only — the same faces the CDN link requested. Visitor IPs are no
+longer disclosed to Google on every page load. `unicode-range` is preserved, so
+a page still downloads only the subsets it uses.
+
+To regenerate: fetch `https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700`
+and `…?family=Nunito:wght@300..800` with a modern browser User-Agent, keep the
+`latin` and `latin-ext` blocks, download each woff2 into `/fonts/`, and rewrite
+the `src` URLs to local paths.
+
+**This also fixed a bug:** `field-notes/`, `pt/field-notes/`, `articles/` and
+`pt/field-notes.html` (7 pages) declared Space Mono and Nunito but never loaded
+either font and had no `@font-face`. They had been rendering in fallback system
+fonts, visibly different from the rest of the site. They now link `/fonts.css`
+like everything else.
+
+### Result: no third-party code in the browser at all
+
+Verified in Chromium across 14 pages in both languages — a page load now makes
+**zero off-origin requests**. Nothing sets a cookie. No consent banner is needed
+because there is nothing to consent to.
+
+### Legal pages rewritten to match reality
+
+- Removed **Web3Forms** (gone since v1.43) and **MailerLite** (gone as of now).
+- Third-party list is now GitHub Pages (hosting), n8n Cloud (form + newsletter
+  delivery), cal.com and Gumroad (only reached if you follow a link).
+- "What we collect" describes the newsletter consent record accurately.
+- The cookie section now states plainly that no cookies are set and no
+  third-party code loads — which is true as written, and testable.
+
 ## v1.44 — August 2026
 
 Outcome of a full audit and stress test of the site. Only P0 and P1 findings are

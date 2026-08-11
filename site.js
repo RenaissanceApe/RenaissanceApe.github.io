@@ -56,6 +56,22 @@
   }
 
 
+  /* ── Footer year ────────────────────────────────────────────────────────
+     The markup carries a real, correct year so it reads properly with
+     JavaScript off. This only rolls it forward once the calendar passes it,
+     which saves editing 23 files every January.                            */
+
+  var yearHolders = toArray(document.querySelectorAll('[data-copyright-year]'));
+  if (yearHolders.length) {
+    var thisYear = new Date().getFullYear();
+    yearHolders.forEach(function (el) {
+      el.textContent = el.textContent.replace(/\b(20\d\d)\b/, function (match) {
+        return thisYear > Number(match) ? String(thisYear) : match;
+      });
+    });
+  }
+
+
   /* ── Mobile menu ────────────────────────────────────────────────────────*/
 
   var hamburger = document.getElementById('hamburger');
